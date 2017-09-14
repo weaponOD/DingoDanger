@@ -337,6 +337,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4443013405872238, guid: a24673047b943b44ab4ccc01857dc260, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.09
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a24673047b943b44ab4ccc01857dc260, type: 2}
   m_IsPrefabParent: 0
@@ -1142,7 +1146,7 @@ Transform:
   - {fileID: 1769202076}
   - {fileID: 1905770244}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &889509942
 Mesh:
@@ -2530,7 +2534,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1202
+  m_Name: pb_Mesh-8938
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

@@ -1,0 +1,131 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+///  Script component that will Move the Camera's anchor point along the x and z axis.
+/// </summary>
+
+public class CameraMovement : MonoBehaviour
+{
+    // Camera Pivot Point
+    private Transform pivot;
+
+    private Transform player;
+
+    [Header("Movement Attributes")]
+    [SerializeField]
+    [Tooltip("How much the camera will move when the mouse moves.")]
+    private float mouseSensitivity = 0.2f;
+
+    // target location to smoothly move towards
+    private Vector3 targetPosRight;
+    private Vector3 targetPosForward;
+
+    [SerializeField]
+    [Tooltip("How long it takes for the camera to reach it's destination")]
+    private float movementDampening = 10f;
+
+    [Header("Quality of use Attributes")]
+
+    [SerializeField]
+    [Tooltip("How much movement is needed to freely move the camera.")]
+    [Range(0, 1)]
+    float breakForce = 0.2f;
+
+    private float timeToSnapBack;
+
+    [SerializeField]
+    [Tooltip("Time in seconds of player inactivity before the camera snaps back to the target block.")]
+    [Range(0, 20)]
+    private float timeBeforeSnap = 1.5f;
+
+    private bool snapIsDelayed = true;
+
+    private Transform targetBlock;
+
+    private bool buildMode = false;
+
+    private void Awake()
+    {
+        pivot = transform.parent;
+
+        targetPosRight = transform.position;
+        targetPosForward = transform.position;
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            targetPosRight += transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
+            targetPosForward += transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
+        }
+    }
+
+    void LateUpdate()
+    {
+        Vector3 euler = pivot.rotation.eulerAngles;
+        Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
+        transform.rotation = rot;
+
+        if(buildMode)
+        {
+            Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+
+            if (stickForce.magnitude > breakForce)
+            {
+                snapIsDelayed = false;
+                pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
+                pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
+            }
+            else
+            {
+                if (targetBlock == null)
+                    return;
+
+                if (!snapIsDelayed)
+                {
+                    timeToSnapBack = Time.time + timeBeforeSnap;
+                    snapIsDelayed = true;
+                }
+
+                if (Time.time > timeToSnapBack)
+                {
+                    if (Vector3.Distance(transform.position, targetBlock.position) > 0.1f)
+                    {
+                        Vector3 targetBlockPos;
+
+                        targetBlockPos = targetBlock.position;
+
+                        transform.position = Vector3.Lerp(transform.position, targetBlockPos, Time.deltaTime * 3f);
+                        pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
+
+                        targetPosRight = transform.position;
+                        targetPosForward = transform.position;
+                    }
+                }
+            }
+        }
+        else
+        {
+            // move towards the player
+        }
+    }
+
+    public void SetBuildMode(bool isBuildMode)
+    {
+        buildMode = isBuildMode;
+    }
+
+    public Transform Target
+    {
+        set
+        {
+            targetBlock = value;
+            snapIsDelayed = true;
+            timeToSnapBack = Time.time;
+        }
+    }
+}

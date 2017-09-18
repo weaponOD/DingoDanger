@@ -9,73 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1212095036383808}
+  m_RootGameObject: {fileID: 1275225624211238}
   m_IsPrefabParent: 1
---- !u!1 &1212095036383808
+--- !u!1 &1275225624211238
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4424965806913644}
+  - component: {fileID: 4150920605121404}
   m_Layer: 0
-  m_Name: Atch-Sail-Default
+  m_Name: AnchorChain_001_Ship_001_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1322869032332980
+--- !u!1 &1652160510958924
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4840599719158320}
-  - component: {fileID: 33420774140267478}
-  - component: {fileID: 23423311836938160}
+  - component: {fileID: 4722458383078980}
+  - component: {fileID: 33040911365941182}
+  - component: {fileID: 23092025169480500}
+  - component: {fileID: 95153250205343760}
   m_Layer: 0
-  m_Name: Greybox-Sail
+  m_Name: AnchorChain_001_Ship_001_Metal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4424965806913644
+--- !u!4 &4150920605121404
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1212095036383808}
+  m_GameObject: {fileID: 1275225624211238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4840599719158320}
+  - {fileID: 4722458383078980}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4840599719158320
+--- !u!4 &4722458383078980
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322869032332980}
+  m_GameObject: {fileID: 1652160510958924}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 2, z: -1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4424965806913644}
+  m_Father: {fileID: 4150920605121404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23423311836938160
+--- !u!23 &23092025169480500
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322869032332980}
+  m_GameObject: {fileID: 1652160510958924}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -102,10 +103,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33420774140267478
+--- !u!33 &33040911365941182
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1322869032332980}
-  m_Mesh: {fileID: 4300000, guid: ce5b7292f4005814b84a954ad86f19eb, type: 3}
+  m_GameObject: {fileID: 1652160510958924}
+  m_Mesh: {fileID: 4300000, guid: ba6b50b774679df4bb0857440f221f53, type: 3}
+--- !u!95 &95153250205343760
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652160510958924}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ba6b50b774679df4bb0857440f221f53, type: 3}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

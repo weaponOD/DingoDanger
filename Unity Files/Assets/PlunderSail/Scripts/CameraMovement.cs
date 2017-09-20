@@ -40,10 +40,12 @@ public class CameraMovement : MonoBehaviour
     [Range(0, 20)]
     private float timeBeforeSnap = 1.5f;
 
-    private bool snapIsDelayed = true;
+    private bool snapIsDelayed = false;
 
     private Transform targetBlock;
 
+
+    [SerializeField]
     private bool buildMode = false;
 
     private void Awake()
@@ -52,6 +54,8 @@ public class CameraMovement : MonoBehaviour
 
         targetPosRight = transform.position;
         targetPosForward = transform.position;
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -111,7 +115,21 @@ public class CameraMovement : MonoBehaviour
         else
         {
             // move towards the player
+            Vector3 targetPos = player.position;
+
+            pivot.position = targetPos + player.forward * 2f;
+
+            targetPosRight = transform.position;
+            targetPosForward = transform.position;
+
+            //pivot.position = Vector3.Lerp(pivot.position, targetPos, Time.deltaTime * movementDampening);
         }
+    }
+
+    public bool BuildMode
+    {
+        get { return buildMode; }
+        set { buildMode = value; }
     }
 
     public void SetBuildMode(bool isBuildMode)

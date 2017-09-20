@@ -152,11 +152,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4406381428663504}
-  - component: {fileID: 114562678456534348}
   - component: {fileID: 54540220209516456}
-  - component: {fileID: 114178937006535214}
+  - component: {fileID: 114953428259341818}
   m_Layer: 0
-  m_Name: Player-Ship
+  m_Name: Enemy
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -928,35 +927,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &114178937006535214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668573925440448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildMode: 0
---- !u!114 &114562678456534348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668573925440448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0465fa1f3b5029b4e853c1771595e233, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0, z: 0}
-  targetVelocity: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
-  turnSpeed: 50
-  mesh: {fileID: 0}
-  steeringOrb: {fileID: 0}
 --- !u!114 &114639684562585324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,3 +939,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
+--- !u!114 &114953428259341818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668573925440448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

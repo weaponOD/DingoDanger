@@ -62,8 +62,6 @@ public class ShipCombat : MonoBehaviour
 
         if (Input.GetAxis("Left_Trigger") == 1)
         {
-            Debug.Log("Trigger Down");
-
             if (canShootLeft)
             {
                 foreach (AttachmentWeapon weapon in leftWeapons)
@@ -78,9 +76,6 @@ public class ShipCombat : MonoBehaviour
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
-
-            Debug.Log("Trigger Down");
-
             if (canShootRight)
             {
                 foreach (AttachmentWeapon weapon in rightWeapons)

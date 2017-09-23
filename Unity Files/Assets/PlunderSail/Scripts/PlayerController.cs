@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private AttachmentPoint[] attachmentPoints;
 
-    private int gold = 300;
+    private int gold = 900;
 
     private bool buildMode = false;
 
@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            attachmentPoints = GetComponentsInChildren<AttachmentPoint>();
+
             combat.updateWeapons();
             movement.enabled = true;
             cameraOrbit.BuildMode = false;

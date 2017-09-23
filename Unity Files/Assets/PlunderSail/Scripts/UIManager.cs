@@ -11,13 +11,15 @@ public class UIManager : MonoBehaviour
     private Text playerGold;
 
     [SerializeField]
-    private Button btn_Cabin;
-
-    [SerializeField]
-    private Button btn_Weapon;
+    private Button[] buttons;
 
     [SerializeField]
     private Image Panel;
+
+    [SerializeField]
+    private Image selector;
+
+    private int selectorIndex = 0;
 
     [SerializeField]
     private int[] prices;
@@ -26,6 +28,12 @@ public class UIManager : MonoBehaviour
 
     private PlayerController player;
 
+    private bool DpadCanPress = false;
+
+    [SerializeField]
+    private float timeBetweenPresses = 1f;
+    private float timeTillCanPress;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -33,16 +41,19 @@ public class UIManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void BuyAttachment(int attachment)
+    public bool BuyAttachment()
     {
-        int cost = prices[attachment];
+        int cost = prices[selectorIndex];
 
         if (player.Gold >= cost)
         {
             player.DeductGold(cost);
-            builder.CurrentAttachment = (AttachmentType)attachment;
             UpdateUI();
+
+            return true;
         }
+
+        return false;
     }
 
     public void SetBuildPanelStatus(bool _isEnabled)
@@ -54,22 +65,16 @@ public class UIManager : MonoBehaviour
     {
         playerGold.text = "Gold: " + player.Gold;
 
-        if(player.Gold >= prices[0])
+        for(int x = 0; x< buttons.Length;x++)
         {
-            btn_Cabin.interactable = true;
-        }
-        else
-        {
-            btn_Cabin.interactable = false;
-        }
-
-        if (player.Gold >= prices[1])
-        {
-            btn_Weapon.interactable = true;
-        }
-        else
-        {
-            btn_Weapon.interactable = false;
+            if (player.Gold >= prices[x])
+            {
+                buttons[x].interactable = true;
+            }
+            else
+            {
+                buttons[x].interactable = false;
+            }
         }
     }
 
@@ -85,6 +90,66 @@ public class UIManager : MonoBehaviour
         {
             player.DeductGold(50);
             UpdateUI();
+        }
+
+
+        if(DpadCanPress)
+        {
+            if (Input.GetAxis("Dpad_X") == 1)
+            {
+                Debug.Log("Right D pad");
+                DpadCanPress = false;
+            }
+
+            if (Input.GetAxis("Dpad_X") == -1)
+            {
+                Debug.Log("Left D pad");
+                DpadCanPress = false;
+            }
+
+            if (Input.GetAxis("Dpad_Y") == 1)
+            {
+                if (selectorIndex > 0)
+                {
+                    selectorIndex--;
+
+                    builder.CurrentAttachment = (AttachmentType)selectorIndex;
+                    selector.rectTransform.position = new Vector3(selector.rectTransform.position.x, buttons[selectorIndex].transform.position.y);
+                }
+
+                DpadCanPress = false;
+            }
+
+            if (Input.GetAxis("Dpad_Y") == -1)
+            {
+                if (selectorIndex < buttons.Length-1)
+                {
+                    selectorIndex++;
+
+
+                    builder.CurrentAttachment = (AttachmentType)selectorIndex;
+                    selector.rectTransform.position = new Vector3(selector.rectTransform.position.x, buttons[selectorIndex].transform.position.y);
+                }
+
+                DpadCanPress = false;
+            }
+
+            if (Input.GetAxis("Dpad_Y") == 0)
+            {
+                DpadCanPress = true;
+            }
+
+            if(!DpadCanPress)
+            {
+                timeTillCanPress = Time.time + timeBetweenPresses;
+            }
+        }
+        else
+        {
+            if(Time.time > timeTillCanPress)
+            {
+                DpadCanPress = true;
+            }
         }
     }
 }

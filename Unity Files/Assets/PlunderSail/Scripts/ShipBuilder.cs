@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum AttachmentType { CABIN, WEAPON, SAIL, ARMOUR}
+public enum AttachmentType { CABIN, SINGLEWEAPON, DOUBLEWEAPON, SAIL, ARMOUR}
 
 public class ShipBuilder : MonoBehaviour
 {
@@ -43,32 +43,45 @@ public class ShipBuilder : MonoBehaviour
             player.SetBuildMode(buildMode);
         }
 
-        RaycastHit hit;
+        RaycastHit hitInfo;
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.DrawLine(transform.position, hit.point, Color.red);
-        }
-
         if (Input.GetButtonDown("A_Button"))
         {
-            if (Physics.Raycast(ray, out hit))
+            // check if can afford first.
+            if(UI.BuyAttachment())
             {
-                if (hit.collider.transform.gameObject.tag == "BuildPoint")
+                if (Physics.Raycast(ray, out hitInfo))
                 {
-                    Transform block = AddAttachment(hit.collider.transform);
+                    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                    {
+                        string name = hitInfo.collider.transform.gameObject.name;
 
-                    hit.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
+                        Vector3 buildPoint = hitInfo.collider.transform.position;
+
+                        if (!name.Contains("Point"))
+                        {
+                            buildPoint += hitInfo.normal;
+                            buildPoint.y -= 0.5f;
+                        }
+                        if (name == "Top")
+                        {
+                            buildPoint.y -= 0.5f;
+                        }
+
+                        Transform block = AddAttachment(buildPoint, hitInfo.collider.transform.rotation);
+
+                        hitInfo.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
+                    }
                 }
             }
         }
     }
 
-    private Transform AddAttachment(Transform _buildpoint)
+    private Transform AddAttachment(Vector3 _buildPoint, Quaternion _buildRotation)
     {
-        Transform block = Instantiate(attachmentPrefabs[(int)currentAttachment], _buildpoint.position, _buildpoint.rotation, baseShip).transform;
+        Transform block = Instantiate(attachmentPrefabs[(int)currentAttachment], _buildPoint, _buildRotation, baseShip).transform;
 
         return block;
     }

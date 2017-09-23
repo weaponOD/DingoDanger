@@ -50,7 +50,6 @@ public class CameraOrbit : MonoBehaviour
     [SerializeField]
     private bool buildMode = false;
 
-
     // Alignment and snap Varibles
     private bool snapIsDelayed = true;
 
@@ -63,12 +62,13 @@ public class CameraOrbit : MonoBehaviour
         cameraT = this.transform;
         pivotT = this.transform.parent;
 
+        localRotation = new Vector3(pivotT.rotation.eulerAngles.y, pivotT.rotation.eulerAngles.x, 0f);
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
     {
-        
         // Rotate the camera based on right thumb stick input
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
-    private float initialForce = 10f;
+    private float initialForce = 8;
 
     private void Awake()
     {
@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
+        initialForce += Random.Range(4, 8);
+
         rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
     }
 

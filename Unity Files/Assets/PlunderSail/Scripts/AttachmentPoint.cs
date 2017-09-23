@@ -30,4 +30,9 @@ public class AttachmentPoint : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
+    }
 }

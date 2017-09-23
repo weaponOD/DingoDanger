@@ -41,18 +41,20 @@ public class AttachmentWeapon : AttachmentBase
 
     public void FireLeft()
     {
-        Debug.Log("Firing Left");
-
-        GameObject projectile1 = (GameObject)Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
-        GameObject projectile2 = (GameObject)Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
-        GameObject projectile3 = (GameObject)Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
+        StartCoroutine(Fire());
     }
 
     public void FireRight()
     {
-        Debug.Log("Firing Right");
+        StartCoroutine(Fire());
+    }
+
+    private IEnumerator Fire()
+    {
         GameObject projectile1 = (GameObject)Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+        yield return new WaitForSeconds(Random.Range(0.02f, 0.1f));
         GameObject projectile2 = (GameObject)Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
+        yield return new WaitForSeconds(Random.Range(0.02f, 0.1f));
         GameObject projectile3 = (GameObject)Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
     }
 }

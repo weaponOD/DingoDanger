@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // References
     private CameraMovement cameraMovement;
 
     private CameraOrbit cameraOrbit;
@@ -12,8 +13,11 @@ public class PlayerController : MonoBehaviour
 
     private buoyancy bobbing;
 
-    [SerializeField]
-    private bool buildMode = true;
+    private AttachmentPoint[] attachmentPoints;
+
+    private int gold = 300;
+
+    private bool buildMode = false;
 
     private void Awake()
     {
@@ -23,38 +27,65 @@ public class PlayerController : MonoBehaviour
 
         bobbing = GetComponentInChildren<buoyancy>();
 
+        attachmentPoints = GetComponentsInChildren<AttachmentPoint>();
+
         cameraMovement = cameraPivot.GetComponentInChildren<CameraMovement>();
         cameraOrbit = cameraPivot.GetComponentInChildren<CameraOrbit>();
-    }
-	
-	void Update ()
-    {
-		if(Input.GetButtonDown("Y_Button"))
+
+        foreach (AttachmentPoint point in attachmentPoints)
         {
-            SetBuildMode(!buildMode);
+            point.PartOne = this.transform;
         }
-	}
+    }
+
+    private void Start()
+    {
+        SetBuildMode(buildMode);
+    }
 
     public void SetBuildMode(bool isBuildMode)
     {
-        if(isBuildMode != buildMode)
-        {
-            buildMode = isBuildMode;
+        buildMode = isBuildMode;
 
-            if(buildMode)
+        if (buildMode)
+        {
+            movement.enabled = false;
+            bobbing.WaveHeight = 0.1f;
+            cameraOrbit.BuildMode = true;
+            cameraMovement.BuildMode = true;
+
+            foreach (AttachmentPoint point in attachmentPoints)
             {
-                movement.enabled = false;
-                bobbing.WaveHeight = 0.1f;
-                cameraOrbit.BuildMode = true;
-                cameraMovement.BuildMode = true;
+                point.gameObject.SetActive(true);
             }
-            else
+        }
+        else
+        {
+            movement.enabled = true;
+            cameraOrbit.BuildMode = false;
+            cameraMovement.BuildMode = false;
+            bobbing.ResetWaveHeight();
+
+            foreach (AttachmentPoint point in attachmentPoints)
             {
-                movement.enabled = true;
-                cameraOrbit.BuildMode = false;
-                cameraMovement.BuildMode = false;
-                bobbing.ResetWaveHeight();
+                point.gameObject.SetActive(false);
             }
-        } 
+        }
+    }
+
+    public int Gold
+    {
+        get { return gold; }
+    }
+
+
+    public void DeductGold(int _amount)
+    {
+        gold -= _amount;
+    }
+
+    public void GiveGold(int _amount)
+    {
+        gold += _amount;
     }
 }

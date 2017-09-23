@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -95,6 +97,7 @@
   <ItemGroup>
     <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentWeapon.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\buoyancy.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\CameraMovement.cs" />
@@ -106,6 +109,7 @@
     <Compile Include="Assets\PlunderSail\Scripts\ShipBuilder.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\ShipCombat.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\ShipMovement.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\UIManager.cs" />
     <Compile Include="Assets\Third Party Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />

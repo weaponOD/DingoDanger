@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4836921267359474}
-  - component: {fileID: 54497481989707888}
   - component: {fileID: 114589173269390394}
   m_Layer: 0
   m_Name: Gunport_002_Attachments_002_Double
@@ -181,21 +180,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823452223152882}
   m_Mesh: {fileID: 4300002, guid: ff0add5b20d2f5a4e991c3bbbb35b0a4, type: 3}
---- !u!54 &54497481989707888
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1480621560111912}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &114589173269390394
 MonoBehaviour:
   m_ObjectHideFlags: 1

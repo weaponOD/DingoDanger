@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private ShipMovement movement;
 
+    private ShipCombat combat;
+
     private buoyancy bobbing;
 
     private AttachmentPoint[] attachmentPoints;
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
         movement = GetComponent<ShipMovement>();
 
         GameObject cameraPivot = GameObject.FindGameObjectWithTag("CameraPivot");
+
+        combat = GetComponent<ShipCombat>();
 
         bobbing = GetComponentInChildren<buoyancy>();
 
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            combat.updateWeapons();
             movement.enabled = true;
             cameraOrbit.BuildMode = false;
             cameraMovement.BuildMode = false;

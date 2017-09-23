@@ -32,11 +32,16 @@ public class ShipMovement : MonoBehaviour
     [SerializeField]
     private GameObject steeringOrb;
 
+    public float smooth = 1f;
+    private Quaternion targetRotation;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         mesh = transform.GetChild(0);
         steeringOrb = transform.GetChild(1).gameObject;
+
+        targetRotation = transform.rotation;
     }
 
     void Update()
@@ -44,6 +49,11 @@ public class ShipMovement : MonoBehaviour
         targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
 
         velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f );
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            targetRotation *= Quaternion.AngleAxis(60, Vector3.forward);
+        }
     }
 
     private void FixedUpdate()

@@ -60,17 +60,21 @@ public class ShipBuilder : MonoBehaviour
 
                         Vector3 buildPoint = hitInfo.collider.transform.position;
 
+                        Quaternion buildRotation = hitInfo.collider.transform.rotation;
+
                         if (!name.Contains("Point"))
                         {
                             buildPoint += hitInfo.normal;
                             buildPoint.y -= 0.5f;
                         }
+
                         if (name == "Top")
                         {
                             buildPoint.y -= 0.5f;
+                            //buildRotation.eulerAngles = new Vector3(0f, 270f, 0f);
                         }
 
-                        Transform block = AddAttachment(buildPoint, hitInfo.collider.transform.rotation);
+                        Transform block = AddAttachment(buildPoint, buildRotation);
 
                         hitInfo.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
                     }

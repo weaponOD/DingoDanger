@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum AttachmentType { CABIN, SINGLEWEAPON, DOUBLEWEAPON, SAIL, ARMOUR }
+public enum AttachmentType { CABIN, WEAPONLEFT, WEAPONRIGHT, SAIL, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
 {
@@ -60,7 +60,7 @@ public class ShipBuilder : MonoBehaviour
                     {
                         buildInfo = ApplyRules(hitInfo);
 
-                        if(buildInfo.position != Vector3.zero)
+                        if (buildInfo.position != Vector3.zero)
                         {
                             Transform block = AddAttachment(buildInfo.position, buildInfo.rotation);
 
@@ -75,6 +75,16 @@ public class ShipBuilder : MonoBehaviour
     private Transform AddAttachment(Vector3 _buildPoint, Quaternion _buildRotation)
     {
         Transform block = Instantiate(attachmentPrefabs[(int)currentAttachment], _buildPoint, _buildRotation, baseShip).transform;
+
+        if (currentAttachment == AttachmentType.WEAPONRIGHT)
+        {
+            block.gameObject.GetComponent<AttachmentWeapon>().FacingLeft = false;
+        }
+
+        if (currentAttachment == AttachmentType.WEAPONLEFT)
+        {
+            block.gameObject.GetComponent<AttachmentWeapon>().FacingLeft = true;
+        }
 
         return block;
     }
@@ -119,13 +129,15 @@ public class ShipBuilder : MonoBehaviour
                 buildPoint = _hit.collider.transform.position;
             }
         }
-        else if (currentAttachment == AttachmentType.SINGLEWEAPON)
+        else if (currentAttachment == AttachmentType.WEAPONLEFT)
         {
             if (!name.Contains("Point"))
             {
                 if (name == "Top")
                 {
                     buildPoint = _hit.collider.transform.position;
+                    buildRot.eulerAngles = _hit.collider.transform.right;
+
                 }
                 else if (name == "Left" || name == "Right")
                 {
@@ -136,12 +148,46 @@ public class ShipBuilder : MonoBehaviour
             else
             {
                 buildPoint = _hit.collider.transform.position;
+                buildRot.eulerAngles = new Vector3(0f, _hit.collider.transform.right.y + 180f, 0f);
+            }
+        }
+        else if (currentAttachment == AttachmentType.WEAPONRIGHT)
+        {
+            if (!name.Contains("Point"))
+            {
+                if (name == "Top")
+                {
+                    buildPoint = _hit.collider.transform.position;
+                    buildRot.eulerAngles = _hit.collider.transform.right;
+
+                }
+                else if (name == "Left" || name == "Right")
+                {
+                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
+                    buildPoint.y -= 0.5f;
+                }
+            }
+            else
+            {
+                buildPoint = _hit.collider.transform.position;
+                buildRot.eulerAngles = new Vector3(0f, _hit.collider.transform.right.y, 0f);
             }
         }
         else if (currentAttachment == AttachmentType.SAIL)
         {
-            buildPoint = _hit.collider.transform.position;
-            buildRot = baseShip.transform.rotation;
+            if (!name.Contains("Point"))
+            {
+                if (name == "Top")
+                {
+                    buildPoint = _hit.collider.transform.position;
+                    buildRot = baseShip.transform.rotation;
+                }
+            }
+            else
+            {
+                buildPoint = _hit.collider.transform.position;
+                buildRot = baseShip.transform.rotation;
+            }
         }
 
         Transform build = transform;

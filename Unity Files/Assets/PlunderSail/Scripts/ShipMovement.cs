@@ -7,10 +7,8 @@ public class ShipMovement : MonoBehaviour
     // Variables
     private Rigidbody rb;
 
-    [SerializeField]
     private Vector3 velocity;
 
-    [SerializeField]
     private Vector3 targetVelocity;
 
     [SerializeField]
@@ -24,11 +22,11 @@ public class ShipMovement : MonoBehaviour
 
     private Vector3 defaultOrbPos;
 
-    [SerializeField]
     private Transform mesh;
 
-    [SerializeField]
     private GameObject steeringOrb;
+
+    private float myRotation;
 
     private void Awake()
     {
@@ -60,9 +58,30 @@ public class ShipMovement : MonoBehaviour
             // rotation around the y axis to steer the ship
             Quaternion neededRotation = Quaternion.LookRotation(steeringOrb.transform.position - transform.position);
 
-            Quaternion roation = Quaternion.RotateTowards(transform.rotation, neededRotation, Time.deltaTime * turnSpeed);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, neededRotation, Time.deltaTime * turnSpeed);
 
-            rb.MoveRotation(roation);
+            
+
+            myRotation = transform.rotation.z * 100f;
+
+            // Turning left
+            if (velocity.x < 0)
+            {
+                if (myRotation > -maxRollValue)
+                {
+                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue) * Time.deltaTime);
+                }
+            }
+            // Turning Right
+            else if (velocity.x > 0)
+            {
+                if (myRotation < maxRollValue)
+                {
+                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue) * Time.deltaTime);
+                }
+            }
+
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
 
             steeringOrb.transform.position = new Vector3(steeringOrb.transform.position.x, 0f, steeringOrb.transform.position.z);
 

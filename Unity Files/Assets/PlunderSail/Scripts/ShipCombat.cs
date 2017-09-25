@@ -11,13 +11,27 @@ public class ShipCombat : MonoBehaviour
     private bool canShootRight = true;
     private bool canShootLeft = true;
 
+    [SerializeField]
+    private float minFireTime;
+
+    [SerializeField]
+    private float maxFireTime;
+
+    private AudioSource audioSource;
+
+
+    [SerializeField]
+    private AudioClip FireShout;
+
     private List<AttachmentWeapon> leftWeapons;
     private List<AttachmentWeapon> rightWeapons;
 
-    private AttachmentWeapon[]  weapons;
+    private AttachmentWeapon[] weapons;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         leftWeapons = new List<AttachmentWeapon>();
         rightWeapons = new List<AttachmentWeapon>();
         updateWeapons();
@@ -27,11 +41,11 @@ public class ShipCombat : MonoBehaviour
     {
         weapons = GetComponentsInChildren<AttachmentWeapon>();
 
-        foreach(AttachmentWeapon weapon in weapons)
+        foreach (AttachmentWeapon weapon in weapons)
         {
-            if(!weapon.DoubleFacing)
+            if (!weapon.DoubleFacing)
             {
-                if(weapon.FacingLeft)
+                if (weapon.FacingLeft)
                 {
                     leftWeapons.Add(weapon);
                 }
@@ -50,7 +64,7 @@ public class ShipCombat : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time > nextReloadTimeRight)
+        if (Time.time > nextReloadTimeRight)
         {
             canShootRight = true;
         }
@@ -64,13 +78,14 @@ public class ShipCombat : MonoBehaviour
         {
             if (canShootLeft)
             {
-                foreach (AttachmentWeapon weapon in leftWeapons)
+                if(leftWeapons.Count > 0)
                 {
-                    weapon.FireLeft();
-                }
+                    audioSource.PlayOneShot(FireShout, 0.8F);
+                    StartCoroutine(FireLeft());
 
-                canShootLeft = false;
-                nextReloadTimeLeft = Time.time + reloadTime;
+                    canShootLeft = false;
+                    nextReloadTimeLeft = Time.time + reloadTime;
+                }
             }
         }
 
@@ -78,14 +93,38 @@ public class ShipCombat : MonoBehaviour
         {
             if (canShootRight)
             {
-                foreach (AttachmentWeapon weapon in rightWeapons)
+                if(rightWeapons.Count > 0)
                 {
-                    weapon.FireRight();
-                }
+                    audioSource.PlayOneShot(FireShout, 0.8F);
 
-                canShootRight = false;
-                nextReloadTimeRight = Time.time + reloadTime;
+                    StartCoroutine(FireRight());
+
+                    canShootRight = false;
+                    nextReloadTimeRight = Time.time + reloadTime;
+                }
             }
+        }
+    }
+
+    private IEnumerator FireLeft()
+    {
+        yield return new WaitForSeconds(FireShout.length);
+
+        foreach (AttachmentWeapon weapon in leftWeapons)
+        {
+            weapon.FireLeft();
+            yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
+        }
+    }
+
+    private IEnumerator FireRight()
+    {
+        yield return new WaitForSeconds(FireShout.length);
+
+        foreach (AttachmentWeapon weapon in rightWeapons)
+        {
+            weapon.FireRight();
+            yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }
 }

@@ -9,10 +9,10 @@ public class AttachmentPoint : MonoBehaviour
 
     private void Awake()
     {
-        if(Physics.BoxCast(transform.position, transform.forward * 0.2f, transform.forward * 0.2f))
-        {
-            gameObject.SetActive(false);
-        }
+        //if(Physics.BoxCast(transform.position, transform.forward * 0.2f, transform.forward * 0.2f))
+        //{
+        //    gameObject.SetActive(false);
+        //}
     }
 
     public Transform PartOne

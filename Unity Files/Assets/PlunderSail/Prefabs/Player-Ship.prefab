@@ -338,8 +338,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4406381428663504}
-  - component: {fileID: 114562678456534348}
   - component: {fileID: 54540220209516456}
+  - component: {fileID: 114562678456534348}
   - component: {fileID: 114178937006535214}
   - component: {fileID: 114513175860123064}
   m_Layer: 0
@@ -949,7 +949,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb203e82a94868b4e8fa5ede8069482b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1175,7 +1175,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fb203e82a94868b4e8fa5ede8069482b, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1697,6 +1697,7 @@ MonoBehaviour:
   turnSpeed: 20
   mesh: {fileID: 0}
   steeringOrb: {fileID: 0}
+  myRotation: 0
 --- !u!114 &114619592963608640
 MonoBehaviour:
   m_ObjectHideFlags: 1

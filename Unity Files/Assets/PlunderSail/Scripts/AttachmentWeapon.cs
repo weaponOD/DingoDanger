@@ -17,6 +17,11 @@ public class AttachmentWeapon : AttachmentBase
     private float maxFireTime;
 
     [SerializeField]
+    private AudioClip[] shootSound;
+
+    private AudioSource audioSource;
+
+    [SerializeField]
     protected GameObject projectilePrefab;
     protected Transform[] firePoints;
 
@@ -24,11 +29,12 @@ public class AttachmentWeapon : AttachmentBase
     {
         firePoints = new Transform[3];
 
+        audioSource = transform.root.GetComponent<AudioSource>();
+
         firePoints[0] = transform.GetChild(0).GetChild(0).transform;
         firePoints[1] = transform.GetChild(0).GetChild(1).transform;
         firePoints[2] = transform.GetChild(0).GetChild(2).transform;
     }
-
 
     public bool DoubleFacing
     {
@@ -37,11 +43,8 @@ public class AttachmentWeapon : AttachmentBase
 
     public bool FacingLeft
     {
-        get
-        {
-            facingLeft = Mathf.Approximately(transform.localRotation.eulerAngles.y, 270f);
-            return facingLeft;
-        }
+        get { return facingLeft; }
+        set { facingLeft = value; }
     }
 
     public void FireLeft()
@@ -57,9 +60,12 @@ public class AttachmentWeapon : AttachmentBase
     private IEnumerator Fire()
     {
         GameObject projectile1 = (GameObject)Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+        audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         GameObject projectile2 = (GameObject)Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
+        audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         GameObject projectile3 = (GameObject)Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
+        audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
     }
 }

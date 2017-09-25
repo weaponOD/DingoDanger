@@ -22,6 +22,9 @@ public class ShipBuilder : MonoBehaviour
 
     private bool buildMode = false;
 
+    private bool needToRotate = false;
+    private bool needToMirror = false;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -86,6 +89,16 @@ public class ShipBuilder : MonoBehaviour
             block.gameObject.GetComponent<AttachmentWeapon>().FacingLeft = true;
         }
 
+        if(needToRotate == true)
+        {
+            block.gameObject.GetComponent<AttachmentWeapon>().needToRotate = true;
+        }
+
+        if(needToMirror)
+        {
+            block.gameObject.GetComponent<AttachmentWeapon>().needToMirror = true;
+        }
+
         return block;
     }
 
@@ -103,11 +116,17 @@ public class ShipBuilder : MonoBehaviour
 
     private Transform ApplyRules(RaycastHit _hit)
     {
+        needToRotate = false;
+        needToMirror = false;
+
         string name = _hit.collider.transform.gameObject.name;
 
         Vector3 buildPoint = Vector3.zero;
         Quaternion buildRot = _hit.collider.transform.rotation;
 
+
+
+        // Rules for each piece
         if (currentAttachment == AttachmentType.CABIN)
         {
             if (!name.Contains("Point"))
@@ -136,8 +155,9 @@ public class ShipBuilder : MonoBehaviour
                 if (name == "Top")
                 {
                     buildPoint = _hit.collider.transform.position;
-                    buildRot.eulerAngles = _hit.collider.transform.right;
+                    buildRot = baseShip.rotation;
 
+                    needToRotate = true;
                 }
                 else if (name == "Left" || name == "Right")
                 {
@@ -148,7 +168,7 @@ public class ShipBuilder : MonoBehaviour
             else
             {
                 buildPoint = _hit.collider.transform.position;
-                buildRot.eulerAngles = new Vector3(0f, _hit.collider.transform.right.y + 180f, 0f);
+                needToRotate = true;
             }
         }
         else if (currentAttachment == AttachmentType.WEAPONRIGHT)
@@ -158,8 +178,9 @@ public class ShipBuilder : MonoBehaviour
                 if (name == "Top")
                 {
                     buildPoint = _hit.collider.transform.position;
-                    buildRot.eulerAngles = _hit.collider.transform.right;
+                    buildRot = baseShip.rotation;
 
+                    needToRotate = true;
                 }
                 else if (name == "Left" || name == "Right")
                 {
@@ -170,7 +191,7 @@ public class ShipBuilder : MonoBehaviour
             else
             {
                 buildPoint = _hit.collider.transform.position;
-                buildRot.eulerAngles = new Vector3(0f, _hit.collider.transform.right.y, 0f);
+                needToRotate = true;
             }
         }
         else if (currentAttachment == AttachmentType.SAIL)

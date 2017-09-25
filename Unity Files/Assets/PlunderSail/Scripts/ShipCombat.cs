@@ -19,7 +19,6 @@ public class ShipCombat : MonoBehaviour
 
     private AudioSource audioSource;
 
-
     [SerializeField]
     private AudioClip FireShout;
 

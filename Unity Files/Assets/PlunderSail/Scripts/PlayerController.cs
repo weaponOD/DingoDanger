@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
             attachmentPoints = GetComponentsInChildren<AttachmentPoint>();
 
             combat.updateWeapons();
+
+            UpdateSails();
             movement.enabled = true;
             cameraOrbit.BuildMode = false;
             cameraMovement.BuildMode = false;
@@ -78,6 +80,11 @@ public class PlayerController : MonoBehaviour
                 point.gameObject.SetActive(false);
             }
         }
+    }
+
+    private void UpdateSails()
+    {
+
     }
 
     public int Gold

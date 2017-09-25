@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum AttachmentType { CABIN, SINGLEWEAPON, DOUBLEWEAPON, SAIL, ARMOUR}
+public enum AttachmentType { CABIN, SINGLEWEAPON, DOUBLEWEAPON, SAIL, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
 {
@@ -17,6 +17,8 @@ public class ShipBuilder : MonoBehaviour
     private UIManager UI;
 
     private Transform baseShip;
+
+    private Transform buildInfo;
 
     private bool buildMode = false;
 
@@ -50,33 +52,20 @@ public class ShipBuilder : MonoBehaviour
         if (Input.GetButtonDown("A_Button"))
         {
             // check if can afford first.
-            if(UI.BuyAttachment())
+            if (UI.BuyAttachment())
             {
                 if (Physics.Raycast(ray, out hitInfo))
                 {
                     if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
                     {
-                        string name = hitInfo.collider.transform.gameObject.name;
+                        buildInfo = ApplyRules(hitInfo);
 
-                        Vector3 buildPoint = hitInfo.collider.transform.position;
-
-                        Quaternion buildRotation = hitInfo.collider.transform.rotation;
-
-                        if (!name.Contains("Point"))
+                        if(buildInfo.position != Vector3.zero)
                         {
-                            buildPoint += hitInfo.normal;
-                            buildPoint.y -= 0.5f;
+                            Transform block = AddAttachment(buildInfo.position, buildInfo.rotation);
+
+                            hitInfo.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
                         }
-
-                        if (name == "Top")
-                        {
-                            buildPoint.y -= 0.5f;
-                            //buildRotation.eulerAngles = new Vector3(0f, 270f, 0f);
-                        }
-
-                        Transform block = AddAttachment(buildPoint, buildRotation);
-
-                        hitInfo.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
                     }
                 }
             }
@@ -100,5 +89,66 @@ public class ShipBuilder : MonoBehaviour
     public void AddAttachment(int _attachment)
     {
         currentAttachment = (AttachmentType)_attachment;
+    }
+
+    private Transform ApplyRules(RaycastHit _hit)
+    {
+        string name = _hit.collider.transform.gameObject.name;
+
+        Vector3 buildPoint = Vector3.zero;
+        Quaternion buildRot = _hit.collider.transform.rotation;
+
+        if (currentAttachment == AttachmentType.CABIN)
+        {
+            if (!name.Contains("Point"))
+            {
+                if (name == "Top")
+                {
+                    buildPoint = _hit.collider.transform.position;
+                }
+                else
+                {
+                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
+                    buildPoint.y -= 0.5f;
+                }
+
+                buildRot = baseShip.transform.rotation;
+            }
+            else
+            {
+                buildPoint = _hit.collider.transform.position;
+            }
+        }
+        else if (currentAttachment == AttachmentType.SINGLEWEAPON)
+        {
+            if (!name.Contains("Point"))
+            {
+                if (name == "Top")
+                {
+                    buildPoint = _hit.collider.transform.position;
+                }
+                else if (name == "Left" || name == "Right")
+                {
+                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
+                    buildPoint.y -= 0.5f;
+                }
+            }
+            else
+            {
+                buildPoint = _hit.collider.transform.position;
+            }
+        }
+        else if (currentAttachment == AttachmentType.SAIL)
+        {
+            buildPoint = _hit.collider.transform.position;
+            buildRot = baseShip.transform.rotation;
+        }
+
+        Transform build = transform;
+
+        build.position = buildPoint;
+        build.rotation = buildRot;
+
+        return build.transform;
     }
 }

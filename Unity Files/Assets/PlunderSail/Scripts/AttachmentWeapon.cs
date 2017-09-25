@@ -11,6 +11,12 @@ public class AttachmentWeapon : AttachmentBase
     protected bool doubleFacing = false;
 
     [SerializeField]
+    private float minFireTime;
+
+    [SerializeField]
+    private float maxFireTime;
+
+    [SerializeField]
     protected GameObject projectilePrefab;
     protected Transform[] firePoints;
 
@@ -21,7 +27,6 @@ public class AttachmentWeapon : AttachmentBase
         firePoints[0] = transform.GetChild(0).GetChild(0).transform;
         firePoints[1] = transform.GetChild(0).GetChild(1).transform;
         firePoints[2] = transform.GetChild(0).GetChild(2).transform;
-
     }
 
 
@@ -34,7 +39,7 @@ public class AttachmentWeapon : AttachmentBase
     {
         get
         {
-            facingLeft = (transform.localRotation.y == 0);
+            facingLeft = Mathf.Approximately(transform.localRotation.eulerAngles.y, 270f);
             return facingLeft;
         }
     }
@@ -52,9 +57,9 @@ public class AttachmentWeapon : AttachmentBase
     private IEnumerator Fire()
     {
         GameObject projectile1 = (GameObject)Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
-        yield return new WaitForSeconds(Random.Range(0.02f, 0.1f));
+        yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         GameObject projectile2 = (GameObject)Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
-        yield return new WaitForSeconds(Random.Range(0.02f, 0.1f));
+        yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         GameObject projectile3 = (GameObject)Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
     }
 }

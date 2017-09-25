@@ -81,9 +81,9 @@ public class CameraOrbit : MonoBehaviour
         }
 
         // Zoom input from our mouse scroll wheel
-        if (Input.GetAxis("Left_Bumper") != 0f)
+        if (Input.GetAxis("Right_Bumper") != 0f)
         {
-            float zoomAmount = Input.GetAxis("Left_Bumper") * -1f * zoomSensitivity;
+            float zoomAmount = Input.GetAxis("Right_Bumper") * -1f * zoomSensitivity;
 
             // Makes camera zoom faster the further away it is from the target
             zoomAmount *= (cameraDistance * 0.3f);
@@ -95,9 +95,9 @@ public class CameraOrbit : MonoBehaviour
         }
 
         // Zoom input from our mouse scroll wheel
-        if (Input.GetAxis("Right_Bumper") != 0f)
+        if (Input.GetAxis("Left_Bumper") != 0f)
         {
-            float zoomAmount = Input.GetAxis("Right_Bumper") * zoomSensitivity;
+            float zoomAmount = Input.GetAxis("Left_Bumper") * zoomSensitivity;
 
             // Makes camera zoom faster the further away it is from the target
             zoomAmount *= (cameraDistance * 0.3f);

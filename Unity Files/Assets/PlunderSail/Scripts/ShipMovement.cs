@@ -23,8 +23,6 @@ public class ShipMovement : MonoBehaviour
     private float turnSpeed;
 
     private Vector3 defaultOrbPos;
-    
-    private float myRotation;
 
     [SerializeField]
     private Transform mesh;
@@ -32,28 +30,18 @@ public class ShipMovement : MonoBehaviour
     [SerializeField]
     private GameObject steeringOrb;
 
-    public float smooth = 1f;
-    private Quaternion targetRotation;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         mesh = transform.GetChild(0);
         steeringOrb = transform.GetChild(1).gameObject;
-
-        targetRotation = transform.rotation;
     }
 
     void Update()
     {
         targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
 
-        velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f );
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            targetRotation *= Quaternion.AngleAxis(60, Vector3.forward);
-        }
+        velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
     }
 
     private void FixedUpdate()
@@ -62,18 +50,19 @@ public class ShipMovement : MonoBehaviour
 
         defaultOrbPos = gameObject.transform.position + transform.forward * 10;
 
-        steeringOrb.transform.position = defaultOrbPos + transform.right * velocity.x;
+        steeringOrb.transform.position = defaultOrbPos + transform.right * velocity.x * 0.3f;
     }
 
     private void LateUpdate()
     {
         if (steeringOrb.transform.position != defaultOrbPos)
         {
+            // rotation around the y axis to steer the ship
             Quaternion neededRotation = Quaternion.LookRotation(steeringOrb.transform.position - transform.position);
 
-            rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, neededRotation, Time.deltaTime * turnSpeed));
+            Quaternion roation = Quaternion.RotateTowards(transform.rotation, neededRotation, Time.deltaTime * turnSpeed);
 
-            myRotation = mesh.rotation.z * 100f;
+            rb.MoveRotation(roation);
 
             steeringOrb.transform.position = new Vector3(steeringOrb.transform.position.x, 0f, steeringOrb.transform.position.z);
 

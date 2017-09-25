@@ -7,6 +7,14 @@ public class AttachmentPoint : MonoBehaviour
     Transform partOne = null;
     Transform partTwo = null;
 
+    private void Awake()
+    {
+        if(Physics.BoxCast(transform.position, transform.forward * 0.2f, transform.forward * 0.2f))
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public Transform PartOne
     {
         get { return partOne; }
@@ -29,10 +37,5 @@ public class AttachmentPoint : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        gameObject.SetActive(false);
     }
 }

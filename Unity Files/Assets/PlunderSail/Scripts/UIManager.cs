@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class UIManager : MonoBehaviour
@@ -65,7 +66,7 @@ public class UIManager : MonoBehaviour
     {
         playerGold.text = "Gold: " + player.Gold;
 
-        for(int x = 0; x< buttons.Length;x++)
+        for (int x = 0; x < buttons.Length; x++)
         {
             if (player.Gold >= prices[x])
             {
@@ -92,21 +93,13 @@ public class UIManager : MonoBehaviour
             UpdateUI();
         }
 
-
-        if(DpadCanPress)
+        if (Input.GetButtonDown("B_Button"))
         {
-            if (Input.GetAxis("Dpad_X") == 1)
-            {
-                Debug.Log("Right D pad");
-                DpadCanPress = false;
-            }
+            SceneManager.LoadScene("Main");
+        }
 
-            if (Input.GetAxis("Dpad_X") == -1)
-            {
-                Debug.Log("Left D pad");
-                DpadCanPress = false;
-            }
-
+        if (DpadCanPress)
+        {
             if (Input.GetAxis("Dpad_Y") == 1)
             {
                 if (selectorIndex > 0)
@@ -122,10 +115,9 @@ public class UIManager : MonoBehaviour
 
             if (Input.GetAxis("Dpad_Y") == -1)
             {
-                if (selectorIndex < buttons.Length-1)
+                if (selectorIndex < buttons.Length - 1)
                 {
                     selectorIndex++;
-
 
                     builder.CurrentAttachment = (AttachmentType)selectorIndex;
                     selector.rectTransform.position = new Vector3(selector.rectTransform.position.x, buttons[selectorIndex].transform.position.y);
@@ -139,14 +131,14 @@ public class UIManager : MonoBehaviour
                 DpadCanPress = true;
             }
 
-            if(!DpadCanPress)
+            if (!DpadCanPress)
             {
                 timeTillCanPress = Time.time + timeBetweenPresses;
             }
         }
         else
         {
-            if(Time.time > timeTillCanPress)
+            if (Time.time > timeTillCanPress)
             {
                 DpadCanPress = true;
             }

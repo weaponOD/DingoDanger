@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private AttachmentPoint[] attachmentPoints;
 
+    private AttachmentSail[] sails;
+
     private int gold = 900;
 
     private bool buildMode = false;
@@ -84,7 +86,25 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateSails()
     {
+        sails = GetComponentsInChildren<AttachmentSail>();
 
+        movement.ResetMoveSpeed();
+
+        if (sails.Length > 5)
+        {
+            movement.MoveSpeed = 5;
+
+            movement.MoveSpeed += (sails.Length - 5) / 2;
+        }
+        else
+        {
+            movement.MoveSpeed += sails.Length;
+        }
+    }
+
+    public bool BuildMode
+    {
+        get { return buildMode; }
     }
 
     public int Gold

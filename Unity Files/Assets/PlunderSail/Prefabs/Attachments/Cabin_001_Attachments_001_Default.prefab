@@ -207,6 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404509292096624}
   - component: {fileID: 114991179097278230}
+  - component: {fileID: 65120260421757500}
   m_Layer: 0
   m_Name: Cabin_001_Attachments_001_Default
   m_TagString: Untagged
@@ -615,6 +616,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908613257432104}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65120260421757500
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1995593758867580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.8, z: 1.8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65558608746633174
 BoxCollider:
   m_ObjectHideFlags: 1

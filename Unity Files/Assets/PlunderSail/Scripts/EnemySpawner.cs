@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
     private Transform player;
 
     private int maxEnemies = 1;
@@ -16,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> enemyList;
 
-    private float enemyDistanceLimit = 20f;
+    private float enemyDistanceLimit = 150f;
 
     float distanceToPlayer;
 
@@ -25,7 +24,6 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Use this for initialization
     void Start()
     {
         enemyList = new List<GameObject>(10);
@@ -35,16 +33,16 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         //foreach(GameObject enemy in enemyList)
-        //      {
-        //          // work out distance from enemy to player
-        //          float distanceToPlayer = Vector3.Distance(enemy.transform.position, player.position);
+        //{
+        //    // work out distance from enemy to player
+        //    float distanceToPlayer = Vector3.Distance(enemy.transform.position, player.position);
 
-        //          if(distanceToPlayer > enemyDistanceLimit)
-        //          {
-        //              enemy.SetActive(false);
-        //              enemyCount--;
-        //          }
-        //      }
+        //    if(distanceToPlayer > enemyDistanceLimit)
+        //    {
+        //        enemy.SetActive(false);
+        //        enemyCount--;
+        //    }
+        //}
 
         if (enemyList.Count > 0)
         {
@@ -68,7 +66,6 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPoint = player.position - player.forward * 10f;
 
             GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
-            newEnemy.GetComponent<AIAgent>().SetPlayer(player);
             newEnemy.name = "Enemy: " + enemyCount;
 
             enemyList.Add(newEnemy);

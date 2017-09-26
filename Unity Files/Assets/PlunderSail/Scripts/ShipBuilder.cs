@@ -22,6 +22,8 @@ public class ShipBuilder : MonoBehaviour
 
     private bool buildMode = false;
 
+    Vector3 hitPoint = Vector3.zero;
+
     private bool needToRotate = false;
     private bool needToMirror = false;
 
@@ -52,6 +54,11 @@ public class ShipBuilder : MonoBehaviour
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
+        if(hitPoint != Vector3.zero)
+        {
+            Debug.DrawLine(ray.origin, hitPoint, Color.red);
+        }
+
         if (Input.GetButtonDown("A_Button"))
         {
             // check if can afford first.
@@ -59,6 +66,8 @@ public class ShipBuilder : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hitInfo))
                 {
+                    hitPoint = hitInfo.point;
+
                     if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
                     {
                         buildInfo = ApplyRules(hitInfo);

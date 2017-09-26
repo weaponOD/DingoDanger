@@ -132,6 +132,8 @@ public class CameraOrbit : MonoBehaviour
             }
             else
             {
+
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
                 if (!snapIsDelayed)
                 {
                     timeToSnapBack = Time.time + timeBeforeSnap;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AIAgent : MonoBehaviour
 {
     // Variables
-    private Transform player;
+    private PlayerController player;
     
     private Rigidbody rb;
 
@@ -14,21 +14,21 @@ public class AIAgent : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        transform.LookAt(player);
+        transform.LookAt(player.transform);
 	}
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
-    }
-
-    public void SetPlayer(Transform _player)
-    {
-        player = _player;
+        if(!player.BuildMode)
+        {
+            rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+        }
     }
 }

@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4166353514932742}
-  - component: {fileID: 114900502047204242}
+  - component: {fileID: 114396275195017276}
   m_Layer: 0
   m_Name: Sail_001_Attachments_001_Single
   m_TagString: Untagged
@@ -585,6 +585,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114396275195017276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545959945178424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114451221653767904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,16 +616,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114900502047204242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1545959945178424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

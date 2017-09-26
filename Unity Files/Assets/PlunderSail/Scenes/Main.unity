@@ -5012,6 +5012,58 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1001 &1491381874
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.01814735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.377
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196229930203548, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
+        type: 2}
+      propertyPath: randomSeed
+      value: -353404023
+      objectReference: {fileID: 0}
+    - target: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
+        type: 2}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 19
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c15d96c4253a92246bdd90374b9e5431, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1510867661
 Prefab:
   m_ObjectHideFlags: 0

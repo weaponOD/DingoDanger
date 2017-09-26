@@ -18,7 +18,6 @@ public class AIAgent : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
         transform.LookAt(player.transform);

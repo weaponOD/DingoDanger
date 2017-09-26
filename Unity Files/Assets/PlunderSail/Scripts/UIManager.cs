@@ -93,7 +93,9 @@ public class UIManager : MonoBehaviour
             UpdateUI();
         }
 
-        if (Input.GetButtonDown("B_Button"))
+
+        // Reset
+        if (Input.GetButtonDown("Back_Button"))
         {
             SceneManager.LoadScene("Main");
         }

@@ -19,6 +19,8 @@ public class ShipCombat : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private PlayerController player;
+
     [SerializeField]
     private AudioClip FireShout;
 
@@ -30,6 +32,8 @@ public class ShipCombat : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        player = GetComponent<PlayerController>();
 
         leftWeapons = new List<AttachmentWeapon>();
         rightWeapons = new List<AttachmentWeapon>();
@@ -71,6 +75,12 @@ public class ShipCombat : MonoBehaviour
         if (Time.time > nextReloadTimeLeft)
         {
             canShootLeft = true;
+        }
+
+        if (player.BuildMode)
+        {
+            canShootRight = false;
+            canShootLeft = false;
         }
 
         if (Input.GetAxis("Left_Trigger") == 1)

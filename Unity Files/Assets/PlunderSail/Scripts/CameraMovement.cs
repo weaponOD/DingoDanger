@@ -35,6 +35,8 @@ public class CameraMovement : MonoBehaviour
 
     private float timeToSnapBack;
 
+    private bool yAxisMode = false;
+
     [SerializeField]
     [Tooltip("Time in seconds of player inactivity before the camera snaps back to the target block.")]
     [Range(0, 20)]
@@ -63,7 +65,27 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             targetPosRight += transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
-            targetPosForward += transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
+            
+            if(!yAxisMode)
+            {
+                targetPosForward += transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
+            }
+            else
+            {
+                targetPosForward += transform.up * Input.GetAxis("Vertical") * mouseSensitivity;
+            }
+        }
+
+        if(buildMode)
+        {
+            if(Input.GetAxis("Left_Trigger") == 1)
+            {
+                yAxisMode = true;
+            }
+            else
+            {
+                yAxisMode = false;
+            }
         }
     }
 
@@ -121,8 +143,6 @@ public class CameraMovement : MonoBehaviour
 
             targetPosRight = transform.position;
             targetPosForward = transform.position;
-
-            //pivot.position = Vector3.Lerp(pivot.position, targetPos, Time.deltaTime * movementDampening);
         }
     }
 

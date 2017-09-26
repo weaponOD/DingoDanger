@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public enum AttachmentType { CABIN, WEAPONLEFT, WEAPONRIGHT, SAIL, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
@@ -133,8 +132,6 @@ public class ShipBuilder : MonoBehaviour
         Vector3 buildPoint = Vector3.zero;
         Quaternion buildRot = _hit.collider.transform.rotation;
 
-
-
         // Rules for each piece
         if (currentAttachment == AttachmentType.CABIN)
         {
@@ -210,6 +207,12 @@ public class ShipBuilder : MonoBehaviour
                 if (name == "Top")
                 {
                     buildPoint = _hit.collider.transform.position;
+                    buildRot = baseShip.transform.rotation;
+                }
+                else
+                {
+                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
+                    buildPoint.y -= 0.5f;
                     buildRot = baseShip.transform.rotation;
                 }
             }

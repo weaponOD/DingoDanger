@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
 
     private int gold = 900;
 
-    private bool buildMode = false;
-
     private void Awake()
     {
         movement = GetComponent<ShipMovement>();
@@ -38,25 +36,21 @@ public class PlayerController : MonoBehaviour
         cameraMovement = cameraPivot.GetComponentInChildren<CameraMovement>();
         cameraOrbit = cameraPivot.GetComponentInChildren<CameraOrbit>();
 
+        // Subscribe to game state
+        GameState.buildModeChanged += SetBuildMode;
+
         foreach (AttachmentPoint point in attachmentPoints)
         {
             point.PartOne = this.transform;
         }
     }
 
-    private void Start()
+    private void SetBuildMode(bool isBuildMode)
     {
-        SetBuildMode(buildMode);
-    }
-
-    public void SetBuildMode(bool isBuildMode)
-    {
-        buildMode = isBuildMode;
-
-        if (buildMode)
+        if (isBuildMode)
         {
             movement.enabled = false;
-            bobbing.WaveHeight = 0.1f;
+            bobbing.enabled = false;
             cameraOrbit.BuildMode = true;
             cameraMovement.BuildMode = true;
 
@@ -75,7 +69,7 @@ public class PlayerController : MonoBehaviour
             movement.enabled = true;
             cameraOrbit.BuildMode = false;
             cameraMovement.BuildMode = false;
-            bobbing.ResetWaveHeight();
+            bobbing.enabled = true;
 
             foreach (AttachmentPoint point in attachmentPoints)
             {
@@ -100,11 +94,6 @@ public class PlayerController : MonoBehaviour
         {
             movement.MoveSpeed += sails.Length;
         }
-    }
-
-    public bool BuildMode
-    {
-        get { return buildMode; }
     }
 
     public int Gold

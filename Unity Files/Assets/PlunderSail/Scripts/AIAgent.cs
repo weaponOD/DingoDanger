@@ -25,7 +25,7 @@ public class AIAgent : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!player.BuildMode)
+        if(!GameState.BuildMode)
         {
             rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
         }

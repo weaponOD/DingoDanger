@@ -152,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4897805453051124}
   - component: {fileID: 114375565257763354}
+  - component: {fileID: 65591315311440640}
   m_Layer: 0
   m_Name: Gunport_001_Attachments_001_Single
   m_TagString: Untagged
@@ -536,6 +537,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65591315311440640
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586404089410776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1, z: 1.8}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114068309416562368
 MonoBehaviour:
   m_ObjectHideFlags: 1

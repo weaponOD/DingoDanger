@@ -17,10 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Image Panel;
 
-    [SerializeField]
-    private Image selector;
-
-    private int selectorIndex = 0;
+    private int selectedIndex = 0;
 
     [SerializeField]
     private int[] prices;
@@ -31,6 +28,8 @@ public class UIManager : MonoBehaviour
 
     private bool DpadCanPress = false;
 
+    private bool placeGhost;
+
     [SerializeField]
     private float timeBetweenPresses = 1f;
     private float timeTillCanPress;
@@ -39,27 +38,44 @@ public class UIManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
+
+        // Subscribe to game state
+        GameState.buildModeChanged += SetBuildPanelStatus;
+
         UpdateUI();
     }
 
-    public bool BuyAttachment()
+    private bool CanAfford()
     {
-        int cost = prices[selectorIndex];
+        int cost = prices[selectedIndex];
 
         if (player.Gold >= cost)
         {
-            player.DeductGold(cost);
-            UpdateUI();
-
             return true;
         }
 
         return false;
     }
 
+    public void BuyAttachment()
+    {
+        int cost = prices[selectedIndex];
+
+        if (player.Gold >= cost)
+        {
+            player.DeductGold(cost);
+            UpdateUI();
+        }
+    }
+
     public void SetBuildPanelStatus(bool _isEnabled)
     {
         Panel.gameObject.SetActive(_isEnabled);
+
+        if (_isEnabled)
+        {
+            buttons[selectedIndex].image.color = Color.green;
+        }
     }
 
     public void UpdateUI()
@@ -81,56 +97,69 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        // cheat gold Increased
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
             player.GiveGold(50);
             UpdateUI();
         }
 
+        // cheat gold decrease
         if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
             player.DeductGold(50);
             UpdateUI();
         }
 
-
-        // Reset
-        if (Input.GetButtonDown("Back_Button"))
+        // Check if the player wants to buy the selected attachment
+        if (Input.GetButtonDown("A_Button"))
         {
-            SceneManager.LoadScene("Main");
+            // check if player has enough gold to make purchase
+            if (CanAfford() && !builder.HasGhost)
+            {
+                placeGhost = true;
+            }
+        }
+
+        if (Input.GetButtonUp("A_Button"))
+        {
+            if(placeGhost)
+            {
+                // Call ship builder to instantiate the attachment ghost
+                builder.SpawnGhostAttachment(selectedIndex);
+                placeGhost = false;
+            }
         }
 
         if (DpadCanPress)
         {
-            if (Input.GetAxis("Dpad_Y") == 1)
+            if (!builder.HasGhost)
             {
-                if (selectorIndex > 0)
+                if (Input.GetAxis("Dpad_X") == 1)
                 {
-                    selectorIndex--;
+                    if (selectedIndex < buttons.Length - 1)
+                    {
+                        buttons[selectedIndex].image.color = Color.white;
+                        selectedIndex++;
 
-                    builder.CurrentAttachment = (AttachmentType)selectorIndex;
-                    selector.rectTransform.position = new Vector3(selector.rectTransform.position.x, buttons[selectorIndex].transform.position.y);
+                        buttons[selectedIndex].image.color = Color.green;
+                    }
+
+                    DpadCanPress = false;
                 }
 
-                DpadCanPress = false;
-            }
-
-            if (Input.GetAxis("Dpad_Y") == -1)
-            {
-                if (selectorIndex < buttons.Length - 1)
+                if (Input.GetAxis("Dpad_X") == -1)
                 {
-                    selectorIndex++;
+                    if (selectedIndex > 0)
+                    {
+                        buttons[selectedIndex].image.color = Color.white;
+                        selectedIndex--;
 
-                    builder.CurrentAttachment = (AttachmentType)selectorIndex;
-                    selector.rectTransform.position = new Vector3(selector.rectTransform.position.x, buttons[selectorIndex].transform.position.y);
+                        buttons[selectedIndex].image.color = Color.green;
+                    }
+
+                    DpadCanPress = false;
                 }
-
-                DpadCanPress = false;
-            }
-
-            if (Input.GetAxis("Dpad_Y") == 0)
-            {
-                DpadCanPress = true;
             }
 
             if (!DpadCanPress)
@@ -144,6 +173,20 @@ public class UIManager : MonoBehaviour
             {
                 DpadCanPress = true;
             }
+
+            if (Input.GetAxis("Dpad_X") == 0)
+            {
+                DpadCanPress = true;
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        // Reset
+        if (Input.GetButtonDown("Back_Button"))
+        {
+            SceneManager.LoadScene("Main");
         }
     }
 }

@@ -40,24 +40,15 @@ public class AttachmentWeapon : AttachmentBase
         firePoints[2] = transform.GetChild(0).GetChild(2).transform;
     }
 
-    private void Start()
+    public bool NeedToMirror
     {
-        if(needToRotate)
+        set
         {
-            Debug.Log("Rotated in start");
-            if (facingLeft)
+            needToMirror = value;
+            if (needToMirror)
             {
-                transform.Rotate(Vector3.up, -90, Space.Self);
+                Mirror();
             }
-            else
-            {
-                transform.Rotate(Vector3.up, 90, Space.Self);
-            }
-        }
-
-        if(needToMirror)
-        {
-            transform.Rotate(Vector3.up, 180, Space.Self);
         }
     }
 
@@ -68,7 +59,12 @@ public class AttachmentWeapon : AttachmentBase
 
     public bool FacingLeft
     {
-        get { return facingLeft; }
+        get
+        {
+            facingLeft = (transform.localEulerAngles.y > 95f);
+            Debug.Log(transform.localEulerAngles.y);
+            return facingLeft;
+        }
         set { facingLeft = value; }
     }
 

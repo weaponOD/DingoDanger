@@ -37,6 +37,10 @@ public class ShipCombat : MonoBehaviour
 
         leftWeapons = new List<AttachmentWeapon>();
         rightWeapons = new List<AttachmentWeapon>();
+
+        // Subscribe to game state
+        GameState.buildModeChanged += SetBuildMode;
+
         updateWeapons();
     }
 
@@ -75,12 +79,6 @@ public class ShipCombat : MonoBehaviour
         if (Time.time > nextReloadTimeLeft)
         {
             canShootLeft = true;
-        }
-
-        if (player.BuildMode)
-        {
-            canShootRight = false;
-            canShootLeft = false;
         }
 
         if (Input.GetAxis("Left_Trigger") == 1)
@@ -135,5 +133,11 @@ public class ShipCombat : MonoBehaviour
             weapon.FireRight();
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
+    }
+
+    private void SetBuildMode(bool isBuildMode)
+    {
+        canShootRight = !isBuildMode;
+        canShootLeft = !isBuildMode;
     }
 }

@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class GameManager : MonoBehaviour
+{
+    private void Start()
+    {
+        GameState.BuildMode = false;
+    }
 }
 
 public static class GameState
 {
-    public static bool buildMode;
+    public delegate void BuildModeEnabled(bool isBuildMode);
+    public static event BuildModeEnabled buildModeChanged;
+
+    private static bool buildMode = false;
+
+    public static bool BuildMode
+    {
+        get { return buildMode; }
+
+        set
+        {
+            buildMode = value;
+
+            if(buildModeChanged != null)
+            {
+                buildModeChanged(buildMode);
+            }
+        }
+    }
 }

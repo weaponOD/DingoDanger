@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AttachmentType { CABIN, WEAPONLEFT, WEAPONRIGHT, SAIL, ARMOUR }
+public enum AttachmentType { CABIN, WEAPONSINGLE, SAIL, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
 {
+
+    [SerializeField]
     private AttachmentType currentAttachment;
 
     [SerializeField]
     private GameObject[] attachmentPrefabs;
+
+    [SerializeField]
+    private Material ghostMat;
 
     private PlayerController player;
     private UIManager UI;
@@ -19,18 +24,26 @@ public class ShipBuilder : MonoBehaviour
 
     private Transform buildInfo;
 
-    private bool buildMode = false;
-
     Vector3 hitPoint = Vector3.zero;
 
-    private bool needToRotate = false;
-    private bool needToMirror = false;
+    private Transform lastAttachmentPoint;
+
+    private RaycastHit hitInfo;
+
+    GameObject attachment = null;
+
+    private bool canPlace = false;
+
+    private bool mirrorWeapon = false;
+    private bool rotateWeapon = false;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         baseShip = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform;
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
+
+        attachment = null;
     }
 
     public AttachmentType CurrentAttachment
@@ -43,41 +56,84 @@ public class ShipBuilder : MonoBehaviour
     {
         if (Input.GetButtonDown("Y_Button"))
         {
-            buildMode = !buildMode;
+            GameState.BuildMode = !GameState.BuildMode;
 
-            SetBuildMode(buildMode);
-            player.SetBuildMode(buildMode);
+            if (!GameState.BuildMode)
+            {
+                if (attachment != null)
+                {
+                    GameObject.Destroy(attachment);
+                }
+            }
         }
-
-        RaycastHit hitInfo;
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if(hitPoint != Vector3.zero)
+        if (hitPoint != Vector3.zero)
         {
             Debug.DrawLine(ray.origin, hitPoint, Color.red);
         }
 
-        if (Input.GetButtonDown("A_Button"))
+        if (attachment != null)
         {
-            // check if can afford first.
-            if (UI.BuyAttachment())
+            if (Physics.Raycast(ray, out hitInfo))
             {
-                if (Physics.Raycast(ray, out hitInfo))
+                hitPoint = hitInfo.point;
+
+                if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
                 {
-                    hitPoint = hitInfo.point;
+                    lastAttachmentPoint = hitInfo.collider.transform;
 
-                    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                    buildInfo = ApplyRules(hitInfo);
+
+                    if (buildInfo.position != Vector3.zero)
                     {
-                        buildInfo = ApplyRules(hitInfo);
+                        attachment.transform.position = buildInfo.position;
+                        attachment.transform.localRotation = buildInfo.rotation;
 
-                        if (buildInfo.position != Vector3.zero)
+                        if(currentAttachment == AttachmentType.WEAPONSINGLE)
                         {
-                            Transform block = AddAttachment(buildInfo.position, buildInfo.rotation);
 
-                            hitInfo.collider.transform.gameObject.GetComponent<AttachmentPoint>().PartTwo = block;
+                            if(rotateWeapon)
+                            {
+                                attachment.transform.Rotate(Vector3.up, -90, Space.Self);
+                            }
+                            
+                            attachment.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
                         }
                     }
+                }
+            }
+
+            // Cancel Build
+            if (Input.GetButtonDown("B_Button"))
+            {
+                Debug.Log("Cancel Build");
+                GameObject.Destroy(attachment);
+            }
+
+            // accept and place attachment
+            if (Input.GetButtonDown("A_Button"))
+            {
+                Debug.Log("Attachment Placed");
+                
+                AddAttachment(attachment.transform.position, attachment.transform.rotation);
+
+                GameObject.Destroy(attachment);
+
+                // disable the build point when we build on it
+                if (lastAttachmentPoint.gameObject.tag == "BuildPoint")
+                {
+                    lastAttachmentPoint.gameObject.SetActive(false);
+                }
+            }
+
+            // Mirror attachment
+            if (Input.GetButtonDown("X_Button"))
+            {
+                if(currentAttachment == AttachmentType.WEAPONSINGLE)
+                {
+                    mirrorWeapon = !mirrorWeapon;
                 }
             }
         }
@@ -87,45 +143,15 @@ public class ShipBuilder : MonoBehaviour
     {
         Transform block = Instantiate(attachmentPrefabs[(int)currentAttachment], _buildPoint, _buildRotation, baseShip).transform;
 
-        if (currentAttachment == AttachmentType.WEAPONRIGHT)
-        {
-            block.gameObject.GetComponent<AttachmentWeapon>().FacingLeft = false;
-        }
-
-        if (currentAttachment == AttachmentType.WEAPONLEFT)
-        {
-            block.gameObject.GetComponent<AttachmentWeapon>().FacingLeft = true;
-        }
-
-        if(needToRotate == true)
-        {
-            block.gameObject.GetComponent<AttachmentWeapon>().needToRotate = true;
-        }
-
-        if(needToMirror)
-        {
-            block.gameObject.GetComponent<AttachmentWeapon>().needToMirror = true;
-        }
+        UI.BuyAttachment();
 
         return block;
     }
 
-    public void SetBuildMode(bool _isBuildMode)
-    {
-        buildMode = _isBuildMode;
-
-        UI.SetBuildPanelStatus(_isBuildMode);
-    }
-
-    public void AddAttachment(int _attachment)
-    {
-        currentAttachment = (AttachmentType)_attachment;
-    }
-
     private Transform ApplyRules(RaycastHit _hit)
     {
-        needToRotate = false;
-        needToMirror = false;
+        canPlace = false;
+        rotateWeapon = false;
 
         string name = _hit.collider.transform.gameObject.name;
 
@@ -140,11 +166,13 @@ public class ShipBuilder : MonoBehaviour
                 if (name == "Top")
                 {
                     buildPoint = _hit.collider.transform.position;
+                    canPlace = true;
                 }
                 else
                 {
                     buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
                     buildPoint.y -= 0.5f;
+                    canPlace = true;
                 }
 
                 buildRot = baseShip.transform.rotation;
@@ -152,52 +180,43 @@ public class ShipBuilder : MonoBehaviour
             else
             {
                 buildPoint = _hit.collider.transform.position;
+                canPlace = true;
             }
         }
-        else if (currentAttachment == AttachmentType.WEAPONLEFT)
+        else if (currentAttachment == AttachmentType.WEAPONSINGLE)
         {
             if (!name.Contains("Point"))
             {
                 if (name == "Top")
                 {
+                    canPlace = true;
                     buildPoint = _hit.collider.transform.position;
-                    buildRot = baseShip.rotation;
 
-                    needToRotate = true;
+                    buildRot = baseShip.transform.rotation;
+                    // needToRotate = true;
+                    rotateWeapon = true;
                 }
                 else if (name == "Left" || name == "Right")
                 {
+                    canPlace = true;
+                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
+                    buildPoint.y -= 0.5f;
+                }
+                else if (name == "Forward" || name == "Back")
+                {
+                    canPlace = true;
+                    rotateWeapon = true;
                     buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
                     buildPoint.y -= 0.5f;
                 }
             }
             else
             {
+                rotateWeapon = true;
+                canPlace = true;
                 buildPoint = _hit.collider.transform.position;
-                needToRotate = true;
-            }
-        }
-        else if (currentAttachment == AttachmentType.WEAPONRIGHT)
-        {
-            if (!name.Contains("Point"))
-            {
-                if (name == "Top")
-                {
-                    buildPoint = _hit.collider.transform.position;
-                    buildRot = baseShip.rotation;
 
-                    needToRotate = true;
-                }
-                else if (name == "Left" || name == "Right")
-                {
-                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
-                    buildPoint.y -= 0.5f;
-                }
-            }
-            else
-            {
-                buildPoint = _hit.collider.transform.position;
-                needToRotate = true;
+                buildRot = baseShip.transform.rotation;
             }
         }
         else if (currentAttachment == AttachmentType.SAIL)
@@ -206,11 +225,13 @@ public class ShipBuilder : MonoBehaviour
             {
                 if (name == "Top")
                 {
+                    canPlace = true;
                     buildPoint = _hit.collider.transform.position;
                     buildRot = baseShip.transform.rotation;
                 }
                 else
                 {
+                    canPlace = true;
                     buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
                     buildPoint.y -= 0.5f;
                     buildRot = baseShip.transform.rotation;
@@ -218,6 +239,7 @@ public class ShipBuilder : MonoBehaviour
             }
             else
             {
+                canPlace = true;
                 buildPoint = _hit.collider.transform.position;
                 buildRot = baseShip.transform.rotation;
             }
@@ -229,5 +251,27 @@ public class ShipBuilder : MonoBehaviour
         build.rotation = buildRot;
 
         return build.transform;
+    }
+
+    public void SpawnGhostAttachment(int _attachment)
+    {
+        currentAttachment = (AttachmentType)_attachment;
+
+        //attachment = attachmentPrefabs[(int)currentAttachment];
+        attachment = Instantiate(attachmentPrefabs[(int)currentAttachment], Vector3.zero, Quaternion.identity);
+
+        attachment.GetComponent<AttachmentBase>().DisableAttachments();
+
+        MeshRenderer[] rendererList = attachment.GetComponentsInChildren<MeshRenderer>();
+
+        foreach(MeshRenderer renderer in rendererList)
+        {
+            renderer.material = ghostMat;
+        }
+    }
+
+    public bool HasGhost
+    {
+        get { return (attachment != null); }
     }
 }

@@ -74,7 +74,7 @@ public class ShipBuilder : MonoBehaviour
         }
 
 
-        // if we have a ghost piece active
+        // if we have a preview piece active
         if (previewPiece != null)
         {
             if (Physics.Raycast(ray, out hitInfo))
@@ -168,16 +168,13 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (name == "Top")
                     {
-                        if(lastAttachmentPoint.root.tag == "Weapon")
+                        if(lastAttachmentPoint.parent.parent.tag == "Weapon")
                         {
-                            Debug.Log("He's got a weapon!");
-
-                            buildPoint = _lastAttachmentPoint.position - transform.forward * 0.5f;
+                            buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
                             canPlace = true;
                         }
                         else
                         {
-                            Debug.Log("He's got a nothing!");
                             buildPoint = _lastAttachmentPoint.position;
                             canPlace = true;
                         }
@@ -206,12 +203,33 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (name == "Top")
                     {
-                        canPlace = true;
-                        buildPoint = _lastAttachmentPoint.position;
 
-                        buildRot = baseShip.transform.rotation;
-                        // needToRotate = true;
-                        rotateWeapon = true;
+                        if (lastAttachmentPoint.parent.parent.tag == "Weapon")
+                        {
+                            canPlace = true;
+                            
+                            if(lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            {
+                                buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
+                            }
+                            else
+                            {
+                                buildPoint = _lastAttachmentPoint.position + transform.right * 0.5f;
+                            }
+
+                            buildRot = baseShip.transform.rotation;
+                            // needToRotate = true;
+                            rotateWeapon = true;
+                        }
+                        else
+                        {
+                            canPlace = true;
+                            buildPoint = _lastAttachmentPoint.position;
+
+                            buildRot = baseShip.transform.rotation;
+                            // needToRotate = true;
+                            rotateWeapon = true;
+                        }
                     }
                     else if (name == "Left" || name == "Right")
                     {
@@ -245,9 +263,18 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (name == "Top")
                     {
-                        canPlace = true;
-                        buildPoint = _lastAttachmentPoint.position;
-                        buildRot = baseShip.transform.rotation;
+                        if (lastAttachmentPoint.parent.parent.tag == "Weapon")
+                        {
+                            canPlace = true;
+                            buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
+                            buildRot = baseShip.transform.rotation;
+                        }
+                        else
+                        {
+                            canPlace = true;
+                            buildPoint = _lastAttachmentPoint.position;
+                            buildRot = baseShip.transform.rotation;
+                        }
                     }
                     else
                     {

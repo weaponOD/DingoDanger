@@ -1335,11 +1335,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 23652888289993744, guid: a24673047b943b44ab4ccc01857dc260,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48e9c1b0035221f48a6e698c3fb23ca1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a24673047b943b44ab4ccc01857dc260, type: 2}
   m_IsPrefabParent: 0
@@ -1630,35 +1625,6 @@ Transform:
   m_Father: {fileID: 134799016}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &536303311 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1947813016337762, guid: a24673047b943b44ab4ccc01857dc260,
-    type: 2}
-  m_PrefabInternal: {fileID: 399946860}
---- !u!65 &536303314
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 536303311}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 2.5, z: -3.6}
---- !u!65 &536303315
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 536303311}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 2.5, z: 3.6}
 --- !u!1 &551827763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,13 +2558,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 762711345}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1668573925440448, guid: de760d1734cdeec47a108e55c5f7dfad,
     type: 2}
+  enemyDistanceLimit: 20
 --- !u!114 &762711347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,6 +4487,16 @@ Prefab:
         type: 2}
       propertyPath: minclamp
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 20256300725510066, guid: c8872afa7f7e65c47a46fba6b8bef569,
+        type: 2}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 20256300725510066, guid: c8872afa7f7e65c47a46fba6b8bef569,
+        type: 2}
+      propertyPath: far clip plane
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}

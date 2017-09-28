@@ -15,7 +15,8 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> enemyList;
 
-    private float enemyDistanceLimit = 150f;
+    [SerializeField]
+    private float enemyDistanceLimit = 150;
 
     float distanceToPlayer;
 
@@ -63,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyCount < maxEnemies)
         {
-            Vector3 spawnPoint = player.position - player.forward * 10f;
+            Vector3 spawnPoint = player.position - player.forward * enemyDistanceLimit/2f;
 
             GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
             newEnemy.name = "Enemy: " + enemyCount;

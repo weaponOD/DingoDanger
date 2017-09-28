@@ -33,19 +33,19 @@ public class AttachmentPoint : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawLine(transform.position, transform.position + transform.forward * 0.6f, Color.red);
-
-        if (Physics.Raycast(transform.position, transform.forward, 0.6f))
+        if(GameState.BuildMode)
         {
-            gameObject.SetActive(false);
-        }
-
-        if(transform.name.Contains("Point"))
-        {
-            Debug.DrawLine(transform.position, transform.position + transform.up * 0.6f, Color.red);
-            if (Physics.Raycast(transform.position, transform.up, 0.6f))
+            if (Physics.Raycast(transform.position, transform.forward, 0.6f))
             {
                 gameObject.SetActive(false);
+            }
+
+            if (transform.name.Contains("Point"))
+            {
+                if (Physics.Raycast(transform.position, transform.up, 0.6f))
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
     }

@@ -21,6 +21,7 @@ public class CameraMovement : MonoBehaviour
     // target location to smoothly move towards
     private Vector3 targetPosRight;
     private Vector3 targetPosForward;
+    private Vector3 targetPosUp;
 
     [SerializeField]
     [Tooltip("How long it takes for the camera to reach it's destination")]
@@ -35,8 +36,6 @@ public class CameraMovement : MonoBehaviour
 
     private float timeToSnapBack;
 
-    private bool yAxisMode = false;
-
     [SerializeField]
     [Tooltip("Time in seconds of player inactivity before the camera snaps back to the target block.")]
     [Range(0, 20)]
@@ -45,7 +44,6 @@ public class CameraMovement : MonoBehaviour
     private bool snapIsDelayed = false;
 
     private Transform targetBlock;
-
 
     [SerializeField]
     private bool buildMode = false;
@@ -56,6 +54,7 @@ public class CameraMovement : MonoBehaviour
 
         targetPosRight = transform.position;
         targetPosForward = transform.position;
+        targetPosUp = transform.position;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -65,27 +64,15 @@ public class CameraMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
             targetPosRight += transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
-            
-            if(!yAxisMode)
-            {
-                targetPosForward += transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
-            }
-            else
-            {
-                targetPosForward += transform.up * Input.GetAxis("Vertical") * mouseSensitivity;
-            }
+
+            targetPosForward += transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
         }
 
-        if(buildMode)
+        if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
         {
-            if(Input.GetAxis("Right_Trigger") == 1)
-            {
-                yAxisMode = true;
-            }
-            else
-            {
-                yAxisMode = false;
-            }
+            targetPosUp += transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
+
+            targetPosUp -= transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
         }
     }
 
@@ -95,16 +82,17 @@ public class CameraMovement : MonoBehaviour
         Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
         transform.rotation = rot;
 
-        if(buildMode)
+        if (buildMode)
         {
             Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
 
-
-            if (stickForce.magnitude > breakForce)
+            if (stickForce.magnitude > breakForce || verticalMovement)
             {
                 snapIsDelayed = false;
                 pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
                 pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
+                pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
             }
             else
             {
@@ -130,6 +118,7 @@ public class CameraMovement : MonoBehaviour
 
                         targetPosRight = transform.position;
                         targetPosForward = transform.position;
+                        targetPosUp = transform.position;
                     }
                 }
             }
@@ -143,6 +132,7 @@ public class CameraMovement : MonoBehaviour
 
             targetPosRight = transform.position;
             targetPosForward = transform.position;
+            targetPosUp = transform.position;
         }
     }
 

@@ -70,6 +70,8 @@ public class CameraOrbit : MonoBehaviour
 
         localRotation = new Vector3(pivotT.rotation.eulerAngles.y, pivotT.rotation.eulerAngles.x, 0f);
 
+        cameraDistance = cameraT.localPosition.z * -1f;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

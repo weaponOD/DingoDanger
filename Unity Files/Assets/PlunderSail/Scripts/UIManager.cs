@@ -196,4 +196,10 @@ public class UIManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+    void OnDestroy()
+    {
+        // un-Subscribe to game state
+        GameState.buildModeChanged -= SetBuildPanelStatus;
+    }
 }

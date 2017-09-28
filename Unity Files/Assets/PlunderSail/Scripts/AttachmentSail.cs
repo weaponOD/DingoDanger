@@ -12,22 +12,16 @@ public class AttachmentSail : AttachmentBase
     [SerializeField]
     private Material redMat;
 
-    private Material myMat;
+    [SerializeField]
+    private bool currentlyGreen = true;
 
     private Vector3 lastPos;
 
-    private void Awake()
-    {
-        myMat = GetComponentInChildren<MeshRenderer>().material;
-    }
-
-
     private void Update()
     {
-        if(isPreview)
+        if (isPreview)
         {
-
-            if(transform.position != lastPos)
+            if (transform.position != lastPos)
             {
                 canPlace = true;
                 lastPos = transform.position;
@@ -122,11 +116,16 @@ public class AttachmentSail : AttachmentBase
 
             if (canPlace)
             {
-                MeshRenderer[] rendererList = GetComponentsInChildren<MeshRenderer>();
-
-                foreach (MeshRenderer renderer in rendererList)
+                if (!currentlyGreen)
                 {
-                    renderer.material = greenMat;
+                    MeshRenderer[] rendererList = GetComponentsInChildren<MeshRenderer>();
+
+                    foreach (MeshRenderer renderer in rendererList)
+                    {
+                        renderer.material = greenMat;
+                    }
+
+                    currentlyGreen = true;
                 }
             }
             else

@@ -111,4 +111,11 @@ public class PlayerController : MonoBehaviour
     {
         gold += _amount;
     }
+
+
+    void OnDestroy()
+    {
+        // un-Subscribe to game state
+        GameState.buildModeChanged -= SetBuildMode;
+    }
 }

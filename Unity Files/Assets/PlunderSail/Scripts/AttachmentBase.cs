@@ -10,6 +10,8 @@ public class AttachmentBase : MonoBehaviour
     [SerializeField]
     protected bool canPlace = true;
 
+    protected bool isPreview = false;
+
     public void DisableAttachments()
     {
         AttachmentPoint[] points = GetComponentsInChildren<AttachmentPoint>();
@@ -31,5 +33,9 @@ public class AttachmentBase : MonoBehaviour
     {
         get { return canPlace; }
         set { canPlace = value; }
+    }
+    public bool IsPreview
+    {
+        set { isPreview = value; }
     }
 }

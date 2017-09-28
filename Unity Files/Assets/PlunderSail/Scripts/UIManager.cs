@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     private bool DpadCanPress = false;
 
-    private bool placeGhost;
+    private bool placePreview;
 
     [SerializeField]
     private float timeBetweenPresses = 1f;
@@ -117,49 +117,56 @@ public class UIManager : MonoBehaviour
             // check if player has enough gold to make purchase
             if (CanAfford() && !builder.HasPreview)
             {
-                placeGhost = true;
+                placePreview = true;
             }
         }
 
         if (Input.GetButtonUp("A_Button"))
         {
-            if(placeGhost)
+            if (placePreview)
             {
                 // Call ship builder to instantiate the attachment ghost
                 builder.SpawnPreviewAttachment(selectedIndex);
-                placeGhost = false;
+                placePreview = false;
             }
         }
 
         if (DpadCanPress)
         {
-            if (!builder.HasPreview)
+            if (Input.GetAxis("Dpad_X") == 1)
             {
-                if (Input.GetAxis("Dpad_X") == 1)
+                if (selectedIndex < buttons.Length - 1)
                 {
-                    if (selectedIndex < buttons.Length - 1)
-                    {
-                        buttons[selectedIndex].image.color = Color.white;
-                        selectedIndex++;
+                    buttons[selectedIndex].image.color = Color.white;
+                    selectedIndex++;
 
-                        buttons[selectedIndex].image.color = Color.green;
+                    if (builder.HasPreview)
+                    {
+                        builder.SpawnPreviewAttachment(selectedIndex);
                     }
 
-                    DpadCanPress = false;
+                    buttons[selectedIndex].image.color = Color.green;
                 }
 
-                if (Input.GetAxis("Dpad_X") == -1)
-                {
-                    if (selectedIndex > 0)
-                    {
-                        buttons[selectedIndex].image.color = Color.white;
-                        selectedIndex--;
+                DpadCanPress = false;
+            }
 
-                        buttons[selectedIndex].image.color = Color.green;
+            if (Input.GetAxis("Dpad_X") == -1)
+            {
+                if (selectedIndex > 0)
+                {
+                    buttons[selectedIndex].image.color = Color.white;
+                    selectedIndex--;
+
+                    if (builder.HasPreview)
+                    {
+                        builder.SpawnPreviewAttachment(selectedIndex);
                     }
 
-                    DpadCanPress = false;
+                    buttons[selectedIndex].image.color = Color.green;
                 }
+
+                DpadCanPress = false;
             }
 
             if (!DpadCanPress)

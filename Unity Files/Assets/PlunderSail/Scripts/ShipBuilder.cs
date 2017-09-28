@@ -16,9 +16,6 @@ public class ShipBuilder : MonoBehaviour
     [SerializeField]
     private Material ghostMatGreen;
 
-    [SerializeField]
-    private Material ghostMatRed;
-
     private PlayerController player;
     private UIManager UI;
 
@@ -120,7 +117,7 @@ public class ShipBuilder : MonoBehaviour
             // accept and place attachment
             if (Input.GetButtonDown("A_Button"))
             {
-                if (lastAttachmentPoint != null && canPlace)
+                if (lastAttachmentPoint != null && previewPiece.GetComponent<AttachmentBase>().CanPlace)
                 {
                     AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
 
@@ -171,8 +168,19 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (name == "Top")
                     {
-                        buildPoint = _lastAttachmentPoint.position;
-                        canPlace = true;
+                        if(lastAttachmentPoint.root.tag == "Weapon")
+                        {
+                            Debug.Log("He's got a weapon!");
+
+                            buildPoint = _lastAttachmentPoint.position - transform.forward * 0.5f;
+                            canPlace = true;
+                        }
+                        else
+                        {
+                            Debug.Log("He's got a nothing!");
+                            buildPoint = _lastAttachmentPoint.position;
+                            canPlace = true;
+                        }
                     }
                     else
                     {
@@ -268,11 +276,18 @@ public class ShipBuilder : MonoBehaviour
 
     public void SpawnPreviewAttachment(int _attachment)
     {
+        if (previewPiece != null)
+        {
+            GameObject.Destroy(previewPiece);
+        }
+
         currentAttachment = (AttachmentType)_attachment;
 
         previewPiece = Instantiate(attachmentPrefabs[(int)currentAttachment], Vector3.zero, Quaternion.identity);
 
         previewPiece.GetComponent<AttachmentBase>().DisableAttachments();
+
+        previewPiece.GetComponent<AttachmentBase>().IsPreview = true;
 
         MeshRenderer[] rendererList = previewPiece.GetComponentsInChildren<MeshRenderer>();
 

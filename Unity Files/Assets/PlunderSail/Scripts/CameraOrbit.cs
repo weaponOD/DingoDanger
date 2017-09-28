@@ -46,6 +46,12 @@ public class CameraOrbit : MonoBehaviour
     [Tooltip("How long it takes for the camera to reach it's zoom level")]
     private float zoomDampening = 12f;
 
+    [SerializeField]
+    float MaxClamp;
+
+    [SerializeField]
+    float minclamp;
+
 
     [SerializeField]
     private bool buildMode = false;
@@ -77,7 +83,7 @@ public class CameraOrbit : MonoBehaviour
 
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
-            localRotation.y = Mathf.Clamp(localRotation.y, 0f, 90f);
+            localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
         }
 
         // Zoom input from our mouse scroll wheel

@@ -5,48 +5,138 @@ using UnityEngine;
 public class AttachmentSail : AttachmentBase
 {
     private RaycastHit hitInfo;
-    private Material material;
-    private Color defaulColor;
 
+    [SerializeField]
+    private Material greenMat;
+
+    [SerializeField]
+    private Material redMat;
+
+    private Material myMat;
+
+    private Vector3 lastPos;
 
     private void Awake()
     {
-        material = GetComponentInChildren<MeshRenderer>().material;
-        defaulColor = material.color;
+        myMat = GetComponentInChildren<MeshRenderer>().material;
     }
 
 
     private void Update()
     {
-        canPlace = true;
-        //Debug.DrawLine(transform.position, transform.position + transform.right * 4f, Color.red);
-
-        if (Physics.Raycast(transform.position, transform.right, out hitInfo))
+        if(isPreview)
         {
-            if (hitInfo.collider.transform.tag == "Sail")
+
+            if(transform.position != lastPos)
             {
-                canPlace = false;
+                canPlace = true;
+                lastPos = transform.position;
             }
-        }
 
-        if (Physics.Raycast(transform.position, -transform.right, out hitInfo))
-        {
-            if (hitInfo.collider.transform.tag == "Sail")
+            Debug.DrawLine(transform.position + transform.up * 0.9f, transform.position + transform.up * 0.9f + transform.right * 4f, Color.green);
+
+            Ray rayRight = new Ray(transform.position + transform.up * 0.9f, transform.right);
+
+            if (Physics.Raycast(rayRight, out hitInfo, 2f))
             {
-                canPlace = false;
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
             }
-        }
 
 
-        if(GameState.BuildMode)
-        {
-            if (!canPlace)
+            Ray rayLeft = new Ray(transform.position + transform.up * 0.9f, -transform.right);
+
+            if (Physics.Raycast(rayLeft, out hitInfo, 2f))
             {
-                material.color = Color.red;
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+            Ray rayForward = new Ray(transform.position + transform.up * 0.9f, transform.forward);
+
+            if (Physics.Raycast(rayForward, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+
+            Ray rayBack = new Ray(transform.position + transform.up * 0.9f, -transform.forward);
+
+            if (Physics.Raycast(rayBack, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+
+            // Diagonals
+            Ray rayForwardRight = new Ray(transform.position + transform.up * 0.9f, transform.forward + transform.right);
+
+            if (Physics.Raycast(rayForwardRight, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+            Ray rayForwardleft = new Ray(transform.position + transform.up * 0.9f, transform.forward + -transform.right);
+
+            if (Physics.Raycast(rayForwardleft, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+            Ray rayBackRight = new Ray(transform.position + transform.up * 0.9f, -transform.forward + transform.right);
+
+            if (Physics.Raycast(rayBackRight, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+
+            Ray rayBackLeft = new Ray(transform.position + transform.up * 0.9f, -transform.forward + -transform.right);
+
+            if (Physics.Raycast(rayBackLeft, out hitInfo, 2f))
+            {
+                if (hitInfo.collider.transform.tag == "Sail")
+                {
+                    canPlace = false;
+                }
+            }
+
+            if (canPlace)
+            {
+                MeshRenderer[] rendererList = GetComponentsInChildren<MeshRenderer>();
+
+                foreach (MeshRenderer renderer in rendererList)
+                {
+                    renderer.material = greenMat;
+                }
             }
             else
             {
-                material.color = defaulColor;
+                MeshRenderer[] rendererList = GetComponentsInChildren<MeshRenderer>();
+
+                foreach (MeshRenderer renderer in rendererList)
+                {
+                    renderer.material = redMat;
+                }
             }
         }
     }

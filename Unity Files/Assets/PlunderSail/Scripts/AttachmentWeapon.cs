@@ -62,7 +62,6 @@ public class AttachmentWeapon : AttachmentBase
         get
         {
             facingLeft = (transform.localEulerAngles.y > 95f);
-            Debug.Log(transform.localEulerAngles.y);
             return facingLeft;
         }
         set { facingLeft = value; }

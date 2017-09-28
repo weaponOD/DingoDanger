@@ -8,7 +8,7 @@ public class AttachmentBase : MonoBehaviour
     protected float maxHealth;
 
     [SerializeField]
-    private Vector3 eular;
+    protected bool canPlace = true;
 
     public void DisableAttachments()
     {
@@ -22,13 +22,14 @@ public class AttachmentBase : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
     }
 
-    public void Update()
-    {
-        eular = transform.localEulerAngles;
-    }
-
     public void Mirror()
     {
         transform.Rotate(Vector3.up, 180, Space.Self);
+    }
+
+    public bool CanPlace
+    {
+        get { return canPlace; }
+        set { canPlace = value; }
     }
 }

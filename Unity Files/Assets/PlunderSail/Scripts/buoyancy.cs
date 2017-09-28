@@ -18,7 +18,7 @@ public class buoyancy : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time) * waveHeight, transform.position.z);
+        transform.position = new Vector3(transform.position.x, Mathf.Sin(Time.time) * waveHeight - 0.7f, transform.position.z);
     }
 
     public float WaveHeight

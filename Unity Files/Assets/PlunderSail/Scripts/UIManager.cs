@@ -115,7 +115,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetButtonDown("A_Button"))
         {
             // check if player has enough gold to make purchase
-            if (CanAfford() && !builder.HasGhost)
+            if (CanAfford() && !builder.HasPreview)
             {
                 placeGhost = true;
             }
@@ -126,14 +126,14 @@ public class UIManager : MonoBehaviour
             if(placeGhost)
             {
                 // Call ship builder to instantiate the attachment ghost
-                builder.SpawnGhostAttachment(selectedIndex);
+                builder.SpawnPreviewAttachment(selectedIndex);
                 placeGhost = false;
             }
         }
 
         if (DpadCanPress)
         {
-            if (!builder.HasGhost)
+            if (!builder.HasPreview)
             {
                 if (Input.GetAxis("Dpad_X") == 1)
                 {
@@ -186,7 +186,7 @@ public class UIManager : MonoBehaviour
         // Reset
         if (Input.GetButtonDown("Back_Button"))
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -7,7 +7,6 @@ public enum AttachmentType { CABIN, WEAPONSINGLE, SAIL, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
 {
-
     [SerializeField]
     private AttachmentType currentAttachment;
 
@@ -15,7 +14,10 @@ public class ShipBuilder : MonoBehaviour
     private GameObject[] attachmentPrefabs;
 
     [SerializeField]
-    private Material ghostMat;
+    private Material ghostMatGreen;
+
+    [SerializeField]
+    private Material ghostMatRed;
 
     private PlayerController player;
     private UIManager UI;
@@ -30,7 +32,7 @@ public class ShipBuilder : MonoBehaviour
 
     private RaycastHit hitInfo;
 
-    GameObject attachment = null;
+    GameObject previewPiece = null;
 
     private bool canPlace = false;
 
@@ -43,7 +45,7 @@ public class ShipBuilder : MonoBehaviour
         baseShip = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform;
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
 
-        attachment = null;
+        previewPiece = null;
     }
 
     public AttachmentType CurrentAttachment
@@ -60,9 +62,9 @@ public class ShipBuilder : MonoBehaviour
 
             if (!GameState.BuildMode)
             {
-                if (attachment != null)
+                if (previewPiece != null)
                 {
-                    GameObject.Destroy(attachment);
+                    GameObject.Destroy(previewPiece);
                 }
             }
         }
@@ -74,32 +76,35 @@ public class ShipBuilder : MonoBehaviour
             Debug.DrawLine(ray.origin, hitPoint, Color.red);
         }
 
-        if (attachment != null)
+
+        // if we have a ghost piece active
+        if (previewPiece != null)
         {
             if (Physics.Raycast(ray, out hitInfo))
             {
                 hitPoint = hitInfo.point;
 
+                // if the raycast hit a buildPoint
                 if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
                 {
                     lastAttachmentPoint = hitInfo.collider.transform;
 
-                    buildInfo = ApplyRules(hitInfo);
+                    buildInfo = ApplyRules(lastAttachmentPoint);
 
                     if (buildInfo.position != Vector3.zero)
                     {
-                        attachment.transform.position = buildInfo.position;
-                        attachment.transform.localRotation = buildInfo.rotation;
+                        previewPiece.transform.position = buildInfo.position;
+                        previewPiece.transform.localRotation = buildInfo.rotation;
 
-                        if(currentAttachment == AttachmentType.WEAPONSINGLE)
+                        if (currentAttachment == AttachmentType.WEAPONSINGLE)
                         {
 
-                            if(rotateWeapon)
+                            if (rotateWeapon)
                             {
-                                attachment.transform.Rotate(Vector3.up, -90, Space.Self);
+                                previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
                             }
-                            
-                            attachment.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
+
+                            previewPiece.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
                         }
                     }
                 }
@@ -109,29 +114,28 @@ public class ShipBuilder : MonoBehaviour
             if (Input.GetButtonDown("B_Button"))
             {
                 Debug.Log("Cancel Build");
-                GameObject.Destroy(attachment);
+                GameObject.Destroy(previewPiece);
             }
 
             // accept and place attachment
             if (Input.GetButtonDown("A_Button"))
             {
-                Debug.Log("Attachment Placed");
-                
-                AddAttachment(attachment.transform.position, attachment.transform.rotation);
-
-                GameObject.Destroy(attachment);
-
-                // disable the build point when we build on it
-                if (lastAttachmentPoint.gameObject.tag == "BuildPoint")
+                if (lastAttachmentPoint != null && canPlace)
                 {
+                    AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
+
+                    GameObject.Destroy(previewPiece);
+
                     lastAttachmentPoint.gameObject.SetActive(false);
+
+                    lastAttachmentPoint = null;
                 }
             }
 
             // Mirror attachment
             if (Input.GetButtonDown("X_Button"))
             {
-                if(currentAttachment == AttachmentType.WEAPONSINGLE)
+                if (currentAttachment == AttachmentType.WEAPONSINGLE)
                 {
                     mirrorWeapon = !mirrorWeapon;
                 }
@@ -148,100 +152,109 @@ public class ShipBuilder : MonoBehaviour
         return block;
     }
 
-    private Transform ApplyRules(RaycastHit _hit)
+    private Transform ApplyRules(Transform _lastAttachmentPoint)
     {
         canPlace = false;
         rotateWeapon = false;
 
-        string name = _hit.collider.transform.gameObject.name;
+        string name = _lastAttachmentPoint.name;
 
         Vector3 buildPoint = Vector3.zero;
-        Quaternion buildRot = _hit.collider.transform.rotation;
+        Quaternion buildRot = _lastAttachmentPoint.rotation;
 
         // Rules for each piece
         if (currentAttachment == AttachmentType.CABIN)
         {
-            if (!name.Contains("Point"))
+            if (_lastAttachmentPoint.tag == "BuildPoint")
             {
-                if (name == "Top")
+                if (!name.Contains("Point"))
                 {
-                    buildPoint = _hit.collider.transform.position;
-                    canPlace = true;
+                    if (name == "Top")
+                    {
+                        buildPoint = _lastAttachmentPoint.position;
+                        canPlace = true;
+                    }
+                    else
+                    {
+                        buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
+                        buildPoint.y -= 0.5f;
+                        canPlace = true;
+                    }
+
+                    buildRot = baseShip.transform.rotation;
                 }
                 else
                 {
-                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
-                    buildPoint.y -= 0.5f;
+                    buildPoint = _lastAttachmentPoint.position;
                     canPlace = true;
                 }
-
-                buildRot = baseShip.transform.rotation;
-            }
-            else
-            {
-                buildPoint = _hit.collider.transform.position;
-                canPlace = true;
             }
         }
         else if (currentAttachment == AttachmentType.WEAPONSINGLE)
         {
-            if (!name.Contains("Point"))
+            if (_lastAttachmentPoint.tag == "BuildPoint")
             {
-                if (name == "Top")
+                if (!name.Contains("Point"))
                 {
+                    if (name == "Top")
+                    {
+                        canPlace = true;
+                        buildPoint = _lastAttachmentPoint.position;
+
+                        buildRot = baseShip.transform.rotation;
+                        // needToRotate = true;
+                        rotateWeapon = true;
+                    }
+                    else if (name == "Left" || name == "Right")
+                    {
+                        canPlace = true;
+                        buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
+                        buildPoint.y -= 0.5f;
+                    }
+                    else if (name == "Forward" || name == "Back")
+                    {
+                        canPlace = true;
+                        rotateWeapon = true;
+                        buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
+                        buildPoint.y -= 0.5f;
+                    }
+                }
+                else
+                {
+                    rotateWeapon = true;
                     canPlace = true;
-                    buildPoint = _hit.collider.transform.position;
+                    buildPoint = _lastAttachmentPoint.position;
 
                     buildRot = baseShip.transform.rotation;
-                    // needToRotate = true;
-                    rotateWeapon = true;
                 }
-                else if (name == "Left" || name == "Right")
-                {
-                    canPlace = true;
-                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
-                    buildPoint.y -= 0.5f;
-                }
-                else if (name == "Forward" || name == "Back")
-                {
-                    canPlace = true;
-                    rotateWeapon = true;
-                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
-                    buildPoint.y -= 0.5f;
-                }
-            }
-            else
-            {
-                rotateWeapon = true;
-                canPlace = true;
-                buildPoint = _hit.collider.transform.position;
-
-                buildRot = baseShip.transform.rotation;
             }
         }
         else if (currentAttachment == AttachmentType.SAIL)
         {
-            if (!name.Contains("Point"))
+            if (_lastAttachmentPoint.tag == "BuildPoint")
             {
-                if (name == "Top")
+                if (!name.Contains("Point"))
                 {
-                    canPlace = true;
-                    buildPoint = _hit.collider.transform.position;
-                    buildRot = baseShip.transform.rotation;
+                    if (name == "Top")
+                    {
+                        canPlace = true;
+                        buildPoint = _lastAttachmentPoint.position;
+                        buildRot = baseShip.transform.rotation;
+                    }
+                    else
+                    {
+                        canPlace = true;
+                        buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
+                        buildPoint.y -= 0.5f;
+                        buildRot = baseShip.transform.rotation;
+                    }
                 }
                 else
                 {
                     canPlace = true;
-                    buildPoint = _hit.collider.transform.position + _hit.collider.transform.forward;
-                    buildPoint.y -= 0.5f;
+                    buildPoint = _lastAttachmentPoint.position;
                     buildRot = baseShip.transform.rotation;
                 }
-            }
-            else
-            {
-                canPlace = true;
-                buildPoint = _hit.collider.transform.position;
-                buildRot = baseShip.transform.rotation;
             }
         }
 
@@ -253,25 +266,24 @@ public class ShipBuilder : MonoBehaviour
         return build.transform;
     }
 
-    public void SpawnGhostAttachment(int _attachment)
+    public void SpawnPreviewAttachment(int _attachment)
     {
         currentAttachment = (AttachmentType)_attachment;
 
-        //attachment = attachmentPrefabs[(int)currentAttachment];
-        attachment = Instantiate(attachmentPrefabs[(int)currentAttachment], Vector3.zero, Quaternion.identity);
+        previewPiece = Instantiate(attachmentPrefabs[(int)currentAttachment], Vector3.zero, Quaternion.identity);
 
-        attachment.GetComponent<AttachmentBase>().DisableAttachments();
+        previewPiece.GetComponent<AttachmentBase>().DisableAttachments();
 
-        MeshRenderer[] rendererList = attachment.GetComponentsInChildren<MeshRenderer>();
+        MeshRenderer[] rendererList = previewPiece.GetComponentsInChildren<MeshRenderer>();
 
-        foreach(MeshRenderer renderer in rendererList)
+        foreach (MeshRenderer renderer in rendererList)
         {
-            renderer.material = ghostMat;
+            renderer.material = ghostMatGreen;
         }
     }
 
-    public bool HasGhost
+    public bool HasPreview
     {
-        get { return (attachment != null); }
+        get { return (previewPiece != null); }
     }
 }

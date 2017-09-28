@@ -71,14 +71,17 @@ public class ShipCombat : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > nextReloadTimeRight)
+        if(!GameState.BuildMode)
         {
-            canShootRight = true;
-        }
+            if (Time.time > nextReloadTimeRight)
+            {
+                canShootRight = true;
+            }
 
-        if (Time.time > nextReloadTimeLeft)
-        {
-            canShootLeft = true;
+            if (Time.time > nextReloadTimeLeft)
+            {
+                canShootLeft = true;
+            }
         }
 
         if (Input.GetAxis("Left_Trigger") == 1)

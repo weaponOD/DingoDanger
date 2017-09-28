@@ -34,6 +34,7 @@ public class AttachmentPoint : MonoBehaviour
     private void Update()
     {
         Debug.DrawLine(transform.position, transform.position + transform.forward * 0.6f, Color.red);
+
         if (Physics.Raycast(transform.position, transform.forward, 0.6f))
         {
             gameObject.SetActive(false);

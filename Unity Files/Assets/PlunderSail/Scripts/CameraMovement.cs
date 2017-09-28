@@ -78,7 +78,7 @@ public class CameraMovement : MonoBehaviour
 
         if(buildMode)
         {
-            if(Input.GetAxis("Left_Trigger") == 1)
+            if(Input.GetAxis("Right_Trigger") == 1)
             {
                 yAxisMode = true;
             }

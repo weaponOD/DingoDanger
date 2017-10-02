@@ -39,7 +39,6 @@ public class AttachmentSail : AttachmentBase
                 }
             }
 
-
             Ray rayLeft = new Ray(transform.position + transform.up * 0.9f, -transform.right);
 
             if (Physics.Raycast(rayLeft, out hitInfo, 2f))

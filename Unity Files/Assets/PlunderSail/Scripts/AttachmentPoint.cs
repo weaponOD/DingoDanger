@@ -7,6 +7,8 @@ public class AttachmentPoint : MonoBehaviour
     Transform partOne = null;
     Transform partTwo = null;
 
+    private bool active = true;
+
     public Transform PartOne
     {
         get { return partOne; }
@@ -20,7 +22,7 @@ public class AttachmentPoint : MonoBehaviour
         {
             partTwo = value;
 
-            if(partTwo == null)
+            if (partTwo == null)
             {
                 gameObject.SetActive(true);
             }
@@ -33,20 +35,24 @@ public class AttachmentPoint : MonoBehaviour
 
     private void Update()
     {
-        if(GameState.BuildMode)
+        if (GameState.BuildMode)
         {
+            active = true;
+
             if (Physics.Raycast(transform.position, transform.forward, 0.6f))
             {
-                gameObject.SetActive(false);
+                active = false;
             }
 
             if (transform.name.Contains("Point"))
             {
                 if (Physics.Raycast(transform.position, transform.up, 0.6f))
                 {
-                    gameObject.SetActive(false);
+                    active = false;
                 }
             }
+
+            gameObject.SetActive(active);
         }
     }
 }

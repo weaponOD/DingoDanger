@@ -127,7 +127,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4042366218832008}
-  m_Layer: 0
+  - component: {fileID: 114842645092872644}
+  - component: {fileID: 135360946607977412}
+  m_Layer: 8
   m_Name: Oasis_003_Islands_Large_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27527,3 +27529,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114842645092872644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010145150207294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d9cf014c6eb7a4a8d2882bd83fc8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &135360946607977412
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010145150207294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}

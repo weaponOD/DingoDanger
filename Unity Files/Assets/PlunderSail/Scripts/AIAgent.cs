@@ -13,8 +13,12 @@ public class AIAgent : MonoBehaviour
 
     private MapManager manager;
 
+    private bool moveTowardsPlayer = false;
+
     [SerializeField]
     private float moveSpeed = 2f;
+
+    private float attackRange = 10;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,6 +45,16 @@ public class AIAgent : MonoBehaviour
         if(!GameState.BuildMode)
         {
             rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+        }
+    }
+
+    private void MoveToAttackRange()
+    {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+
+        if (distance > attackRange)
+        {
+            moveTowardsPlayer = true;
         }
     }
 }

@@ -19,6 +19,7 @@ public class AttachmentBase : MonoBehaviour
         foreach(AttachmentPoint point in points)
         {
             point.GetComponent<BoxCollider>().enabled = false;
+            point.GetComponent<AttachmentPoint>().enabled = false;
         }
 
         GetComponent<BoxCollider>().enabled = false;

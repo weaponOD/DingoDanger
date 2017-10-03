@@ -29,6 +29,10 @@ public class ShipBuilder : MonoBehaviour
 
     private RaycastHit hitInfo;
 
+    [SerializeField]
+    List<AttachmentPoint> deactivatedPoints;
+
+    [SerializeField]
     GameObject previewPiece = null;
 
     private bool canPlace = false;
@@ -40,6 +44,8 @@ public class ShipBuilder : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         baseShip = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform;
+        deactivatedPoints = new List<AttachmentPoint>();
+
         UI = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         previewPiece = null;
@@ -62,6 +68,7 @@ public class ShipBuilder : MonoBehaviour
                 if (previewPiece != null)
                 {
                     GameObject.Destroy(previewPiece);
+                    previewPiece = null;
                 }
             }
         }
@@ -107,13 +114,6 @@ public class ShipBuilder : MonoBehaviour
                 }
             }
 
-            // Cancel Build
-            if (Input.GetButtonDown("B_Button"))
-            {
-                Debug.Log("Cancel Build");
-                GameObject.Destroy(previewPiece);
-            }
-
             // accept and place attachment
             if (Input.GetButtonDown("A_Button"))
             {
@@ -122,8 +122,9 @@ public class ShipBuilder : MonoBehaviour
                     AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
 
                     GameObject.Destroy(previewPiece);
+                    previewPiece = null;
 
-                    lastAttachmentPoint.gameObject.SetActive(false);
+                    //lastAttachmentPoint.gameObject.SetActive(false);
 
                     lastAttachmentPoint = null;
                 }
@@ -135,6 +136,32 @@ public class ShipBuilder : MonoBehaviour
                 if (currentAttachment == AttachmentType.WEAPONSINGLE)
                 {
                     mirrorWeapon = !mirrorWeapon;
+                }
+            }
+        }
+
+        // Cancel Build/ delete piece
+        if (Input.GetButtonDown("B_Button"))
+        {
+            if (previewPiece != null)
+            {
+                Debug.Log("Cancel Build");
+                GameObject.Destroy(previewPiece);
+                previewPiece = null;
+            }
+            else
+            {
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    hitPoint = hitInfo.point;
+
+                    // if the raycast hit a buildPoint
+                    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                    {
+                        RefreshAttachmentPoints();
+
+                        GameObject.Destroy(hitInfo.collider.transform.parent.parent.gameObject);
+                    }
                 }
             }
         }
@@ -189,7 +216,7 @@ public class ShipBuilder : MonoBehaviour
                             canPlace = true;
                         }
                     }
-                    else if(name == "Left" || name == "Right")
+                    else if (name == "Left" || name == "Right")
                     {
 
                         if (lastAttachmentPoint.parent.parent.tag == "Weapon")
@@ -214,7 +241,7 @@ public class ShipBuilder : MonoBehaviour
                             canPlace = true;
                         }
                     }
-                    else 
+                    else
                     {
                         buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
                         buildPoint.y -= 0.5f;
@@ -339,7 +366,7 @@ public class ShipBuilder : MonoBehaviour
                             buildRot = baseShip.transform.rotation;
                         }
                     }
-                    else if(name == "Left" || name == "Right")
+                    else if (name == "Left" || name == "Right")
                     {
                         if (lastAttachmentPoint.parent.parent.tag == "Weapon")
                         {
@@ -396,6 +423,7 @@ public class ShipBuilder : MonoBehaviour
         if (previewPiece != null)
         {
             GameObject.Destroy(previewPiece);
+            previewPiece = null;
         }
 
         currentAttachment = (AttachmentType)_attachment;
@@ -413,6 +441,25 @@ public class ShipBuilder : MonoBehaviour
             renderer.material = ghostMatGreen;
         }
     }
+
+    private void RefreshAttachmentPoints()
+    {
+        foreach(AttachmentPoint point in deactivatedPoints)
+        {
+            if(point.gameObject != null)
+            {
+                //point.TurnOn();
+            }
+        }
+
+        deactivatedPoints.Clear();
+    }
+
+    public void DeActivatePoint(AttachmentPoint _attachmentPoint)
+    {
+        deactivatedPoints.Add(_attachmentPoint);
+    }
+
 
     public bool HasPreview
     {

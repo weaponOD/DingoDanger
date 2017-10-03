@@ -39,7 +39,7 @@ public class MapManager : MonoBehaviour
         if (activeIslands.Count < maxIslands)
         {
             SpawnIsland();
-            Debug.Log("Spaned Island");
+            //Debug.Log("Spawned Island");
         }
 
         yield return new WaitForSeconds(0.5f);

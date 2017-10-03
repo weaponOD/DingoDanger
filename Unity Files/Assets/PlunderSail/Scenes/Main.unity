@@ -651,6 +651,11 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114718389164306584, guid: a24673047b943b44ab4ccc01857dc260,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a24673047b943b44ab4ccc01857dc260, type: 2}
   m_IsPrefabParent: 0
@@ -989,6 +994,8 @@ MonoBehaviour:
   - {fileID: 1586404089410776, guid: a45079cd7f6d05744a20d6cc843ee9b9, type: 2}
   - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
   ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
+  deactivatedPoints: []
+  previewPiece: {fileID: 0}
 --- !u!114 &762711350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,39 +1719,39 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.84
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.12255357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.01744625
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.009497844
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9922632
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -14.057001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -2.183
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4325774404930400, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.366
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8872afa7f7e65c47a46fba6b8bef569, type: 2}

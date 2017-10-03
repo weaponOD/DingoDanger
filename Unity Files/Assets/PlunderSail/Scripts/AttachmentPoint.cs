@@ -9,6 +9,13 @@ public class AttachmentPoint : MonoBehaviour
 
     private bool active = true;
 
+    private ShipBuilder builder;
+
+    private void Awake()
+    {
+        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
+    }
+
     public Transform PartOne
     {
         get { return partOne; }
@@ -24,35 +31,61 @@ public class AttachmentPoint : MonoBehaviour
 
             if (partTwo == null)
             {
-                gameObject.SetActive(true);
+                //gameObject.SetActive(true);
             }
             else
             {
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
         }
     }
 
     private void Update()
     {
-        if (GameState.BuildMode)
+        if (active)
         {
-            active = true;
-
-            if (Physics.Raycast(transform.position, transform.forward, 0.6f))
+            if (GameState.BuildMode)
             {
-                active = false;
-            }
-
-            if (transform.name.Contains("Point"))
-            {
-                if (Physics.Raycast(transform.position, transform.up, 0.6f))
+                if (Physics.Raycast(transform.position, transform.forward, 0.6f))
                 {
-                    active = false;
+                    if (active)
+                    {
+                        TurnOff();
+                        active = false;
+                    }
+                    builder.DeActivatePoint(this);
+                }
+
+                if (transform.name.Contains("Point"))
+                {
+                    if (Physics.Raycast(transform.position, transform.up, 0.6f))
+                    {
+                        if (active)
+                        {
+                            TurnOff();
+                            active = false;
+                        }
+                        builder.DeActivatePoint(this);
+                    }
                 }
             }
-
-            gameObject.SetActive(active);
         }
+    }
+
+
+    public void TurnOff()
+    {
+        active = false;
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+
+        Debug.Log("Turn off");
+    }
+
+    public void TurnOn()
+    {
+        active = true;
+        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+
+        Debug.Log("Turn On");
     }
 }

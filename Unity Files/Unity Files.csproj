@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -138,6 +136,7 @@
   <ItemGroup>
     <None Include="Assets\PlunderSail\Music\DeleteMe.txt" />
     <None Include="Assets\PlunderSail\Particles\DeleteMe.txt" />
+    <None Include="Assets\PlunderSail\Scripts\DeleteMeAfter.txt" />
     <None Include="Assets\PlunderSail\Shaders\DeleteMe.txt" />
     <None Include="Assets\PlunderSail\Shaders\OceanWaves.shader" />
     <None Include="Assets\PlunderSail\Shaders\SailCloth.shader" />

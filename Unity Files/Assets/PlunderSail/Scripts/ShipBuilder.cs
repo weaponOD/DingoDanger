@@ -151,18 +151,18 @@ public class ShipBuilder : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    hitPoint = hitInfo.point;
+                //if (Physics.Raycast(ray, out hitInfo))
+                //{
+                //    hitPoint = hitInfo.point;
 
-                    // if the raycast hit a buildPoint
-                    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
-                    {
-                        RefreshAttachmentPoints();
+                //    // if the raycast hit a buildPoint
+                //    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                //    {
+                //        RefreshAttachmentPoints();
 
-                        GameObject.Destroy(hitInfo.collider.transform.parent.parent.gameObject);
-                    }
-                }
+                //        GameObject.Destroy(hitInfo.collider.transform.parent.parent.gameObject);
+                //    }
+                //}
             }
         }
     }

@@ -2,120 +2,182 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    // References
-    private CameraMovement cameraMovement;
+    private Rigidbody rb;
 
-    private CameraOrbit cameraOrbit;
+    private float moveSpeed;
 
-    private ShipMovement movement;
+    private float maxMoveSpeed;
 
-    private ShipCombat combat;
+    [SerializeField]
+    private float baseMoveSpeed;
 
-    private buoyancy bobbing;
+    [SerializeField]
+    private Vector3 velocity;
 
-    private AttachmentPoint[] attachmentPoints;
+    private Vector3 targetVelocity;
 
-    private AttachmentSail[] sails;
+    // The stearing wheel on the ship
+    private Transform wheel;
 
-    private int gold = 900;
+    // Steering wheel turn speed
+    [SerializeField]
+    private float wheelTurnSpeed;
+
+    private bool buildMode = false;
+
+    // Max angle the ship can tilt
+    [SerializeField]
+    private float maxRollValue = 6;
+
+    private Transform leftThruster = null;
+    private Transform rightThruster = null;
+
+    [SerializeField]
+    private float myRotation;
+
+    private float defaultRotation;
+
+    [SerializeField]
+    private float tiltSpeed;
+
+    [SerializeField]
+    private float turnSpeed;
 
     private void Awake()
     {
-        movement = GetComponent<ShipMovement>();
+        rb = GetComponent<Rigidbody>();
 
-        GameObject cameraPivot = GameObject.FindGameObjectWithTag("CameraPivot");
+        wheel = transform.GetChild(0).GetChild(3);
 
-        combat = GetComponent<ShipCombat>();
+        leftThruster = transform.GetChild(1);
+        rightThruster = transform.GetChild(2);
 
-        bobbing = GetComponentInChildren<buoyancy>();
-
-        attachmentPoints = GetComponentsInChildren<AttachmentPoint>();
-
-        cameraMovement = cameraPivot.GetComponentInChildren<CameraMovement>();
-        cameraOrbit = cameraPivot.GetComponentInChildren<CameraOrbit>();
+        defaultRotation = transform.rotation.eulerAngles.z;
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
 
-        foreach (AttachmentPoint point in attachmentPoints)
+        maxMoveSpeed = baseMoveSpeed;
+        moveSpeed = baseMoveSpeed;
+    }
+
+    private void Update()
+    {
+        // set targetVelocity to Value of left Thumb stick
+        targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
+
+        // Rotate the steering wheel right
+        if (targetVelocity.x > 0)
         {
-            point.PartOne = this.transform;
+            wheel.Rotate(-wheelTurnSpeed, 0f, 0f);
         }
+        // Rotate the steering wheel left
+        else if (targetVelocity.x < 0)
+        {
+            wheel.Rotate(wheelTurnSpeed, 0f, 0f);
+        }
+
+        velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
+    }
+
+    void FixedUpdate()
+    {
+        if(!buildMode)
+        {
+            rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+
+            // Turn right
+            if (velocity.x > 0)
+            {
+                rb.AddForceAtPosition(rightThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
+
+                if (moveSpeed > baseMoveSpeed / 2)
+                {
+                    moveSpeed -= 0.01f;
+                }
+            }
+            // Turn left
+            else if (velocity.x < 0)
+            {
+                rb.AddForceAtPosition(leftThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
+
+                if (moveSpeed > baseMoveSpeed / 2)
+                {
+                    moveSpeed -= 0.01f;
+                }
+            }
+            else
+            {
+                if (moveSpeed < maxMoveSpeed)
+                {
+                    moveSpeed += 0.01f;
+                }
+
+                myRotation = transform.rotation.z * 100f;
+
+                if (!Mathf.Approximately(myRotation, 0f))
+                {
+                    //Debug.Log("Turn back to default turn");
+                    //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, defaultRotation * tiltSpeed) * Time.fixedDeltaTime);
+                }
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        //if (velocity.x != 0f)
+        //{
+        //    myRotation = transform.rotation.z * 100f;
+
+        //    // Turning left
+        //    if (targetVelocity.x < 0)
+        //    {
+        //        if (Mathf.Abs(myRotation) < maxRollValue)
+        //        {
+        //            transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * Time.deltaTime);
+        //        }
+        //    }
+        //    // Turning Right
+        //    else if (targetVelocity.x > 0)
+        //    {
+        //        if (Mathf.Abs(myRotation) < maxRollValue)
+        //        {
+        //            transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * Time.deltaTime);
+        //        }
+        //    }
+
+        //    Debug.Log("Turning");
+
+        //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
+        //}
+    }
+
+    public float MoveSpeed
+    {
+        get { return moveSpeed; }
+
+        set { moveSpeed = value; }
+    }
+
+    public void ResetMoveSpeed()
+    {
+        moveSpeed = baseMoveSpeed;
     }
 
     private void SetBuildMode(bool isBuildMode)
     {
-        if (isBuildMode)
-        {
-            movement.enabled = false;
-            bobbing.enabled = false;
-            cameraOrbit.BuildMode = true;
-            cameraMovement.BuildMode = true;
+        buildMode = isBuildMode;
 
-            foreach (AttachmentPoint point in attachmentPoints)
-            {
-                point.gameObject.SetActive(true);
-            }
-        }
-        else
-        {
-            attachmentPoints = GetComponentsInChildren<AttachmentPoint>();
-
-            combat.updateWeapons();
-
-            UpdateSails();
-            movement.enabled = true;
-            cameraOrbit.BuildMode = false;
-            cameraMovement.BuildMode = false;
-            bobbing.enabled = true;
-
-            foreach (AttachmentPoint point in attachmentPoints)
-            {
-                point.gameObject.SetActive(false);
-            }
-        }
+        rb.isKinematic = buildMode;
     }
 
-    private void UpdateSails()
+    private void OnDestroy()
     {
-        sails = GetComponentsInChildren<AttachmentSail>();
-
-        movement.ResetMoveSpeed();
-
-        if (sails.Length > 5)
-        {
-            movement.MoveSpeed = 5;
-
-            movement.MoveSpeed += (sails.Length - 5) / 2;
-        }
-        else
-        {
-            movement.MoveSpeed += sails.Length;
-        }
-    }
-
-    public int Gold
-    {
-        get { return gold; }
-    }
-
-
-    public void DeductGold(int _amount)
-    {
-        gold -= _amount;
-    }
-
-    public void GiveGold(int _amount)
-    {
-        gold += _amount;
-    }
-
-
-    void OnDestroy()
-    {
-        // un-Subscribe to game state
+        // Unsubscribe to game state
         GameState.buildModeChanged -= SetBuildMode;
     }
 }

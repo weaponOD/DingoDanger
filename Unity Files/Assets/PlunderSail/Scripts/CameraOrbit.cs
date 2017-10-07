@@ -16,6 +16,8 @@ public class CameraOrbit : MonoBehaviour
 
     private Transform player;
 
+    private float startX;
+
     private Vector3 localRotation;
 
     private float cameraDistance = 10f;
@@ -43,14 +45,24 @@ public class CameraOrbit : MonoBehaviour
     private float orbitDampening = 10f;
 
     [SerializeField]
+    [Tooltip("How long it takes for the camera to reach it's destination")]
+    private float BuildorbitDampening = 10f;
+
+    [SerializeField]
     [Tooltip("How long it takes for the camera to reach it's zoom level")]
     private float zoomDampening = 12f;
 
     [SerializeField]
+    [Tooltip("Highest angle the camera can go from the horizon")]
     float MaxClamp;
 
     [SerializeField]
+    [Tooltip("Lowest angle the camera can go to the horizon")]
     float minclamp;
+
+    [SerializeField]
+    [Tooltip("angle the camera can rotate around the player while sailing")]
+    float xAxisClamp;
 
 
     [SerializeField]
@@ -68,11 +80,16 @@ public class CameraOrbit : MonoBehaviour
         cameraT = this.transform;
         pivotT = this.transform.parent;
 
+        startX = pivotT.rotation.eulerAngles.x;
+
         localRotation = new Vector3(pivotT.rotation.eulerAngles.y, pivotT.rotation.eulerAngles.x, 0f);
 
         cameraDistance = cameraT.localPosition.z * -1f;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        // Subscribe to game state
+        GameState.buildModeChanged += SetBuildMode;
     }
 
     private void Update()
@@ -122,12 +139,10 @@ public class CameraOrbit : MonoBehaviour
         if(buildMode)
         {
             Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
-            pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
+            pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * BuildorbitDampening);
         }
         else
         {
-            // Align to player rotation unless that rotate.
-
             Vector2 stickForce = new Vector2(Input.GetAxis("Mouse_X"), Input.GetAxis("Mouse_Y"));
 
             // If player uses right stick break free from alignment
@@ -135,30 +150,22 @@ public class CameraOrbit : MonoBehaviour
             {
                 snapIsDelayed = false;
 
-                Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
+                localRotation.x = Mathf.Clamp(localRotation.x, player.transform.rotation.eulerAngles.y - xAxisClamp, player.transform.rotation.eulerAngles.y + xAxisClamp);
+
+                Quaternion targetRotation = Quaternion.Euler(startX, localRotation.x, 0f);
                 pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
             }
             else
             {
+                // Align to player rotation unless that rotate.
 
-                transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
-                if (!snapIsDelayed)
+                Quaternion targetRotation = Quaternion.Euler(startX, player.transform.rotation.eulerAngles.y, 0f);
+
+                float difference = Mathf.Abs(pivotT.rotation.eulerAngles.y - targetRotation.eulerAngles.y);
+
+                if (difference > 1f)
                 {
-                    timeToSnapBack = Time.time + timeBeforeSnap;
-                    snapIsDelayed = true;
-                }
-
-                // Align with player rotation
-                if (Time.time > timeToSnapBack)
-                {
-                    //Quaternion targetRotation = new Quaternion(-36f, player.rotation.y, player.rotation.z, 1f);
-
-                    //Debug.Log(pivotT.rotation);
-
-
-                    //pivotT.rotation = Quaternion.Slerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
-
-                    //localRotation = transform.localRotation.eulerAngles;
+                    pivotT.rotation = Quaternion.Slerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
                 }
             }
         }
@@ -169,9 +176,14 @@ public class CameraOrbit : MonoBehaviour
         }
     }
 
-    public bool BuildMode
+    public void SetBuildMode(bool isBuildMode)
     {
-        get { return buildMode; }
-        set { buildMode = value; }
+        buildMode = isBuildMode;
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to game state
+        GameState.buildModeChanged -= SetBuildMode;
     }
 }

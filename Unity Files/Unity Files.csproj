@@ -76,12 +76,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
     <Reference Include="ProBuilderCore-Unity5">
       <HintPath>Assets\Third Party Assets\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
     </Reference>
@@ -111,9 +105,12 @@
     <Compile Include="Assets\PlunderSail\Scripts\EndlessWaterSquare.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\GameManager.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\MapManager.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Ocean.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\Player.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\PlayerController.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Projectile.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\ShipBuilder.cs" />
@@ -122,6 +119,7 @@
     <Compile Include="Assets\PlunderSail\Scripts\UIManager.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WaterController.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WaterSquare.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Third Party Assets\OBJExport\OBJExporter.cs" />
     <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
     <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />

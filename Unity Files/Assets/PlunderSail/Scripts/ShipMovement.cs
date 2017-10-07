@@ -29,8 +29,6 @@ public class ShipMovement : MonoBehaviour
 
     private Vector3 defaultOrbPos;
 
-    private Transform mesh;
-
     private Transform wheel;
 
     private GameObject steeringOrb;
@@ -39,10 +37,10 @@ public class ShipMovement : MonoBehaviour
 
     [SerializeField]
     private float wheelTurnSpeed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        mesh = transform.GetChild(0);
 
         wheel = transform.GetChild(0).GetChild(3);
 

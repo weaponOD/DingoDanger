@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     private Button[] buttons;
 
     [SerializeField]
-    private Image Panel;
+    private GameObject Panel;
 
     private int selectedIndex = 0;
 
@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     private ShipBuilder builder;
 
-    private PlayerController player;
+    private Player player;
 
     private bool DpadCanPress = false;
 
@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
 
         // Subscribe to game state

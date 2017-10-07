@@ -30,10 +30,17 @@ public class ComponentManager : MonoBehaviour
         return sails;
     }
 
+    // returns total bonus from all sails.
+    public int getSpeedBonus()
+    {
+        return sails.Length;
+    }
+
     private void UpdateParts(bool isBuildMode)
     {
-        if(!isBuildMode)
+        if (!isBuildMode)
         {
+            UpdateWeapons();
             UpdateSails();
         }
     }
@@ -45,6 +52,41 @@ public class ComponentManager : MonoBehaviour
 
     private void UpdateWeapons()
     {
-        
+        AttachmentWeapon[] weapons = GetComponentsInChildren<AttachmentWeapon>();
+
+        int weaponsRightCount = 0;
+        int weaponsLeftCount = 0;
+
+        foreach (AttachmentWeapon weapon in weapons)
+        {
+            if (weapon.FacingLeft)
+            {
+                weaponsLeftCount++;
+            }
+            else
+            {
+                weaponsRightCount++;
+            }
+        }
+
+        leftWeapons = new AttachmentWeapon[weaponsLeftCount];
+        rightWeapons = new AttachmentWeapon[weaponsRightCount];
+
+        weaponsRightCount = 0;
+        weaponsLeftCount = 0;
+
+        foreach (AttachmentWeapon weapon in weapons)
+        {
+            if (weapon.FacingLeft)
+            {
+                leftWeapons[weaponsLeftCount] = weapon;
+                weaponsLeftCount++;
+            }
+            else
+            {
+                rightWeapons[weaponsRightCount] = weapon;
+                weaponsRightCount++;
+            }
+        }
     }
 }

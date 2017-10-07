@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AttachmentType { CABIN, WEAPONSINGLE, SAIL, ARMOUR }
+public enum AttachmentType { SAIL, CABIN, WEAPONSINGLE, ARMOUR }
 
 public class ShipBuilder : MonoBehaviour
 {

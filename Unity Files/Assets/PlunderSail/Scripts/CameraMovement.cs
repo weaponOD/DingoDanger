@@ -13,6 +13,8 @@ public class CameraMovement : MonoBehaviour
 
     private Transform player;
 
+    private float gamePlayY;
+
     [Header("Movement Attributes")]
     [SerializeField]
     [Tooltip("How much the camera will move when the mouse moves.")]
@@ -55,6 +57,11 @@ public class CameraMovement : MonoBehaviour
         targetPosRight = transform.position;
         targetPosForward = transform.position;
         targetPosUp = transform.position;
+
+        gamePlayY = pivot.position.y;
+
+        // Subscribe to game state
+        GameState.buildModeChanged += SetBuildMode;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -126,9 +133,9 @@ public class CameraMovement : MonoBehaviour
         else
         {
             // move towards the player
-            Vector3 targetPos = player.position;
+            Vector3 targetPos = new Vector3(player.position.x, gamePlayY, player.position.z);
 
-            pivot.position = targetPos + player.forward * 2f;
+            pivot.position = targetPos;
 
             targetPosRight = transform.position;
             targetPosForward = transform.position;
@@ -155,5 +162,11 @@ public class CameraMovement : MonoBehaviour
             snapIsDelayed = true;
             timeToSnapBack = Time.time;
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to game state
+        GameState.buildModeChanged -= SetBuildMode;
     }
 }

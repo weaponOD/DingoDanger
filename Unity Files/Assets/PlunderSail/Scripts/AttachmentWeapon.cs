@@ -79,17 +79,17 @@ public class AttachmentWeapon : AttachmentBase
 
     private IEnumerator Fire()
     {
-        GameObject projectile1 = (GameObject)Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+        Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
-        GameObject projectile2 = (GameObject)Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
+        Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
-        GameObject projectile3 = (GameObject)Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
+        Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
         PlayRandomSound();
     }
 

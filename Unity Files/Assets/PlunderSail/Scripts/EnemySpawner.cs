@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         if (activeEnemies.Count < maxEnemies)
         {
             SpawnEnemy();
-            Debug.Log("Spaned Island");
+            //Debug.Log("Spaned Island");
         }
 
         yield return new WaitForSeconds(0.5f);

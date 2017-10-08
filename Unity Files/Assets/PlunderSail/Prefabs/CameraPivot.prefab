@@ -68,15 +68,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017606345761714}
-  m_LocalRotation: {x: 0.19319402, y: -0, z: -0, w: 0.9811606}
-  m_LocalPosition: {x: 0, y: 4.51, z: 1.85}
+  m_LocalRotation: {x: 0.11586031, y: -0, z: -0, w: 0.9932655}
+  m_LocalPosition: {x: 0, y: 5.87, z: 1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4325774404930400}
   - {fileID: 4514273383931526}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 22.278002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.307, y: 0, z: 0}
 --- !u!4 &4325774404930400
 Transform:
   m_ObjectHideFlags: 1
@@ -84,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917157616033880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalPosition: {x: 0, y: 0, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4022755279816646}
@@ -166,14 +166,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 2
   zoomSensitivity: 0.1
-  minZoomDistance: 15
-  maxZoomDistance: 30
+  minZoomDistance: 25
+  maxZoomDistance: 40
   orbitDampening: 2
   BuildorbitDampening: 10
   zoomDampening: 10
   MaxClamp: 80
   minclamp: 5
-  xAxisClamp: 40
+  xAxisClamp: 90
   buildMode: 0
 --- !u!114 &114732948850011246
 MonoBehaviour:

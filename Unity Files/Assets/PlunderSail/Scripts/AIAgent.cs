@@ -27,7 +27,7 @@ public class AIAgent : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        transform.localScale = Vector3.zero;
+        //transform.localScale = Vector3.zero;
 
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MapManager>();
     }

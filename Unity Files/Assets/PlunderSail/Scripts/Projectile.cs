@@ -20,12 +20,23 @@ public class Projectile : MonoBehaviour
         rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
     }
 
+    private void OnCollisionEnter(Collision _collision)
+    {
+        Debug.Log("Collide!");
+
+        if(_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
+        {
+           // _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100);
+        }
+
+        //GameObject.Destroy(gameObject);
+    }
 
     private void Update()
     {
         if(transform.position.y < -5)
         {
-            GameManager.Destroy(gameObject);
+            GameObject.Destroy(gameObject);
         }
     }
 }

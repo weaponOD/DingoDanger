@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 54542351262661960}
   - component: {fileID: 114299674515597946}
   - component: {fileID: 96470093671313084}
+  - component: {fileID: 135307556624297948}
   m_Layer: 0
   m_Name: CannonBall_001_Ammunition_001_Single
   m_TagString: Untagged
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804301577746708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.471, y: 0, z: -0.4}
+  m_LocalPosition: {x: -5.364, y: 0, z: -0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4421717932525286}
@@ -223,3 +224,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30263a5f792945347b64c585d70c8fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135307556624297948
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804301577746708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Center: {x: 0, y: 0, z: 0}

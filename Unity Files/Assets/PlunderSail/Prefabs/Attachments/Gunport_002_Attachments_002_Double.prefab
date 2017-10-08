@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4898416614632546}
   - component: {fileID: 33250389642435084}
   - component: {fileID: 23915168101917636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gunport_001_Attachments_001_Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4836921267359474}
   - component: {fileID: 114589173269390394}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gunport_002_Attachments_002_Double
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4771281605322332}
   - component: {fileID: 33957129505234658}
   - component: {fileID: 23759068124657372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gunport_001_Attachments_001_Side (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4743213fdfa826c4581f9607d7b1af9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canPlace: 1
   facingLeft: 0
   doubleFacing: 1
+  minFireTime: 0
+  maxFireTime: 0
+  shootSound: []
+  needToRotate: 0
+  needToMirror: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}

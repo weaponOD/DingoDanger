@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4318981743307810}
   - component: {fileID: 23566599836507404}
   - component: {fileID: 33039510972968482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4139274565304052}
   - component: {fileID: 114611292414059080}
   - component: {fileID: 65558608746633174}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forward
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4710800498485120}
   - component: {fileID: 114010771497063408}
   - component: {fileID: 65902175785054252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4911875377803566}
   - component: {fileID: 33732688806621100}
   - component: {fileID: 23026762799252372}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4735077231714584}
   - component: {fileID: 114997247755695540}
   - component: {fileID: 65922513670302992}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4858020458958156}
   - component: {fileID: 23298703720527528}
   - component: {fileID: 33395563326540850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4041804785263468}
   - component: {fileID: 23505599164779116}
   - component: {fileID: 33169495889694846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4691059686080740}
   - component: {fileID: 114279932517814594}
   - component: {fileID: 65609732500336848}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4933272613221770}
   - component: {fileID: 114064139366242186}
   - component: {fileID: 65564193355196672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4011339914123182}
   - component: {fileID: 23064739465248678}
   - component: {fileID: 33925859602715618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 4183397028285774}
   - component: {fileID: 23388156584807088}
   - component: {fileID: 33640007350177948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4404509292096624}
   - component: {fileID: 114991179097278230}
   - component: {fileID: 65120260421757500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cabin_001_Attachments_001_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,6 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canPlace: 1
 --- !u!114 &114997247755695540
 MonoBehaviour:
   m_ObjectHideFlags: 1

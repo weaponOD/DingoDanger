@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4799980383886472}
   - component: {fileID: 114451221653767904}
   - component: {fileID: 65881251600959112}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Forward
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4327330902825884}
   - component: {fileID: 23865647392749282}
   - component: {fileID: 33745068265321862}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4695008883095040}
   - component: {fileID: 114041079602130090}
   - component: {fileID: 65354139336191858}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4289696705443044}
   - component: {fileID: 23006102555000660}
   - component: {fileID: 33424492366420338}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4166353514932742}
   - component: {fileID: 114396275195017276}
   - component: {fileID: 65555757380659590}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sail_001_Attachments_001_Single
   m_TagString: Sail
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4403353523652814}
   - component: {fileID: 114544551649908144}
   - component: {fileID: 65487327047727456}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Back
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4103096652578530}
   - component: {fileID: 114232902089026302}
   - component: {fileID: 65513491177115776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right
   m_TagString: BuildPoint
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4685984742074340}
   - component: {fileID: 33379918853890290}
   - component: {fileID: 23763818299557042}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4122423389224958}
   - component: {fileID: 23967992458643932}
   - component: {fileID: 33729094818776318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 4344528088116144}
   - component: {fileID: 23445524717313204}
   - component: {fileID: 33678239048346616}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,6 +612,7 @@ MonoBehaviour:
   canPlace: 1
   greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
   redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
+  currentlyGreen: 1
 --- !u!114 &114451221653767904
 MonoBehaviour:
   m_ObjectHideFlags: 1

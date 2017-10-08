@@ -12,6 +12,12 @@ public class AttachmentBase : MonoBehaviour
 
     protected bool isPreview = false;
 
+    private void Awake()
+    {
+        maxHealth = 100;
+        currentHealth = maxHealth;
+    }
+
     public void DisableAttachments()
     {
         AttachmentPoint[] points = GetComponentsInChildren<AttachmentPoint>();
@@ -28,6 +34,18 @@ public class AttachmentBase : MonoBehaviour
     public void Mirror()
     {
         transform.Rotate(Vector3.up, 180, Space.Self);
+    }
+
+    public void TakeDamage(float _damage)
+    {
+        currentHealth -= _damage;
+
+        Debug.Log("Took Damage");
+
+        if(currentHealth <= 0)
+        {
+            GameObject.Destroy(gameObject);
+        }
     }
 
     public bool CanPlace

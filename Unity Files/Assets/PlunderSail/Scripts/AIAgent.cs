@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIAgent : MonoBehaviour
+public class AIAgent : LivingEntity
 {
     // Variables
     private PlayerController player;
@@ -34,7 +34,7 @@ public class AIAgent : MonoBehaviour
 	
 	void Update ()
     {
-        transform.LookAt(player.transform);
+        //transform.LookAt(player.transform);
 
         if (transform.localScale.x < 1f)
         {
@@ -46,7 +46,7 @@ public class AIAgent : MonoBehaviour
     {
         if(!GameState.BuildMode)
         {
-            MoveToAttackRange();
+            //MoveToAttackRange();
         }
     }
 

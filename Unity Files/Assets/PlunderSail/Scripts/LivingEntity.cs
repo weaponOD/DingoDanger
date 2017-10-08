@@ -10,7 +10,16 @@ public class LivingEntity : MonoBehaviour, IDamageable
     [SerializeField]
     protected float starterHealth;
 
+    [SerializeField]
     protected float currentHealth;
+
+    [SerializeField]
+    protected float bountyDelay;
+
+    [SerializeField]
+    protected GameObject bounty;
+
+    protected Vector3 deathPos;
 
     protected WeaponController weaponController;
 
@@ -43,6 +52,26 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             OnDeath();
         }
-        GameObject.Destroy(gameObject);
+
+        if(!gameObject.CompareTag("Player"))
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+
+            GetComponentInChildren<buoyancy>().enabled = false;
+            rb.constraints = RigidbodyConstraints.None;
+            rb.mass = 2f;
+            rb.useGravity = true;
+
+            deathPos = transform.position;
+            deathPos.y = -2f;
+            StartCoroutine(SpawnBounty());
+        }
+    }
+
+    IEnumerator SpawnBounty()
+    {
+        yield return new WaitForSeconds(bountyDelay);
+
+        Instantiate(bounty, deathPos, Quaternion.identity);
     }
 }

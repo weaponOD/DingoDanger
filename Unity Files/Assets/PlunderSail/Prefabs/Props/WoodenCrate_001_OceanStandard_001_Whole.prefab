@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4730876643006600}
   - component: {fileID: 33131138982573426}
   - component: {fileID: 23615397456766452}
-  - component: {fileID: 95175919898364144}
   m_Layer: 0
   m_Name: WoodenCrate_001_OceanStandard_001_Whole
   m_TagString: Untagged
@@ -37,6 +36,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4272247628521006}
+  - component: {fileID: 114110112501833880}
+  - component: {fileID: 135221224474333144}
+  - component: {fileID: 114670646091669438}
   m_Layer: 0
   m_Name: WoodenCrate_001_OceanStandard_001_Whole
   m_TagString: Untagged
@@ -51,8 +53,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651737292880838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.612, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4730876643006600}
   m_Father: {fileID: 0}
@@ -84,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 88ff10de3d6fc24459d38a575031d3b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,20 +112,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040665800063048}
   m_Mesh: {fileID: 4300000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
---- !u!95 &95175919898364144
-Animator:
-  serializedVersion: 3
+--- !u!114 &114110112501833880
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1040665800063048}
+  m_GameObject: {fileID: 1651737292880838}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114670646091669438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651737292880838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginalwaveHeight: 0.35
+--- !u!135 &135221224474333144
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651737292880838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0.5, z: 0}

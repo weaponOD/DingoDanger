@@ -26,10 +26,15 @@ public class Projectile : MonoBehaviour
 
         if(_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-           _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100);
+           _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
         }
 
-        //GameObject.Destroy(gameObject);
+        if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
+        {
+            _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(25);
+        }
+
+        GameObject.Destroy(gameObject);
     }
 
     private void Update()

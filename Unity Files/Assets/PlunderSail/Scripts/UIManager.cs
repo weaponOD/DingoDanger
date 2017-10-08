@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     private float timeBetweenPresses = 1f;
     private float timeTillCanPress;
 
+    [SerializeField]
+    private Text pierPopup;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -195,6 +198,11 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    public void ShowPierPopUp(bool _show)
+    {
+        pierPopup.enabled = _show;
     }
 
     void OnDestroy()

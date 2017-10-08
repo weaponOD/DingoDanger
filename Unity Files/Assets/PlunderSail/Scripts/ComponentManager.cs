@@ -89,4 +89,10 @@ public class ComponentManager : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe to game state
+        GameState.buildModeChanged -= UpdateParts;
+    }
 }

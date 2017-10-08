@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     private float maxMoveSpeed;
 
+    private Transform pier;
+
     [SerializeField]
     private float baseMoveSpeed;
 
@@ -46,9 +48,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float turnSpeed;
 
+    private GameManager GM;
+
+    private bool movingToPier = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         wheel = transform.GetChild(0).GetChild(3);
 
@@ -66,25 +74,44 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // set targetVelocity to Value of left Thumb stick
-        targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
-
-        // Rotate the steering wheel right
-        if (targetVelocity.x > 0)
+        if(!movingToPier)
         {
-            wheel.Rotate(-wheelTurnSpeed, 0f, 0f);
-        }
-        // Rotate the steering wheel left
-        else if (targetVelocity.x < 0)
-        {
-            wheel.Rotate(wheelTurnSpeed, 0f, 0f);
-        }
+            // set targetVelocity to Value of left Thumb stick
+            targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
 
-        velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
+            // Rotate the steering wheel right
+            if (targetVelocity.x > 0)
+            {
+                wheel.Rotate(-wheelTurnSpeed, 0f, 0f);
+            }
+            // Rotate the steering wheel left
+            else if (targetVelocity.x < 0)
+            {
+                wheel.Rotate(wheelTurnSpeed, 0f, 0f);
+            }
+
+            velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
+        }
     }
 
     void FixedUpdate()
     {
+        if(movingToPier)
+        {
+            if(Vector3.Distance(transform.position, pier.position) > 2)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, pier.position, moveSpeed * 3 * Time.deltaTime);
+
+                transform.LookAt(pier.position);
+            }
+            else
+            {
+                GM.AtDock();
+            }
+
+            return;
+        }
+
         if(!buildMode)
         {
             rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
@@ -154,6 +181,13 @@ public class PlayerController : MonoBehaviour
 
         //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
         //}
+    }
+
+    public void moveToPier(bool _moveThere, Transform _dockingPos)
+    {
+        movingToPier = _moveThere;
+
+        pier = _dockingPos;
     }
 
     public float MoveSpeed

@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{46C02EB2-4742-03CF-E2F3-02A929C53F03}</ProjectGuid>
+    <ProjectGuid>{0D9D2596-A9CD-1D08-B1AC-340D403E861C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -93,48 +93,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\Pier.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentSail.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentWeapon.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Bounty.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\BuildModeCam.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\buoyancy.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\CameraOrbit.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ComponentManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\EndlessWaterSquare.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\GameManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\MapManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Ocean.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Player.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\PlayModeCam.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Projectile.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipBuilder.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipCombat.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipMovement.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\UIManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WaterController.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WaterSquare.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WeaponController.cs" />
-    <Compile Include="Assets\Third Party Assets\OBJExport\OBJExporter.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\HandHeldCam.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\PivotBasedCameraRig.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\ProtectCameraFromWallClip.cs" />
+    <Compile Include="Assets\Standard Assets\Cameras\Scripts\TargetFieldOfView.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\AxisTouchButton.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\ButtonHandler.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\CrossPlatformInputManager.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\InputAxisScrollbar.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\MobileControlRig.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\MobileInput.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TiltInput.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
+    <Compile Include="Assets\Standard Assets\CrossPlatformInput\Scripts\VirtualInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PlunderSail\Music\DeleteMe.txt" />
@@ -144,6 +121,8 @@
     <None Include="Assets\PlunderSail\Shaders\OceanWaves.shader" />
     <None Include="Assets\PlunderSail\Shaders\SailCloth.shader" />
     <None Include="Assets\PlunderSail\Textures\DeleteMeAfter.txt" />
+    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\About\ThirdPartyLicenses.txt" />

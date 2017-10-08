@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{46C02EB2-4742-03CF-E2F3-02A929C53F03}</ProjectGuid>
+    <ProjectGuid>{26600B0A-64E2-5307-1B54-5790F681AAE8}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>EditorPlugins:7</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.1.0f3</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -55,11 +55,23 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
@@ -70,11 +82,41 @@
     <Reference Include="UnityEngine.Timeline">
       <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="ProBuilderCore-Unity5">
       <HintPath>Assets\Third Party Assets\ProCore\ProBuilder\Classes\ProBuilderCore-Unity5.dll</HintPath>
@@ -91,50 +133,25 @@
     <Reference Include="Poly2Tri">
       <HintPath>Assets\Third Party Assets\ProCore\ProBuilder\Classes\ClassesLib\Poly2Tri.dll</HintPath>
     </Reference>
+    <Reference Include="ProBuilderEditor-Unity5">
+      <HintPath>Assets\Third Party Assets\ProCore\ProBuilder\Editor\ProBuilderEditor-Unity5.dll</HintPath>
+    </Reference>
+    <Reference Include="ShaderForge">
+      <HintPath>Assets\Third Party Assets\ShaderForge\Editor\ShaderForge.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\Pier.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentSail.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\AttachmentWeapon.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Bounty.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\BuildModeCam.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\buoyancy.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\CameraMovement.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\CameraOrbit.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ComponentManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\EndlessWaterSquare.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\EnemySpawner.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\GameManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\MapManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Ocean.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Player.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\PlayModeCam.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Projectile.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipBuilder.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipCombat.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\ShipMovement.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\UIManager.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WaterController.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WaterSquare.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\WeaponController.cs" />
-    <Compile Include="Assets\Third Party Assets\OBJExport\OBJExporter.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\CameraControls.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\Scripts\IcoBumpin.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Misc\HueCube.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Procedural Mesh\ExtrudeRandomEdges.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Runtime Editing\RuntimeEdit.cs" />
-    <Compile Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Vertex Colors\HighlightNearestFace.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />
-    <Compile Include="Assets\Third Party Assets\ShaderForge\Example Assets\Scripts\SoftNormalsToVertexColor.cs" />
+    <ProjectReference Include="Unity Files.csproj">
+      <Project>{46C02EB2-4742-03CF-E2F3-02A929C53F03}</Project>
+      <Name>Unity Files</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity Files.Plugins.csproj">
+      <Project>{0D9D2596-A9CD-1D08-B1AC-340D403E861C}</Project>
+      <Name>Unity Files.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PlunderSail\Music\DeleteMe.txt" />
@@ -144,6 +161,8 @@
     <None Include="Assets\PlunderSail\Shaders\OceanWaves.shader" />
     <None Include="Assets\PlunderSail\Shaders\SailCloth.shader" />
     <None Include="Assets\PlunderSail\Textures\DeleteMeAfter.txt" />
+    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
+    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\API Examples\Icosphere FFT\README.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\About\Font\SIL Open Font License.txt" />
     <None Include="Assets\Third Party Assets\ProCore\ProBuilder\About\ThirdPartyLicenses.txt" />

@@ -64,7 +64,6 @@ public class CameraOrbit : MonoBehaviour
     [Tooltip("angle the camera can rotate around the player while sailing")]
     float xAxisClamp;
 
-
     [SerializeField]
     private bool buildMode = false;
 

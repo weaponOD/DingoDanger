@@ -46,7 +46,7 @@ public class ShipBuilder : MonoBehaviour
         baseShip = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetChild(0).transform;
         deactivatedPoints = new List<AttachmentPoint>();
 
-        UI = GameObject.Find("Canvas").GetComponent<UIManager>();
+        UI = GetComponent<UIManager>();
 
         previewPiece = null;
     }
@@ -59,110 +59,102 @@ public class ShipBuilder : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Y_Button"))
+        if (!GameState.BuildMode)
         {
-            GameState.BuildMode = !GameState.BuildMode;
-
-            if (!GameState.BuildMode)
+            if (previewPiece != null)
             {
-                if (previewPiece != null)
-                {
-                    GameObject.Destroy(previewPiece);
-                    previewPiece = null;
-                }
+                GameObject.Destroy(previewPiece);
+                previewPiece = null;
             }
         }
 
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-        if (hitPoint != Vector3.zero)
+        if (Camera.main)
         {
-            Debug.DrawLine(ray.origin, hitPoint, Color.red);
-        }
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-
-        // if we have a preview piece active
-        if (previewPiece != null)
-        {
-            if (Physics.Raycast(ray, out hitInfo))
+            // if we have a preview piece active
+            if (previewPiece != null)
             {
-                hitPoint = hitInfo.point;
-
-                // if the raycast hit a buildPoint
-                if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                if (Physics.Raycast(ray, out hitInfo))
                 {
-                    lastAttachmentPoint = hitInfo.collider.transform;
+                    hitPoint = hitInfo.point;
 
-                    buildInfo = ApplyRules(lastAttachmentPoint);
-
-                    if (buildInfo.position != Vector3.zero)
+                    // if the raycast hit a buildPoint
+                    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
                     {
-                        previewPiece.transform.position = buildInfo.position;
-                        previewPiece.transform.localRotation = buildInfo.rotation;
+                        lastAttachmentPoint = hitInfo.collider.transform;
 
-                        if (currentAttachment == AttachmentType.WEAPONSINGLE)
+                        buildInfo = ApplyRules(lastAttachmentPoint);
+
+                        if (buildInfo.position != Vector3.zero)
                         {
+                            previewPiece.transform.position = buildInfo.position;
+                            previewPiece.transform.localRotation = buildInfo.rotation;
 
-                            if (rotateWeapon)
+                            if (currentAttachment == AttachmentType.WEAPONSINGLE)
                             {
-                                previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
-                            }
 
-                            previewPiece.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
+                                if (rotateWeapon)
+                                {
+                                    previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
+                                }
+
+                                previewPiece.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
+                            }
                         }
+                    }
+                }
+
+                // accept and place attachment
+                if (Input.GetButtonDown("A_Button"))
+                {
+                    if (lastAttachmentPoint != null && previewPiece.GetComponent<AttachmentBase>().CanPlace)
+                    {
+                        AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
+
+                        GameObject.Destroy(previewPiece);
+                        previewPiece = null;
+
+                        //lastAttachmentPoint.gameObject.SetActive(false);
+
+                        lastAttachmentPoint = null;
+                    }
+                }
+
+                // Mirror attachment
+                if (Input.GetButtonDown("X_Button"))
+                {
+                    if (currentAttachment == AttachmentType.WEAPONSINGLE)
+                    {
+                        mirrorWeapon = !mirrorWeapon;
                     }
                 }
             }
 
-            // accept and place attachment
-            if (Input.GetButtonDown("A_Button"))
+            // Cancel Build/ delete piece
+            if (Input.GetButtonDown("B_Button"))
             {
-                if (lastAttachmentPoint != null && previewPiece.GetComponent<AttachmentBase>().CanPlace)
+                if (previewPiece != null)
                 {
-                    AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
-
+                    Debug.Log("Cancel Build");
                     GameObject.Destroy(previewPiece);
                     previewPiece = null;
-
-                    //lastAttachmentPoint.gameObject.SetActive(false);
-
-                    lastAttachmentPoint = null;
                 }
-            }
-
-            // Mirror attachment
-            if (Input.GetButtonDown("X_Button"))
-            {
-                if (currentAttachment == AttachmentType.WEAPONSINGLE)
+                else
                 {
-                    mirrorWeapon = !mirrorWeapon;
+                    //if (Physics.Raycast(ray, out hitInfo))
+                    //{
+                    //    hitPoint = hitInfo.point;
+
+                    //    // if the raycast hit a buildPoint
+                    //    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
+                    //    {
+                    //        RefreshAttachmentPoints();
+
+                    //        GameObject.Destroy(hitInfo.collider.transform.parent.parent.gameObject);
+                    //    }
+                    //}
                 }
-            }
-        }
-
-        // Cancel Build/ delete piece
-        if (Input.GetButtonDown("B_Button"))
-        {
-            if (previewPiece != null)
-            {
-                Debug.Log("Cancel Build");
-                GameObject.Destroy(previewPiece);
-                previewPiece = null;
-            }
-            else
-            {
-                //if (Physics.Raycast(ray, out hitInfo))
-                //{
-                //    hitPoint = hitInfo.point;
-
-                //    // if the raycast hit a buildPoint
-                //    if (hitInfo.collider.transform.gameObject.tag == "BuildPoint")
-                //    {
-                //        RefreshAttachmentPoints();
-
-                //        GameObject.Destroy(hitInfo.collider.transform.parent.parent.gameObject);
-                //    }
-                //}
             }
         }
     }

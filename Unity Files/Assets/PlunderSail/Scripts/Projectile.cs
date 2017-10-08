@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
-    private float initialForce = 8;
+    private float initialForce = 10;
 
     private void Awake()
     {
@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
 
     private void Start()
     {
-        initialForce += Random.Range(4, 8);
+        initialForce += Random.Range(6, 8);
 
         rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
     }
@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
         if(_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-           // _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100);
+           _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100);
         }
 
         //GameObject.Destroy(gameObject);

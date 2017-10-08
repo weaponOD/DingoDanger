@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AttachmentBase : MonoBehaviour
 {
+    [SerializeField]
     protected float currentHealth;
+
     protected float maxHealth;
 
     [SerializeField]

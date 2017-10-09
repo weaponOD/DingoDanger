@@ -1864,6 +1864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114063205300107878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1875,6 +1876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114154235614513598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1886,6 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114429902126422102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1897,6 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114520214130933410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1908,6 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114524189387974498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1934,18 +1939,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114639684562585324
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947813016337762}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OriginalwaveHeight: 0.692
+  OriginalwaveHeight: 0.275
 --- !u!114 &114697060268137970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1957,6 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114701674764312346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1968,8 +1975,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 7
+  baseMoveSpeed: 6
   wheelTurnSpeed: 5
+  TurnRatePenalty: 0.3
   maxRollValue: 6
   myRotation: 0
   tiltSpeed: 10
@@ -1986,6 +1994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0
 --- !u!114 &114787338167414374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2024,3 +2033,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fef9d66760ae6344b48a95e56d75af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  builtOn: 0

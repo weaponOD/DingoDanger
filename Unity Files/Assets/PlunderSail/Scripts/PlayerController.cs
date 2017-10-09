@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float wheelTurnSpeed;
 
+    [SerializeField]
+    private float TurnRatePenalty;
+
     private bool buildMode = false;
 
     // Max angle the ship can tilt
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = maxMoveSpeed;
 
-            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * 0.5f);
+            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
         }
         else
         {
@@ -222,7 +225,7 @@ public class PlayerController : MonoBehaviour
         maxMoveSpeed = baseMoveSpeed + bonusMoveSpeed;
         moveSpeed = maxMoveSpeed;
 
-        turnSpeed = baseTurnSpeed - (bonusMoveSpeed * 0.5f);
+        turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
     }
 
     public void moveToPier(bool _moveThere, Transform _dockingPos)

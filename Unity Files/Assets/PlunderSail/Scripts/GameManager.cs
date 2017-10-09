@@ -45,7 +45,10 @@ public class GameManager : MonoBehaviour
 
     public void AtDock()
     {
-        GameState.BuildMode = true;
+        if(!GameState.BuildMode)
+        {
+            GameState.BuildMode = true;
+        }
     }
 
     public void setPier(Transform _dockPos)
@@ -67,7 +70,10 @@ public static class GameState
 
         set
         {
-            buildMode = value;
+            if(buildMode != value)
+            {
+                buildMode = value;
+            }
 
             if(buildModeChanged != null)
             {

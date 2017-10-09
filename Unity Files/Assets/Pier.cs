@@ -20,7 +20,6 @@ public class Pier : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Has entered");
             UI.ShowPierPopUp(true);
             gm.setPier(dockingPos);
         }
@@ -30,7 +29,6 @@ public class Pier : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player Has left");
             UI.ShowPierPopUp(false);
             gm.setPier(null);
         }

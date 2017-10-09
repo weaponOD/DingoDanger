@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class AttachmentPoint : MonoBehaviour
 {
-    Transform partOne = null;
-    Transform partTwo = null;
-
-    private bool active = true;
+    [SerializeField]
+    private bool builtOn = false;
 
     private void Awake()
     {
@@ -15,62 +13,41 @@ public class AttachmentPoint : MonoBehaviour
         GameState.buildModeChanged += TurnOn;
     }
 
-    public Transform PartOne
-    {
-        get { return partOne; }
-        set { partOne = value; }
-    }
-
-    public Transform PartTwo
-    {
-        get { return partTwo; }
-        set
-        {
-            partTwo = value;
-
-            if (partTwo == null)
-            {
-                //gameObject.SetActive(true);
-            }
-            else
-            {
-                //gameObject.SetActive(false);
-            }
-        }
-    }
-
     private void Update()
     {
         if (GameState.BuildMode)
         {
-            if(active)
+            if (!builtOn)
             {
                 if (Physics.Raycast(transform.position, transform.forward, 0.6f))
                 {
-                    if (active)
-                    {
-                        TurnOn(false);
-                    }
+                    BuiltOn();
                 }
 
                 if (transform.name.Contains("Point"))
                 {
                     if (Physics.Raycast(transform.position, transform.up, 0.6f))
                     {
-                        if (active)
-                        {
-                            TurnOn(false);
-                        }
+                        BuiltOn();
                     }
                 }
             }
         }
     }
 
+    private void BuiltOn()
+    {
+        builtOn = true;
+        gameObject.SetActive(false);
+    }
+
     public void TurnOn(bool isBuild)
     {
-        active = isBuild;
-        gameObject.GetComponentInChildren<MeshRenderer>().enabled = isBuild;
+        if (!builtOn)
+        {
+            gameObject.GetComponentInChildren<MeshRenderer>().enabled = isBuild;
+            gameObject.GetComponent<BoxCollider>().enabled = isBuild;
+        }
     }
 
     private void OnDestroy()

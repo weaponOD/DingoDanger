@@ -89,12 +89,15 @@ public class BuildModeCam : MonoBehaviour
     private Vector3 targetPosForward;
     private Vector3 targetPosUp;
 
-    private void Start()
+    private void Awake()
     {
         anchor = transform.parent.GetChild(1);
 
         pivot = transform.parent;
+    }
 
+    private void Start()
+    {
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
 
         cameraDistance = transform.localPosition.z * -1f;
@@ -220,11 +223,15 @@ public class BuildModeCam : MonoBehaviour
 
     public void UpdatePos()
     {
-        if(anchor)
+        if(anchor != null)
         {
-            targetPosRight = anchor.position;
-            targetPosForward = anchor.position;
-            targetPosUp = anchor.position;
+            targetPosRight = pivot.position;
+            targetPosForward = pivot.position;
+            targetPosUp = pivot.position;
+        }
+        else
+        {
+            Debug.Log("anchor is null");
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE}
+public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE }
 
 public class ShipBuilder : MonoBehaviour
 {
@@ -104,13 +104,24 @@ public class ShipBuilder : MonoBehaviour
 
                             if (currentAttachment == AttachmentType.WEAPONSINGLE)
                             {
-
                                 if (rotateWeapon)
                                 {
                                     previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
                                 }
 
                                 previewPiece.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
+                            }
+
+                            if (currentAttachment == AttachmentType.ARMOUR)
+                            {
+                                if (rotateWeapon)
+                                {
+                                    previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
+                                }
+                                else if(mirrorWeapon)
+                                {
+                                    previewPiece.transform.Rotate(Vector3.up, -180, Space.Self);
+                                }
                             }
                         }
                     }
@@ -173,8 +184,6 @@ public class ShipBuilder : MonoBehaviour
     private Transform AddAttachment(Vector3 _buildPoint, Quaternion _buildRotation)
     {
         Transform block = Instantiate(attachmentPrefabs[(int)currentAttachment], _buildPoint, _buildRotation, baseShip).transform;
-
-        lastAttachmentPoint.GetComponent<AttachmentPoint>().PartTwo = block;
 
         UI.BuyAttachment();
 
@@ -292,6 +301,7 @@ public class ShipBuilder : MonoBehaviour
                             buildPoint = _lastAttachmentPoint.position;
 
                             buildRot = baseShip.transform.rotation;
+
                             // needToRotate = true;
                             rotateWeapon = true;
                         }
@@ -412,6 +422,39 @@ public class ShipBuilder : MonoBehaviour
                 }
             }
         }
+        else if (currentAttachment == AttachmentType.ARMOUR)
+        {
+            if (_lastAttachmentPoint.tag == "BuildPoint")
+            {
+                if (!name.Contains("Point"))
+                {
+                    if (name != "Top")
+                    {
+                        if (name == "Left" || name == "Right")
+                        {
+                            buildPoint = _lastAttachmentPoint.position;
+                            buildPoint.y -= 0.5f;
+                            canPlace = true;
+
+                            buildRot = baseShip.transform.rotation;
+
+                            if (name == "Left")
+                            {
+                                mirrorWeapon = true;
+                            }
+                        }
+                        else
+                        {
+                            buildPoint = _lastAttachmentPoint.position;
+                            buildPoint.y -= 0.5f;
+                            canPlace = true;
+                            rotateWeapon = true;
+                            buildRot = _lastAttachmentPoint.rotation;
+                        }
+                    }
+                }
+            }
+        }
 
         Transform build = transform;
 
@@ -447,9 +490,9 @@ public class ShipBuilder : MonoBehaviour
 
     private void RefreshAttachmentPoints()
     {
-        foreach(AttachmentPoint point in deactivatedPoints)
+        foreach (AttachmentPoint point in deactivatedPoints)
         {
-            if(point.gameObject != null)
+            if (point.gameObject != null)
             {
                 //point.TurnOn();
             }

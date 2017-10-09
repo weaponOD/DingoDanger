@@ -11,6 +11,8 @@ public class Player : LivingEntity
 
     PlayerController controller;
 
+    buoyancy buoyant;
+
     protected override void Start()
     {
         base.Start();
@@ -21,6 +23,8 @@ public class Player : LivingEntity
         controller = GetComponent<PlayerController>();
         weaponController = GetComponent<WeaponController>();
         components = GetComponent<ComponentManager>();
+
+        buoyant = GetComponentInChildren<buoyancy>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -45,7 +49,9 @@ public class Player : LivingEntity
     {
         buildMode = isBuildMode;
 
-        if(!buildMode)
+        buoyant.enabled = !buildMode;
+
+        if (!buildMode)
         {
             weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
             weaponController.RightWeapons = components.GetAttachedRightWeapons();

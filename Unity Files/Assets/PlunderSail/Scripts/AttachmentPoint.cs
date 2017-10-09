@@ -9,11 +9,10 @@ public class AttachmentPoint : MonoBehaviour
 
     private bool active = true;
 
-    private ShipBuilder builder;
-
     private void Awake()
     {
-        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
+        // Subscribe to game state
+        GameState.buildModeChanged += TurnOn;
     }
 
     public Transform PartOne
@@ -42,18 +41,16 @@ public class AttachmentPoint : MonoBehaviour
 
     private void Update()
     {
-        if (active)
+        if (GameState.BuildMode)
         {
-            if (GameState.BuildMode)
+            if(active)
             {
                 if (Physics.Raycast(transform.position, transform.forward, 0.6f))
                 {
                     if (active)
                     {
-                        TurnOff();
-                        active = false;
+                        TurnOn(false);
                     }
-                    builder.DeActivatePoint(this);
                 }
 
                 if (transform.name.Contains("Point"))
@@ -62,30 +59,23 @@ public class AttachmentPoint : MonoBehaviour
                     {
                         if (active)
                         {
-                            TurnOff();
-                            active = false;
+                            TurnOn(false);
                         }
-                        builder.DeActivatePoint(this);
                     }
                 }
             }
         }
     }
 
-
-    public void TurnOff()
+    public void TurnOn(bool isBuild)
     {
-        active = false;
-        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
-
-        Debug.Log("Turn off");
+        active = isBuild;
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = isBuild;
     }
 
-    public void TurnOn()
+    private void OnDestroy()
     {
-        active = true;
-        this.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
-
-        Debug.Log("Turn On");
+        // Unsubscribe to game state
+        GameState.buildModeChanged -= TurnOn;
     }
 }

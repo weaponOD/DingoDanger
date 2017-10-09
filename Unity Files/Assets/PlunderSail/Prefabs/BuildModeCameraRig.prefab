@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 20921987387527012}
   - component: {fileID: 124387452465324306}
   - component: {fileID: 92856646460851780}
-  - component: {fileID: 114807823616445210}
-  - component: {fileID: 114433483026351694}
+  - component: {fileID: 114427199546930694}
+  - component: {fileID: 114190224620395322}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -68,15 +68,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1700650476851146}
-  m_LocalRotation: {x: 0.21757692, y: 0.4383853, z: -0.123756215, w: 0.8632283}
-  m_LocalPosition: {x: -46.49, y: 9.55, z: 50.38}
+  m_LocalRotation: {x: 0.19024484, y: -0.2916734, z: 0.0593133, w: 0.93552953}
+  m_LocalPosition: {x: -38.32, y: 0, z: 29.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4305349063289632}
   - {fileID: 4997507367289318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 28.956001, y: 53.460003, z: -1.4990001}
+  m_LocalEulerAnglesHint: {x: 22.989, y: -34.632, z: 0}
 --- !u!4 &4305349063289632
 Transform:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1903990054733660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.87, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4165225345560532}
@@ -146,40 +146,7 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660470033819464}
   m_Enabled: 1
---- !u!114 &114433483026351694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1660470033819464}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b306f79ade5b70d40b409a1bada879c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spinTurnLimit: 90
-  moveSpeed: 0
-  turnSpeed: 0
-  currentMode: 1
-  timeBetweenInput: 0.5
-  canTurn: 1
---- !u!114 &114481098399008930
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1903990054733660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b48c5b8fc545a74cbf01e39c4fc2c27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 0.2
-  movementDampening: 10
-  breakForce: 0.2
-  timeBeforeSnap: 1.5
-  buildMode: 0
---- !u!114 &114807823616445210
+--- !u!114 &114190224620395322
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -190,16 +157,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a2ac7af4bca4540ad4a5feb41c4ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 2
-  zoomSensitivity: 0.1
-  minZoomDistance: 25
-  maxZoomDistance: 40
-  orbitDampening: 2
+  mouseSensitivity: 2.5
+  zoomSensitivity: 0.2
+  minZoomDistance: 4
+  maxZoomDistance: 25
+  orbitDampening: 10
   BuildorbitDampening: 10
-  zoomDampening: 10
+  zoomDampening: 12
   MaxClamp: 80
   minclamp: 5
-  xAxisClamp: 90
+  xAxisClamp: 0
+  buildMode: 1
+--- !u!114 &114427199546930694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660470033819464}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de65d70091ced4741a5de8c4a92426e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 2.5
+  orbitDampening: 10
+  MaxClamp: 80
+  minclamp: 5
+  zoomSensitivity: 0.2
+  zoomDampening: 3
+  minZoomDistance: 7
+  maxZoomDistance: 40
+  movementDampening: 10
+  breakForce: 0.2
+  timeBeforeSnap: 1.5
+--- !u!114 &114481098399008930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1903990054733660}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c5b8fc545a74cbf01e39c4fc2c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 0.2
+  movementDampening: 10
+  breakForce: 0.2
+  timeBeforeSnap: 1.5
   buildMode: 0
 --- !u!124 &124387452465324306
 Behaviour:

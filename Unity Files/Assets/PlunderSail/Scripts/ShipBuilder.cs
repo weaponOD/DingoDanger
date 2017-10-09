@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AttachmentType { SAIL, CABIN, WEAPONSINGLE, ARMOUR }
+public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE}
 
 public class ShipBuilder : MonoBehaviour
 {
-    [SerializeField]
     private AttachmentType currentAttachment;
 
     [SerializeField]
@@ -15,6 +14,9 @@ public class ShipBuilder : MonoBehaviour
 
     [SerializeField]
     private Material ghostMatGreen;
+
+    [SerializeField]
+    private Transform playerCenter;
 
     private PlayerController player;
     private UIManager UI;
@@ -29,16 +31,17 @@ public class ShipBuilder : MonoBehaviour
 
     private RaycastHit hitInfo;
 
-    [SerializeField]
     List<AttachmentPoint> deactivatedPoints;
 
-    [SerializeField]
     GameObject previewPiece = null;
 
     private bool canPlace = false;
 
     private bool mirrorWeapon = false;
     private bool rotateWeapon = false;
+
+    [SerializeField]
+    private BuildModeCam buildCam;
 
     private void Awake()
     {
@@ -48,7 +51,17 @@ public class ShipBuilder : MonoBehaviour
 
         UI = GetComponent<UIManager>();
 
+        
+
         previewPiece = null;
+    }
+
+    private void Start()
+    {
+        if (playerCenter)
+        {
+            buildCam.Target = playerCenter;
+        }
     }
 
     public AttachmentType CurrentAttachment
@@ -110,7 +123,7 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (lastAttachmentPoint != null && previewPiece.GetComponent<AttachmentBase>().CanPlace)
                     {
-                        AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
+                        buildCam.Target = AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
 
                         GameObject.Destroy(previewPiece);
                         previewPiece = null;

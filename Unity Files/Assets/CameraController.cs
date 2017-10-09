@@ -5,24 +5,33 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField]
-    GameObject buildCam;
+    private GameObject buildCamGO;
 
     [SerializeField]
-    GameObject playCam;
+    private GameObject playCamGO;
+
+    private BuildModeCam buildCam;
+
+    private PlayModeCam playCam;
 
     private void Awake()
     {
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
 
-        //playCam = GetComponent<PlayModeCam>();
-        //buildCam = GetComponent<BuildModeCam>();
+        playCam = GetComponentInChildren<PlayModeCam>();
+        buildCam = GetComponentInChildren<BuildModeCam>();
     }
 
     private void SetBuildMode(bool isBuildMode)
     {
-        playCam.SetActive(!isBuildMode);
-        buildCam.SetActive(isBuildMode);
+        playCamGO.SetActive(!isBuildMode);
+        buildCamGO.SetActive(isBuildMode);
+    }
+
+    public BuildModeCam BuildCam
+    {
+        get { return buildCam; }
     }
 
     private void OnDestroy()

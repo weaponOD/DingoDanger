@@ -135,39 +135,41 @@ public class CameraOrbit : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(buildMode)
-        {
-            Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
-            pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * BuildorbitDampening);
-        }
-        else
-        {
-            Vector2 stickForce = new Vector2(Input.GetAxis("Mouse_X"), Input.GetAxis("Mouse_Y"));
+        //if(buildMode)
+        //{
+            
+        //}
+        //else
+        //{
+        //    Vector2 stickForce = new Vector2(Input.GetAxis("Mouse_X"), Input.GetAxis("Mouse_Y"));
 
-            // If player uses right stick break free from alignment
-            if (stickForce.magnitude > 0.2f)
-            {
-                snapIsDelayed = false;
+        //    // If player uses right stick break free from alignment
+        //    if (stickForce.magnitude > 0.2f)
+        //    {
+        //        snapIsDelayed = false;
 
-                localRotation.x = Mathf.Clamp(localRotation.x, player.transform.rotation.eulerAngles.y - xAxisClamp, player.transform.rotation.eulerAngles.y + xAxisClamp);
+        //        localRotation.x = Mathf.Clamp(localRotation.x, player.transform.rotation.eulerAngles.y - xAxisClamp, player.transform.rotation.eulerAngles.y + xAxisClamp);
 
-                Quaternion targetRotation = Quaternion.Euler(startX, localRotation.x, 0f);
-                pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
-            }
-            else
-            {
-                // Align to player rotation unless that rotate.
+        //        Quaternion targetRotation = Quaternion.Euler(startX, localRotation.x, 0f);
+        //        pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
+        //    }
+        //    else
+        //    {
+        //        // Align to player rotation unless that rotate.
 
-                Quaternion targetRotation = Quaternion.Euler(startX, player.transform.rotation.eulerAngles.y, 0f);
+        //        Quaternion targetRotation = Quaternion.Euler(startX, player.transform.rotation.eulerAngles.y, 0f);
 
-                float difference = Mathf.Abs(pivotT.rotation.eulerAngles.y - targetRotation.eulerAngles.y);
+        //        float difference = Mathf.Abs(pivotT.rotation.eulerAngles.y - targetRotation.eulerAngles.y);
 
-                if (difference > 1f)
-                {
-                    pivotT.rotation = Quaternion.Slerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
-                }
-            }
-        }
+        //        if (difference > 1f)
+        //        {
+        //            pivotT.rotation = Quaternion.Slerp(pivotT.rotation, targetRotation, Time.deltaTime * orbitDampening);
+        //        }
+        //    }
+        //}
+
+        Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
+        pivotT.rotation = Quaternion.Lerp(pivotT.rotation, targetRotation, Time.deltaTime * BuildorbitDampening);
 
         if (cameraT.localPosition.z != cameraDistance * -1f)
         {

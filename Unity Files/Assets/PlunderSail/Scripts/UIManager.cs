@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        playerGold.text = "Gold: " + player.Gold;
+        playerGold.text = "" + player.Gold;
 
         for (int x = 0; x < buttons.Length; x++)
         {

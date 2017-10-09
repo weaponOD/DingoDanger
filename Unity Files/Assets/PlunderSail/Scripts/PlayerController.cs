@@ -102,7 +102,10 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, pier.position, moveSpeed * 3 * Time.deltaTime);
 
-                transform.LookAt(pier.position);
+                // The position of the pier less the y axis
+                Vector3 pierLocation = new Vector3(pier.position.x, transform.position.y,pier.position.z);
+
+                transform.LookAt(pierLocation);
             }
             else
             {
@@ -143,13 +146,13 @@ public class PlayerController : MonoBehaviour
                     moveSpeed += 0.01f;
                 }
 
-                myRotation = transform.rotation.z * 100f;
+                //myRotation = transform.rotation.z * 100f;
 
-                if (!Mathf.Approximately(myRotation, 0f))
-                {
-                    //Debug.Log("Turn back to default turn");
-                    //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, defaultRotation * tiltSpeed) * Time.fixedDeltaTime);
-                }
+                //if (!Mathf.Approximately(myRotation, 0f))
+                //{
+                //    //Debug.Log("Turn back to default turn");
+                //    //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, defaultRotation * tiltSpeed) * Time.fixedDeltaTime);
+                //}
             }
         }
     }

@@ -43,6 +43,11 @@ public class BuildModeCam : MonoBehaviour
     [Header("Left Stick Movement")]
 
     [SerializeField]
+    [Tooltip("How much the camera will move when the mouse moves")]
+    [Range(1, 20)]
+    private float MoveSensitivity = 2.5f;
+
+    [SerializeField]
     [Tooltip("How long it takes for the camera to reach it's destination")]
     private float movementDampening = 10f;
 
@@ -55,6 +60,9 @@ public class BuildModeCam : MonoBehaviour
     [Tooltip("Time in seconds of player inactivity before the camera snaps back to the target block.")]
     [Range(0, 20)]
     private float timeBeforeSnap = 1.5f;
+
+    [SerializeField]
+    private bool snapEnabled = false;
 
     // Camera Rotation Variables
     private float cameraDistance = 10f;
@@ -83,7 +91,7 @@ public class BuildModeCam : MonoBehaviour
 
     private void Start()
     {
-        //anchor = transform.parent.GetChild(1);
+        anchor = transform.parent.GetChild(1);
 
         pivot = transform.parent;
 
@@ -98,7 +106,7 @@ public class BuildModeCam : MonoBehaviour
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {
             localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
-            localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
+            localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
 
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
@@ -117,8 +125,6 @@ public class BuildModeCam : MonoBehaviour
 
             // Zoom no closer than 1.5 units and no futher than 100 units away
             cameraDistance = Mathf.Clamp(cameraDistance, minZoomDistance, maxZoomDistance);
-
-            Debug.Log("Zoom");
         }
 
         // Zoom input from our mouse scroll wheel
@@ -133,28 +139,24 @@ public class BuildModeCam : MonoBehaviour
 
             // Zoom no closer than 1.5 units and no futher than 100 units away
             cameraDistance = Mathf.Clamp(cameraDistance, minZoomDistance, maxZoomDistance);
-
-            Debug.Log("Zoom");
         }
 
-        //// Move anchor using left thumb stick
-        //if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        //{
+        // Move anchor using left thumb stick
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
 
-        //    targetPosRight += anchor.transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
+            targetPosRight += anchor.transform.right * Input.GetAxis("Horizontal") * MoveSensitivity;
 
-        //    targetPosForward += anchor.transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
-        //}
+            targetPosForward += anchor.transform.forward * Input.GetAxis("Vertical") * MoveSensitivity;
+        }
 
-        //// Move along y axis using Triggers
-        //if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
-        //{
-        //    Debug.Log("Y axis Movement");
+        // Move along y axis using Triggers
+        if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
+        {
+            targetPosUp += anchor.transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
 
-        //    targetPosUp += anchor.transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
-
-        //    targetPosUp -= anchor.transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
-        //}
+            targetPosUp -= anchor.transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
+        }
     }
 
     private void LateUpdate()
@@ -168,51 +170,62 @@ public class BuildModeCam : MonoBehaviour
             transform.localPosition = new Vector3(0f, 0f, Mathf.Lerp(transform.localPosition.z, cameraDistance * -1f, Time.deltaTime * zoomDampening));
         }
 
-        //// Anchor movement
-        //Vector3 euler = pivot.rotation.eulerAngles;
-        //Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
-        //anchor.rotation = rot;
+        // Anchor movement
+        Vector3 euler = pivot.rotation.eulerAngles;
+        Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
+        anchor.rotation = rot;
 
-        //Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        //bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
+        Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
 
-        //if (stickForce.magnitude > breakForce || verticalMovement)
-        //{
-        //    snapIsDelayed = false;
-        //    pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
-        //    pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
-        //    pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
-        //}
-        //else
-        //{
-        //    if (targetBlock == null)
-        //        return;
+        if (stickForce.magnitude > breakForce || verticalMovement)
+        {
+            snapIsDelayed = false;
 
-        //    if (!snapIsDelayed)
-        //    {
-        //        timeToSnapBack = Time.time + timeBeforeSnap;
-        //        snapIsDelayed = true;
-        //    }
+            pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
+            pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
+            pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
+        }
+        else
+        {
+            if (targetBlock == null)
+                return;
 
-        //    if (Time.time > timeToSnapBack)
-        //    {
-        //        if (Vector3.Distance(anchor.position, targetBlock.position) > 0.1f)
-        //        {
-        //            Vector3 targetBlockPos;
+            if (!snapIsDelayed)
+            {
+                timeToSnapBack = Time.time + timeBeforeSnap;
+                snapIsDelayed = true;
+            }
+            if (snapEnabled)
+            {
+                if (Time.time > timeToSnapBack)
+                {
+                    if (Vector3.Distance(anchor.position, targetBlock.position) > 0.1f)
+                    {
+                        Vector3 targetBlockPos;
 
-        //            targetBlockPos = targetBlock.position;
+                        targetBlockPos = targetBlock.position;
 
-        //            anchor.position = Vector3.Lerp(anchor.position, targetBlockPos, Time.deltaTime * 3f);
-        //            pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
+                        anchor.position = Vector3.Lerp(anchor.position, targetBlockPos, Time.deltaTime * 3f);
+                        pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
 
-        //            targetPosRight = anchor.position;
-        //            targetPosForward = anchor.position;
-        //            targetPosUp = anchor.position;
-        //        }
-        //    }
-        //}
+                        targetPosRight = anchor.position;
+                        targetPosForward = anchor.position;
+                        targetPosUp = anchor.position;
+                    }
+                }
+            }
+        }
+    }
 
-
+    public void UpdatePos()
+    {
+        if(anchor)
+        {
+            targetPosRight = anchor.position;
+            targetPosForward = anchor.position;
+            targetPosUp = anchor.position;
+        }
     }
 
     public Transform Target

@@ -51,8 +51,6 @@ public class ShipBuilder : MonoBehaviour
 
         UI = GetComponent<UIManager>();
 
-        
-
         previewPiece = null;
     }
 
@@ -81,7 +79,7 @@ public class ShipBuilder : MonoBehaviour
             }
         }
 
-        if (Camera.main)
+        if (GameState.BuildMode)
         {
             Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 

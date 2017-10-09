@@ -745,7 +745,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668573925440448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052052717436854}
@@ -1923,7 +1923,6 @@ MonoBehaviour:
   currentHealth: 0
   bountyDelay: 0
   bounty: {fileID: 0}
-  baseMoveSpeed: 5
 --- !u!114 &114619592963608640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1969,12 +1968,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 5
-  velocity: {x: 0, y: 0, z: 0}
+  baseMoveSpeed: 7
   wheelTurnSpeed: 5
   maxRollValue: 6
   myRotation: 0
   tiltSpeed: 10
+  baseTurnSpeed: 15
   turnSpeed: 10
 --- !u!114 &114718389164306584
 MonoBehaviour:
@@ -2009,8 +2008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0
-  maxFireTime: 0
+  minFireTime: 0.15
+  maxFireTime: 1
   FireShout: {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
   leftWeapons: []
   rightWeapons: []

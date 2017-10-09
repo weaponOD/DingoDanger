@@ -7,16 +7,17 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
 
-    private float moveSpeed;
-
-    private float maxMoveSpeed;
-
     private Transform pier;
 
     [SerializeField]
     private float baseMoveSpeed;
 
-    [SerializeField]
+    private float moveSpeed;
+
+    private float bonusMoveSpeed;
+
+    private float maxMoveSpeed;
+
     private Vector3 velocity;
 
     private Vector3 targetVelocity;
@@ -46,7 +47,12 @@ public class PlayerController : MonoBehaviour
     private float tiltSpeed;
 
     [SerializeField]
+    private float baseTurnSpeed;
+
+    [SerializeField]
     private float turnSpeed;
+
+    private bool sailsDown = true;
 
     private GameManager GM;
 
@@ -91,6 +97,29 @@ public class PlayerController : MonoBehaviour
             }
 
             velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
+
+            if(Input.GetButtonDown("A_Button"))
+            {
+                sailsDown = !sailsDown;
+
+                LowerSails(sailsDown);
+            }
+        }
+    }
+
+    private void LowerSails(bool _isDown)
+    {
+        if(_isDown)
+        {
+            moveSpeed = maxMoveSpeed;
+
+            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * 0.5f);
+        }
+        else
+        {
+            moveSpeed = baseMoveSpeed;
+
+            turnSpeed = baseTurnSpeed;
         }
     }
 
@@ -117,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
         if(!buildMode)
         {
-            //rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+            rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
 
             // Turn right
             if (velocity.x > 0)
@@ -184,6 +213,16 @@ public class PlayerController : MonoBehaviour
 
         //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
         //}
+    }
+
+    public void setSpeedBonus(float _bonus)
+    {
+        bonusMoveSpeed = _bonus;
+
+        maxMoveSpeed = baseMoveSpeed + bonusMoveSpeed;
+        moveSpeed = maxMoveSpeed;
+
+        turnSpeed = baseTurnSpeed - (bonusMoveSpeed * 0.5f);
     }
 
     public void moveToPier(bool _moveThere, Transform _dockingPos)

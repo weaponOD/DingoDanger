@@ -19,14 +19,15 @@ public class CameraController : MonoBehaviour
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
 
-        playCam = GetComponentInChildren<PlayModeCam>();
-        buildCam = GetComponentInChildren<BuildModeCam>();
+        playCam = playCamGO.GetComponentInChildren<PlayModeCam>();
+        buildCam = buildCamGO.GetComponentInChildren<BuildModeCam>();
     }
 
     private void SetBuildMode(bool isBuildMode)
     {
         playCamGO.SetActive(!isBuildMode);
         buildCamGO.SetActive(isBuildMode);
+        buildCam.UpdatePos();
     }
 
     public BuildModeCam BuildCam

@@ -12,7 +12,7 @@ public class EndlessWaterSquare : MonoBehaviour
     public GameObject waterSqrObj;
 
     //Water square data
-    private float squareWidth = 800f;
+    private float squareWidth = 170f;
     private float innerSquareResolution = 5f;
     private float outerSquareResolution = 25f;
 
@@ -126,10 +126,5 @@ public class EndlessWaterSquare : MonoBehaviour
 
         //Parent it
         waterPlane.transform.parent = transform;
-
-        //Give it moving water properties and set its width and resolution to generate the water mesh
-        WaterSquare newWaterSquare = new WaterSquare(waterPlane, squareWidth, spacing);
-
-        waterSquares.Add(newWaterSquare);
     }
 }

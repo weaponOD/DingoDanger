@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : LivingEntity
 {
-    [SerializeField]
-    private float baseMoveSpeed = 5;
-
     private int gold = 1000;
 
     private bool buildMode = false;
@@ -52,6 +49,7 @@ public class Player : LivingEntity
         {
             weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
             weaponController.RightWeapons = components.GetAttachedRightWeapons();
+            controller.setSpeedBonus(components.getSpeedBonus());
         }
     }
 

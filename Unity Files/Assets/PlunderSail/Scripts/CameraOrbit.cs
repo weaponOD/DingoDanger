@@ -67,12 +67,6 @@ public class CameraOrbit : MonoBehaviour
     [SerializeField]
     private bool buildMode = false;
 
-    // Alignment and snap Varibles
-    private bool snapIsDelayed = true;
-
-    private float timeBeforeSnap = 1.5f;
-
-    private float timeToSnapBack;
 
     private void Start()
     {
@@ -85,7 +79,7 @@ public class CameraOrbit : MonoBehaviour
 
         cameraDistance = cameraT.localPosition.z * -1f;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;

@@ -83,9 +83,8 @@ public class BuildModeCam : MonoBehaviour
 
     private void Start()
     {
-        anchor = transform.parent.GetChild(1);
+        //anchor = transform.parent.GetChild(1);
 
-        Debug.Log(anchor.name);
         pivot = transform.parent;
 
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
@@ -99,7 +98,7 @@ public class BuildModeCam : MonoBehaviour
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {
             localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
-            localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+            localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
 
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
@@ -138,80 +137,82 @@ public class BuildModeCam : MonoBehaviour
             Debug.Log("Zoom");
         }
 
-        // Move anchor using left thumb stick
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
+        //// Move anchor using left thumb stick
+        //if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        //{
 
-            targetPosRight += anchor.transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
+        //    targetPosRight += anchor.transform.right * Input.GetAxis("Horizontal") * mouseSensitivity;
 
-            targetPosForward += anchor.transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
-        }
+        //    targetPosForward += anchor.transform.forward * Input.GetAxis("Vertical") * mouseSensitivity;
+        //}
 
-        // Move along y axis using Triggers
-        if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
-        {
-            Debug.Log("Y axis Movement");
+        //// Move along y axis using Triggers
+        //if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
+        //{
+        //    Debug.Log("Y axis Movement");
 
-            targetPosUp += anchor.transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
+        //    targetPosUp += anchor.transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
 
-            targetPosUp -= anchor.transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
-        }
+        //    targetPosUp -= anchor.transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
+        //}
     }
 
     private void LateUpdate()
     {
         // Camera Rotation using the right thumb stick
         Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * orbitDampening);
-
-        // Anchor movement
-        Vector3 euler = pivot.rotation.eulerAngles;
-        Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
-        anchor.rotation = rot;
-
-        Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
-
-        if (stickForce.magnitude > breakForce || verticalMovement)
-        {
-            snapIsDelayed = false;
-            pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
-            pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
-            pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
-        }
-        else
-        {
-            if (targetBlock == null)
-                return;
-
-            if (!snapIsDelayed)
-            {
-                timeToSnapBack = Time.time + timeBeforeSnap;
-                snapIsDelayed = true;
-            }
-
-            if (Time.time > timeToSnapBack)
-            {
-                if (Vector3.Distance(anchor.position, targetBlock.position) > 0.1f)
-                {
-                    Vector3 targetBlockPos;
-
-                    targetBlockPos = targetBlock.position;
-
-                    anchor.position = Vector3.Lerp(anchor.position, targetBlockPos, Time.deltaTime * 3f);
-                    pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
-
-                    targetPosRight = anchor.position;
-                    targetPosForward = anchor.position;
-                    targetPosUp = anchor.position;
-                }
-            }
-        }
+        pivot.rotation = Quaternion.Lerp(pivot.rotation, targetRotation, Time.deltaTime * orbitDampening);
 
         if (transform.localPosition.z != cameraDistance * -1f)
         {
             transform.localPosition = new Vector3(0f, 0f, Mathf.Lerp(transform.localPosition.z, cameraDistance * -1f, Time.deltaTime * zoomDampening));
         }
+
+        //// Anchor movement
+        //Vector3 euler = pivot.rotation.eulerAngles;
+        //Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
+        //anchor.rotation = rot;
+
+        //Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
+
+        //if (stickForce.magnitude > breakForce || verticalMovement)
+        //{
+        //    snapIsDelayed = false;
+        //    pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
+        //    pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
+        //    pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
+        //}
+        //else
+        //{
+        //    if (targetBlock == null)
+        //        return;
+
+        //    if (!snapIsDelayed)
+        //    {
+        //        timeToSnapBack = Time.time + timeBeforeSnap;
+        //        snapIsDelayed = true;
+        //    }
+
+        //    if (Time.time > timeToSnapBack)
+        //    {
+        //        if (Vector3.Distance(anchor.position, targetBlock.position) > 0.1f)
+        //        {
+        //            Vector3 targetBlockPos;
+
+        //            targetBlockPos = targetBlock.position;
+
+        //            anchor.position = Vector3.Lerp(anchor.position, targetBlockPos, Time.deltaTime * 3f);
+        //            pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
+
+        //            targetPosRight = anchor.position;
+        //            targetPosForward = anchor.position;
+        //            targetPosUp = anchor.position;
+        //        }
+        //    }
+        //}
+
+
     }
 
     public Transform Target

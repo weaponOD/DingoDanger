@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
         if(!buildMode)
         {
-            rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+            //rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
 
             // Turn right
             if (velocity.x > 0)

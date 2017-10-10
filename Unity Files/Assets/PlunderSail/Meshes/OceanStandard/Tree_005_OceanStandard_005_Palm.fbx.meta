@@ -1,22 +1,20 @@
 fileFormatVersion: 2
-guid: 0d69445bc2008fe4d88d9f241f69591b
-timeCreated: 1505732027
+guid: d25c0783943960644a5086410e490f43
+timeCreated: 1507627121
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: WoodenBarrelLid_001_OceanStandard_001_Whole
-    400000: //RootNode
-    400002: WoodenBarrelLid_001_OceanStandard_001_Whole
-    2300000: //RootNode
-    2300002: WoodenBarrelLid_001_OceanStandard_001_Whole
-    3300000: //RootNode
-    3300002: WoodenBarrelLid_001_OceanStandard_001_Whole
-    4300000: WoodenBarrelLid_001_OceanStandard_001_Whole
+    100000: Tree_005_OceanStandard_005_Palm
+    100002: //RootNode
+    400000: Tree_005_OceanStandard_005_Palm
+    400002: //RootNode
+    2300000: Tree_005_OceanStandard_005_Palm
+    3300000: Tree_005_OceanStandard_005_Palm
+    4300000: Tree_005_OceanStandard_005_Palm
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -47,8 +45,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -65,7 +63,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -84,7 +82,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

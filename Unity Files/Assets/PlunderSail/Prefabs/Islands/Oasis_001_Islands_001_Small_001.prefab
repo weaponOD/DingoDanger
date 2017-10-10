@@ -309,7 +309,6 @@ GameObject:
   - component: {fileID: 4105579531721588}
   - component: {fileID: 33981101212350700}
   - component: {fileID: 23509401418114774}
-  - component: {fileID: 95733052102437092}
   m_Layer: 0
   m_Name: Tree_002_OceanStandard_002_Palm
   m_TagString: Untagged
@@ -4336,7 +4335,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202317203943924}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -94.7, y: -1.65, z: 68.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4763509990010338}
@@ -6309,7 +6308,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fc0b9ee59e0c16d4a8571c88cc2e13ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6629,7 +6628,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fc0b9ee59e0c16d4a8571c88cc2e13ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7763,7 +7762,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230792843552050}
-  m_Mesh: {fileID: 4300000, guid: 0ad815809a31c10479f1c848eab75e17, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 079775dd734cf07489f09b87327abe18, type: 3}
 --- !u!33 &33044078299095636
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -8274,7 +8273,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122000126892456}
-  m_Mesh: {fileID: 4300000, guid: 0ad815809a31c10479f1c848eab75e17, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 079775dd734cf07489f09b87327abe18, type: 3}
 --- !u!33 &33986760446537836
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -9267,23 +9266,6 @@ Animator:
   m_GameObject: {fileID: 1757136726617564}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d3fddb2e412eee0428e4972d180ccab5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95733052102437092
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1122000126892456}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ad815809a31c10479f1c848eab75e17, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0

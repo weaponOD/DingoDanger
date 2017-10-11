@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 114256727963917046}
   - component: {fileID: 114153618981797618}
   - component: {fileID: 114347702168056404}
-  - component: {fileID: 114891014645090136}
   - component: {fileID: 114994603169521724}
   - component: {fileID: 114254656103416218}
   m_Layer: 0
@@ -113,17 +112,6 @@ MonoBehaviour:
   ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
   playerCenter: {fileID: 0}
   buildCam: {fileID: 0}
---- !u!114 &114891014645090136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559c346b3a6673b4babd4af4dd3b7951, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114994603169521724
 MonoBehaviour:
   m_ObjectHideFlags: 1

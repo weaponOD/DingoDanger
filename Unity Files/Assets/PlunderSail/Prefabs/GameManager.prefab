@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1568195136468266}
+  m_IsPrefabParent: 1
+--- !u!1 &1568195136468266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4923085419656894}
+  - component: {fileID: 114256727963917046}
+  - component: {fileID: 114153618981797618}
+  - component: {fileID: 114347702168056404}
+  - component: {fileID: 114891014645090136}
+  - component: {fileID: 114994603169521724}
+  - component: {fileID: 114254656103416218}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4923085419656894
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 315.6, y: 319.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114153618981797618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
+  maxEnemies: 2
+  spawnRange: 300
+  deSpawnRange: 1000
+--- !u!114 &114254656103416218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7897ec25dfdb89e45bcd022c4eb7ce0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGold: {fileID: 0}
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Panel: {fileID: 0}
+  prices: 01000000010000000100000001000000
+  timeBetweenPresses: 0.4
+  pierPopup: {fileID: 0}
+--- !u!114 &114256727963917046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5d18095d82055458243e31a4eeb433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pier: {fileID: 0}
+--- !u!114 &114347702168056404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ba9f2374844f44eab20878d17d59dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachmentPrefabs:
+  - {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
+  - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
+  - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
+  - {fileID: 1586404089410776, guid: a45079cd7f6d05744a20d6cc843ee9b9, type: 2}
+  ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
+  playerCenter: {fileID: 0}
+  buildCam: {fileID: 0}
+--- !u!114 &114891014645090136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559c346b3a6673b4babd4af4dd3b7951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandPrefabs:
+  - {fileID: 4720620260816800, guid: a553b6376a5016143affb51f861ee94f, type: 2}
+  - {fileID: 4422152227867516, guid: ffd69b399eca0b24690245603bce3721, type: 2}
+  - {fileID: 4042366218832008, guid: 8d6a7ffe734209e47a127a6fb13949a7, type: 2}
+  maxIslands: 10
+  spawnRange: 300
+  deSpawnRange: 700
+--- !u!114 &114994603169521724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e6806be33e8b64997c2c722215e833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildCamGO: {fileID: 0}
+  playCamGO: {fileID: 0}

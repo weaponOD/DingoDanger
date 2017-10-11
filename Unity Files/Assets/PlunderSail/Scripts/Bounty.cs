@@ -31,7 +31,8 @@ public class Bounty : MonoBehaviour
         if(collision.collider.gameObject.CompareTag("Player"))
         {
             collision.collider.gameObject.GetComponent<Player>().GiveGold(goldAmount);
+            GameObject.Destroy(gameObject);
         }
-        GameObject.Destroy(gameObject);
+        
     }
 }

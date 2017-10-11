@@ -920,8 +920,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4406381428663504}
   - component: {fileID: 54540220209516456}
-  - component: {fileID: 114953428259341818}
   - component: {fileID: 65309444688497128}
+  - component: {fileID: 82754417058221512}
+  - component: {fileID: 114958628415664874}
+  - component: {fileID: 114580659294203478}
+  - component: {fileID: 114220708340418018}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2016,14 +2019,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668573925440448}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.98, y: 0, z: 33.56}
+  m_LocalRotation: {x: -0, y: -0.56034714, z: -0, w: 0.8282579}
+  m_LocalPosition: {x: 8.3, y: 0, z: -52.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052052717436854}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -68.16, z: 0}
 --- !u!4 &4413014884305260
 Transform:
   m_ObjectHideFlags: 1
@@ -4618,6 +4621,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1, z: 1.8}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!82 &82754417058221512
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668573925440448}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114013079797135124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4702,6 +4785,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builtOn: 0
+--- !u!114 &114220708340418018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668573925440448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd93a0c9f6867846968e37e1f0345a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114247245069393480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4799,6 +4893,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builtOn: 0
+--- !u!114 &114580659294203478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668573925440448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minFireTime: 0
+  maxFireTime: 0
+  FireShout: {fileID: 0}
+  leftWeapons: []
+  rightWeapons: []
 --- !u!114 &114605197281126078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4814,21 +4924,12 @@ MonoBehaviour:
   canPlace: 1
   facingLeft: 0
   doubleFacing: 0
-  minFireTime: 0.05
-  maxFireTime: 0.15
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
+  minFireTime: 0
+  maxFireTime: 0
+  shootSound: []
   needToRotate: 0
   needToMirror: 0
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &114631224690125846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4842,8 +4943,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   canPlace: 1
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
+  greenMat: {fileID: 0}
+  redMat: {fileID: 0}
   currentlyGreen: 1
 --- !u!114 &114639684562585324
 MonoBehaviour:
@@ -4872,21 +4973,12 @@ MonoBehaviour:
   canPlace: 1
   facingLeft: 0
   doubleFacing: 0
-  minFireTime: 0.05
-  maxFireTime: 0.15
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
+  minFireTime: 0
+  maxFireTime: 0
+  shootSound: []
   needToRotate: 0
   needToMirror: 0
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &114703696872695828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4914,21 +5006,12 @@ MonoBehaviour:
   canPlace: 1
   facingLeft: 0
   doubleFacing: 0
-  minFireTime: 0.05
-  maxFireTime: 0.15
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
+  minFireTime: 0
+  maxFireTime: 0
+  shootSound: []
   needToRotate: 0
   needToMirror: 0
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &114718901285408044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5074,8 +5157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   canPlace: 1
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
+  greenMat: {fileID: 0}
+  redMat: {fileID: 0}
   currentlyGreen: 1
 --- !u!114 &114946893524461016
 MonoBehaviour:
@@ -5092,22 +5175,13 @@ MonoBehaviour:
   canPlace: 1
   facingLeft: 0
   doubleFacing: 0
-  minFireTime: 0.05
-  maxFireTime: 0.15
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
+  minFireTime: 0
+  maxFireTime: 0
+  shootSound: []
   needToRotate: 0
   needToMirror: 0
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
---- !u!114 &114953428259341818
+  projectilePrefab: {fileID: 0}
+--- !u!114 &114958628415664874
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -5118,10 +5192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 100
+  starterHealth: 0
   currentHealth: 0
-  bountyDelay: 0.2
-  bounty: {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
+  bountyDelay: 0
+  bounty: {fileID: 0}
   moveSpeed: 0
   attackRange: 0
 --- !u!114 &114958901686294534

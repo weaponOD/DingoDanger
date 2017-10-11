@@ -9,6 +9,9 @@ public class Player : LivingEntity
 
     private bool buildMode = false;
 
+    [SerializeField]
+    private float ramDamage = 20;
+
     PlayerController controller;
 
     buoyancy buoyant;
@@ -63,5 +66,18 @@ public class Player : LivingEntity
     {
         // Unsubscribe to game state
         GameState.buildModeChanged -= SetBuildMode;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.GetComponent<AttachmentBase>())
+        {
+            collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(ramDamage);
+        }
+
+        if (collision.collider.gameObject.GetComponent<AIAgent>())
+        {
+            collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
+        }
     }
 }

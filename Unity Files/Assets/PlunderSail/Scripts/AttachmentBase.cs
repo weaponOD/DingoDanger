@@ -38,7 +38,7 @@ public class AttachmentBase : MonoBehaviour
         transform.Rotate(Vector3.up, 180, Space.Self);
     }
 
-    public void TakeDamage(float _damage)
+    public virtual void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
 

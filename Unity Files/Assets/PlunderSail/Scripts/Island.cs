@@ -28,7 +28,7 @@ public class Island : MonoBehaviour
 
             if(transform.localScale.x <= 0)
             {
-                manager.RemoveMe(transform);
+                //manager.RemoveMe(transform);
 
                 Destroy(gameObject);
             }

@@ -11543,10 +11543,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395879e8f20dcd146b6e46c77c6a7717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 0
+  starterHealth: 100
   currentHealth: 0
   bountyDelay: 0
-  bounty: {fileID: 0}
+  bounty: {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   ramDamage: 20
 --- !u!114 &114524517577516928
 MonoBehaviour:
@@ -11777,13 +11777,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 0
-  wheelTurnSpeed: 0
-  TurnRatePenalty: 0
+  baseMoveSpeed: 6
+  wheelTurnSpeed: 5
+  TurnRatePenalty: 0.3
   maxRollValue: 6
   myRotation: 0
-  tiltSpeed: 0
-  baseTurnSpeed: 0
+  tiltSpeed: 10
+  baseTurnSpeed: 25
   turnSpeed: 0
 --- !u!114 &114711932004314704
 MonoBehaviour:
@@ -12056,9 +12056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0
-  maxFireTime: 0
-  FireShout: {fileID: 0}
+  minFireTime: 0.15
+  maxFireTime: 1
+  FireShout: {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
   leftWeapons: []
   rightWeapons: []
 --- !u!114 &114922917875191780

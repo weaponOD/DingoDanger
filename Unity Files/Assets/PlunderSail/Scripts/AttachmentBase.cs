@@ -59,4 +59,12 @@ public class AttachmentBase : MonoBehaviour
     {
         set { isPreview = value; }
     }
+
+    private void OnDestroy()
+    {
+        if(GetComponentInParent<Player>())
+        {
+            GetComponentInParent<Player>().UpdateAttachments();
+        }
+    }
 }

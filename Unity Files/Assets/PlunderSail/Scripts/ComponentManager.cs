@@ -21,11 +21,15 @@ public class ComponentManager : MonoBehaviour
 
     public AttachmentWeapon[] GetAttachedLeftWeapons()
     {
+        UpdateWeapons();
+
         return leftWeapons;
     }
 
     public AttachmentWeapon[] GetAttachedRightWeapons()
     {
+        UpdateWeapons();
+
         return rightWeapons;
     }
 
@@ -37,6 +41,7 @@ public class ComponentManager : MonoBehaviour
     // returns total bonus from all sails.
     public int getSpeedBonus()
     {
+        UpdateSails();
         return sails.Length;
     }
 

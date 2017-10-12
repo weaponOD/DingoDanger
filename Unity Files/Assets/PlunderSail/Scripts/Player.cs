@@ -95,10 +95,15 @@ public class Player : LivingEntity
 
         if (!buildMode)
         {
-            weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
-            weaponController.RightWeapons = components.GetAttachedRightWeapons();
-            controller.setSpeedBonus(components.getSpeedBonus());
+            UpdateAttachments();
         }
+    }
+    
+    public void UpdateAttachments()
+    {
+        weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
+        weaponController.RightWeapons = components.GetAttachedRightWeapons();
+        controller.setSpeedBonus(components.getSpeedBonus());
     }
 
     private void OnDestroy()

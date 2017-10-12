@@ -106,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4778187538212620}
   - component: {fileID: 65419156417794934}
-  - component: {fileID: 114094277567477682}
   m_Layer: 9
   m_Name: Beak_001_Attachments_001_RammingBar
   m_TagString: Ram
@@ -2457,17 +2456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builtOn: 0
---- !u!114 &114094277567477682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1091536413272442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114182821919477074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2528,7 +2516,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
   - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
-  waves: {fileID: 0}
+  waves: {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
 --- !u!114 &114388270330914084
 MonoBehaviour:
   m_ObjectHideFlags: 1

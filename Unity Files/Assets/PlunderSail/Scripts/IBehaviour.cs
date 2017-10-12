@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class IBehaviour : MonoBehaviour
+public abstract class IBehaviour : ScriptableObject
 {
     protected Vector3 targetDirection;
 

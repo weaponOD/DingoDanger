@@ -61,7 +61,7 @@ MonoBehaviour:
   sizeZ: 200
   noise: 0.6
   enableReflection: 1
-  enableRefraction: 0
+  enableRefraction: 1
   reflection:
     disablePixelLights: 1
     textureSize: 512
@@ -72,7 +72,7 @@ MonoBehaviour:
     refractLayers:
       serializedVersion: 2
       m_Bits: 4294967295
-  receiveShadows: 0
+  receiveShadows: 1
   waveScale: -1337
   gridTypeLite: 0
   displayProgress: 1

@@ -34,7 +34,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField]
     private AttachmentWeapon[] rightWeapons;
 
-    private int currentShout;
+    private int currentShout = 0;
 
     private void Awake()
     {
@@ -78,7 +78,7 @@ public class WeaponController : MonoBehaviour
         {
             if (rightWeapons.Length > 0)
             {
-                if (FireShout.Length > 0 && Random.Range(0, 100) < 20)
+                if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
                     audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
@@ -98,7 +98,7 @@ public class WeaponController : MonoBehaviour
         {
             if (leftWeapons.Length > 0)
             {
-                if (FireShout.Length > 0 && Random.Range(0, 100) < 20)
+                if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
                     audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
@@ -120,13 +120,17 @@ public class WeaponController : MonoBehaviour
         }
         else
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.0f);
         }
         
 
         foreach (AttachmentWeapon weapon in leftWeapons)
         {
-            weapon.FireLeft();
+            if (weapon != null)
+            {
+                weapon.FireLeft();
+            }
+            
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }
@@ -144,7 +148,11 @@ public class WeaponController : MonoBehaviour
 
         foreach (AttachmentWeapon weapon in rightWeapons)
         {
-            weapon.FireRight();
+            if(weapon != null)
+            {
+                weapon.FireRight();
+            }
+           
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }

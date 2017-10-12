@@ -109,14 +109,17 @@ public class Player : LivingEntity
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.GetComponent<AttachmentBase>())
+        if(collision.contacts[0].thisCollider.CompareTag("Ram"))
         {
-            collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(ramDamage);
-        }
+            if (collision.collider.gameObject.GetComponent<AttachmentBase>())
+            {
+                collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(ramDamage);
+            }
 
-        if (collision.collider.gameObject.GetComponent<AIAgent>())
-        {
-            collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
+            if (collision.collider.gameObject.GetComponent<AIAgent>())
+            {
+                collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
+            }
         }
     }
 }

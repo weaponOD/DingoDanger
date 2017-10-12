@@ -1203,7 +1203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668573925440448}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50}
+  m_LocalPosition: {x: 11.4, y: 0, z: -31.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4052052717436854}
@@ -2933,7 +2933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minFireTime: 0.14
   maxFireTime: 0.8
-  FireShout: {fileID: 0}
+  FireShout: []
   leftWeapons: []
   rightWeapons: []
 --- !u!114 &114639684562585324
@@ -2984,8 +2984,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _segments: 60
-  _horizRadius: 17
-  _vertRadius: 17
+  _horizRadius: 25
+  _vertRadius: 25
   _offset: 0
   _axis: 1
   _checkValuesChanged: 1
@@ -3080,7 +3080,7 @@ MonoBehaviour:
   currentHealth: 0
   baseMoveSpeed: 7
   rotationSpeed: 0.7
-  attackRange: 17
+  attackRange: 25
   awarenessRange: 100
   currentMoveSpeed: 0
   BonusMoveSpeed: 0

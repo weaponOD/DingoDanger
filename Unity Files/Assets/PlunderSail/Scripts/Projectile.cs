@@ -6,7 +6,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
-    private float initialForce = 10;
+    private float initialForce = 15;
 
     private AudioSource audioSource;
 

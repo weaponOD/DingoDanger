@@ -81,16 +81,16 @@ public class AIAgent : LivingEntity
         behaviours.Clear();
 
         targetDirection = transform.forward;
-        
+
         // check if sunk
 
-        if(transform.position.y < -5)
+        if (transform.position.y < -5)
         {
             player.GiveGold(50);
             GameObject.Destroy(gameObject);
         }
 
-        if(!GameState.BuildMode)
+        if (!GameState.BuildMode)
         {
             // Calculate which behaviours to use this frame.
 
@@ -98,7 +98,10 @@ public class AIAgent : LivingEntity
             if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
             {
                 chasingTarget = true;
-                behaviours.Add(new ChaseBehaviour());
+
+                ChaseBehaviour chase = (ChaseBehaviour)ScriptableObject.CreateInstance("ChaseBehaviour");
+
+                behaviours.Add(chase);
             }
             else
             {
@@ -109,18 +112,38 @@ public class AIAgent : LivingEntity
             if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
             {
                 aligningWithTarget = true;
-                behaviours.Add(new AlignmentBehaviour());
+
+                AlignmentBehaviour align = (AlignmentBehaviour)ScriptableObject.CreateInstance("AlignmentBehaviour");
+
+                behaviours.Add(align);
+
+                Debug.DrawRay(transform.position + transform.forward * 0.2f, transform.right,Color.red);
+
+                Debug.DrawRay(transform.position + transform.forward * 0.2f, -transform.right, Color.red);
+
+                if (Physics.Raycast(transform.position + transform.forward * 0.2f, transform.right, attackRange))
+                {
+                    weaponController.FireWeaponsRight();
+                }
+
+                if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.right, attackRange))
+                {
+                    weaponController.FireWeaponsLeft();
+                }
             }
             else
             {
+                
                 aligningWithTarget = false;
             }
         }
         else
         {
-            if(Vector3.Distance(transform.position, player.transform.position) < awarenessRange)
+            if (Vector3.Distance(transform.position, player.transform.position) < awarenessRange)
             {
-                behaviours.Add(new FleeBehaviour());
+                FleeBehaviour flee = (FleeBehaviour)ScriptableObject.CreateInstance("FleeBehaviour");
+
+                behaviours.Add(flee);
             }
         }
 

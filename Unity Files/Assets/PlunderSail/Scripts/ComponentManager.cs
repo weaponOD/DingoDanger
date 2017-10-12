@@ -13,6 +13,10 @@ public class ComponentManager : MonoBehaviour
     {
         // Subscribe to game state
         GameState.buildModeChanged += UpdateParts;
+
+        sails = new AttachmentSail[0];
+
+        UpdateParts(false);
     }
 
     public AttachmentWeapon[] GetAttachedLeftWeapons()

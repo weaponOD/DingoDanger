@@ -216,6 +216,8 @@ public class PlayerController : MonoBehaviour
 
         //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
         //}
+
+        transform.rotation.eulerAngles.Set(0f, transform.rotation.eulerAngles.y, 0f);
     }
 
     public void setSpeedBonus(float _bonus)

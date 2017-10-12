@@ -56,6 +56,7 @@ public class Player : LivingEntity
 
         if (!buildMode)
         {
+            Debug.Log("started");
             weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
             weaponController.RightWeapons = components.GetAttachedRightWeapons();
             controller.setSpeedBonus(components.getSpeedBonus());

@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform[] enemyPrefabs;
 
-    private List<Transform> activeEnemies;
+    private GameObject[] activeEnemies;
 
     private Transform player;
 
@@ -27,19 +27,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        activeEnemies = new List<Transform>(maxEnemies);
+        activeEnemies = new GameObject[maxEnemies];
 
         StartCoroutine(CheckEnemies());
     }
 
     IEnumerator CheckEnemies()
     {
-        DeSpawnEnemies();
+        activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        if (activeEnemies.Count < maxEnemies)
+        if (activeEnemies.Length < maxEnemies && !GameState.BuildMode)
         {
             SpawnEnemy();
-            //Debug.Log("Spaned Island");
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -51,34 +50,12 @@ public class EnemySpawner : MonoBehaviour
 
         if ((Physics2D.OverlapCircle(spawnPos, 100f, 0, 0, 0)) == null)
         {
-            Transform newIsland = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).transform;
-
-            activeEnemies.Add(newIsland);
+            Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
         }
         else
         {
             SpawnEnemy();
         }
-    }
-
-    private void DeSpawnEnemies()
-    {
-        foreach (Transform island in activeEnemies)
-        {
-            float distanceFromPlayer = Vector3.Distance(island.position, player.position);
-
-            if (distanceFromPlayer > deSpawnRange)
-            {
-                island.gameObject.GetComponent<Island>().DeSpawn();
-
-                Debug.Log("DeSpawn");
-            }
-        }
-    }
-
-    public void RemoveMe(Transform _island)
-    {
-        activeEnemies.Remove(_island);
     }
 
     Vector3 OutOfSightPos()

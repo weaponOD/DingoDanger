@@ -7,17 +7,20 @@ using UnityEngine;
 [RequireComponent(typeof(ComponentManager))]
 public class LivingEntity : MonoBehaviour, IDamageable
 {
+    [Header("Attributes of living entity")]
     [SerializeField]
     protected float starterHealth;
-
-    [SerializeField]
-    protected float currentHealth;
 
     [SerializeField]
     protected float bountyDelay;
 
     [SerializeField]
-    protected GameObject bounty;
+    [Tooltip("The GameObjects to spawn after the entity dies")]
+    protected GameObject[] bounty;
+
+    [Header("Debug Info")]
+    [SerializeField]
+    protected float currentHealth;
 
     protected Vector3 deathPos;
 
@@ -74,6 +77,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(bountyDelay);
 
-        Instantiate(bounty, deathPos, Quaternion.identity);
+        foreach(GameObject reward in bounty)
+        {
+            Instantiate(reward, deathPos, Quaternion.identity);
+        }
     }
 }

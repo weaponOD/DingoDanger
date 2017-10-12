@@ -13,24 +13,28 @@ public class WeaponController : MonoBehaviour
     private bool canShootRight = true;
     private bool canShootLeft = true;
 
+    private AudioSource audioSource;
+
+    private PlayerController player;
+
+    [Header("Combat Attributes")]
     [SerializeField]
     private float minFireTime;
 
     [SerializeField]
     private float maxFireTime;
 
-    private AudioSource audioSource;
-
-    private PlayerController player;
-
     [SerializeField]
-    private AudioClip FireShout;
+    private AudioClip[] FireShout;
 
+    [Header("Debug Info")]
     [SerializeField]
     private AttachmentWeapon[] leftWeapons;
 
     [SerializeField]
     private AttachmentWeapon[] rightWeapons;
+
+    private int currentShout;
 
     private void Awake()
     {
@@ -66,42 +70,59 @@ public class WeaponController : MonoBehaviour
                 canShootLeft = true;
             }
         }
+    }
 
-        if (Input.GetAxis("Left_Trigger") == 1)
+    public void FireWeaponsRight()
+    {
+        if (canShootRight)
         {
-            if (canShootLeft)
+            if (rightWeapons.Length > 0)
             {
-                if (leftWeapons.Length > 0)
+                if (FireShout.Length > 0 && Random.Range(0, 100) < 20)
                 {
-                    audioSource.PlayOneShot(FireShout, 0.8F);
-                    StartCoroutine(FireLeft());
-
-                    canShootLeft = false;
-                    nextReloadTimeLeft = Time.time + reloadTime;
+                    currentShout = Random.Range(0, FireShout.Length);
+                    audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
                 }
+
+                StartCoroutine(FireRight());
+
+                canShootRight = false;
+                nextReloadTimeRight = Time.time + reloadTime;
             }
         }
+    }
 
-        if (Input.GetAxis("Right_Trigger") == 1)
+    public void FireWeaponsLeft()
+    {
+        if (canShootLeft)
         {
-            if (canShootRight)
+            if (leftWeapons.Length > 0)
             {
-                if (rightWeapons.Length > 0)
+                if (FireShout.Length > 0 && Random.Range(0, 100) < 20)
                 {
-                    audioSource.PlayOneShot(FireShout, 0.8F);
-
-                    StartCoroutine(FireRight());
-
-                    canShootRight = false;
-                    nextReloadTimeRight = Time.time + reloadTime;
+                    currentShout = Random.Range(0, FireShout.Length);
+                    audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
                 }
+
+                StartCoroutine(FireLeft());
+
+                canShootLeft = false;
+                nextReloadTimeLeft = Time.time + reloadTime;
             }
         }
     }
 
     private IEnumerator FireLeft()
     {
-        yield return new WaitForSeconds(FireShout.length);
+        if(FireShout.Length > 0)
+        {
+            yield return new WaitForSeconds(FireShout[currentShout].length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+        
 
         foreach (AttachmentWeapon weapon in leftWeapons)
         {
@@ -112,7 +133,14 @@ public class WeaponController : MonoBehaviour
 
     private IEnumerator FireRight()
     {
-        yield return new WaitForSeconds(FireShout.length);
+        if (FireShout.Length > 0)
+        {
+            yield return new WaitForSeconds(FireShout[currentShout].length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
 
         foreach (AttachmentWeapon weapon in rightWeapons)
         {

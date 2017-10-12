@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 124387452465324306}
   - component: {fileID: 92856646460851780}
   - component: {fileID: 114381019599122282}
+  - component: {fileID: 81776402131636350}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -137,6 +138,13 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!81 &81776402131636350
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660470033819464}
+  m_Enabled: 1
 --- !u!92 &92856646460851780
 Behaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +171,7 @@ MonoBehaviour:
   zoomDampening: 12
   minZoomDistance: 4
   maxZoomDistance: 25
-  MoveSensitivity: 2.5
+  MoveSensitivity: 1
   movementDampening: 10
   breakForce: 0.2
   timeBeforeSnap: 1.5

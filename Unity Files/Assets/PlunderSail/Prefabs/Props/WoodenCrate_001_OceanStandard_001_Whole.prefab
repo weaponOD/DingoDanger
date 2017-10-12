@@ -37,8 +37,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4272247628521006}
   - component: {fileID: 114110112501833880}
-  - component: {fileID: 135221224474333144}
   - component: {fileID: 114670646091669438}
+  - component: {fileID: 65323579249746894}
   m_Layer: 0
   m_Name: WoodenCrate_001_OceanStandard_001_Whole
   m_TagString: Untagged
@@ -112,6 +112,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1040665800063048}
   m_Mesh: {fileID: 4300000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
+--- !u!65 &65323579249746894
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651737292880838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114110112501833880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,15 +149,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
---- !u!135 &135221224474333144
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1651737292880838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3
-  m_Center: {x: 0, y: 0.5, z: 0}

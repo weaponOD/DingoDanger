@@ -16,10 +16,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000010708501322}
-  - 114: {fileID: 114000013230019050}
+  - component: {fileID: 4000010708501322}
+  - component: {fileID: 114000013230019050}
   m_Layer: 4
   m_Name: LPWaterHighQuality
   m_TagString: Untagged
@@ -36,10 +36,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1.0000001}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000013230019050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,14 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a49d405310944fb9cd55bef9e018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridType: 0
+  gridType: 1
   LOD: 0.2
   LODPower: 3
   customMesh: {fileID: 0}
   material: {fileID: 2100000, guid: deafa17c6e01f8b43ae33c12383ebaec, type: 2}
   sun: {fileID: 0}
-  sizeX: 60
-  sizeZ: 60
+  sizeX: 200
+  sizeZ: 200
   noise: 0.6
   enableReflection: 1
   enableRefraction: 0
@@ -75,4 +75,4 @@ MonoBehaviour:
   receiveShadows: 0
   waveScale: -1337
   gridTypeLite: 0
-  displayProgress: 0
+  displayProgress: 1

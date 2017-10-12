@@ -8,9 +8,15 @@ public class Projectile : MonoBehaviour
     private Rigidbody rb;
     private float initialForce = 10;
 
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip splashSound;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -39,8 +45,9 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < -5)
+        if(transform.position.y < 0)
         {
+            audioSource.PlayOneShot(splashSound, 5f);
             GameObject.Destroy(gameObject);
         }
     }

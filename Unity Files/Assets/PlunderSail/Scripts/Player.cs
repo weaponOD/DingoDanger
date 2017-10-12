@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerController))]
 public class Player : LivingEntity
 {
-    private int gold = 1000;
+    [SerializeField]
+    private int gold = 2000;
 
     private bool buildMode = false;
 
@@ -14,11 +15,30 @@ public class Player : LivingEntity
 
     PlayerController controller;
 
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip[] goldPickup;
+
+    [SerializeField]
+    private AudioClip waves;
+
     buoyancy buoyant;
 
     protected override void Start()
     {
         base.Start();
+
+        StartCoroutine(PlayWaves());
+    }
+
+    private IEnumerator PlayWaves()
+    {
+        audioSource.PlayOneShot(waves, Random.Range(0.4f, 0.9f));
+
+        yield return new WaitForSeconds(Random.Range(waves.length, waves.length * 2));
+
+        StartCoroutine(PlayWaves());
     }
 
     private void Awake()
@@ -27,10 +47,24 @@ public class Player : LivingEntity
         weaponController = GetComponent<WeaponController>();
         components = GetComponent<ComponentManager>();
 
+        audioSource = GetComponent<AudioSource>();
         buoyant = GetComponentInChildren<buoyancy>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Left_Trigger") == 1)
+        {
+            weaponController.FireWeaponsLeft();
+        }
+
+        if (Input.GetAxis("Right_Trigger") == 1)
+        {
+            weaponController.FireWeaponsRight();
+        }
     }
 
     public int Gold
@@ -45,6 +79,11 @@ public class Player : LivingEntity
 
     public void GiveGold(int _amount)
     {
+        if(goldPickup.Length > 0)
+        {
+            audioSource.PlayOneShot(goldPickup[Random.Range(0, goldPickup.Length)], Random.Range(0.9f, 1.3f));
+        }
+
         gold += _amount;
     }
 
@@ -56,7 +95,6 @@ public class Player : LivingEntity
 
         if (!buildMode)
         {
-            Debug.Log("started");
             weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
             weaponController.RightWeapons = components.GetAttachedRightWeapons();
             controller.setSpeedBonus(components.getSpeedBonus());

@@ -83,8 +83,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        playerGold.text = "" + player.Gold;
-
         for (int x = 0; x < buttons.Length; x++)
         {
             if (player.Gold >= prices[x])
@@ -100,6 +98,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        playerGold.text = "" + player.Gold;
+
         // cheat gold Increased
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {

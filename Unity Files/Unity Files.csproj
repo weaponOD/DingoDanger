@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\AlignmentBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentSail.cs" />
@@ -102,9 +103,14 @@
     <Compile Include="Assets\PlunderSail\Scripts\BuildModeCam.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\buoyancy.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\CameraController.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\ChaseBehaviour.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\CollisionAvoidanceBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\ComponentManager.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\DrawCircle.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\FleeBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\GameManager.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\IBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />

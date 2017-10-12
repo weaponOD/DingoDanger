@@ -55,7 +55,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float turnSpeed;
 
+    [SerializeField]
+    private AudioClip[] startBuild;
+
+    [SerializeField]
+    private AudioClip[] fullSpeed;
+
+    [SerializeField]
+    private AudioClip[] slowDown;
+
     private bool sailsDown = true;
+
+    private AudioSource audioSource;
 
     private GameManager GM;
 
@@ -66,6 +77,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        audioSource = GetComponent<AudioSource>();
 
         wheel = transform.GetChild(0).GetChild(3);
 
@@ -83,7 +96,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!movingToPier)
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
+        if (!movingToPier)
         {
             // set targetVelocity to Value of left Thumb stick
             targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
@@ -107,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
                 LowerSails(sailsDown);
             }
+
+
         }
     }
 
@@ -117,12 +134,22 @@ public class PlayerController : MonoBehaviour
             moveSpeed = maxMoveSpeed;
 
             turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
+
+            if(fullSpeed.Length > 0)
+            {
+                audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+            }
         }
         else
         {
             moveSpeed = baseMoveSpeed;
 
             turnSpeed = baseTurnSpeed;
+
+            if(slowDown.Length > 0)
+            {
+                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+            }
         }
     }
 
@@ -233,6 +260,11 @@ public class PlayerController : MonoBehaviour
         movingToPier = _moveThere;
 
         pier = _dockingPos;
+
+        if(movingToPier)
+        {
+            audioSource.PlayOneShot(startBuild[Random.Range(0, startBuild.Length)], Random.Range(0.9f, 1.3f));
+        }
     }
 
     public float MoveSpeed

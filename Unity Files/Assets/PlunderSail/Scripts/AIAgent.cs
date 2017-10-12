@@ -2,61 +2,144 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class that has a list of behaviours which it uses to steer. The decision to choose which behaviours to apply is done by the children of AI agent.
+/// </summary>
+/// 
 public class AIAgent : LivingEntity
 {
-    // Variables
-    private PlayerController player;
-
-    protected float sizeIncrement = 0.01f;
-
-    private Rigidbody rb;
-
-    private MapManager manager;
+    // Editor Variables
+    [Header("AI Attributes")]
+    [SerializeField]
+    [Range(0, 50)]
+    [Tooltip("The movement speed the ship will move with no sails.")]
+    protected float baseMoveSpeed;
 
     [SerializeField]
-    [Range(0, 100)]
-    private float moveSpeed;
+    [Range(0, 1)]
+    protected float rotationSpeed;
 
     [SerializeField]
     [Range(0, 300)]
-    private float attackRange;
+    protected float attackRange;
 
-    private void Awake()
+    [SerializeField]
+    [Range(0, 300)]
+    protected float awarenessRange;
+
+    [Header("Debug Info")]
+    [SerializeField]
+    protected float currentMoveSpeed;
+
+    [SerializeField]
+    protected float BonusMoveSpeed;
+
+    [SerializeField]
+    private bool chasingTarget;
+
+    [SerializeField]
+    private bool aligningWithTarget;
+
+    [SerializeField]
+    protected List<IBehaviour> behaviours;
+
+    // Non editor Variables
+    protected Player player;
+
+    protected Rigidbody rb;
+
+    protected Quaternion targetRotation;
+    protected Vector3 targetDirection;
+
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        //transform.localScale = Vector3.zero;
+        components = GetComponent<ComponentManager>();
+        weaponController = GetComponent<WeaponController>();
 
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MapManager>();
+        behaviours = new List<IBehaviour>(5);
     }
-	
-	void Update ()
-    {
-        //transform.LookAt(player.transform);
 
-        if (transform.localScale.x < 1f)
+    protected override void Start()
+    {
+        base.Start();
+
+        weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
+        weaponController.RightWeapons = components.GetAttachedRightWeapons();
+        BonusMoveSpeed = components.getSpeedBonus();
+
+        currentMoveSpeed = baseMoveSpeed + BonusMoveSpeed;
+    }
+
+    protected virtual void Update()
+    {
+        // reset variables before calculating what to do this frame.
+        targetDirection = Vector3.zero;
+        behaviours.Clear();
+
+        targetDirection = transform.forward;
+        
+        // check if sunk
+
+        if(transform.position.y < -5)
         {
-            transform.localScale += new Vector3(sizeIncrement, sizeIncrement, sizeIncrement);
+            player.GiveGold(50);
+            GameObject.Destroy(gameObject);
         }
-    }
 
-    private void FixedUpdate()
-    {
         if(!GameState.BuildMode)
         {
-            //MoveToAttackRange();
+            // Calculate which behaviours to use this frame.
+
+            // Check if the target is further than attack range, if so Chase target.
+            if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
+            {
+                chasingTarget = true;
+                behaviours.Add(new ChaseBehaviour());
+            }
+            else
+            {
+                chasingTarget = false;
+            }
+
+            // Check if the target is in attack range, if so align to target.
+            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            {
+                aligningWithTarget = true;
+                behaviours.Add(new AlignmentBehaviour());
+            }
+            else
+            {
+                aligningWithTarget = false;
+            }
         }
+        else
+        {
+            if(Vector3.Distance(transform.position, player.transform.position) < awarenessRange)
+            {
+                behaviours.Add(new FleeBehaviour());
+            }
+        }
+
+        foreach (IBehaviour behaviour in behaviours)
+        {
+            targetDirection += behaviour.ApplyBehaviour(transform.position, player.transform);
+        }
+
+        //create the rotation we need to be in to look at the target
+        targetRotation = Quaternion.LookRotation(targetDirection);
+
+        //rotate us over time according to speed until we are in the required rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
     }
 
-    private void MoveToAttackRange()
+    protected virtual void FixedUpdate()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-
-        if (distance > attackRange)
-        {
-            rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
-        }
+        rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
     }
 }

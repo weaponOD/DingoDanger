@@ -38,6 +38,26 @@ public class ComponentManager : MonoBehaviour
         return sails;
     }
 
+    public void LowerSails()
+    {
+        UpdateSails();
+
+        foreach(AttachmentSail sail in sails)
+        {
+            sail.Lower();
+        }
+    }
+
+    public void RaiseSails()
+    {
+        UpdateSails();
+
+        foreach (AttachmentSail sail in sails)
+        {
+            sail.Raise();
+        }
+    }
+
     // returns total bonus from all sails.
     public int getSpeedBonus()
     {

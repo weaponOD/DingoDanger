@@ -45,29 +45,32 @@ public class PlayerController : MonoBehaviour
     private AudioClip[] slowDown;
 
     [Header("Debug Info")]
-    // Max angle the ship can tilt
     [SerializeField]
-    private float maxRollValue = 6;
+    private float moveSpeed;
 
     [SerializeField]
-    private float myRotation;
+    private float bonusMoveSpeed;
+
+    [SerializeField]
+    private float maxMoveSpeed;
 
     [SerializeField]
     private float turnSpeed;
 
     [SerializeField]
+    private bool sailsDown = true;
+
     private float tiltSpeed;
+
+    // Max angle the ship can tilt
+    private float maxRollValue = 6;
+
+    private float myRotation;
 
     private Transform leftThruster = null;
     private Transform rightThruster = null;
 
     private float defaultRotation;
-
-    private float moveSpeed;
-
-    private float bonusMoveSpeed;
-
-    private float maxMoveSpeed;
 
     private Vector3 velocity;
 
@@ -76,19 +79,21 @@ public class PlayerController : MonoBehaviour
     // The stearing wheel on the ship
     private Transform wheel;
 
-    private bool sailsDown = true;
-
     private AudioSource audioSource;
 
     private GameManager GM;
 
     private bool movingToPier = false;
 
+    private ComponentManager components;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        components = GetComponent<ComponentManager>();
 
         audioSource = GetComponent<AudioSource>();
 
@@ -108,6 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // lock the x and z axis rotation to 0f;
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
         if (!movingToPier)
@@ -128,29 +134,30 @@ public class PlayerController : MonoBehaviour
 
             velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
 
-            if(Input.GetButtonDown("A_Button"))
+            // Lower or raise Sails
+            if (Input.GetButtonDown("A_Button"))
             {
                 sailsDown = !sailsDown;
 
                 LowerSails(sailsDown);
             }
-
-
         }
     }
 
     private void LowerSails(bool _isDown)
     {
-        if(_isDown)
+        if (_isDown)
         {
             moveSpeed = maxMoveSpeed;
 
             turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
 
-            if(fullSpeed.Length > 0)
+            if (fullSpeed.Length > 0)
             {
                 audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
+
+            components.LowerSails();
         }
         else
         {
@@ -158,23 +165,25 @@ public class PlayerController : MonoBehaviour
 
             turnSpeed = baseTurnSpeed;
 
-            if(slowDown.Length > 0)
+            if (slowDown.Length > 0)
             {
                 audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
+
+            components.RaiseSails();
         }
     }
 
     void FixedUpdate()
     {
-        if(movingToPier)
+        if (movingToPier)
         {
-            if(Vector3.Distance(transform.position, pier.position) > 2)
+            if (Vector3.Distance(transform.position, pier.position) > 2)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pier.position, moveSpeed * 3 * Time.deltaTime);
 
                 // The position of the pier less the y axis
-                Vector3 pierLocation = new Vector3(pier.position.x, transform.position.y,pier.position.z);
+                Vector3 pierLocation = new Vector3(pier.position.x, transform.position.y, pier.position.z);
 
                 transform.LookAt(pierLocation);
             }
@@ -186,7 +195,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(!buildMode)
+        if (!buildMode)
         {
             rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
 
@@ -195,28 +204,23 @@ public class PlayerController : MonoBehaviour
             {
                 rb.AddForceAtPosition(rightThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
 
-                if (moveSpeed > baseMoveSpeed / 2)
-                {
-                    moveSpeed -= 0.01f;
-                }
+                //if (moveSpeed > baseMoveSpeed / 2)
+                //{
+                //    moveSpeed -= 0.01f;
+                //}
             }
             // Turn left
             else if (velocity.x < 0)
             {
                 rb.AddForceAtPosition(leftThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
 
-                if (moveSpeed > baseMoveSpeed / 2)
-                {
-                    moveSpeed -= 0.01f;
-                }
+                //if (moveSpeed > baseMoveSpeed / 2)
+                //{
+                //    moveSpeed -= 0.01f;
+                //}
             }
             else
             {
-                if (moveSpeed < maxMoveSpeed)
-                {
-                    moveSpeed += 0.01f;
-                }
-
                 //myRotation = transform.rotation.z * 100f;
 
                 //if (!Mathf.Approximately(myRotation, 0f))
@@ -273,7 +277,7 @@ public class PlayerController : MonoBehaviour
 
         pier = _dockingPos;
 
-        if(movingToPier)
+        if (movingToPier)
         {
             audioSource.PlayOneShot(startBuild[Random.Range(0, startBuild.Length)], Random.Range(0.9f, 1.3f));
         }

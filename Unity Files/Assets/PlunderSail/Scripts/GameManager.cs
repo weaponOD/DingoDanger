@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform pier = null;
 
+    [SerializeField]
+    private GameObject boidPrefab;
+
     UIManager Ui;
     PlayerController PC;
 

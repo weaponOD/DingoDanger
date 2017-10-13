@@ -72,6 +72,13 @@ public class AIAgent : LivingEntity
         BonusMoveSpeed = components.getSpeedBonus();
 
         currentMoveSpeed = baseMoveSpeed + BonusMoveSpeed;
+
+        AttachmentPoint[] allPoints = GetComponentsInChildren<AttachmentPoint>();
+
+        foreach(AttachmentPoint point in allPoints)
+        {
+            Destroy(point.gameObject);
+        }
     }
 
     protected virtual void Update()

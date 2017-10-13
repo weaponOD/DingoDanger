@@ -2511,7 +2511,7 @@ MonoBehaviour:
   bounty: []
   currentHealth: 0
   gold: 1000
-  ramDamage: 20
+  ramDamage: 4
   goldPickup:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
@@ -2597,16 +2597,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 6
-  sailBonus: 0
+  baseMoveSpeed: 8
+  sailBonus: 0.75
   baseTurnSpeed: 25
-  TurnRatePenalty: 0.3
+  TurnRatePenalty: 17
   wheelTurnSpeed: 5
   startBuild:
   - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
   fullSpeed:
   - {fileID: 8300000, guid: a2abb6e0dcd79984dbacdfc23e7e2746, type: 3}
-  slowDown: []
+  slowDown:
+  - {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
   maxRollValue: 6
   myRotation: 0
   turnSpeed: 0

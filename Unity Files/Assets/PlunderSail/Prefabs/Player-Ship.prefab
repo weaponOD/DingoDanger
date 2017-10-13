@@ -2598,19 +2598,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoveSpeed: 6
-  wheelTurnSpeed: 5
-  TurnRatePenalty: 17
-  maxRollValue: 6
-  myRotation: 0
-  tiltSpeed: 10
+  sailBonus: 0
   baseTurnSpeed: 25
-  turnSpeed: 0
+  TurnRatePenalty: 0.3
+  wheelTurnSpeed: 5
   startBuild:
   - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
   fullSpeed:
   - {fileID: 8300000, guid: a2abb6e0dcd79984dbacdfc23e7e2746, type: 3}
-  slowDown:
-  - {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
+  slowDown: []
+  maxRollValue: 6
+  myRotation: 0
+  turnSpeed: 0
+  tiltSpeed: 10
 --- !u!114 &114690204815637516
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,8 +9,59 @@ public class PlayerController : MonoBehaviour
 
     private Transform pier;
 
+    [Header("Player Controller Attributes")]
+
     [SerializeField]
+    [Tooltip("The speed at which the player will move when no sails are open")]
     private float baseMoveSpeed;
+
+    [SerializeField]
+    [Tooltip("The additional speed per sail when the sails are open")]
+    private float sailBonus;
+
+    [SerializeField]
+    [Tooltip("The degrees per frame the ship can rotate with no open sails")]
+    private float baseTurnSpeed;
+
+    [SerializeField]
+    [Tooltip("The reduction per sail to turn rate when sails are open")]
+    private float TurnRatePenalty;
+
+    [SerializeField]
+    [Tooltip("The degrees per frame that the steering wheel rotates")]
+    private float wheelTurnSpeed;
+
+    private bool buildMode = false;
+
+    [Header("Sound Resources")]
+
+    [SerializeField]
+    private AudioClip[] startBuild;
+
+    [SerializeField]
+    private AudioClip[] fullSpeed;
+
+    [SerializeField]
+    private AudioClip[] slowDown;
+
+    [Header("Debug Info")]
+    // Max angle the ship can tilt
+    [SerializeField]
+    private float maxRollValue = 6;
+
+    [SerializeField]
+    private float myRotation;
+
+    [SerializeField]
+    private float turnSpeed;
+
+    [SerializeField]
+    private float tiltSpeed;
+
+    private Transform leftThruster = null;
+    private Transform rightThruster = null;
+
+    private float defaultRotation;
 
     private float moveSpeed;
 
@@ -24,45 +75,6 @@ public class PlayerController : MonoBehaviour
 
     // The stearing wheel on the ship
     private Transform wheel;
-
-    // Steering wheel turn speed
-    [SerializeField]
-    private float wheelTurnSpeed;
-
-    [SerializeField]
-    private float TurnRatePenalty;
-
-    private bool buildMode = false;
-
-    // Max angle the ship can tilt
-    [SerializeField]
-    private float maxRollValue = 6;
-
-    private Transform leftThruster = null;
-    private Transform rightThruster = null;
-
-    [SerializeField]
-    private float myRotation;
-
-    private float defaultRotation;
-
-    [SerializeField]
-    private float tiltSpeed;
-
-    [SerializeField]
-    private float baseTurnSpeed;
-
-    [SerializeField]
-    private float turnSpeed;
-
-    [SerializeField]
-    private AudioClip[] startBuild;
-
-    [SerializeField]
-    private AudioClip[] fullSpeed;
-
-    [SerializeField]
-    private AudioClip[] slowDown;
 
     private bool sailsDown = true;
 
@@ -247,7 +259,7 @@ public class PlayerController : MonoBehaviour
 
     public void setSpeedBonus(float _bonus)
     {
-        bonusMoveSpeed = _bonus;
+        bonusMoveSpeed = (_bonus * sailBonus);
 
         maxMoveSpeed = baseMoveSpeed + bonusMoveSpeed;
         moveSpeed = maxMoveSpeed;

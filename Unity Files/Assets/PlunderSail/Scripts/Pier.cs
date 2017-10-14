@@ -8,12 +8,12 @@ public class Pier : MonoBehaviour
     private Transform dockingPos;
 
     private UIManager UI;
-    private GameManager gm;
+    private GameManager GM;
 
     private void Awake()
     {
         UI = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
-        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +21,7 @@ public class Pier : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             UI.ShowPierPopUp(true);
-            gm.setPier(dockingPos);
+            GM.setPier(dockingPos);
         }
     }
 
@@ -30,7 +30,7 @@ public class Pier : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             UI.ShowPierPopUp(false);
-            gm.setPier(null);
+            GM.setPier(null);
         }
     }
 }

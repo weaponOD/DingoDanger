@@ -7,10 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
 
-    private Transform pier;
-
     [Header("Player Controller Attributes")]
-
     [SerializeField]
     [Tooltip("The speed at which the player will move when no sails are open")]
     private float baseMoveSpeed;
@@ -31,10 +28,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The degrees per frame that the steering wheel rotates")]
     private float wheelTurnSpeed;
 
-    private bool buildMode = false;
-
     [Header("Sound Resources")]
-
     [SerializeField]
     private AudioClip[] startBuild;
 
@@ -58,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeed;
 
     [SerializeField]
-    private bool sailsDown = true;
+    private bool sailsOpen = true;
 
     private float tiltSpeed;
 
@@ -82,8 +76,6 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
 
     private GameManager GM;
-
-    private bool movingToPier = false;
 
     private ComponentManager components;
 
@@ -116,7 +108,7 @@ public class PlayerController : MonoBehaviour
         // lock the x and z axis rotation to 0f;
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
-        if (!movingToPier)
+        if(!GameState.BuildMode)
         {
             // set targetVelocity to Value of left Thumb stick
             targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
@@ -137,16 +129,16 @@ public class PlayerController : MonoBehaviour
             // Lower or raise Sails
             if (Input.GetButtonDown("A_Button"))
             {
-                sailsDown = !sailsDown;
+                sailsOpen = !sailsOpen;
 
-                LowerSails(sailsDown);
+                LowerSails(sailsOpen);
             }
         }
     }
 
-    private void LowerSails(bool _isDown)
+    private void LowerSails(bool _isOpen)
     {
-        if (_isDown)
+        if (_isOpen)
         {
             moveSpeed = maxMoveSpeed;
 
@@ -176,26 +168,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (movingToPier)
-        {
-            if (Vector3.Distance(transform.position, pier.position) > 2)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, pier.position, moveSpeed * 3 * Time.deltaTime);
-
-                // The position of the pier less the y axis
-                Vector3 pierLocation = new Vector3(pier.position.x, transform.position.y, pier.position.z);
-
-                transform.LookAt(pierLocation);
-            }
-            else
-            {
-                GM.AtDock();
-            }
-
-            return;
-        }
-
-        if (!buildMode)
+        if (!GameState.BuildMode)
         {
             rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
 
@@ -203,21 +176,11 @@ public class PlayerController : MonoBehaviour
             if (velocity.x > 0)
             {
                 rb.AddForceAtPosition(rightThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
-
-                //if (moveSpeed > baseMoveSpeed / 2)
-                //{
-                //    moveSpeed -= 0.01f;
-                //}
             }
             // Turn left
             else if (velocity.x < 0)
             {
                 rb.AddForceAtPosition(leftThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
-
-                //if (moveSpeed > baseMoveSpeed / 2)
-                //{
-                //    moveSpeed -= 0.01f;
-                //}
             }
             else
             {
@@ -271,18 +234,6 @@ public class PlayerController : MonoBehaviour
         turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
     }
 
-    public void moveToPier(bool _moveThere, Transform _dockingPos)
-    {
-        movingToPier = _moveThere;
-
-        pier = _dockingPos;
-
-        if (movingToPier)
-        {
-            audioSource.PlayOneShot(startBuild[Random.Range(0, startBuild.Length)], Random.Range(0.9f, 1.3f));
-        }
-    }
-
     public float MoveSpeed
     {
         get { return moveSpeed; }
@@ -297,9 +248,14 @@ public class PlayerController : MonoBehaviour
 
     private void SetBuildMode(bool isBuildMode)
     {
-        buildMode = isBuildMode;
+        rb.isKinematic = isBuildMode;
 
-        rb.isKinematic = buildMode;
+        if(isBuildMode)
+        {
+            sailsOpen = true;
+
+            LowerSails(sailsOpen);
+        }
     }
 
     private void OnDestroy()

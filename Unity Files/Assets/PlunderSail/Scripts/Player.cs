@@ -8,8 +8,6 @@ public class Player : LivingEntity
     [SerializeField]
     private int gold = 2000;
 
-    private bool buildMode = false;
-
     [SerializeField]
     private float ramDamage = 20;
 
@@ -89,11 +87,9 @@ public class Player : LivingEntity
 
     private void SetBuildMode(bool isBuildMode)
     {
-        buildMode = isBuildMode;
+        buoyant.enabled = !isBuildMode;
 
-        buoyant.enabled = !buildMode;
-
-        if (!buildMode)
+        if (!isBuildMode)
         {
             UpdateAttachments();
         }

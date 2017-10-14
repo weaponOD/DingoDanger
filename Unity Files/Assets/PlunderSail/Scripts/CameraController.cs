@@ -30,6 +30,11 @@ public class CameraController : MonoBehaviour
         buildCam.UpdatePos();
     }
 
+    public void MoveBuildCameraToPier(Transform _pier)
+    {
+        buildCamGO.transform.position = _pier.position;
+    }
+
     public BuildModeCam BuildCam
     {
         get { return buildCam; }

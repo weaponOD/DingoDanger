@@ -7,16 +7,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform pier = null;
 
-    [SerializeField]
-    private GameObject boidPrefab;
-
     UIManager Ui;
     PlayerController PC;
+    CameraController CC;
 
     private void Awake()
     {
         Ui = GetComponent<UIManager>();
         PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        CC = GetComponent<CameraController>();
     }
 
     private void Start()
@@ -28,30 +27,32 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Y_Button"))
         {
-            if(!GameState.BuildMode)
+            if (!GameState.BuildMode)
             {
                 if (pier != null)
                 {
-                    PC.moveToPier(true, pier);
+                    Ui.TransitionToBuild();
+                    StartCoroutine(MovePlayerToPier());
                     Ui.ShowPierPopUp(false);
                 }
             }
             else
             {
-                GameState.BuildMode = false;
-                PC.moveToPier(false, pier);
-
-                PC.gameObject.transform.RotateAroundLocal(Vector3.up, 180f);
+                //GameState.BuildMode = false;
+                //PC.transform.Rotate(Vector3.up, 180f, Space.Self);
             }
         }
     }
 
-    public void AtDock()
+    private IEnumerator MovePlayerToPier()
     {
-        if(!GameState.BuildMode)
-        {
-            GameState.BuildMode = true;
-        }
+        yield return new WaitForSeconds(1.2f);
+
+        PC.transform.position = pier.position;
+        PC.transform.rotation = pier.rotation;
+        CC.MoveBuildCameraToPier(pier);
+
+        GameState.BuildMode = true;
     }
 
     public void setPier(Transform _dockPos)
@@ -73,12 +74,12 @@ public static class GameState
 
         set
         {
-            if(buildMode != value)
+            if (buildMode != value)
             {
                 buildMode = value;
             }
 
-            if(buildModeChanged != null)
+            if (buildModeChanged != null)
             {
                 buildModeChanged(buildMode);
             }

@@ -15,7 +15,7 @@ public class AttachmentWeapon : AttachmentBase
     private AudioClip[] shootSound;
 
     [SerializeField]
-    private GameObject shootParticle;
+    private ParticleSystem shootParticle;
 
     private AudioSource audioSource;
 
@@ -29,9 +29,6 @@ public class AttachmentWeapon : AttachmentBase
     protected GameObject projectilePrefab;
 
     protected Transform[] firePoints;
-
-    [SerializeField]
-    protected ParticleSystem smokeEffect;
 
     private void Awake()
     {
@@ -81,21 +78,21 @@ public class AttachmentWeapon : AttachmentBase
         
         Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
 
-        Destroy(Instantiate(smokeEffect.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
+        Destroy(Instantiate(shootParticle.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
         Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
 
-        Destroy(Instantiate(smokeEffect.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
+        Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
         Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
 
-        Destroy(Instantiate(smokeEffect.gameObject, firePoints[2].position, firePoints[1].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
+        Destroy(Instantiate(shootParticle.gameObject, firePoints[2].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
     }
 

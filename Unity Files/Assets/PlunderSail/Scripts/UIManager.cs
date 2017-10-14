@@ -37,6 +37,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text pierPopup;
 
+    [SerializeField]
+    private Image fadePlane;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -203,6 +206,35 @@ public class UIManager : MonoBehaviour
     public void ShowPierPopUp(bool _show)
     {
         pierPopup.enabled = _show;
+    }
+
+    public void TransitionToBuild()
+    {
+        StartCoroutine(FadeScreenYoyo());
+    }
+
+    private IEnumerator FadeScreenYoyo()
+    {
+        StartCoroutine(Fade(Color.clear, Color.black, 1));
+
+        yield return new WaitForSeconds(1.2f);
+
+        StartCoroutine(Fade(Color.black, Color.clear, 1));
+    }
+
+    // Fades the fadePlane image from a colour to another over x seconds.
+    private IEnumerator Fade(Color from, Color to, float time)
+    {
+        float speed = 1 / time;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * speed;
+            fadePlane.color = Color.Lerp(from, to, percent);
+
+            yield return null;
+        }
     }
 
     void OnDestroy()

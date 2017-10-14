@@ -76,6 +76,8 @@ public class FlockingAgent : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(velocity.x, 0f, velocity.y)), turnSpeed * Time.deltaTime);
 
         transform.Translate(new Vector3(resultantForce.x, 0f, resultantForce.y));
+
+        transform.position = new Vector3(transform.position.x , -1f, transform.position.z);
     }
 
     // returns force that steers the agent towards the average velocity of nearby boids

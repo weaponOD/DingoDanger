@@ -101,6 +101,15 @@ public class AIAgent : LivingEntity
         {
             // Calculate which behaviours to use this frame.
 
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if(distanceToPlayer > awarenessRange)
+            {
+                WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
+
+                behaviours.Add(wander);
+            }
+
             // Check if the target is further than attack range, if so Chase target.
             if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
             {

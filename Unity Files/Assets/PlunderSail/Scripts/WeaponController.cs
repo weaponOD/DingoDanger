@@ -29,10 +29,10 @@ public class WeaponController : MonoBehaviour
 
     [Header("Debug Info")]
     [SerializeField]
-    private AttachmentWeapon[] leftWeapons;
+    private WeaponAttachment[] leftWeapons;
 
     [SerializeField]
-    private AttachmentWeapon[] rightWeapons;
+    private WeaponAttachment[] rightWeapons;
 
     private int currentShout = 0;
 
@@ -46,12 +46,12 @@ public class WeaponController : MonoBehaviour
         GameState.buildModeChanged += SetBuildMode;
     }
 
-    public AttachmentWeapon[] LeftWeapons
+    public WeaponAttachment[] LeftWeapons
     {
         set { leftWeapons = value; }
     }
 
-    public AttachmentWeapon[] RightWeapons
+    public WeaponAttachment[] RightWeapons
     {
         set { rightWeapons = value; }
     }
@@ -81,7 +81,11 @@ public class WeaponController : MonoBehaviour
                 if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
-                    audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
+
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
+                    }
                 }
 
                 StartCoroutine(FireRight());
@@ -101,7 +105,11 @@ public class WeaponController : MonoBehaviour
                 if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
-                    audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
+
+                    if(!audioSource.isPlaying)
+                    {
+                        audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
+                    }
                 }
 
                 StartCoroutine(FireLeft());
@@ -114,17 +122,9 @@ public class WeaponController : MonoBehaviour
 
     private IEnumerator FireLeft()
     {
-        if(FireShout.Length > 0)
-        {
-            yield return new WaitForSeconds(FireShout[currentShout].length);
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.0f);
-        }
-        
+        yield return new WaitForSeconds(0.2f);
 
-        foreach (AttachmentWeapon weapon in leftWeapons)
+        foreach (WeaponAttachment weapon in leftWeapons)
         {
             if (weapon != null)
             {
@@ -137,16 +137,9 @@ public class WeaponController : MonoBehaviour
 
     private IEnumerator FireRight()
     {
-        if (FireShout.Length > 0)
-        {
-            yield return new WaitForSeconds(FireShout[currentShout].length);
-        }
-        else
-        {
-            yield return new WaitForSeconds(0.2f);
-        }
+        yield return new WaitForSeconds(0.2f);
 
-        foreach (AttachmentWeapon weapon in rightWeapons)
+        foreach (WeaponAttachment weapon in rightWeapons)
         {
             if(weapon != null)
             {

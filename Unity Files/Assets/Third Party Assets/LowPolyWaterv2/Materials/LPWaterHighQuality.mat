@@ -9,7 +9,7 @@ Material:
   m_Name: LPWaterHighQuality
   m_Shader: {fileID: 4800000, guid: 8165be4dd0b12774d80426d906df9c38, type: 3}
   m_ShaderKeywords: LPW_FOAM LPW_SHADOWS WATER_REFLECTIVE WATER_REFRACTIVE _EDGEBLEND_ON
-    _EMISSION _LIGHTABS_ON _SHADING_FLAT _WAVES_HIGHQUALITY _ZWRITE_ON
+    _EMISSION _LIGHTABS_ON _SHADING_FLAT _WAVES_LOWQUALITY _ZWRITE_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,7 +85,7 @@ Material:
     - _TexSize_: 64
     - _Time_: 323.62787
     - _TransformScale_: 1
-    - _Waves: 2
+    - _Waves: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0, g: 1, b: 0.751724, a: 1}

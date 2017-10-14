@@ -6,8 +6,8 @@ public class ComponentManager : MonoBehaviour
 {
     private AttachmentSail[] sails;
 
-    private AttachmentWeapon[] leftWeapons;
-    private AttachmentWeapon[] rightWeapons;
+    private WeaponAttachment[] leftWeapons;
+    private WeaponAttachment[] rightWeapons;
 
     private void Awake()
     {
@@ -19,14 +19,14 @@ public class ComponentManager : MonoBehaviour
         UpdateParts(false);
     }
 
-    public AttachmentWeapon[] GetAttachedLeftWeapons()
+    public WeaponAttachment[] GetAttachedLeftWeapons()
     {
         UpdateWeapons();
 
         return leftWeapons;
     }
 
-    public AttachmentWeapon[] GetAttachedRightWeapons()
+    public WeaponAttachment[] GetAttachedRightWeapons()
     {
         UpdateWeapons();
 
@@ -81,12 +81,12 @@ public class ComponentManager : MonoBehaviour
 
     private void UpdateWeapons()
     {
-        AttachmentWeapon[] weapons = GetComponentsInChildren<AttachmentWeapon>();
+        WeaponAttachment[] weapons = GetComponentsInChildren<WeaponAttachment>();
 
         int weaponsRightCount = 0;
         int weaponsLeftCount = 0;
 
-        foreach (AttachmentWeapon weapon in weapons)
+        foreach (WeaponAttachment weapon in weapons)
         {
             if (weapon.FacingLeft)
             {
@@ -98,13 +98,13 @@ public class ComponentManager : MonoBehaviour
             }
         }
 
-        leftWeapons = new AttachmentWeapon[weaponsLeftCount];
-        rightWeapons = new AttachmentWeapon[weaponsRightCount];
+        leftWeapons = new WeaponAttachment[weaponsLeftCount];
+        rightWeapons = new WeaponAttachment[weaponsRightCount];
 
         weaponsRightCount = 0;
         weaponsLeftCount = 0;
 
-        foreach (AttachmentWeapon weapon in weapons)
+        foreach (WeaponAttachment weapon in weapons)
         {
             if (weapon.FacingLeft)
             {

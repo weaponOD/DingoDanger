@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The degrees per frame that the steering wheel rotates")]
     private float wheelTurnSpeed;
 
+    [SerializeField]
+    private float rollSpeed;
+
     [Header("Sound Resources")]
     [SerializeField]
     private AudioClip[] startBuild;
@@ -54,11 +57,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool sailsOpen = true;
 
-    private float tiltSpeed;
-
     // Max angle the ship can tilt
-    private float maxRollValue = 6;
+    private float maxRollValue = 4;
 
+    [SerializeField]
     private float myRotation;
 
     private Transform leftThruster = null;
@@ -106,9 +108,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // lock the x and z axis rotation to 0f;
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
 
-        if(!GameState.BuildMode)
+        if (!GameState.BuildMode)
         {
             // set targetVelocity to Value of left Thumb stick
             targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
@@ -154,44 +156,52 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                //myRotation = transform.rotation.z * 100f;
+                if (!Mathf.Approximately(myRotation, 0f))
+                {
+                    Debug.Log("Turn back to default turn");
 
-                //if (!Mathf.Approximately(myRotation, 0f))
-                //{
-                //    //Debug.Log("Turn back to default turn");
-                //    //transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, defaultRotation * tiltSpeed) * Time.fixedDeltaTime);
-                //}
+                    if(myRotation < 0)
+                    {
+                        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        myRotation += 1 * rollSpeed * Time.deltaTime;
+                    }
+                    else if(myRotation > 0)
+                    {
+                        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        myRotation -= 1 * rollSpeed * Time.deltaTime;
+                    }
+                }
             }
         }
     }
 
     private void LateUpdate()
     {
-        //if (velocity.x != 0f)
-        //{
-        //    myRotation = transform.rotation.z * 100f;
+        if (velocity.x != 0f)
+        {
+            // Turning left
+            if (targetVelocity.x < 0)
+            {
+                if (myRotation > -maxRollValue)
+                {
+                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                    myRotation -= 1 * rollSpeed * Time.deltaTime;
+                }
+            }
+            // Turning Right
+            else if (targetVelocity.x > 0)
+            {
+                if (myRotation < maxRollValue)
+                {
+                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * rollSpeed *  Time.deltaTime);
+                    myRotation += 1 * rollSpeed * Time.deltaTime;
+                }
+            }
 
-        //    // Turning left
-        //    if (targetVelocity.x < 0)
-        //    {
-        //        if (Mathf.Abs(myRotation) < maxRollValue)
-        //        {
-        //            transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * Time.deltaTime);
-        //        }
-        //    }
-        //    // Turning Right
-        //    else if (targetVelocity.x > 0)
-        //    {
-        //        if (Mathf.Abs(myRotation) < maxRollValue)
-        //        {
-        //            transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * Time.deltaTime);
-        //        }
-        //    }
+            Debug.Log("Turning");
 
-        //    Debug.Log("Turning");
-
-        //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
-        //}
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
+        }
     }
 
     private void LowerSails(bool _isOpen)
@@ -250,7 +260,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.isKinematic = isBuildMode;
 
-        if(isBuildMode)
+        if (isBuildMode)
         {
             sailsOpen = true;
 

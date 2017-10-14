@@ -24,10 +24,10 @@ public class ShipCombat : MonoBehaviour
     [SerializeField]
     private AudioClip FireShout;
 
-    private List<AttachmentWeapon> leftWeapons;
-    private List<AttachmentWeapon> rightWeapons;
+    private List<WeaponAttachment> leftWeapons;
+    private List<WeaponAttachment> rightWeapons;
 
-    private AttachmentWeapon[] weapons;
+    private WeaponAttachment[] weapons;
 
     private void Awake()
     {
@@ -35,8 +35,8 @@ public class ShipCombat : MonoBehaviour
 
         player = GetComponent<PlayerController>();
 
-        leftWeapons = new List<AttachmentWeapon>();
-        rightWeapons = new List<AttachmentWeapon>();
+        leftWeapons = new List<WeaponAttachment>();
+        rightWeapons = new List<WeaponAttachment>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -46,9 +46,9 @@ public class ShipCombat : MonoBehaviour
 
     public void updateWeapons()
     {
-        weapons = GetComponentsInChildren<AttachmentWeapon>();
+        weapons = GetComponentsInChildren<WeaponAttachment>();
 
-        foreach (AttachmentWeapon weapon in weapons)
+        foreach (WeaponAttachment weapon in weapons)
         {
             if (weapon.FacingLeft)
             {
@@ -112,7 +112,7 @@ public class ShipCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(FireShout.length);
 
-        foreach (AttachmentWeapon weapon in leftWeapons)
+        foreach (WeaponAttachment weapon in leftWeapons)
         {
             weapon.FireLeft();
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
@@ -123,7 +123,7 @@ public class ShipCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(FireShout.length);
 
-        foreach (AttachmentWeapon weapon in rightWeapons)
+        foreach (WeaponAttachment weapon in rightWeapons)
         {
             weapon.FireRight();
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));

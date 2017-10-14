@@ -50,7 +50,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
   m_Name: 
@@ -78,8 +78,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   Panel: {fileID: 0}
-  prices: f4010000f401000064000000c8000000
+  prices: f4010000f401000064000000c800000090010000
   timeBetweenPresses: 0.4
   pierPopup: {fileID: 0}
   fadePlane: {fileID: 0}
@@ -95,7 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
-  boidPrefab: {fileID: 0}
 --- !u!114 &114347702168056404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
   - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
   - {fileID: 1586404089410776, guid: d35bad22c31270e4d9e92a7f4dc38a28, type: 2}
+  - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
   ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
   playerCenter: {fileID: 0}
   buildCam: {fileID: 0}

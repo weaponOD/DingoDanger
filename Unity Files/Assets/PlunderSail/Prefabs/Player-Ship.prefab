@@ -447,8 +447,8 @@ GameObject:
   - component: {fileID: 114318058643457256}
   - component: {fileID: 114198653071609380}
   - component: {fileID: 114679271719134412}
-  - component: {fileID: 65682416789144408}
   - component: {fileID: 114552191891746722}
+  - component: {fileID: 65682416789144408}
   m_Layer: 9
   m_Name: Player-Ship
   m_TagString: Player
@@ -2545,7 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minFireTime: 0.15
-  maxFireTime: 1
+  maxFireTime: 0.2
   FireShout:
   - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
   - {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
@@ -2565,11 +2565,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 6.25
-  sailBonus: 1.25
+  baseMoveSpeed: 7.25
+  sailBonus: 1.45
   baseTurnSpeed: 27
-  TurnRatePenalty: 15
+  TurnRatePenalty: 13
   wheelTurnSpeed: 5
+  rollSpeed: 2
   startBuild:
   - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
   fullSpeed:
@@ -2580,7 +2581,8 @@ MonoBehaviour:
   bonusMoveSpeed: 0
   maxMoveSpeed: 0
   turnSpeed: 0
-  sailsDown: 1
+  sailsOpen: 1
+  myRotation: 0
 --- !u!114 &114700950324816976
 MonoBehaviour:
   m_ObjectHideFlags: 1

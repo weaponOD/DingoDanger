@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE }
+public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE, WEAPONDOUBLE }
 
 public class ShipBuilder : MonoBehaviour
 {
@@ -102,14 +102,14 @@ public class ShipBuilder : MonoBehaviour
                             previewPiece.transform.position = buildInfo.position;
                             previewPiece.transform.localRotation = buildInfo.rotation;
 
-                            if (currentAttachment == AttachmentType.WEAPONSINGLE)
+                            if (currentAttachment == AttachmentType.WEAPONSINGLE || currentAttachment == AttachmentType.WEAPONDOUBLE)
                             {
                                 if (rotateWeapon)
                                 {
                                     previewPiece.transform.Rotate(Vector3.up, -90, Space.Self);
                                 }
 
-                                previewPiece.GetComponent<AttachmentWeapon>().NeedToMirror = mirrorWeapon;
+                                previewPiece.GetComponent<WeaponAttachment>().NeedToMirror = mirrorWeapon;
                             }
 
                             if (currentAttachment == AttachmentType.ARMOUR)
@@ -146,7 +146,7 @@ public class ShipBuilder : MonoBehaviour
                 // Mirror attachment
                 if (Input.GetButtonDown("X_Button"))
                 {
-                    if (currentAttachment == AttachmentType.WEAPONSINGLE)
+                    if (currentAttachment == AttachmentType.WEAPONSINGLE || currentAttachment == AttachmentType.WEAPONDOUBLE)
                     {
                         mirrorWeapon = !mirrorWeapon;
                     }
@@ -212,7 +212,7 @@ public class ShipBuilder : MonoBehaviour
                         if (lastAttachmentPoint.parent.parent.tag == "Weapon")
                         {
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
                             }
@@ -237,7 +237,7 @@ public class ShipBuilder : MonoBehaviour
                             buildPoint.y -= 0.5f;
                             canPlace = true;
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint.z -= 0.5f;
                             }
@@ -269,7 +269,7 @@ public class ShipBuilder : MonoBehaviour
                 }
             }
         }
-        else if (currentAttachment == AttachmentType.WEAPONSINGLE)
+        else if (currentAttachment == AttachmentType.WEAPONSINGLE || currentAttachment == AttachmentType.WEAPONDOUBLE)
         {
             if (_lastAttachmentPoint.tag == "BuildPoint")
             {
@@ -282,7 +282,7 @@ public class ShipBuilder : MonoBehaviour
                         {
                             canPlace = true;
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
                             }
@@ -315,7 +315,7 @@ public class ShipBuilder : MonoBehaviour
                             rotateWeapon = true;
                             buildPoint.y -= 0.5f;
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint.z -= 0.5f;
                             }
@@ -361,7 +361,7 @@ public class ShipBuilder : MonoBehaviour
                         {
                             canPlace = true;
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint = _lastAttachmentPoint.position - transform.right * 0.5f;
                             }
@@ -387,7 +387,7 @@ public class ShipBuilder : MonoBehaviour
                             buildPoint = _lastAttachmentPoint.position + _lastAttachmentPoint.forward;
                             buildPoint.y -= 0.5f;
 
-                            if (lastAttachmentPoint.parent.parent.GetComponent<AttachmentWeapon>().FacingLeft)
+                            if (lastAttachmentPoint.parent.parent.GetComponent<WeaponAttachment>().FacingLeft)
                             {
                                 buildPoint.z -= 0.5f;
                             }

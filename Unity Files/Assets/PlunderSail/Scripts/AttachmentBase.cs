@@ -46,7 +46,9 @@ public class AttachmentBase : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            GameObject.Destroy(gameObject);
+            transform.parent = null;
+            gameObject.AddComponent<Rigidbody>();
+            //GameObject.Destroy(gameObject);
         }
     }
 

@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
     // Max angle the ship can tilt
     private float maxRollValue = 4;
 
+    private Quaternion pivotRotation;
+
     [SerializeField]
     private float myRotation;
 
@@ -108,11 +110,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // lock the x and z axis rotation to 0f;
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-
         if (!GameState.BuildMode)
         {
+            // lock the x and z axis rotation to 0f;
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
             // set targetVelocity to Value of left Thumb stick
             targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
 
@@ -136,9 +138,6 @@ public class PlayerController : MonoBehaviour
 
                 LowerSails(sailsOpen);
             }
-
-
-            pivot.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.z);
         }
     }
 
@@ -198,6 +197,20 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+            pivotRotation = pivot.rotation;
+
+            rb.rotation = pivot.rotation;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (!GameState.BuildMode)
+        {
+            pivot.rotation = pivotRotation;
+
+            pivot.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.z);
         }
     }
 

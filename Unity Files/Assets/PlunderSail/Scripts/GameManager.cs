@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 GameState.BuildMode = false;
-                PC.transform.Rotate(Vector3.up, 180f, Space.Self);
+                //PC.transform.Rotate(Vector3.up, 180f, Space.Self);
             }
         }
     }
@@ -47,12 +47,14 @@ public class GameManager : MonoBehaviour
     private IEnumerator MovePlayerToPier()
     {
         yield return new WaitForSeconds(1.2f);
-        
-        PC.transform.GetChild(0).transform.position = pier.position;
-        PC.transform.GetChild(0).transform.rotation = pier.rotation;
-        CC.MoveBuildCameraToPier(pier);
-
         GameState.BuildMode = true;
+
+        PC.transform.position = pier.position;
+        PC.transform.rotation = pier.rotation;
+
+        //PC.transform.GetChild(0).position = Vector3.zero;
+        PC.transform.GetChild(0).localRotation = Quaternion.identity;
+        CC.MoveBuildCameraToPier(pier);
     }
 
     public void setPier(Transform _dockPos)

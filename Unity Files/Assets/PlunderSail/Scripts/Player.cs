@@ -77,7 +77,7 @@ public class Player : LivingEntity
 
     public void GiveGold(int _amount)
     {
-        if(goldPickup.Length > 0)
+        if (goldPickup.Length > 0)
         {
             audioSource.PlayOneShot(goldPickup[Random.Range(0, goldPickup.Length)], Random.Range(0.9f, 1.3f));
         }
@@ -94,7 +94,7 @@ public class Player : LivingEntity
             UpdateAttachments();
         }
     }
-    
+
     public void UpdateAttachments()
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
@@ -110,7 +110,7 @@ public class Player : LivingEntity
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.contacts[0].thisCollider.CompareTag("Ram"))
+        if (collision.contacts[0].thisCollider.CompareTag("Ram"))
         {
             if (collision.collider.gameObject.GetComponent<AttachmentBase>())
             {
@@ -120,6 +120,21 @@ public class Player : LivingEntity
             if (collision.collider.gameObject.GetComponent<AIAgent>())
             {
                 collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
+            }
+        }
+
+        if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
+        {
+            float hitDamage = collision.relativeVelocity.magnitude;
+            Debug.Log("Hit piece with a force of " + hitDamage);
+
+            if (hitDamage < 10)
+            {
+                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(5 * collision.relativeVelocity.magnitude);
+            }
+            else
+            {
+                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100 * collision.relativeVelocity.magnitude);
             }
         }
     }

@@ -409,6 +409,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: buildCamGO
+      value: 
+      objectReference: {fileID: 418068492}
+    - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: playCamGO
+      value: 
+      objectReference: {fileID: 1699494557}
+    - target: {fileID: 114347702168056404, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: playerCenter
+      value: 
+      objectReference: {fileID: 797422331}
+    - target: {fileID: 114347702168056404, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: buildCam
+      value: 
+      objectReference: {fileID: 2090553227}
     - target: {fileID: 114254656103416218, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
       propertyPath: playerGold
@@ -454,31 +474,6 @@ Prefab:
       propertyPath: fadePlane
       value: 
       objectReference: {fileID: 1534173433}
-    - target: {fileID: 114347702168056404, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: playerCenter
-      value: 
-      objectReference: {fileID: 797422331}
-    - target: {fileID: 114347702168056404, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: buildCam
-      value: 
-      objectReference: {fileID: 2090553227}
-    - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: buildCamGO
-      value: 
-      objectReference: {fileID: 418068492}
-    - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: playCamGO
-      value: 
-      objectReference: {fileID: 1699494557}
-    - target: {fileID: 114153618981797618, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
   m_IsPrefabParent: 0

@@ -2470,8 +2470,8 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  gold: 5000
-  ramDamage: 4
+  gold: 1200
+  ramDamage: 12
   goldPickup:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
@@ -2608,9 +2608,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 7.25
-  sailBonus: 1.45
-  baseTurnSpeed: 40
+  baseMoveSpeed: 4.5
+  sailBonus: 2.5
+  baseTurnSpeed: 45
   TurnRatePenalty: 13
   wheelTurnSpeed: 5
   rollSpeed: 2

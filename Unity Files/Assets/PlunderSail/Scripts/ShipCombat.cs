@@ -50,20 +50,12 @@ public class ShipCombat : MonoBehaviour
 
         foreach (AttachmentWeapon weapon in weapons)
         {
-            if (!weapon.DoubleFacing)
+            if (weapon.FacingLeft)
             {
-                if (weapon.FacingLeft)
-                {
-                    leftWeapons.Add(weapon);
-                }
-                else
-                {
-                    rightWeapons.Add(weapon);
-                }
+                leftWeapons.Add(weapon);
             }
             else
             {
-                leftWeapons.Add(weapon);
                 rightWeapons.Add(weapon);
             }
         }

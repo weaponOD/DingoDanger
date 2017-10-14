@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 4048326658710050, guid: 27fc5e387c5c5334cafb85aa057f3945, type: 2}
   - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
   maxEnemies: 2
   spawnRange: 300
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
+  boidPrefab: {fileID: 0}
 --- !u!114 &114347702168056404
 MonoBehaviour:
   m_ObjectHideFlags: 1

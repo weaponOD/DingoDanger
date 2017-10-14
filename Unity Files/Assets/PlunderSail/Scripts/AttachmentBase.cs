@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AttachmentBase : MonoBehaviour
 {
+    [Header("Base Stat")]
     [SerializeField]
-    protected float currentHealth;
-
     protected float maxHealth;
 
-    [SerializeField]
+    protected float currentHealth;
+
     protected bool canPlace = true;
 
     protected bool isPreview = false;

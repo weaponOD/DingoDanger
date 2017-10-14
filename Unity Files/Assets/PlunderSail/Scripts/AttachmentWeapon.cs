@@ -5,29 +5,33 @@ using UnityEngine;
 public class AttachmentWeapon : AttachmentBase
 {
     [SerializeField]
-    protected bool facingLeft;
-
-    [SerializeField]
-    protected bool doubleFacing = false;
-
-    [SerializeField]
     private float minFireTime;
 
     [SerializeField]
     private float maxFireTime;
 
+    [Header("Effects resources")]
     [SerializeField]
     private AudioClip[] shootSound;
 
+    [SerializeField]
+    private GameObject shootParticle;
+
     private AudioSource audioSource;
 
-    public bool needToRotate = false;
+    protected bool facingLeft;
 
-    public bool needToMirror = false;
+    private bool needToRotate = false;
+
+    private bool needToMirror = false;
 
     [SerializeField]
     protected GameObject projectilePrefab;
+
     protected Transform[] firePoints;
+
+    [SerializeField]
+    protected ParticleSystem smokeEffect;
 
     private void Awake()
     {
@@ -52,11 +56,6 @@ public class AttachmentWeapon : AttachmentBase
         }
     }
 
-    public bool DoubleFacing
-    {
-        get { return doubleFacing; }
-    }
-
     public bool FacingLeft
     {
         get
@@ -79,17 +78,24 @@ public class AttachmentWeapon : AttachmentBase
 
     private IEnumerator Fire()
     {
+        
         Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+
+        Destroy(Instantiate(smokeEffect.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
         Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
+
+        Destroy(Instantiate(smokeEffect.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
         Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
+
+        Destroy(Instantiate(smokeEffect.gameObject, firePoints[2].position, firePoints[1].rotation) as GameObject, smokeEffect.main.startLifetime.constant);
         PlayRandomSound();
     }
 

@@ -10,8 +10,15 @@ public class Projectile : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [Header("Effects")]
     [SerializeField]
     private AudioClip splashSound;
+
+    [SerializeField]
+    private ParticleSystem splashEffect;
+
+    [SerializeField]
+    private ParticleSystem hitEffect;
 
     private void Awake()
     {
@@ -28,16 +35,16 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision _collision)
     {
-        Debug.Log("Collide!");
-
-        if(_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
+        if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-           _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
+            _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
+            Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
         }
 
         if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
             _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(25);
+            Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
         }
 
         GameObject.Destroy(gameObject);
@@ -45,9 +52,10 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if(transform.position.y < 0)
+        if (transform.position.y < 0)
         {
             audioSource.PlayOneShot(splashSound, 5f);
+            Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
             GameObject.Destroy(gameObject);
         }
     }

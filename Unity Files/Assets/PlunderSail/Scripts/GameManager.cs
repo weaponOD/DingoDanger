@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                //GameState.BuildMode = false;
-                //PC.transform.Rotate(Vector3.up, 180f, Space.Self);
+                GameState.BuildMode = false;
+                PC.transform.Rotate(Vector3.up, 180f, Space.Self);
             }
         }
     }

@@ -136,36 +136,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LowerSails(bool _isOpen)
-    {
-        if (_isOpen)
-        {
-            moveSpeed = maxMoveSpeed;
-
-            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
-
-            if (fullSpeed.Length > 0)
-            {
-                audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
-            }
-
-            components.LowerSails();
-        }
-        else
-        {
-            moveSpeed = baseMoveSpeed;
-
-            turnSpeed = baseTurnSpeed;
-
-            if (slowDown.Length > 0)
-            {
-                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
-            }
-
-            components.RaiseSails();
-        }
-    }
-
     void FixedUpdate()
     {
         if (!GameState.BuildMode)
@@ -222,6 +192,36 @@ public class PlayerController : MonoBehaviour
 
         //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
         //}
+    }
+
+    private void LowerSails(bool _isOpen)
+    {
+        if (_isOpen)
+        {
+            moveSpeed = maxMoveSpeed;
+
+            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
+
+            if (fullSpeed.Length > 0 && !GameState.BuildMode)
+            {
+                audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+            }
+
+            components.LowerSails();
+        }
+        else
+        {
+            moveSpeed = baseMoveSpeed;
+
+            turnSpeed = baseTurnSpeed;
+
+            if (slowDown.Length > 0)
+            {
+                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+            }
+
+            components.RaiseSails();
+        }
     }
 
     public void setSpeedBonus(float _bonus)

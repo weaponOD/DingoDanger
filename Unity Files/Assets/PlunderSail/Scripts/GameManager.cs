@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
     private IEnumerator MovePlayerToPier()
     {
         yield return new WaitForSeconds(1.2f);
-
-        PC.transform.position = pier.position;
-        PC.transform.rotation = pier.rotation;
+        
+        PC.transform.GetChild(0).transform.position = pier.position;
+        PC.transform.GetChild(0).transform.rotation = pier.rotation;
         CC.MoveBuildCameraToPier(pier);
 
         GameState.BuildMode = true;

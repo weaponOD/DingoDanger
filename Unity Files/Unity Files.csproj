@@ -93,12 +93,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FlockingAgent.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AlignmentBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentSail.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\AttachmentWeapon.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Bounty.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\BuildModeCam.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\buoyancy.cs" />
@@ -109,6 +109,7 @@
     <Compile Include="Assets\PlunderSail\Scripts\DrawCircle.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\FleeBehaviour.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\FlockingAgent.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\GameManager.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\IBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />

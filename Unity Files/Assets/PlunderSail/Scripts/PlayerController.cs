@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
 
     private ComponentManager components;
 
+    private Transform pivot;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -91,10 +93,9 @@ public class PlayerController : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
 
-        wheel = transform.GetChild(0).GetChild(3);
+        pivot = transform.GetChild(0);
 
-        leftThruster = transform.GetChild(1);
-        rightThruster = transform.GetChild(2);
+        wheel = transform.GetChild(0).GetChild(0).GetChild(3);
 
         defaultRotation = transform.rotation.eulerAngles.z;
 
@@ -135,24 +136,27 @@ public class PlayerController : MonoBehaviour
 
                 LowerSails(sailsOpen);
             }
+
+
+            pivot.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.z);
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (!GameState.BuildMode)
         {
-            rb.MovePosition(rb.position + transform.forward * Time.fixedDeltaTime * moveSpeed);
+            rb.MovePosition(transform.position + pivot.forward * moveSpeed * Time.fixedDeltaTime);
 
             // Turn right
             if (velocity.x > 0)
             {
-                rb.AddForceAtPosition(rightThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
+                pivot.Rotate(0f, turnSpeed * Time.deltaTime, 0f);
             }
             // Turn left
             else if (velocity.x < 0)
             {
-                rb.AddForceAtPosition(leftThruster.forward * turnSpeed, rightThruster.position, ForceMode.Impulse);
+                pivot.Rotate(0f, -turnSpeed * Time.deltaTime, 0f);
             }
             else
             {
@@ -160,47 +164,40 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Turn back to default turn");
 
-                    if(myRotation < 0)
+                    if (myRotation < 0)
                     {
-                        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
                         myRotation += 1 * rollSpeed * Time.deltaTime;
                     }
-                    else if(myRotation > 0)
+                    else if (myRotation > 0)
                     {
-                        transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
                         myRotation -= 1 * rollSpeed * Time.deltaTime;
                     }
                 }
             }
-        }
-    }
 
-    private void LateUpdate()
-    {
-        if (velocity.x != 0f)
-        {
-            // Turning left
-            if (targetVelocity.x < 0)
+            if (velocity.x != 0f)
             {
-                if (myRotation > -maxRollValue)
+                // Turning left
+                if (targetVelocity.x < 0)
                 {
-                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
-                    myRotation -= 1 * rollSpeed * Time.deltaTime;
+                    if (myRotation > -maxRollValue)
+                    {
+                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        myRotation -= 1 * rollSpeed * Time.deltaTime;
+                    }
+                }
+                // Turning Right
+                else if (targetVelocity.x > 0)
+                {
+                    if (myRotation < maxRollValue)
+                    {
+                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
+                        myRotation += 1 * rollSpeed * Time.deltaTime;
+                    }
                 }
             }
-            // Turning Right
-            else if (targetVelocity.x > 0)
-            {
-                if (myRotation < maxRollValue)
-                {
-                    transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y, -maxRollValue * 0.6f) * rollSpeed *  Time.deltaTime);
-                    myRotation += 1 * rollSpeed * Time.deltaTime;
-                }
-            }
-
-            Debug.Log("Turning");
-
-            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
         }
     }
 

@@ -49,7 +49,7 @@ public class PlayModeCam : MonoBehaviour
 
     private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0);
     }
 
     private void Update()

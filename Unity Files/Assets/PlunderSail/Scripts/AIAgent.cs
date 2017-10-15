@@ -27,6 +27,13 @@ public class AIAgent : LivingEntity
     [Range(0, 300)]
     protected float awarenessRange;
 
+    [Header("Difficulty and Reward")]
+    [SerializeField]
+    TIER difficulty;
+
+    [SerializeField]
+    private int goldReward = 50;
+
     [Header("Debug Info")]
     [SerializeField]
     protected float currentMoveSpeed;
@@ -50,6 +57,8 @@ public class AIAgent : LivingEntity
 
     protected Quaternion targetRotation;
     protected Vector3 targetDirection;
+
+    private enum TIER { BASIC, MIDLEVEL, ELITE}
 
     protected virtual void Awake()
     {
@@ -93,7 +102,7 @@ public class AIAgent : LivingEntity
 
         if (transform.position.y < -5)
         {
-            player.GiveGold(50);
+            player.GiveGold(goldReward);
             GameObject.Destroy(gameObject);
         }
 

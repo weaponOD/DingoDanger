@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4757534326979104}
   - component: {fileID: 114203687873755748}
   - component: {fileID: 65403327008451816}
+  - component: {fileID: 114057133627641468}
   m_Layer: 9
   m_Name: Armour_008_Attachments_008_Single
   m_TagString: Untagged
@@ -141,6 +142,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114057133627641468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029743739131934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901ffcd977d00a741a28b1daf0013e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
 --- !u!114 &114203687873755748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,5 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  canPlace: 1
+  maxHealth: 0

@@ -37,8 +37,15 @@ public class Projectile : MonoBehaviour
     {
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-            _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
-            Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+            if(_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
+            {
+                rb.AddForce(-transform.forward * 2f, ForceMode.Impulse);
+            }
+            else
+            {
+                _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
+                Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+            }
         }
 
         if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)

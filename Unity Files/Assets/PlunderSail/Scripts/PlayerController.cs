@@ -159,20 +159,18 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (!Mathf.Approximately(myRotation, 0f))
+                if (!Mathf.Approximately(pivot.localEulerAngles.z, 0f))
                 {
                     Debug.Log("Turn back to default turn");
 
-                    if (myRotation < 0)
+                    if (pivot.localEulerAngles.z != 0)
                     {
-                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
-                        myRotation += 1 * rollSpeed * Time.deltaTime;
+                        pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, pivot.localEulerAngles.y, Mathf.MoveTowardsAngle(pivot.localEulerAngles.z, 0f, 1f));
                     }
-                    else if (myRotation > 0)
-                    {
-                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
-                        myRotation -= 1 * rollSpeed * Time.deltaTime;
-                    }
+                }
+                else
+                {
+                    myRotation = 0;
                 }
             }
 

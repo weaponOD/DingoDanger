@@ -93,9 +93,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ArmourAttachment.cs" />
+    <Compile Include="Assets\PlayerControllerTest.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AlignmentBehaviour.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\ArmourAttachment.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentPoint.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentSail.cs" />
@@ -115,7 +116,8 @@
     <Compile Include="Assets\PlunderSail\Scripts\IBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\IDamageable.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\LaunchArch.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\LaunchArcMesh.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\LaunchArcRenderer.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\MapManager.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Pier.cs" />

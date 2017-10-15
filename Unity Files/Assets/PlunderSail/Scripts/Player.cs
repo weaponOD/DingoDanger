@@ -99,7 +99,7 @@ public class Player : LivingEntity
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
-        controller.setSpeedBonus(components.getSpeedBonus());
+        //controller.setSpeedBonus(components.getSpeedBonus());
     }
 
     private void OnDestroy()

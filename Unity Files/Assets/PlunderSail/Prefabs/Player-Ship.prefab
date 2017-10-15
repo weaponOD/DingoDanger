@@ -2565,24 +2565,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d465debb03a8444aa1245d7d2903bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 7.25
-  sailBonus: 1.45
-  baseTurnSpeed: 27
-  TurnRatePenalty: 13
-  wheelTurnSpeed: 5
-  rollSpeed: 2
-  startBuild:
-  - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
-  fullSpeed:
-  - {fileID: 8300000, guid: a2abb6e0dcd79984dbacdfc23e7e2746, type: 3}
-  slowDown:
-  - {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
-  moveSpeed: 0
-  bonusMoveSpeed: 0
-  maxMoveSpeed: 0
-  turnSpeed: 0
-  sailsOpen: 1
-  myRotation: 0
+  speed: 1
+  acceleration: 1
+  minspeed: 0.25
+  maxspeed: 2
+  heading: 0
+  rudder: 0
+  rudderDelta: 2
+  maxRudder: 6
+  rudderAngle: 0
+  steering: 0
 --- !u!114 &114700950324816976
 MonoBehaviour:
   m_ObjectHideFlags: 1

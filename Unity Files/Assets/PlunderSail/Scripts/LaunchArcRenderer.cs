@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(LineRenderer))]
-public class LaunchArch : MonoBehaviour {
+public class LaunchArcRenderer : MonoBehaviour {
 
 	LineRenderer arcLineRenderer;
 

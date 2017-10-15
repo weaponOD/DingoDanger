@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
 
-    [Header("Player Controller Attributes")]
+    [Header("Player Attributes")]
     [SerializeField]
     [Tooltip("The speed at which the player will move when no sails are open")]
     private float baseMoveSpeed;

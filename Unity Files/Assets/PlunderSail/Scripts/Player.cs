@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerController))]
 public class Player : LivingEntity
 {
     [SerializeField]
@@ -11,7 +10,7 @@ public class Player : LivingEntity
     [SerializeField]
     private float ramDamage = 20;
 
-    PlayerController controller;
+    PlayerControllerTest controller;
 
     private AudioSource audioSource;
 
@@ -41,7 +40,7 @@ public class Player : LivingEntity
 
     private void Awake()
     {
-        controller = GetComponent<PlayerController>();
+        controller = GetComponent<PlayerControllerTest>();
         weaponController = GetComponent<WeaponController>();
         components = GetComponent<ComponentManager>();
 
@@ -99,7 +98,7 @@ public class Player : LivingEntity
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
-        //controller.setSpeedBonus(components.getSpeedBonus());
+        controller.setSpeedBonus(components.getSpeedBonus());
     }
 
     private void OnDestroy()

@@ -17,7 +17,8 @@ public class WeaponAttachmentSingle : WeaponAttachment
 
     protected override IEnumerator Fire()
     {
-        Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+        Projectile shot =  Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
+        shot.Damage = damage;
 
         Destroy(Instantiate(shootParticle.gameObject, effectPoints[0].position, effectPoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();

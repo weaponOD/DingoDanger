@@ -26,6 +26,9 @@ public class WeaponAttachment : AttachmentBase
     protected bool needToMirror = false;
 
     [SerializeField]
+    protected float damage;
+
+    [SerializeField]
     protected GameObject projectilePrefab;
 
     protected Transform[] firePoints;

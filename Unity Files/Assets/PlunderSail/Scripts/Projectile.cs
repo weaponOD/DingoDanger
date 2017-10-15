@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private float damage;
+
     [Header("Effects")]
     [SerializeField]
     private AudioClip splashSound;
@@ -40,21 +42,27 @@ public class Projectile : MonoBehaviour
             if(_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
                 rb.AddForce(-transform.forward * 2f, ForceMode.Impulse);
+                _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
             }
             else
             {
-                _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(25);
+                _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
                 Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
             }
         }
 
         if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
-            _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(25);
+            _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
             Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+            GameObject.Destroy(gameObject);
         }
+    }
 
-        GameObject.Destroy(gameObject);
+    public float Damage
+    {
+        get { return damage; }
+        set { damage = value; }
     }
 
     private void Update()

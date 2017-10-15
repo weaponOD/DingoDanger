@@ -16,14 +16,17 @@ public class WeaponAttachmentDouble : WeaponAttachment
 
     protected override IEnumerator Fire()
     {
-        Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
+        Projectile shot = Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
+        shot.Damage = damage;
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
 
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
 
-        Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
+        Projectile shot2 =  Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation).GetComponent<Projectile>();
+        shot2.Damage = damage;
+
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();

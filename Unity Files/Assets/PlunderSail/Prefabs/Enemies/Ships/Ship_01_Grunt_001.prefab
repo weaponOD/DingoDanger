@@ -7811,6 +7811,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
+  damage: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114013154453472494
@@ -8128,6 +8129,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
+  damage: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114334767233057270
@@ -8179,6 +8181,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
+  damage: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114407865897924022
@@ -8353,6 +8356,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
+  damage: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114560501781892230
@@ -8639,7 +8643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 150
+  starterHealth: 100
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
@@ -8647,7 +8651,7 @@ MonoBehaviour:
   currentHealth: 0
   baseMoveSpeed: 5.6
   rotationSpeed: 0.6
-  attackRange: 40
+  attackRange: 50
   awarenessRange: 100
   difficulty: 0
   goldReward: 100
@@ -8693,7 +8697,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

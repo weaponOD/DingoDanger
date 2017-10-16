@@ -7,14 +7,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform pier = null;
 
-    UIManager Ui;
-    PlayerController PC;
+    UIManager UI;
+    PlayerControllerTest PC;
     CameraController CC;
 
     private void Awake()
     {
-        Ui = GetComponent<UIManager>();
-        PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        UI = GetComponent<UIManager>();
+        PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerTest>();
         CC = GetComponent<CameraController>();
     }
 
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
             {
                 if (pier != null)
                 {
-                    Ui.TransitionToBuild();
+                    UI.TransitionToBuild();
                     StartCoroutine(MovePlayerToPier());
-                    Ui.ShowPierPopUp(false);
+                    UI.ShowPierPopUp(false);
                 }
             }
             else
@@ -52,14 +52,17 @@ public class GameManager : MonoBehaviour
         PC.transform.position = pier.position;
         PC.transform.rotation = pier.rotation;
 
-        //PC.transform.GetChild(0).position = Vector3.zero;
+        PC.transform.GetChild(0).localPosition = Vector3.zero;
         PC.transform.GetChild(0).localRotation = Quaternion.identity;
-        CC.MoveBuildCameraToPier(pier);
     }
 
     public void setPier(Transform _dockPos)
     {
+        Debug.Log("Pier is set");
         pier = _dockPos;
+
+        CC.MoveBuildCameraToPier(pier);
+        UI.ShowPierPopUp((pier != null));
     }
 }
 

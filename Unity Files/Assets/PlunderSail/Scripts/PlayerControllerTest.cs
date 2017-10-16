@@ -64,11 +64,13 @@ public class PlayerControllerTest : MonoBehaviour
 
     public float heading = 0.0f;
     public float rudder = 0.0f;
-    public float rudderDelta = 2.0f;
     public float maxRudder = 6.0f;
     public float rudderAngle = 0.0f;
 
-    public float steering;
+    [SerializeField]
+    private float maxRoll;
+
+    private float steering;
 
     private void Awake()
     {
@@ -89,18 +91,18 @@ public class PlayerControllerTest : MonoBehaviour
         if (!GameState.BuildMode)
         {
             // steering
-            steering = Input.GetAxis("Horizontal") * rudderDelta * Time.deltaTime;
+            steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
 
             if (steering != 0)
             {
-                if (Mathf.Abs(rudder) < 3)
+                if (Mathf.Abs(rudder) < maxRoll)
                 {
                     rudder += steering;
                 }
             }
             else
             {
-                rudder = Mathf.MoveTowards(rudder, 0f, rudderDelta * 2 * Time.deltaTime);
+                rudder = Mathf.MoveTowards(rudder, 0f, turnSpeed * 2 * Time.deltaTime);
             }
 
             // Lower or raise Sails
@@ -174,6 +176,11 @@ public class PlayerControllerTest : MonoBehaviour
             moveSpeed = maxMoveSpeed;
 
             turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
+
+            if(turnSpeed < 0)
+            {
+                turnSpeed = 0;
+            }
 
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
             {

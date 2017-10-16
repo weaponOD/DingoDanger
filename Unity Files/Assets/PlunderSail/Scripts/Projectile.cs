@@ -48,6 +48,7 @@ public class Projectile : MonoBehaviour
             {
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
                 Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+                GameObject.Destroy(gameObject);
             }
         }
 

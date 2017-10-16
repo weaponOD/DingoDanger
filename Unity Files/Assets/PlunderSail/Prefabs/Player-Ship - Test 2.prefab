@@ -2526,9 +2526,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMoveSpeed: 10
-  sailBonus: 0
-  baseTurnSpeed: 0
-  TurnRatePenalty: 0
+  sailBonus: 1
+  baseTurnSpeed: 2
+  TurnRatePenalty: 1
   startBuild: []
   fullSpeed: []
   slowDown: []
@@ -2539,10 +2539,8 @@ MonoBehaviour:
   sailsOpen: 1
   heading: 0
   rudder: 0
-  rudderDelta: 2
   maxRudder: 6
   rudderAngle: 0
-  steering: 0
 --- !u!114 &114624758088205710
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,12 +7,10 @@ public class Pier : MonoBehaviour
     [SerializeField]
     private Transform dockingPos;
 
-    private UIManager UI;
     private GameManager GM;
 
     private void Awake()
     {
-        UI = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIManager>();
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
@@ -20,7 +18,6 @@ public class Pier : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            UI.ShowPierPopUp(true);
             GM.setPier(dockingPos);
         }
     }
@@ -29,7 +26,6 @@ public class Pier : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            UI.ShowPierPopUp(false);
             GM.setPier(null);
         }
     }

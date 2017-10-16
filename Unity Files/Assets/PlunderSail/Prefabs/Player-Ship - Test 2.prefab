@@ -616,7 +616,7 @@ GameObject:
   - component: {fileID: 114739414236451862}
   - component: {fileID: 114422352416139054}
   - component: {fileID: 65182881202407632}
-  - component: {fileID: 114610916031053318}
+  - component: {fileID: 114986026331823280}
   m_Layer: 9
   m_Name: Player-Ship - Test 2
   m_TagString: Player
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  gold: 1200
+  gold: 5000
   ramDamage: 12
   goldPickup:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
@@ -2514,33 +2514,6 @@ MonoBehaviour:
   greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
   redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
   currentlyGreen: 1
---- !u!114 &114610916031053318
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867788587878092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b771752cc35094ca1178fc744e6bfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseMoveSpeed: 10
-  sailBonus: 1
-  baseTurnSpeed: 2
-  TurnRatePenalty: 1
-  startBuild: []
-  fullSpeed: []
-  slowDown: []
-  moveSpeed: 0
-  bonusMoveSpeed: 0
-  maxMoveSpeed: 0
-  turnSpeed: 0
-  sailsOpen: 1
-  heading: 0
-  rudder: 0
-  maxRudder: 6
-  rudderAngle: 0
 --- !u!114 &114624758088205710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2636,3 +2609,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   builtOn: 0
+--- !u!114 &114986026331823280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1867788587878092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseMoveSpeed: 10
+  sailBonus: 1
+  baseTurnSpeed: 2
+  TurnRatePenalty: 1
+  maxRoll: 3
+  startBuild: []
+  fullSpeed: []
+  slowDown: []
+  moveSpeed: 0
+  bonusMoveSpeed: 0
+  maxMoveSpeed: 0
+  turnSpeed: 0
+  sailsOpen: 1
+  heading: 0
+  rudder: 0
+  maxRudder: 6
+  rudderAngle: 0

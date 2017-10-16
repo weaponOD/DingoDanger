@@ -21,6 +21,9 @@ public class PlayerControllerTest : MonoBehaviour
     [Tooltip("The reduction per sail to turn rate when sails are open")]
     private float TurnRatePenalty;
 
+    [SerializeField]
+    private float maxRoll;
+
     [Header("Sound Resources")]
     [SerializeField]
     private AudioClip[] startBuild;
@@ -66,9 +69,6 @@ public class PlayerControllerTest : MonoBehaviour
     public float rudder = 0.0f;
     public float maxRudder = 6.0f;
     public float rudderAngle = 0.0f;
-
-    [SerializeField]
-    private float maxRoll;
 
     private float steering;
 

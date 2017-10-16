@@ -40,6 +40,8 @@ public class PlayModeCam : MonoBehaviour
     [SerializeField]
     private bool canTurn = true;
 
+    public float yOffset;
+
     private void Awake()
     {
         // find the camera in the object hierarchy
@@ -91,6 +93,7 @@ public class PlayModeCam : MonoBehaviour
         FollowTarget(Time.deltaTime);
     }
 
+    // 
     private void FollowTarget(float deltaTime)
     {
         // if no time has passed then we quit early, as there is nothing to do
@@ -138,7 +141,9 @@ public class PlayModeCam : MonoBehaviour
         lastFlatAngle = currentFlatAngle;
 
         // camera position moves towards target position:
-        transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
+
+        Vector3 targetFixedPos = new Vector3(target.position.x, target.position.y + yOffset, target.position.z);
+        transform.position = Vector3.Lerp(transform.position, targetFixedPos, deltaTime * moveSpeed);
 
         // camera's rotation is split into two parts, which can have independend speed settings:
         // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')

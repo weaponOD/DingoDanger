@@ -10,6 +10,10 @@
 		Tags { "RenderType"="Opaque" }
 		LOD 100
 
+			Pass{
+			Cull Off
+		}
+
 		Pass
 		{
 			CGPROGRAM

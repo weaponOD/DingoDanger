@@ -58,7 +58,7 @@ public class AIAgent : LivingEntity
     protected Quaternion targetRotation;
     protected Vector3 targetDirection;
 
-    private enum TIER { BASIC, MIDLEVEL, ELITE}
+    private enum TIER { BASIC, MIDLEVEL, ELITE }
 
     protected virtual void Awake()
     {
@@ -84,7 +84,7 @@ public class AIAgent : LivingEntity
 
         AttachmentPoint[] allPoints = GetComponentsInChildren<AttachmentPoint>();
 
-        foreach(AttachmentPoint point in allPoints)
+        foreach (AttachmentPoint point in allPoints)
         {
             Destroy(point.gameObject);
         }
@@ -112,7 +112,7 @@ public class AIAgent : LivingEntity
 
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if(distanceToPlayer > awarenessRange)
+            if (distanceToPlayer > awarenessRange)
             {
                 WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
 
@@ -142,7 +142,7 @@ public class AIAgent : LivingEntity
 
                 behaviours.Add(align);
 
-                Debug.DrawRay(transform.position + transform.forward * 0.2f, transform.right,Color.red);
+                Debug.DrawRay(transform.position + transform.forward * 0.2f, transform.right, Color.red);
 
                 Debug.DrawRay(transform.position + transform.forward * 0.2f, -transform.right, Color.red);
 
@@ -158,7 +158,7 @@ public class AIAgent : LivingEntity
             }
             else
             {
-                
+
                 aligningWithTarget = false;
             }
         }
@@ -189,5 +189,23 @@ public class AIAgent : LivingEntity
     protected virtual void FixedUpdate()
     {
         rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
+        {
+            float hitDamage = collision.relativeVelocity.magnitude;
+            Debug.Log("Hit piece with a force of " + hitDamage);
+
+            if (hitDamage < 10)
+            {
+                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(5 * collision.relativeVelocity.magnitude);
+            }
+            else
+            {
+                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100 * collision.relativeVelocity.magnitude);
+            }
+        }
     }
 }

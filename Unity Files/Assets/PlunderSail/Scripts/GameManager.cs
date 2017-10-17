@@ -7,13 +7,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform pier = null;
 
-    UIManager UI;
+    UIController UI;
     PlayerControllerTest PC;
     CameraController CC;
 
     private void Awake()
     {
-        UI = GetComponent<UIManager>();
+        UI = GetComponent<UIController>();
         PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerTest>();
         CC = GetComponent<CameraController>();
     }

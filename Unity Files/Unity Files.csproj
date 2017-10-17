@@ -123,7 +123,6 @@
     <Compile Include="Assets\PlunderSail\Scripts\LaunchArcMesh.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\LaunchArcRenderer.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\MapManager.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Pier.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Player.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\PlayerController.cs" />
@@ -140,7 +139,6 @@
     <Compile Include="Assets\PlunderSail\Scripts\WeaponAttachmentSingle.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WeaponAttachmentTriple.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WeaponController.cs" />
-    <Compile Include="Assets\PlunderSail\Scripts\Zone.cs" />
     <Compile Include="Assets\Third Party Assets\LowPolyWaterv2\Demos\Scripts\DemoFreeFlyCamera.cs" />
     <Compile Include="Assets\Third Party Assets\LowPolyWaterv2\Scripts\LowPolyWaterScript.cs" />
     <Compile Include="Assets\Third Party Assets\LowPolyWaterv2\Scripts\src\LPWDepthEffect.cs" />
@@ -243,11 +241,10 @@
     <Compile Include="Assets\Third Party Assets\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Third Party Assets\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Third Party Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
+    <Compile Include="Assets\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PlunderSail\Music\DeleteMe.txt" />
-    <None Include="Assets\PlunderSail\Shaders\DeleteMe.txt" />
-    <None Include="Assets\PlunderSail\Shaders\OceanWaves.shader" />
     <None Include="Assets\PlunderSail\Shaders\SailCloth.shader" />
     <None Include="Assets\Third Party Assets\LowPolyWaterv2\Shaders\LPWCompatibility.cginc" />
     <None Include="Assets\Third Party Assets\LowPolyWaterv2\Shaders\LPWLighting.cginc" />

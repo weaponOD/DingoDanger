@@ -220,7 +220,7 @@ public class PlayerControllerTest : MonoBehaviour
 
         dir = -dir.normalized;
 
-        rb.AddForce(dir * (2 * moveSpeed));
+        rb.AddForce(dir * (5 * moveSpeed));
     }
 
     private void OnDestroy()

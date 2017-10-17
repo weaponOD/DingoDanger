@@ -8,13 +8,9 @@ public class Island : MonoBehaviour
 
     private bool shrink = false;
 
-    private MapManager manager;
-
     private void Awake()
     {
         transform.localScale = Vector3.zero;
-
-        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MapManager>();
     }
 
     private void Update()
@@ -28,8 +24,6 @@ public class Island : MonoBehaviour
 
             if(transform.localScale.x <= 0)
             {
-                //manager.RemoveMe(transform);
-
                 Destroy(gameObject);
             }
         }

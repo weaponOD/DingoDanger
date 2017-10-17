@@ -40,12 +40,21 @@ public class PlayModeCam : MonoBehaviour
     [SerializeField]
     private bool canTurn = true;
 
-    public float yOffset;
+    [SerializeField]
+    private float xOffset;
+
+    [SerializeField]
+    private float yOffset;
+
+    [SerializeField]
+    private float zOffset;
 
     private void Awake()
     {
         // find the camera in the object hierarchy
         cam = GetComponentInChildren<Camera>().transform;
+
+        cam.localPosition = new Vector3(cam.localPosition.x, cam.localPosition.y, -zOffset);
         pivot = cam.parent;
     }
 
@@ -138,15 +147,17 @@ public class PlayModeCam : MonoBehaviour
         {
             currentTurnAmount = 1;
         }
+
         lastFlatAngle = currentFlatAngle;
 
         // camera position moves towards target position:
-
-        Vector3 targetFixedPos = new Vector3(target.position.x, target.position.y + yOffset, target.position.z);
+        
+        Vector3 targetFixedPos = new Vector3(target.position.x + target.right.x * xOffset, target.position.y + yOffset, target.position.z);
         transform.position = Vector3.Lerp(transform.position, targetFixedPos, deltaTime * moveSpeed);
 
         // camera's rotation is split into two parts, which can have independend speed settings:
         // rotating towards the target's forward direction (which encompasses its 'yaw' and 'pitch')
+
         targetForward.y = 0;
 
         if (targetForward.sqrMagnitude < float.Epsilon)

@@ -10,7 +10,7 @@ public class Player : LivingEntity
     [SerializeField]
     private float ramDamage = 20;
 
-    PlayerControllerTest controller;
+    PlayerController controller;
 
     private AudioSource audioSource;
 
@@ -40,7 +40,7 @@ public class Player : LivingEntity
 
     private void Awake()
     {
-        controller = GetComponent<PlayerControllerTest>();
+        controller = GetComponent<PlayerController>();
         weaponController = GetComponent<WeaponController>();
         components = GetComponent<ComponentManager>();
 

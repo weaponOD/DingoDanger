@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     private Transform pier = null;
 
     UIController UI;
-    PlayerControllerTest PC;
+    PlayerController PC;
     CameraController CC;
 
     private void Awake()
     {
         UI = GetComponent<UIController>();
-        PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControllerTest>();
+        PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         CC = GetComponent<CameraController>();
     }
 
@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
 
     public void setPier(Transform _dockPos)
     {
-        Debug.Log("Pier is set");
         pier = _dockPos;
 
         CC.MoveBuildCameraToPier(pier);

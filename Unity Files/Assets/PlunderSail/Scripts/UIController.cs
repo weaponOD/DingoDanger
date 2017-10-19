@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Text goldText = null;
     [SerializeField]
-    private Image fadePlane;
+    private Image fadePlane = null;
 
     // System References
     private Player player = null;
@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
     private ShipBuilder builder = null;
 
     [SerializeField]
-    private GameObject[] horizontalMenu;
+    private GameObject[] horizontalMenu = null;
 
     private Image verticalMenu = null;
 
@@ -128,8 +128,6 @@ public class UIController : MonoBehaviour
             {
                 if (selectedGenre > 0)
                 {
-                    Debug.Log("Moving Up");
-
                     ChangeSelection(-1);
 
                     DpadCanPress = false;
@@ -141,8 +139,6 @@ public class UIController : MonoBehaviour
             {
                 if (selectedGenre < horizontalMenu.Length - 1) 
                 {
-                    Debug.Log("Moving Down");
-
                     ChangeSelection(1);
 
                     DpadCanPress = false;
@@ -174,14 +170,7 @@ public class UIController : MonoBehaviour
 
         selectedGenre += _change;
 
-        MoveVerticalMenu(_change);
-
         horizontalMenu[selectedGenre].SetActive(true);
-    }
-
-    private void MoveVerticalMenu(int _change)
-    {
-        verticalMenu.rectTransform.Translate(Vector2.up * _change * 60f);
     }
 
     public void ShowPierPopUp(bool _show)

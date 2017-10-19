@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-
     [Header("Player Attributes")]
     [SerializeField]
     [Tooltip("The speed at which the player will move when no sails are open")]
@@ -25,11 +22,7 @@ public class PlayerController : MonoBehaviour
     private float TurnRatePenalty;
 
     [SerializeField]
-    [Tooltip("The degrees per frame that the steering wheel rotates")]
-    private float wheelTurnSpeed;
-
-    [SerializeField]
-    private float rollSpeed;
+    private float maxRoll;
 
     [Header("Sound Resources")]
     [SerializeField]
@@ -57,22 +50,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool sailsOpen = true;
 
-    // Max angle the ship can tilt
-    private float maxRollValue = 4;
-
-    private Quaternion pivotRotation;
-
-    [SerializeField]
-    private float myRotation;
-
-    private Transform leftThruster = null;
-    private Transform rightThruster = null;
-
-    private float defaultRotation;
-
-    private Vector3 velocity;
-
-    private Vector3 targetVelocity;
 
     // The stearing wheel on the ship
     private Transform wheel;
@@ -83,53 +60,50 @@ public class PlayerController : MonoBehaviour
 
     private ComponentManager components;
 
-    private Transform pivot;
+    private GameObject rudderControl;
+
+    private Rigidbody rb;
+
+
+    public float heading = 0.0f;
+    public float rudder = 0.0f;
+    public float maxRudder = 6.0f;
+    public float rudderAngle = 0.0f;
+
+    private float steering;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         components = GetComponent<ComponentManager>();
 
-        audioSource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
 
-        pivot = transform.GetChild(0);
-
-        wheel = transform.GetChild(0).GetChild(0).GetChild(3);
-
-        defaultRotation = transform.rotation.eulerAngles.z;
+        rudderControl = GameObject.Find("rudderControl");
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
-
-        maxMoveSpeed = baseMoveSpeed;
-        moveSpeed = baseMoveSpeed;
     }
 
     private void Update()
     {
         if (!GameState.BuildMode)
         {
-            // lock the x and z axis rotation to 0f;
-            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+            // steering
+            steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
 
-            // set targetVelocity to Value of left Thumb stick
-            targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, 0) * turnSpeed;
-
-            // Rotate the steering wheel right
-            if (targetVelocity.x > 0)
+            if (steering != 0)
             {
-                wheel.Rotate(-wheelTurnSpeed, 0f, 0f);
+                if (Mathf.Abs(rudder) < maxRoll)
+                {
+                    rudder += steering;
+                }
             }
-            // Rotate the steering wheel left
-            else if (targetVelocity.x < 0)
+            else
             {
-                wheel.Rotate(wheelTurnSpeed, 0f, 0f);
+                rudder = Mathf.MoveTowards(rudder, 0f, turnSpeed * 2 * Time.deltaTime);
             }
-
-            velocity.x = Mathf.Lerp(velocity.x, targetVelocity.x, 2f);
 
             // Lower or raise Sails
             if (Input.GetButtonDown("A_Button"))
@@ -145,70 +119,53 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameState.BuildMode)
         {
-            rb.MovePosition(transform.position + pivot.forward * moveSpeed * Time.fixedDeltaTime);
+            heading = (heading + rudder * Time.deltaTime * signedSqrt(moveSpeed)) % 360;
 
-            // Turn right
-            if (velocity.x > 0)
-            {
-                pivot.Rotate(0f, turnSpeed * Time.deltaTime, 0f);
-            }
-            // Turn left
-            else if (velocity.x < 0)
-            {
-                pivot.Rotate(0f, -turnSpeed * Time.deltaTime, 0f);
-            }
-            else
-            {
-                if (!Mathf.Approximately(pivot.localEulerAngles.z, 0f))
-                {
-                    Debug.Log("Turn back to default turn");
+            rb.MoveRotation(Quaternion.Euler(new Vector3(0f, heading, -rudder)));
 
-                    if (pivot.localEulerAngles.z != 0)
-                    {
-                        pivot.localEulerAngles = new Vector3(pivot.localEulerAngles.x, pivot.localEulerAngles.y, Mathf.MoveTowardsAngle(pivot.localEulerAngles.z, 0f, 1f));
-                    }
-                }
-                else
-                {
-                    myRotation = 0;
-                }
+            if (rudderControl)
+            {
+                rudderAngle = ((-60 * rudder) / maxRudder + heading) % 360;
+
+                rudderControl.transform.eulerAngles = new Vector3(0, rudderAngle, 0);
             }
 
-            if (velocity.x != 0f)
+            if (rudder > maxRudder)
             {
-                // Turning left
-                if (targetVelocity.x < 0)
-                {
-                    if (myRotation > -maxRollValue)
-                    {
-                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
-                        myRotation -= 1 * rollSpeed * Time.deltaTime;
-                    }
-                }
-                // Turning Right
-                else if (targetVelocity.x > 0)
-                {
-                    if (myRotation < maxRollValue)
-                    {
-                        pivot.Rotate(new Vector3(pivot.rotation.x, pivot.rotation.y, -maxRollValue * 0.6f) * rollSpeed * Time.deltaTime);
-                        myRotation += 1 * rollSpeed * Time.deltaTime;
-                    }
-                }
+                rudder = maxRudder;
+            }
+            else if (rudder < -maxRudder)
+            {
+                rudder = -maxRudder;
             }
 
-            pivotRotation = pivot.rotation;
-
-            rb.rotation = pivot.rotation;
+            rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
         }
     }
 
-    private void LateUpdate()
+    private float signedSqrt(float _input)
     {
-        if (!GameState.BuildMode)
-        {
-            pivot.rotation = pivotRotation;
+        float output = Mathf.Sqrt(Mathf.Abs(_input));
 
-            pivot.rotation = Quaternion.Euler(0f, pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.z);
+        if (_input < 0)
+        {
+            return -_input;
+        }
+        else
+        {
+            return _input;
+        }
+    }
+
+    private void SetBuildMode(bool isBuildMode)
+    {
+        rb.isKinematic = isBuildMode;
+
+        if (isBuildMode)
+        {
+            sailsOpen = true;
+
+            LowerSails(sailsOpen);
         }
     }
 
@@ -219,6 +176,11 @@ public class PlayerController : MonoBehaviour
             moveSpeed = maxMoveSpeed;
 
             turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
+
+            if(turnSpeed < 0)
+            {
+                turnSpeed = 0;
+            }
 
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
             {
@@ -252,28 +214,13 @@ public class PlayerController : MonoBehaviour
         turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
     }
 
-    public float MoveSpeed
+    void OnCollisionEnter(Collision c)
     {
-        get { return moveSpeed; }
+        Vector3 dir = c.contacts[0].point - transform.position;
 
-        set { moveSpeed = value; }
-    }
+        dir = -dir.normalized;
 
-    public void ResetMoveSpeed()
-    {
-        moveSpeed = baseMoveSpeed;
-    }
-
-    private void SetBuildMode(bool isBuildMode)
-    {
-        rb.isKinematic = isBuildMode;
-
-        if (isBuildMode)
-        {
-            sailsOpen = true;
-
-            LowerSails(sailsOpen);
-        }
+        rb.AddForce(dir * (5 * moveSpeed));
     }
 
     private void OnDestroy()

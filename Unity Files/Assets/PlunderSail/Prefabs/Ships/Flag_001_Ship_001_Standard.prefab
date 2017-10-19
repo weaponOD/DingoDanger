@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4218346714940780}
   - component: {fileID: 33628380035798908}
   - component: {fileID: 23658672606864210}
-  - component: {fileID: 95596411868156064}
   m_Layer: 0
   m_Name: Flag_001_Ship_001_Standard
   m_TagString: Untagged
@@ -84,8 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6735a1e751d071419b331c380cd4065, type: 2}
-  - {fileID: 2100000, guid: 496526e6cb7c09b4b8896c45e9a79bda, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,20 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1094215122131914}
   m_Mesh: {fileID: 4300000, guid: 70c5119fbca87ee42bd0fd486f506d79, type: 3}
---- !u!95 &95596411868156064
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1094215122131914}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 70c5119fbca87ee42bd0fd486f506d79, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

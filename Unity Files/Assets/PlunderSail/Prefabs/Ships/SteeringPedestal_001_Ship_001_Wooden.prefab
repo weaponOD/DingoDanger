@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4453806312367628}
   - component: {fileID: 33782711605309108}
   - component: {fileID: 23201209413819846}
-  - component: {fileID: 95728377464754538}
   m_Layer: 0
   m_Name: SteeringPedestal_001_Ship_001_Wooden
   m_TagString: Untagged
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,20 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897882917086268}
   m_Mesh: {fileID: 4300000, guid: 361ee31ff11123048aecec36cb89d878, type: 3}
---- !u!95 &95728377464754538
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1897882917086268}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 361ee31ff11123048aecec36cb89d878, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

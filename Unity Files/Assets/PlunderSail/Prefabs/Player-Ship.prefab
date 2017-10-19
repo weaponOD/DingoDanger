@@ -5656,7 +5656,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
+  - {fileID: 2100000, guid: 92e9ed3265f94534e9b7e29874b8c08c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9865,9 +9865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 10
-  sailBonus: 1
-  baseTurnSpeed: 2
+  baseMoveSpeed: 8
+  sailBonus: 4
+  baseTurnSpeed: 6
   TurnRatePenalty: 1
   maxRoll: 3
   startBuild: []

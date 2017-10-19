@@ -15,9 +15,6 @@ public class ShipBuilder : MonoBehaviour
     [SerializeField]
     private Material ghostMatGreen;
 
-    [SerializeField]
-    private Transform playerCenter;
-
     private PlayerController player;
     private UIManager UI;
 
@@ -52,14 +49,6 @@ public class ShipBuilder : MonoBehaviour
         UI = GetComponent<UIManager>();
 
         previewPiece = null;
-    }
-
-    private void Start()
-    {
-        if (playerCenter)
-        {
-            buildCam.Target = playerCenter;
-        }
     }
 
     public AttachmentType CurrentAttachment
@@ -132,8 +121,6 @@ public class ShipBuilder : MonoBehaviour
                 {
                     if (lastAttachmentPoint != null && previewPiece.GetComponent<AttachmentBase>().CanPlace)
                     {
-                        buildCam.Target = AddAttachment(previewPiece.transform.position, previewPiece.transform.rotation);
-
                         GameObject.Destroy(previewPiece);
                         previewPiece = null;
 

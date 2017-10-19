@@ -10,7 +10,7 @@ public class Island : MonoBehaviour
 
     private void Awake()
     {
-        transform.localScale = Vector3.zero;
+        //transform.localScale = Vector3.zero;
     }
 
     private void Update()

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114347702168056404}
   - component: {fileID: 114994603169521724}
   - component: {fileID: 114168663654171056}
+  - component: {fileID: 114883611100677676}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -38,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 315.6, y: 319.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
+  playerCentre: {fileID: 0}
 --- !u!114 &114347702168056404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,8 +118,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
   ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  playerCenter: {fileID: 0}
   buildCam: {fileID: 0}
+--- !u!114 &114883611100677676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da6265124145e245ba8552a329a83bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GridSize: {x: 7, y: 8, z: 5}
+  testCabin: {fileID: 1736294380650708, guid: 600c73df434d5ca409163e588c3df74f, type: 2}
 --- !u!114 &114994603169521724
 MonoBehaviour:
   m_ObjectHideFlags: 1

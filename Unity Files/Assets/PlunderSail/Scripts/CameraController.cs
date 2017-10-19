@@ -14,20 +14,25 @@ public class CameraController : MonoBehaviour
 
     private PlayModeCam playCam;
 
+    private Transform playerCentre;
+
     private void Awake()
     {
-        // Subscribe to game state
-        GameState.buildModeChanged += SetBuildMode;
-
         playCam = playCamGO.GetComponentInChildren<PlayModeCam>();
         buildCam = buildCamGO.GetComponentInChildren<BuildModeCam>();
     }
 
-    private void SetBuildMode(bool isBuildMode)
+    public void SwitchToBuildMode()
     {
-        playCamGO.SetActive(!isBuildMode);
-        buildCamGO.SetActive(isBuildMode);
-        buildCam.UpdatePos();
+        playCamGO.SetActive(false);
+        buildCamGO.SetActive(true);
+        buildCam.MoveToPoint(playerCentre);
+    }
+
+    public void SwitchToPlayMode()
+    {
+        playCamGO.SetActive(true);
+        buildCamGO.SetActive(false);
     }
 
     public void MoveBuildCameraToPier(Transform _pier)
@@ -38,14 +43,13 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public Transform PlayerCentre
+    {
+        set { playerCentre = value; }
+    }
+
     public BuildModeCam BuildCam
     {
         get { return buildCam; }
-    }
-
-    private void OnDestroy()
-    {
-        // Unsubscribe to game state
-        GameState.buildModeChanged -= SetBuildMode;
     }
 }

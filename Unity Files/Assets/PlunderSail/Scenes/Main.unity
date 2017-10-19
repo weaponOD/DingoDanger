@@ -109,80 +109,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &24919824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1040285494670910, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1981907113}
-  - component: {fileID: 24919826}
-  - component: {fileID: 24919825}
-  m_Layer: 2
-  m_Name: Oasis_004_Islands_004_Medium_002
-  m_TagString: Pier
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &24919825
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 135400879417956558, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24919824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &24919826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114379435713258682, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24919824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d9cf014c6eb7a4a8d2882bd83fc8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &63578039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1541552727744334, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 63578040}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &63578040
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4657979978368558, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 63578039}
-  m_LocalRotation: {x: 0.02302118, y: 0.38233885, z: -0.03558796, w: 0.9230496}
-  m_LocalPosition: {x: 16.5, y: -4.4, z: -11.9}
-  m_LocalScale: {x: 1.0000006, y: 1, z: 1.0000006}
-  m_Children:
-  - {fileID: 1107283393}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 3.9970002, y: 44.903004, z: -2.7630002}
 --- !u!1001 &252263334
 Prefab:
   m_ObjectHideFlags: 0
@@ -322,73 +248,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &282848163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1528827152277078, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 282848164}
-  m_Layer: 0
-  m_Name: Island_005_OceanStandard_005_MediumGrass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &282848164
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4606400876846488, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 282848163}
-  m_LocalRotation: {x: 0.03688423, y: 0.281185, z: 0.12472044, w: 0.95079935}
-  m_LocalPosition: {x: 2.32, y: 5.84, z: -0.69}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 486280589}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 32.95, z: 14.946001}
 --- !u!1 &309048076 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1040170153451324, guid: 64e773c44d3f09840b3aaa6c94b28532,
     type: 2}
   m_PrefabInternal: {fileID: 650871014}
---- !u!1 &322069701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1338566498895518, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 322069702}
-  m_Layer: 0
-  m_Name: Island_004_OceanStandard_004_SmallGrass (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &322069702
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4938378517607470, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 322069701}
-  m_LocalRotation: {x: -0, y: -0.8660245, z: -0, w: 0.50000167}
-  m_LocalPosition: {x: 13.04, y: 2.3, z: 1.8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1563156537}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -120.00001, z: 0}
 --- !u!1001 &332989644
 Prefab:
   m_ObjectHideFlags: 0
@@ -647,103 +511,16 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!1 &486280588
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1146175877015984, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 486280589}
-  - component: {fileID: 486280592}
-  - component: {fileID: 486280591}
-  - component: {fileID: 486280590}
-  m_Layer: 0
-  m_Name: Island_005_OceanStandard_005_MediumGrass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &486280589
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4605370957895598, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 486280588}
-  m_LocalRotation: {x: 0.18488042, y: 0.35993183, z: -0.19151966, w: 0.89419717}
-  m_LocalPosition: {x: -0.02, y: 0, z: 0.03}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 282848164}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 27.937002, y: 40.425003, z: -13.712001}
---- !u!95 &486280590
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95141813703277844, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 486280588}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a218a7cccecef3247ae050a2a6ce9694, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &486280591
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23279205321785752, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 486280588}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &486280592
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33125030760139304, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 486280588}
-  m_Mesh: {fileID: 4300002, guid: a218a7cccecef3247ae050a2a6ce9694, type: 3}
 --- !u!1 &546368155 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1007363106825894, guid: 64e773c44d3f09840b3aaa6c94b28532,
     type: 2}
   m_PrefabInternal: {fileID: 650871014}
+--- !u!4 &632255716 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4093517863078716, guid: a2851687b4802234aa8e1e5273f89907,
+    type: 2}
+  m_PrefabInternal: {fileID: 252263334}
 --- !u!1001 &650871014
 Prefab:
   m_ObjectHideFlags: 0
@@ -1367,6 +1144,11 @@ Prefab:
       propertyPath: playCamGO
       value: 
       objectReference: {fileID: 1699494557}
+    - target: {fileID: 114256727963917046, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: playerCentre
+      value: 
+      objectReference: {fileID: 632255716}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
   m_IsPrefabParent: 0
@@ -1380,446 +1162,16 @@ Transform:
   m_PrefabParentObject: {fileID: 4862316232948788, guid: 2223c5e3ef8832f4db22a79a9db0ccac,
     type: 2}
   m_PrefabInternal: {fileID: 1692726017}
---- !u!1 &1011736887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1925330876256880, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1011736888}
-  - component: {fileID: 1011736891}
-  - component: {fileID: 1011736890}
-  - component: {fileID: 1011736889}
-  m_Layer: 0
-  m_Name: Island_001_OceanStandard_001_SmallSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1011736888
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4087446184107662, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011736887}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1843146479}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1011736889
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95602148182957362, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011736887}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1011736890
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23515421992355570, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011736887}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1011736891
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33141159961016138, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011736887}
-  m_Mesh: {fileID: 4300002, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
 --- !u!1 &1016794475 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1913183459778328, guid: 64e773c44d3f09840b3aaa6c94b28532,
     type: 2}
   m_PrefabInternal: {fileID: 650871014}
---- !u!1 &1028209084
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1925330876256880, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1028209085}
-  - component: {fileID: 1028209088}
-  - component: {fileID: 1028209087}
-  - component: {fileID: 1028209086}
-  m_Layer: 0
-  m_Name: Island_001_OceanStandard_001_SmallSand (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1028209085
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4087446184107662, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028209084}
-  m_LocalRotation: {x: -0, y: 0.25881863, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 8.98, y: 1.51, z: -0.79}
-  m_LocalScale: {x: 1.0000006, y: 1, z: 1.0000006}
-  m_Children: []
-  m_Father: {fileID: 1843146479}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 30.000002, z: 0}
---- !u!95 &1028209086
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95602148182957362, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028209084}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1028209087
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23515421992355570, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028209084}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1028209088
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33141159961016138, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1028209084}
-  m_Mesh: {fileID: 4300002, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
---- !u!1 &1107283392
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1797320086435652, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1107283393}
-  - component: {fileID: 1107283396}
-  - component: {fileID: 1107283395}
-  - component: {fileID: 1107283394}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1107283393
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4287381758295744, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107283392}
-  m_LocalRotation: {x: -0.04067052, y: 0.0013742447, z: 0.047704175, w: 0.9980323}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 63578040}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -4.664, y: -0.065000005, z: 5.4760003}
---- !u!95 &1107283394
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95981646009513398, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107283392}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1107283395
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23596830574522634, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107283392}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1107283396
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33442498096411230, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1107283392}
-  m_Mesh: {fileID: 4300002, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
 --- !u!1 &1150566834 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1790732370086800, guid: 64e773c44d3f09840b3aaa6c94b28532,
     type: 2}
   m_PrefabInternal: {fileID: 650871014}
---- !u!1 &1168820912
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1417469042057472, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1168820913}
-  - component: {fileID: 1168820916}
-  - component: {fileID: 1168820915}
-  - component: {fileID: 1168820914}
-  m_Layer: 0
-  m_Name: Island_001_OceanStandard_001_SmallSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1168820913
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4335589282308710, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1168820912}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1170119309}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1168820914
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95967952415243334, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1168820912}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1168820915
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23558400498809936, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1168820912}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1168820916
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33553400659439800, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1168820912}
-  m_Mesh: {fileID: 4300002, guid: ad4ea79d781b48e41a2aa44767d3a864, type: 3}
---- !u!1 &1170119308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1000742495104804, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1170119309}
-  m_Layer: 0
-  m_Name: Island_001_OceanStandard_001_SmallSand (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1170119309
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4934243246606540, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1170119308}
-  m_LocalRotation: {x: -0, y: 0.92387867, z: -0, w: 0.38268548}
-  m_LocalPosition: {x: -9.18, y: 0, z: 10}
-  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Children:
-  - {fileID: 1168820913}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
---- !u!1 &1199753304
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1035519615070052, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1199753305}
-  m_Layer: 0
-  m_Name: Island_004_OceanStandard_004_SmallGrass (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1199753305
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4328603817145650, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1199753304}
-  m_LocalRotation: {x: -0, y: -0.13052598, z: -0, w: 0.99144495}
-  m_LocalPosition: {x: -9.71, y: 2.3, z: 9.88}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_Children:
-  - {fileID: 1392857590}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -15.000001, z: 0}
 --- !u!1001 &1227040195
 Prefab:
   m_ObjectHideFlags: 0
@@ -1925,103 +1277,53 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224824618753225986, guid: 31ec8aa5768a260498c14cc761ba2673,
     type: 2}
   m_PrefabInternal: {fileID: 1227040195}
+--- !u!1001 &1240580565
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1387527756}
+    m_Modifications:
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 9.300003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 22.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.67814773
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7349256
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e2395bb9465f3fa459332f83561a0584, type: 2}
+  m_IsPrefabParent: 0
 --- !u!224 &1269913363 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224308024728312914, guid: 64e773c44d3f09840b3aaa6c94b28532,
     type: 2}
   m_PrefabInternal: {fileID: 650871014}
---- !u!1 &1346806340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1748479671116120, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1346806341}
-  - component: {fileID: 1346806344}
-  - component: {fileID: 1346806343}
-  - component: {fileID: 1346806342}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1346806341
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4339106148935878, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346806340}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1783204953}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1346806342
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95399635954785356, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346806340}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1346806343
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23183911149303560, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346806340}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1346806344
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33030623116940902, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1346806340}
-  m_Mesh: {fileID: 4300002, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
 --- !u!1 &1387527754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,98 +1354,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1392857589
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1864077889723672, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1392857590}
-  - component: {fileID: 1392857593}
-  - component: {fileID: 1392857592}
-  - component: {fileID: 1392857591}
-  m_Layer: 0
-  m_Name: Island_004_OceanStandard_004_SmallGrass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1392857590
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4682497619359606, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392857589}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1199753305}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1392857591
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95063860542486306, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392857589}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b1aa7de41315cc749a402b68fadd38fb, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1392857592
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23909707831148520, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392857589}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1392857593
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33392651819466568, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392857589}
-  m_Mesh: {fileID: 4300002, guid: b1aa7de41315cc749a402b68fadd38fb, type: 3}
 --- !u!1 &1534173431
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,98 +1427,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4826033392803560, guid: 2223c5e3ef8832f4db22a79a9db0ccac,
     type: 2}
   m_PrefabInternal: {fileID: 1692726017}
---- !u!1 &1563156536
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1534262399146912, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1563156537}
-  - component: {fileID: 1563156540}
-  - component: {fileID: 1563156539}
-  - component: {fileID: 1563156538}
-  m_Layer: 0
-  m_Name: Island_004_OceanStandard_004_SmallGrass
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1563156537
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4959451387754924, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1563156536}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.81, y: 0, z: -1.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 322069702}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1563156538
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95368265254566936, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1563156536}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b1aa7de41315cc749a402b68fadd38fb, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1563156539
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23142220833186196, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1563156536}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1563156540
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33445805635356840, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1563156536}
-  m_Mesh: {fileID: 4300002, guid: b1aa7de41315cc749a402b68fadd38fb, type: 3}
 --- !u!1001 &1692726017
 Prefab:
   m_ObjectHideFlags: 0
@@ -2510,183 +1628,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1783204952
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1709081687305778, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1783204953}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1783204953
+--- !u!4 &1981907113 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4722167328132836, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1783204952}
-  m_LocalRotation: {x: 0.009415603, y: -0.12921174, z: 0.008891081, w: 0.9915325}
-  m_LocalPosition: {x: 18.5, y: -5.33, z: -22.7}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000008}
-  m_Children:
-  - {fileID: 1346806341}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 1.202, y: -14.840001, z: 0.87100005}
---- !u!1 &1789166329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1496281398508908, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1789166330}
-  - component: {fileID: 1789166333}
-  - component: {fileID: 1789166332}
-  - component: {fileID: 1789166331}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1789166330
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4585171305497868, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1789166329}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2106641732}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1789166331
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95048237898547526, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1789166329}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!23 &1789166332
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 23746444913713276, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1789166329}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1789166333
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 33922316793971364, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1789166329}
-  m_Mesh: {fileID: 4300002, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
---- !u!1 &1843146478
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1659054439972388, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1843146479}
-  m_Layer: 0
-  m_Name: Island_001_OceanStandard_001_SmallSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1843146479
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4443349160517896, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1843146478}
-  m_LocalRotation: {x: -0, y: 0.6087605, z: -0, w: 0.79335415}
-  m_LocalPosition: {x: 17.83, y: 0, z: 3.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1011736888}
-  - {fileID: 1028209085}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 75, z: 0}
---- !u!4 &1981907113
-Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4301239084818896, guid: e2395bb9465f3fa459332f83561a0584,
     type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 24919824}
-  m_LocalRotation: {x: -0, y: 0.67814773, z: -0, w: 0.7349256}
-  m_LocalPosition: {x: 9.300003, y: -3.59, z: 22.39}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2106641732}
-  - {fileID: 282848164}
-  - {fileID: 1843146479}
-  - {fileID: 1170119309}
-  - {fileID: 1199753305}
-  - {fileID: 322069702}
-  - {fileID: 63578040}
-  - {fileID: 1783204953}
-  m_Father: {fileID: 1387527756}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 85.398, z: 0}
+  m_PrefabInternal: {fileID: 1240580565}
 --- !u!1 &2073732404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,37 +1718,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 418068491}
   m_Script: {fileID: 11500000, guid: de65d70091ced4741a5de8c4a92426e9, type: 3}
---- !u!1 &2106641731
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1293439320840428, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2106641732}
-  m_Layer: 0
-  m_Name: Island_002_OceanStandard_002_MediumSand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2106641732
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4792378198487108, guid: e2395bb9465f3fa459332f83561a0584,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2106641731}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1789166330}
-  m_Father: {fileID: 1981907113}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2145528520
 Prefab:
   m_ObjectHideFlags: 0
@@ -2841,16 +1756,6 @@ Prefab:
     - target: {fileID: 4732856934661548, guid: d9098fef11ba4734e843dee92fbfc057, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114939969301947766, guid: d9098fef11ba4734e843dee92fbfc057,
-        type: 2}
-      propertyPath: yOffset
-      value: 7.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 114939969301947766, guid: d9098fef11ba4734e843dee92fbfc057,
-        type: 2}
-      propertyPath: xOffset
-      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9098fef11ba4734e843dee92fbfc057, type: 2}

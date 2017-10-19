@@ -111,7 +111,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        selectedGenre = horizontalMenu.Length - 1;
+        selectedGenre = 0;
 
         selectedAttachment = 0;
         horizontalMenu[selectedGenre].SetActive(true);

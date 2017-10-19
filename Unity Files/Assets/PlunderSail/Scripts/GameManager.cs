@@ -7,19 +7,27 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform pier = null;
 
+    [SerializeField]
+    private Transform playerCentre;
+
     UIController UI;
     PlayerController PC;
     CameraController CC;
+    ShipBuilding builder;
 
     private void Awake()
     {
         UI = GetComponent<UIController>();
         PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         CC = GetComponent<CameraController>();
+        builder = GetComponent<ShipBuilding>();
     }
 
     private void Start()
     {
+        builder.PlayerCentre = playerCentre;
+        CC.PlayerCentre = playerCentre;
+
         GameState.BuildMode = false;
     }
 
@@ -47,6 +55,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator MovePlayerToPier()
     {
         yield return new WaitForSeconds(1.2f);
+
         GameState.BuildMode = true;
 
         PC.transform.position = pier.position;
@@ -54,6 +63,10 @@ public class GameManager : MonoBehaviour
 
         PC.transform.GetChild(0).localPosition = Vector3.zero;
         PC.transform.GetChild(0).localRotation = Quaternion.identity;
+
+
+        CC.SwitchToBuildMode();
+        builder.moveGridToPlayer(pier);
     }
 
     public void setPier(Transform _dockPos)

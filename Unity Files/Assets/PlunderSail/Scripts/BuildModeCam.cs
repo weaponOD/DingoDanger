@@ -40,38 +40,14 @@ public class BuildModeCam : MonoBehaviour
     [SerializeField]
     private float maxZoomDistance = 25f;
 
-    [Header("Left Stick Movement")]
-
-    [SerializeField]
-    [Tooltip("How much the camera will move when the mouse moves")]
-    [Range(1, 20)]
-    private float MoveSensitivity = 2.5f;
-
-    [SerializeField]
-    [Tooltip("How long it takes for the camera to reach it's destination")]
-    private float movementDampening = 10f;
-
-    [SerializeField]
-    [Tooltip("How much movement is needed to freely move the camera.")]
-    [Range(0, 1)]
-    float breakForce = 0.2f;
-
-    [SerializeField]
-    [Tooltip("Time in seconds of player inactivity before the camera snaps back to the target block.")]
-    [Range(0, 20)]
-    private float timeBeforeSnap = 1.5f;
-
-    [SerializeField]
-    private bool snapEnabled = false;
-
     // Camera Rotation Variables
-    private float cameraDistance = 10f;
+    private float cameraDistance;
 
-    private Transform targetBlock;
-
-    private Transform anchor;
+    private Transform pivotPoint;
 
     private Vector3 localRotation;
+
+    private Transform targetPivot;
 
     // Camera Pivot Point
     private Transform pivot;
@@ -82,16 +58,9 @@ public class BuildModeCam : MonoBehaviour
     // The time that the camera will snap to the last block
     private float timeToSnapBack;
 
-    // Anchor Variables
-
-    // target location to smoothly move towards
-    private Vector3 targetPosRight;
-    private Vector3 targetPosForward;
-    private Vector3 targetPosUp;
-
     private void Awake()
     {
-        anchor = transform.parent.GetChild(1);
+        pivotPoint = transform.parent.GetChild(1);
 
         pivot = transform.parent;
     }
@@ -148,17 +117,6 @@ public class BuildModeCam : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
 
-            targetPosRight += anchor.transform.right * Input.GetAxis("Horizontal") * MoveSensitivity;
-
-            targetPosForward += anchor.transform.forward * Input.GetAxis("Vertical") * MoveSensitivity;
-        }
-
-        // Move along y axis using Triggers
-        if (Input.GetAxis("Left_Trigger") != 0 || Input.GetAxis("Right_Trigger") != 0)
-        {
-            targetPosUp += anchor.transform.up * Input.GetAxis("Left_Trigger") * mouseSensitivity;
-
-            targetPosUp -= anchor.transform.up * Input.GetAxis("Right_Trigger") * mouseSensitivity;
         }
     }
 
@@ -172,76 +130,10 @@ public class BuildModeCam : MonoBehaviour
         {
             transform.localPosition = new Vector3(0f, 0f, Mathf.Lerp(transform.localPosition.z, cameraDistance * -1f, Time.deltaTime * zoomDampening));
         }
-
-        // Anchor movement
-        Vector3 euler = pivot.rotation.eulerAngles;
-        Quaternion rot = Quaternion.Euler(0f, euler.y, 0f);
-        anchor.rotation = rot;
-
-        Vector2 stickForce = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        bool verticalMovement = (Input.GetAxis("Left_Trigger") == 1 || Input.GetAxis("Right_Trigger") == 1);
-
-        if (stickForce.magnitude > breakForce || verticalMovement)
-        {
-            snapIsDelayed = false;
-
-            pivot.position = Vector3.Lerp(pivot.position, targetPosRight, Time.deltaTime * movementDampening);
-            pivot.position = Vector3.Lerp(pivot.position, targetPosForward, Time.deltaTime * movementDampening);
-            pivot.position = Vector3.Lerp(pivot.position, targetPosUp, Time.deltaTime * movementDampening);
-        }
-        else
-        {
-            if (targetBlock == null)
-                return;
-
-            if (!snapIsDelayed)
-            {
-                timeToSnapBack = Time.time + timeBeforeSnap;
-                snapIsDelayed = true;
-            }
-            if (snapEnabled)
-            {
-                if (Time.time > timeToSnapBack)
-                {
-                    if (Vector3.Distance(anchor.position, targetBlock.position) > 0.1f)
-                    {
-                        Vector3 targetBlockPos;
-
-                        targetBlockPos = targetBlock.position;
-
-                        anchor.position = Vector3.Lerp(anchor.position, targetBlockPos, Time.deltaTime * 3f);
-                        pivot.position = Vector3.Lerp(pivot.position, targetBlockPos, Time.deltaTime * 3f);
-
-                        targetPosRight = anchor.position;
-                        targetPosForward = anchor.position;
-                        targetPosUp = anchor.position;
-                    }
-                }
-            }
-        }
     }
 
-    public void UpdatePos()
+    public void MoveToPoint(Transform _target)
     {
-        if(anchor != null)
-        {
-            targetPosRight = pivot.position;
-            targetPosForward = pivot.position;
-            targetPosUp = pivot.position;
-        }
-        else
-        {
-            Debug.Log("anchor is null");
-        }
-    }
-
-    public Transform Target
-    {
-        set
-        {
-            targetBlock = value;
-            snapIsDelayed = true;
-            timeToSnapBack = Time.time;
-        }
+        pivot.position = _target.position;
     }
 }

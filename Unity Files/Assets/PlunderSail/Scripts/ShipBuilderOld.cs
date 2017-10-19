@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public enum AttachmentType { ARMOUR, SAIL, CABIN, WEAPONSINGLE, WEAPONDOUBLE }
 
-public class ShipBuilder : MonoBehaviour
+public class ShipBuilderOld : MonoBehaviour
 {
     private AttachmentType currentAttachment;
 

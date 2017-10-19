@@ -15,11 +15,13 @@ public class AttachmentSail : AttachmentBase
     [SerializeField]
     private bool currentlyGreen = true;
 
+    private Animator anim;
+
     private Vector3 lastPos;
 
     private void Awake()
     {
-        GetComponentInChildren<MeshRenderer>().materials[1].color = Color.black;
+        //GetComponentInChildren<MeshRenderer>().materials[1].color = Color.black;
     }
 
     private void Update()
@@ -146,11 +148,11 @@ public class AttachmentSail : AttachmentBase
 
     public void Raise()
     {
-        GetComponentInChildren<MeshRenderer>().materials[1].color = Color.clear;
+        //GetComponentInChildren<MeshRenderer>().materials[1].color = Color.clear;
     }
 
     public void Lower()
     {
-        GetComponentInChildren<MeshRenderer>().materials[1].color = Color.black;
+        //GetComponentInChildren<MeshRenderer>().materials[1].color = Color.black;
     }
 }

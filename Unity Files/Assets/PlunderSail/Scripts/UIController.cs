@@ -8,22 +8,26 @@ public class UIController : MonoBehaviour
     // UI References
     [SerializeField]
     private GameObject Canvas = null;
+
     [SerializeField]
     private GameObject buildPanel = null;
 
     [SerializeField]
     private GameObject DockPopUp = null;
+
     [SerializeField]
     private GameObject goldHUD = null;
+
     [SerializeField]
     private Text goldText = null;
+
     [SerializeField]
     private Image fadePlane = null;
 
     // System References
     private Player player = null;
 
-    private ShipBuilder builder = null;
+    private ShipBuilding builder = null;
 
     [SerializeField]
     private GameObject[] horizontalMenu = null;
@@ -33,6 +37,8 @@ public class UIController : MonoBehaviour
     // Functionality variables
     [SerializeField]
     private int selectedGenre;
+
+    private string[] genres;
 
     private float timeTillCanPress;
 
@@ -51,7 +57,7 @@ public class UIController : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
+        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilding>();
 
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
 
@@ -107,6 +113,13 @@ public class UIController : MonoBehaviour
         {
             Debug.LogError("Canvas could not be found.");
         }
+
+        genres = new string[5];
+        genres[0] = "Cabin";
+        genres[1] = "Cannon";
+        genres[2] = "Sail";
+        genres[3] = "Armour";
+        genres[4] = "Ram";
     }
 
     private void Start()
@@ -121,6 +134,11 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetButtonDown("A_Button"))
+        {
+            
+        }
+
         if (DpadCanPress)
         {
             // Move up the vertical menu
@@ -128,7 +146,7 @@ public class UIController : MonoBehaviour
             {
                 if (selectedGenre > 0)
                 {
-                    ChangeSelection(-1);
+                    ChangeGenreSelection(-1);
 
                     DpadCanPress = false;
                 }
@@ -139,8 +157,28 @@ public class UIController : MonoBehaviour
             {
                 if (selectedGenre < horizontalMenu.Length - 1) 
                 {
-                    ChangeSelection(1);
+                    ChangeGenreSelection(1);
 
+                    DpadCanPress = false;
+                }
+            }
+
+            // Move right along the horizontal menu
+            if (Input.GetAxis("Dpad_X") == 1)
+            {
+                if (selectedAttachment < horizontalMenu[selectedGenre].transform.childCount - 1)
+                {
+                    ChangeAttachmentSelection(+1);
+                    DpadCanPress = false;
+                }
+            }
+
+            // Move left along the horizontal menu
+            if (Input.GetAxis("Dpad_X") == -1)
+            {
+                if (selectedAttachment > 0)
+                {
+                    ChangeAttachmentSelection(-1);
                     DpadCanPress = false;
                 }
             }
@@ -164,13 +202,24 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void ChangeSelection(int _change)
+    private void ChangeGenreSelection(int _change)
     {
         horizontalMenu[selectedGenre].SetActive(false);
 
+        selectedAttachment = 0;
+
         selectedGenre += _change;
 
+        builder.UpdatePreview(genres[selectedGenre] + selectedAttachment);
+
         horizontalMenu[selectedGenre].SetActive(true);
+    }
+
+    private void ChangeAttachmentSelection(int _change)
+    {
+        selectedAttachment += _change;
+
+        builder.UpdatePreview(genres[selectedGenre] + selectedAttachment);
     }
 
     public void ShowPierPopUp(bool _show)

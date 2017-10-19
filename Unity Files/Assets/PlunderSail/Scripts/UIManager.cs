@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private int[] prices;
 
-    private ShipBuilder builder;
+    private ShipBuilderOld builder;
 
     private Player player;
 
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilder>();
+        builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilderOld>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildPanelStatus;

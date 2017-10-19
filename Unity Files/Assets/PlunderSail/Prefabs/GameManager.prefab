@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 315.6, y: 319.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
   m_Name: 
@@ -132,6 +132,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridSize: {x: 7, y: 8, z: 5}
   testCabin: {fileID: 1736294380650708, guid: 600c73df434d5ca409163e588c3df74f, type: 2}
+  previewPiecePrefab: {fileID: 1736294380650708, guid: 7a3b36f8485ea2b4aa2a5ce0dbfcfc22,
+    type: 2}
+  cabins:
+  - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
+  Cannons:
+  - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
+  - {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
+  Sails:
+  - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
+  Armours:
+  - {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
+  Rams:
+  - {fileID: 1890685103475722, guid: 35bde9ed85b9d5544bfe29d70e29f513, type: 2}
+  - {fileID: 1890685103475722, guid: bb9ae555f81b4224983a635718852a5b, type: 2}
 --- !u!114 &114994603169521724
 MonoBehaviour:
   m_ObjectHideFlags: 1

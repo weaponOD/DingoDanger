@@ -124,6 +124,18 @@ public class ShipBuilding : MonoBehaviour
             CalculatePerspectiveMovement("back");
         }
 
+        // Move preview down
+        if (Input.GetAxisRaw("Left_Trigger") > 0.8f)
+        {
+            CalculatePerspectiveMovement("down");
+        }
+
+        // Move preview up
+        if (Input.GetAxisRaw("Right_Trigger") > 0.8f)
+        {
+            CalculatePerspectiveMovement("up");
+        }
+
         if (Input.GetButtonDown("A_Button"))
         {
             placeAttachment();
@@ -137,6 +149,7 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    // Converts absolute movement to movement relative to the camera's angle
     private void CalculatePerspectiveMovement(string _dir)
     {
         Debug.Log(_dir);
@@ -217,8 +230,17 @@ public class ShipBuilding : MonoBehaviour
                 MoveBack();
             }
         }
+        else if (_dir.Equals("up"))
+        {
+            MoveUp();
+        }
+        else if (_dir.Equals("down"))
+        {
+            MoveDown();
+        }
     }
 
+    // Move one place along the X-axis in the positive direction
     private void MoveRight()
     {
         if (canMove)
@@ -236,6 +258,7 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    // Move one place along the X-axis in the negetive direction
     private void MoveLeft()
     {
         if (canMove)
@@ -253,6 +276,7 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    // Move one place along the Z-axis in the positive direction
     private void MoveForward()
     {
         if (canMove)
@@ -270,6 +294,7 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    // Move one place along the Z-axis in the negetive direction
     private void MoveBack()
     {
         if (canMove)
@@ -287,6 +312,42 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    // Move one place along the Y-axis in the positive direction
+    private void MoveUp()
+    {
+        if (canMove)
+        {
+            if (previewGridPosY < yLength - 1)
+            {
+                if (!grid[previewGridPosX, previewGridPosY + 1, previewGridPosZ].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosY++;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
+    // Move one place along the Y-axis in the negetive direction
+    private void MoveDown()
+    {
+        if (canMove)
+        {
+            if (previewGridPosY > 0)
+            {
+                if (!grid[previewGridPosX, previewGridPosY - 1, previewGridPosZ].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosY--;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
     // convert raw angle of camera to the nearest cardinonal point
     private float CalculatePerspectiveAngle()
     {
@@ -294,6 +355,7 @@ public class ShipBuilding : MonoBehaviour
 
         float convertedAngle = Mathf.Round(rawAngle / 90) * 90;
 
+        // when rouding to nearest 90 degrees 360 and 0 should be considered the same thing.
         if (convertedAngle >= 360)
         {
             convertedAngle = 0;
@@ -378,7 +440,11 @@ public class ShipBuilding : MonoBehaviour
     private void SetBuildMode(bool isBuildMode)
     {
         Buildgrid.gameObject.SetActive(isBuildMode);
-        preview.gameObject.SetActive(isBuildMode);
+
+        if (preview)
+        {
+            preview.gameObject.SetActive(isBuildMode);
+        }
     }
 
     public Transform PlayerCentre

@@ -33,11 +33,14 @@ public class ShipBuilding : MonoBehaviour
     // System References
     private UIManager UI;
 
+    private CameraController CC;
+
     private Transform player;
 
     private Transform playerCentre;
 
     // The Transform child of player used to parent attachments
+    [SerializeField]
     private Transform baseShip;
 
     // Local Variables
@@ -47,14 +50,17 @@ public class ShipBuilding : MonoBehaviour
 
     private PreviewPiece preview;
 
-    [SerializeField]
-    private Vector3 previewGridPos;
+    private int previewGridPosX = 0;
+    private int previewGridPosY = 0;
+    private int previewGridPosZ = 0;
 
     private bool canMove = true;
     private float nextTimeToMove;
     private float timeBetweenMoves = 0.1f;
 
-    Dictionary<string, Mesh> previewMeshes;
+    Dictionary<string, Attachment> attachments;
+
+    private string currentPiece;
 
     private int xLength;
     private int yLength;
@@ -65,13 +71,11 @@ public class ShipBuilding : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        baseShip = player.Find("Components");
-
-        previewGridPos = Vector3.zero;
+        CC = GetComponent<CameraController>();
 
         UI = GetComponent<UIManager>();
 
-        previewMeshes = new Dictionary<string, Mesh>();
+        attachments = new Dictionary<string, Attachment>();
 
         Buildgrid = new GameObject("Grid").transform;
 
@@ -91,7 +95,7 @@ public class ShipBuilding : MonoBehaviour
             preview.gameObject.SetActive(false);
         }
 
-        preview.setAttachment("Cabin0", previewMeshes["Cabin0"]);
+        preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
     }
 
     private void Update()
@@ -99,72 +103,32 @@ public class ShipBuilding : MonoBehaviour
         // Move preview right
         if (Input.GetAxisRaw("Horizontal") > 0.8f)
         {
-            if (canMove)
-            {
-                if (previewGridPos.x < xLength - 1)
-                {
-                    if (!grid[(int)previewGridPos.x + 1, (int)previewGridPos.y, (int)previewGridPos.z].BuiltOn)
-                    {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPos.x++;
-                        preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
-                    }
-                }
-            }
+            CalculatePerspectiveMovement("right");
         }
 
         // Move preview Left
         if (Input.GetAxisRaw("Horizontal") < -0.8f)
         {
-            if (canMove)
-            {
-                if (previewGridPos.x > 0)
-                {
-                    if (!grid[(int)previewGridPos.x - 1, (int)previewGridPos.y, (int)previewGridPos.z].BuiltOn)
-                    {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPos.x--;
-                        preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
-                    }
-                }
-            }
+            CalculatePerspectiveMovement("left");
         }
 
         // Move preview forward
         if (Input.GetAxisRaw("Vertical") > 0.8f)
         {
-            if (canMove)
-            {
-                if (previewGridPos.z < zLength - 1)
-                {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPos.z++;
-                    preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
-                }
-            }
+            CalculatePerspectiveMovement("forward");
         }
 
         // Move preview back
         if (Input.GetAxisRaw("Vertical") < -0.8f)
         {
-            if (canMove)
-            {
-                if (previewGridPos.z > 0)
-                {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPos.z--;
-                    preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
-                }
-            }
+            CalculatePerspectiveMovement("back");
         }
 
-        if(Input.GetButtonDown("A_Button"))
+        if (Input.GetButtonDown("A_Button"))
         {
             placeAttachment();
+
+            Debug.Log(CalculatePerspectiveAngle());
         }
 
         if (Time.time > nextTimeToMove)
@@ -173,9 +137,184 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    private void CalculatePerspectiveMovement(string _dir)
+    {
+        Debug.Log(_dir);
+
+        if (_dir.Equals("right"))
+        {
+            if (CalculatePerspectiveAngle() == 0)
+            {
+                MoveBack();
+            }
+            else if (CalculatePerspectiveAngle() == 90)
+            {
+                MoveLeft();
+            }
+            else if (CalculatePerspectiveAngle() == 180)
+            {
+                MoveForward();
+            }
+            else if (CalculatePerspectiveAngle() == 270)
+            {
+                MoveRight();
+            }
+        }
+        else if (_dir.Equals("left"))
+        {
+            if (CalculatePerspectiveAngle() == 0)
+            {
+                MoveForward();
+            }
+            else if (CalculatePerspectiveAngle() == 90)
+            {
+                MoveRight();
+            }
+            else if (CalculatePerspectiveAngle() == 180)
+            {
+                MoveBack();
+            }
+            else if (CalculatePerspectiveAngle() == 270)
+            {
+                MoveLeft();
+            }
+        }
+        else if (_dir.Equals("forward"))
+        {
+            if (CalculatePerspectiveAngle() == 0)
+            {
+                MoveRight();
+            }
+            else if (CalculatePerspectiveAngle() == 90)
+            {
+                MoveBack();
+            }
+            else if (CalculatePerspectiveAngle() == 180)
+            {
+                MoveLeft();
+            }
+            else if (CalculatePerspectiveAngle() == 270)
+            {
+                MoveForward();
+            }
+        }
+        else if (_dir.Equals("back"))
+        {
+            if (CalculatePerspectiveAngle() == 0)
+            {
+                MoveLeft();
+            }
+            else if (CalculatePerspectiveAngle() == 90)
+            {
+                MoveForward();
+            }
+            else if (CalculatePerspectiveAngle() == 180)
+            {
+                MoveRight();
+            }
+            else if (CalculatePerspectiveAngle() == 270)
+            {
+                MoveBack();
+            }
+        }
+    }
+
+    private void MoveRight()
+    {
+        if (canMove)
+        {
+            if (previewGridPosX < xLength - 1)
+            {
+                if (!grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosX++;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
+    private void MoveLeft()
+    {
+        if (canMove)
+        {
+            if (previewGridPosX > 0)
+            {
+                if (!grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosX--;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
+    private void MoveForward()
+    {
+        if (canMove)
+        {
+            if (previewGridPosZ < zLength - 1)
+            {
+                if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ + 1].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosZ++;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
+    private void MoveBack()
+    {
+        if (canMove)
+        {
+            if (previewGridPosZ > 0)
+            {
+                if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ - 1].BuiltOn)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPosZ--;
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                }
+            }
+        }
+    }
+
+    // convert raw angle of camera to the nearest cardinonal point
+    private float CalculatePerspectiveAngle()
+    {
+        float rawAngle = CC.BuildCam.transform.root.localEulerAngles.y;
+
+        float convertedAngle = Mathf.Round(rawAngle / 90) * 90;
+
+        if (convertedAngle >= 360)
+        {
+            convertedAngle = 0;
+        }
+
+        return convertedAngle;
+    }
+
     private void placeAttachment()
     {
+        Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip);
+        grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
 
+        // move the preview away //
+
+        // First try move it up the y-axis
+        if (previewGridPosY < yLength - 1)
+        {
+            previewGridPosY++;
+            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+        }
     }
 
     private void InitGrid()
@@ -185,8 +324,6 @@ public class ShipBuilding : MonoBehaviour
         zLength = (int)GridSize.z;
 
         centreSpot = new Vector3(Mathf.FloorToInt(xLength / 2), 0f, Mathf.FloorToInt(zLength / 2));
-
-        Debug.Log(centreSpot);
 
         grid = new AttachmentSpot[xLength, yLength, zLength];
 
@@ -205,9 +342,8 @@ public class ShipBuilding : MonoBehaviour
 
     public void UpdatePreview(string _name)
     {
-        Debug.Log(_name);
-
-        preview.setAttachment(_name, previewMeshes[_name]);
+        currentPiece = _name;
+        preview.setAttachment(_name, attachments[_name].mesh);
     }
 
     public void moveGridToPlayer(Transform _target)
@@ -231,7 +367,9 @@ public class ShipBuilding : MonoBehaviour
         Buildgrid.position -= Buildgrid.forward * Mathf.FloorToInt((GridSize.z / 2)) * 2;
         Buildgrid.position -= Buildgrid.right * Mathf.FloorToInt((GridSize.x / 2)) * 2;
 
-        previewGridPos = centreSpot;
+        previewGridPosX = (int)centreSpot.x;
+        previewGridPosY = (int)centreSpot.y;
+        previewGridPosZ = (int)centreSpot.z;
 
         preview.gameObject.SetActive(true);
         preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
@@ -240,6 +378,7 @@ public class ShipBuilding : MonoBehaviour
     private void SetBuildMode(bool isBuildMode)
     {
         Buildgrid.gameObject.SetActive(isBuildMode);
+        preview.gameObject.SetActive(isBuildMode);
     }
 
     public Transform PlayerCentre
@@ -253,7 +392,7 @@ public class ShipBuilding : MonoBehaviour
 
         foreach (GameObject cabin in cabins)
         {
-            previewMeshes.Add("Cabin" + count, cabin.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh);
+            attachments.Add("Cabin" + count, new Attachment(cabin, cabin.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             count++;
         }
 
@@ -261,7 +400,7 @@ public class ShipBuilding : MonoBehaviour
 
         foreach (GameObject cannon in Cannons)
         {
-            previewMeshes.Add("Cannon" + count, cannon.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh);
+            attachments.Add("Cannon" + count, new Attachment(cannon, cannon.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             count++;
         }
 
@@ -269,7 +408,7 @@ public class ShipBuilding : MonoBehaviour
 
         foreach (GameObject sail in Sails)
         {
-            previewMeshes.Add("Sail" + count, sail.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh);
+            attachments.Add("Sail" + count, new Attachment(sail, sail.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             count++;
         }
 
@@ -277,7 +416,7 @@ public class ShipBuilding : MonoBehaviour
 
         foreach (GameObject armour in Armours)
         {
-            previewMeshes.Add("Armour" + count, armour.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh);
+            attachments.Add("Armour" + count, new Attachment(armour, armour.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             count++;
         }
     }
@@ -286,5 +425,17 @@ public class ShipBuilding : MonoBehaviour
     {
         // Unsubscribe to game state
         GameState.buildModeChanged -= SetBuildMode;
+    }
+}
+
+public class Attachment
+{
+    public GameObject GO;
+    public Mesh mesh;
+
+    public Attachment(GameObject _gameObject, Mesh _mesh)
+    {
+        GO = _gameObject;
+        mesh = _mesh;
     }
 }

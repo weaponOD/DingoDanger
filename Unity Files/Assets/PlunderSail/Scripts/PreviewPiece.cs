@@ -7,11 +7,12 @@ public class PreviewPiece : MonoBehaviour
     [SerializeField]
     private Material previewMat;
 
-
     private MeshFilter meshFilter;
     private Material[] cachedMaterials;
     private MeshRenderer cachedRenderer;
     private Material[] previewMaterials;
+
+    private string name;
 
     private Transform player;
 
@@ -26,27 +27,34 @@ public class PreviewPiece : MonoBehaviour
 
     public void setAttachment(string _type, Mesh _mesh)
     {
+        name = _type;
         meshFilter.mesh = _mesh;
 
         cachedMaterials = cachedRenderer.materials;
         previewMaterials = new Material[cachedMaterials.Length];
 
-        for(int x = 0; x < previewMaterials.Length; x++)
+        for (int x = 0; x < previewMaterials.Length; x++)
         {
             previewMaterials[x] = previewMat;
         }
 
         cachedRenderer.materials = previewMaterials;
 
-        if(_type.Contains("Cannon"))
+        if (_type.Contains("Cannon"))
         {
-            transform.localEulerAngles = new Vector3(0f, -90,0f);
+            transform.localEulerAngles = new Vector3(0f, -90, 0f);
         }
         else
         {
             transform.rotation = player.rotation;
         }
     }
+
+    public string AttachmentName
+    {
+        get { return name; }
+    }
+
 
     public void MoveToSpot(Vector3 _spot)
     {

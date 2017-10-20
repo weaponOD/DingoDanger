@@ -45,7 +45,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1903990054733660
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,11 +171,6 @@ MonoBehaviour:
   zoomDampening: 5
   minZoomDistance: 7.5
   maxZoomDistance: 22.5
-  MoveSensitivity: 1
-  movementDampening: 10
-  breakForce: 0.2
-  timeBeforeSnap: 1.5
-  snapEnabled: 0
 --- !u!124 &124387452465324306
 Behaviour:
   m_ObjectHideFlags: 1

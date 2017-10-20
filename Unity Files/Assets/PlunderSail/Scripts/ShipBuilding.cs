@@ -139,8 +139,6 @@ public class ShipBuilding : MonoBehaviour
         if (Input.GetButtonDown("A_Button"))
         {
             placeAttachment();
-
-            Debug.Log(CalculatePerspectiveAngle());
         }
 
         if (Time.time > nextTimeToMove)
@@ -152,8 +150,6 @@ public class ShipBuilding : MonoBehaviour
     // Converts absolute movement to movement relative to the camera's angle
     private void CalculatePerspectiveMovement(string _dir)
     {
-        Debug.Log(_dir);
-
         if (_dir.Equals("right"))
         {
             if (CalculatePerspectiveAngle() == 0)
@@ -241,111 +237,171 @@ public class ShipBuilding : MonoBehaviour
     }
 
     // Move one place along the X-axis in the positive direction
-    private void MoveRight()
+    private bool MoveRight()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosX < xLength - 1)
             {
-                if (!grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                int lengthToEnd = xLength - previewGridPosX;
+                // loop until an open spot is found
+                for (int x = 1; x < lengthToEnd; x++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosX++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX + x, previewGridPosY, previewGridPosZ].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosX += x;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // Move one place along the X-axis in the negetive direction
-    private void MoveLeft()
+    private bool MoveLeft()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosX > 0)
             {
-                if (!grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                int lengthToEnd = previewGridPosX;
+                // loop until an open spot is found
+                for (int x = 1; x <= lengthToEnd; x++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosX--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX - x, previewGridPosY, previewGridPosZ].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosX -= x;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // Move one place along the Z-axis in the positive direction
-    private void MoveForward()
+    private bool MoveForward()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosZ < zLength - 1)
             {
-                if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ + 1].BuiltOn)
+                int lengthToEnd = zLength - previewGridPosZ;
+                // loop until an open spot is found
+                for (int z = 1; z < lengthToEnd; z++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosZ++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ + z].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosZ += z;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // Move one place along the Z-axis in the negetive direction
-    private void MoveBack()
+    private bool MoveBack()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosZ > 0)
             {
-                if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ - 1].BuiltOn)
+                int lengthToEnd = previewGridPosZ;
+                // loop until an open spot is found
+                for (int z = 1; z <= lengthToEnd; z++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosZ--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ - z].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosZ -= z;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // Move one place along the Y-axis in the positive direction
-    private void MoveUp()
+    private bool MoveUp()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosY < yLength - 1)
             {
-                if (!grid[previewGridPosX, previewGridPosY + 1, previewGridPosZ].BuiltOn)
+                int lengthToEnd = yLength - previewGridPosY;
+                // loop until an open spot is found
+                for (int y = 1; y < lengthToEnd; y++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosY++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosY += y;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // Move one place along the Y-axis in the negetive direction
-    private void MoveDown()
+    private bool MoveDown()
     {
         if (canMove)
         {
+            // if not last piece in length of open slots
             if (previewGridPosY > 0)
             {
-                if (!grid[previewGridPosX, previewGridPosY - 1, previewGridPosZ].BuiltOn)
+                int lengthToEnd = previewGridPosY;
+                // loop until an open spot is found
+                for (int y = 1; y <= lengthToEnd; y++)
                 {
-                    canMove = false;
-                    nextTimeToMove = Time.time + timeBetweenMoves;
-                    previewGridPosY--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    if (!grid[previewGridPosX, previewGridPosY - y, previewGridPosZ].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPosY -= y;
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                        return true;
+                    }
                 }
             }
         }
+
+        return false;
     }
 
     // convert raw angle of camera to the nearest cardinonal point
@@ -372,10 +428,24 @@ public class ShipBuilding : MonoBehaviour
         // move the preview away //
 
         // First try move it up the y-axis
-        if (previewGridPosY < yLength - 1)
+        if(!MoveUp())
         {
-            previewGridPosY++;
-            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+            if(!MoveRight())
+            {
+                if (!MoveLeft())
+                {
+                    if (!MoveForward())
+                    {
+                        if (!MoveBack())
+                        {
+                            if (!MoveDown())
+                            {
+                                preview.gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

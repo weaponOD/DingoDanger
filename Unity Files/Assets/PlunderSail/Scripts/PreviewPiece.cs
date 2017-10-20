@@ -12,7 +12,7 @@ public class PreviewPiece : MonoBehaviour
     private MeshRenderer cachedRenderer;
     private Material[] previewMaterials;
 
-    private string name;
+    private string attachmentName;
 
     private Transform player;
 
@@ -27,7 +27,7 @@ public class PreviewPiece : MonoBehaviour
 
     public void setAttachment(string _type, Mesh _mesh)
     {
-        name = _type;
+        attachmentName = _type;
         meshFilter.mesh = _mesh;
 
         cachedMaterials = cachedRenderer.materials;
@@ -52,7 +52,7 @@ public class PreviewPiece : MonoBehaviour
 
     public string AttachmentName
     {
-        get { return name; }
+        get { return attachmentName; }
     }
 
 

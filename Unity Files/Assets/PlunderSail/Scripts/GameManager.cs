@@ -39,20 +39,29 @@ public class GameManager : MonoBehaviour
             {
                 if (pier != null)
                 {
-                    UI.TransitionToBuild();
-                    StartCoroutine(MovePlayerToPier());
+                    UI.FadeScreen();
+                    StartCoroutine(TransitionToBuildMode());
                     UI.ShowPierPopUp(false);
                 }
             }
             else
             {
-                GameState.BuildMode = false;
-                //PC.transform.Rotate(Vector3.up, 180f, Space.Self);
+                UI.FadeScreen();
+                StartCoroutine(TransitionToPlayMode());
             }
         }
     }
 
-    private IEnumerator MovePlayerToPier()
+    private IEnumerator TransitionToPlayMode()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        GameState.BuildMode = false;
+
+        CC.SwitchToPlayMode();
+    }
+
+    private IEnumerator TransitionToBuildMode()
     {
         yield return new WaitForSeconds(1.2f);
 

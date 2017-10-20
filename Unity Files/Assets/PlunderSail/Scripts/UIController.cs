@@ -134,11 +134,6 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("A_Button"))
-        {
-            
-        }
-
         if (DpadCanPress)
         {
             // Move up the vertical menu
@@ -227,10 +222,11 @@ public class UIController : MonoBehaviour
         DockPopUp.SetActive(_show);
     }
 
-    public void TransitionToBuild()
+    public void FadeScreen()
     {
         StartCoroutine(FadeScreenYoyo());
     }
+
     private IEnumerator FadeScreenYoyo()
     {
         StartCoroutine(Fade(Color.clear, Color.black, 1));

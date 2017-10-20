@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4028904470900468}
-  - component: {fileID: 114680541613313950}
+  - component: {fileID: 114696630642939100}
   m_Layer: 0
-  m_Name: PreViewPiece
+  m_Name: AttachmentSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4238958736495486}
-  - component: {fileID: 33251080626805184}
+  - component: {fileID: 33589871474082508}
   - component: {fileID: 23533089339043684}
   m_Layer: 0
   m_Name: Mesh
@@ -77,7 +77,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743257554434332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -103,14 +103,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33251080626805184
+--- !u!33 &33589871474082508
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743257554434332}
   m_Mesh: {fileID: 4300004, guid: 7a9132702ff016e4d96a07230f289b5a, type: 3}
---- !u!114 &114680541613313950
+--- !u!114 &114696630642939100
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1736294380650708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca7db529687ce14d948febcebcd093e, type: 3}
+  m_Script: {fileID: 11500000, guid: a5151e021605e2641890aa02dcc92a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}

@@ -4,30 +4,13 @@ using UnityEngine;
 
 public class ShipBuilding : MonoBehaviour
 {
+    // Editor References
+
     [SerializeField]
     private Vector3 GridSize;
 
     [SerializeField]
-    private GameObject testCabin;
-
-    // System References
-    private UIManager UI;
-
-    private Transform player;
-
-    private Transform playerCentre;
-
-    // The Transform child of player used to parent attachments
-    private Transform baseShip;
-
-    // Local Variables
-    private BuildSpace[,,] grid;
-
-    private Transform Buildgrid;
-
-    private Transform previewPiece;
-
-    Dictionary<string, Mesh> previewMeshes;
+    private GameObject AttachmentSpotPrefab;
 
     [SerializeField]
     private GameObject previewPiecePrefab;
@@ -47,9 +30,36 @@ public class ShipBuilding : MonoBehaviour
     [SerializeField]
     GameObject[] Rams;
 
+    // System References
+    private UIManager UI;
+
+    private Transform player;
+
+    private Transform playerCentre;
+
+    // The Transform child of player used to parent attachments
+    private Transform baseShip;
+
+    // Local Variables
+    private AttachmentSpot[,,] grid;
+
+    private Transform Buildgrid;
+
+    private PreviewPiece preview;
+
+    [SerializeField]
+    private Vector3 previewGridPos;
+
+    private bool canMove = true;
+    private float nextTimeToMove;
+    private float timeBetweenMoves = 0.1f;
+
+    Dictionary<string, Mesh> previewMeshes;
+
     private int xLength;
     private int yLength;
     private int zLength;
+    private Vector3 centreSpot;
 
     private void Awake()
     {
@@ -57,9 +67,13 @@ public class ShipBuilding : MonoBehaviour
 
         baseShip = player.Find("Components");
 
+        previewGridPos = Vector3.zero;
+
         UI = GetComponent<UIManager>();
 
         previewMeshes = new Dictionary<string, Mesh>();
+
+        Buildgrid = new GameObject("Grid").transform;
 
         InitGrid();
 
@@ -69,14 +83,99 @@ public class ShipBuilding : MonoBehaviour
 
     private void Start()
     {
-        Buildgrid = new GameObject("Grid").transform;
-
         PopulateDictionary();
 
         if (previewPiecePrefab)
         {
-            previewPiece = Instantiate(previewPiecePrefab, transform).transform;
+            preview = Instantiate(previewPiecePrefab, transform).GetComponent<PreviewPiece>();
+            preview.gameObject.SetActive(false);
         }
+
+        preview.setAttachment("Cabin0", previewMeshes["Cabin0"]);
+    }
+
+    private void Update()
+    {
+        // Move preview right
+        if (Input.GetAxisRaw("Horizontal") > 0.8f)
+        {
+            if (canMove)
+            {
+                if (previewGridPos.x < xLength - 1)
+                {
+                    if (!grid[(int)previewGridPos.x + 1, (int)previewGridPos.y, (int)previewGridPos.z].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPos.x++;
+                        preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
+                    }
+                }
+            }
+        }
+
+        // Move preview Left
+        if (Input.GetAxisRaw("Horizontal") < -0.8f)
+        {
+            if (canMove)
+            {
+                if (previewGridPos.x > 0)
+                {
+                    if (!grid[(int)previewGridPos.x - 1, (int)previewGridPos.y, (int)previewGridPos.z].BuiltOn)
+                    {
+                        canMove = false;
+                        nextTimeToMove = Time.time + timeBetweenMoves;
+                        previewGridPos.x--;
+                        preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
+                    }
+                }
+            }
+        }
+
+        // Move preview forward
+        if (Input.GetAxisRaw("Vertical") > 0.8f)
+        {
+            if (canMove)
+            {
+                if (previewGridPos.z < zLength - 1)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPos.z++;
+                    preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
+                }
+            }
+        }
+
+        // Move preview back
+        if (Input.GetAxisRaw("Vertical") < -0.8f)
+        {
+            if (canMove)
+            {
+                if (previewGridPos.z > 0)
+                {
+                    canMove = false;
+                    nextTimeToMove = Time.time + timeBetweenMoves;
+                    previewGridPos.z--;
+                    preview.MoveToSpot(grid[(int)previewGridPos.x, (int)previewGridPos.y, (int)previewGridPos.z].transform.position);
+                }
+            }
+        }
+
+        if(Input.GetButtonDown("A_Button"))
+        {
+            placeAttachment();
+        }
+
+        if (Time.time > nextTimeToMove)
+        {
+            canMove = true;
+        }
+    }
+
+    private void placeAttachment()
+    {
+
     }
 
     private void InitGrid()
@@ -85,7 +184,11 @@ public class ShipBuilding : MonoBehaviour
         yLength = (int)GridSize.y;
         zLength = (int)GridSize.z;
 
-        grid = new BuildSpace[xLength, yLength, zLength];
+        centreSpot = new Vector3(Mathf.FloorToInt(xLength / 2), 0f, Mathf.FloorToInt(zLength / 2));
+
+        Debug.Log(centreSpot);
+
+        grid = new AttachmentSpot[xLength, yLength, zLength];
 
         for (int x = 0; x < xLength; x++)
         {
@@ -93,7 +196,8 @@ public class ShipBuilding : MonoBehaviour
             {
                 for (int z = 0; z < zLength; z++)
                 {
-                    grid[x, y, z] = new BuildSpace();
+                    grid[x, y, z] = Instantiate(AttachmentSpotPrefab, Vector3.zero, Quaternion.identity, Buildgrid).GetComponent<AttachmentSpot>();
+                    grid[x, y, z].gameObject.SetActive(false);
                 }
             }
         }
@@ -102,6 +206,8 @@ public class ShipBuilding : MonoBehaviour
     public void UpdatePreview(string _name)
     {
         Debug.Log(_name);
+
+        preview.setAttachment(_name, previewMeshes[_name]);
     }
 
     public void moveGridToPlayer(Transform _target)
@@ -115,7 +221,7 @@ public class ShipBuilding : MonoBehaviour
                 for (int z = 0; z < zLength; z++)
                 {
                     grid[x, y, z].Pos = new Vector3(Buildgrid.position.x + (x * 2), Buildgrid.position.y + y, Buildgrid.position.z + (z * 2));
-                    //Instantiate(testCabin, grid[x, y, z].Pos, Quaternion.identity, Buildgrid.transform);
+                    grid[x, y, z].gameObject.SetActive(true);
                 }
             }
         }
@@ -124,12 +230,16 @@ public class ShipBuilding : MonoBehaviour
 
         Buildgrid.position -= Buildgrid.forward * Mathf.FloorToInt((GridSize.z / 2)) * 2;
         Buildgrid.position -= Buildgrid.right * Mathf.FloorToInt((GridSize.x / 2)) * 2;
-        // Buildgrid.Rotate(Vector3.up, 90, Space.Self);
+
+        previewGridPos = centreSpot;
+
+        preview.gameObject.SetActive(true);
+        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
     }
 
     private void SetBuildMode(bool isBuildMode)
     {
-
+        Buildgrid.gameObject.SetActive(isBuildMode);
     }
 
     public Transform PlayerCentre
@@ -176,26 +286,5 @@ public class ShipBuilding : MonoBehaviour
     {
         // Unsubscribe to game state
         GameState.buildModeChanged -= SetBuildMode;
-    }
-}
-
-
-public class BuildSpace
-{
-    private bool disabled;
-    private Vector3 position;
-    private Transform attachment;
-
-    public BuildSpace()
-    {
-        position = Vector3.zero;
-        attachment = null;
-        disabled = false;
-    }
-
-    public Vector3 Pos
-    {
-        get { return position; }
-        set { position = value; }
     }
 }

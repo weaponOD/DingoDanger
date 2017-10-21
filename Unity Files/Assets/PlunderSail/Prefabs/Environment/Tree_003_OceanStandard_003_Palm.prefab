@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4208940532749888}
-  - component: {fileID: 95400782736261716}
   m_Layer: 0
   m_Name: Tree_003_OceanStandard_003_Palm
   m_TagString: Untagged
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: fc0b9ee59e0c16d4a8571c88cc2e13ed, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,21 +108,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233998980833832}
-  m_Mesh: {fileID: 4300000, guid: 079775dd734cf07489f09b87327abe18, type: 3}
---- !u!95 &95400782736261716
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1749606399024484}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 079775dd734cf07489f09b87327abe18, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Mesh: {fileID: 4300000, guid: 8152252fa13c72445af5d1e7d0237cc3, type: 3}

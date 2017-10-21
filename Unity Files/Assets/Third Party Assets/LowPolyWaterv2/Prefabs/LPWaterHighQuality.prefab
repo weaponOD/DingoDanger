@@ -51,16 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6a49d405310944fb9cd55bef9e018f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridType: 1
+  gridType: 0
   LOD: 0.2
   LODPower: 3
   customMesh: {fileID: 0}
   material: {fileID: 2100000, guid: deafa17c6e01f8b43ae33c12383ebaec, type: 2}
   sun: {fileID: 0}
-  sizeX: 200
-  sizeZ: 200
+  sizeX: 400
+  sizeZ: 400
   noise: 0.6
-  enableReflection: 1
+  enableReflection: 0
   enableRefraction: 1
   reflection:
     disablePixelLights: 1

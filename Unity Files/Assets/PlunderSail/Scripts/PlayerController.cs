@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private buoyancy buoyant;
 
     public float heading = 0.0f;
     public float rudder = 0.0f;
@@ -79,6 +80,8 @@ public class PlayerController : MonoBehaviour
         components = GetComponent<ComponentManager>();
 
         rb = GetComponent<Rigidbody>();
+
+        buoyant = GetComponentInChildren<buoyancy>();
 
         rudderControl = GameObject.Find("rudderControl");
 
@@ -169,6 +172,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ResetHeading()
+    {
+        heading = transform.root.localEulerAngles.y;
+    }
+
     private void LowerSails(bool _isOpen)
     {
         if (_isOpen)
@@ -202,6 +210,11 @@ public class PlayerController : MonoBehaviour
 
             components.RaiseSails();
         }
+    }
+
+    public void Buoyant(bool _isBuoyant)
+    {
+        //buoyant.enabled = _isBuoyant;
     }
 
     public void setSpeedBonus(float _bonus)

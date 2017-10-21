@@ -57,6 +57,7 @@ public class PreviewPiece : MonoBehaviour
         else
         {
             transform.rotation = player.rotation;
+            transform.Rotate(Vector3.up, 90f, Space.Self);
         }
     }
 
@@ -83,6 +84,6 @@ public class PreviewPiece : MonoBehaviour
     public void MoveToSpot(Vector3 _spot)
     {
         transform.position = _spot;
-        transform.rotation = player.rotation;
+        //transform.rotation = player.rotation;
     }
 }

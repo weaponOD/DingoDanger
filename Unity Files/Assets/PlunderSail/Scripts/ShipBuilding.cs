@@ -41,7 +41,7 @@ public class ShipBuilding : MonoBehaviour
 
     // The Transform child of player used to parent attachments
     [SerializeField]
-    private Transform baseShip;
+    private Transform baseShip = null;
 
     // Local Variables
     private AttachmentSpot[,,] grid;
@@ -64,7 +64,7 @@ public class ShipBuilding : MonoBehaviour
     private float nextTimeToMove;
     private float timeBetweenMoves = 0.1f;
 
-    private string lastDirection;
+    private string lastDirection = null;
 
     Dictionary<string, Attachment> attachments;
 
@@ -100,7 +100,7 @@ public class ShipBuilding : MonoBehaviour
 
         if (previewPiecePrefab)
         {
-            preview = Instantiate(previewPiecePrefab, transform).GetComponent<PreviewPiece>();
+            preview = Instantiate(previewPiecePrefab).GetComponent<PreviewPiece>();
             preview.gameObject.SetActive(false);
         }
 
@@ -275,6 +275,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "right";
                         return true;
                     }
                 }
@@ -304,6 +305,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "left";
                         return true;
                     }
                 }
@@ -333,6 +335,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "forward";
                         return true;
                     }
                 }
@@ -362,6 +365,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "back";
                         return true;
                     }
                 }
@@ -391,6 +395,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "up";
                         return true;
                     }
                 }
@@ -420,6 +425,7 @@ public class ShipBuilding : MonoBehaviour
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                         dirty = true;
+                        lastDirection = "down";
                         return true;
                     }
                 }
@@ -503,7 +509,6 @@ public class ShipBuilding : MonoBehaviour
                 for (int z = 0; z < zLength; z++)
                 {
                     grid[x, y, z] = Instantiate(AttachmentSpotPrefab, Vector3.zero, Quaternion.identity, Buildgrid).GetComponent<AttachmentSpot>();
-                    grid[x, y, z].gameObject.SetActive(false);
                 }
             }
         }
@@ -531,8 +536,8 @@ public class ShipBuilding : MonoBehaviour
         {
             return false;
         }
-       
-        if(!CheckAttachmentRules())
+
+        if (!CheckAttachmentRules())
         {
             return false;
         }
@@ -544,7 +549,7 @@ public class ShipBuilding : MonoBehaviour
     private bool CheckNotFloating()
     {
         // If the preview is on the ship then don't check
-        if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Anchored)
+        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Anchored)
         {
             return true;
         }
@@ -653,6 +658,7 @@ public class ShipBuilding : MonoBehaviour
 
     public void moveGridToPlayer(Transform _target)
     {
+        Debug.Log("Player Centre: " + playerCentre.position);
         Buildgrid.position = new Vector3(playerCentre.position.x, playerCentre.position.y, playerCentre.position.z);
 
         for (int x = 0; x < xLength; x++)
@@ -662,7 +668,6 @@ public class ShipBuilding : MonoBehaviour
                 for (int z = 0; z < zLength; z++)
                 {
                     grid[x, y, z].Pos = new Vector3(Buildgrid.position.x + (x * 2), Buildgrid.position.y + y, Buildgrid.position.z + (z * 2));
-                    grid[x, y, z].gameObject.SetActive(true);
                 }
             }
         }
@@ -687,6 +692,12 @@ public class ShipBuilding : MonoBehaviour
         if (preview)
         {
             preview.gameObject.SetActive(isBuildMode);
+        }
+
+        if(!isBuildMode)
+        {
+            Buildgrid.position = Vector3.zero;
+            Buildgrid.rotation = Quaternion.identity;
         }
     }
 

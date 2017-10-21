@@ -20,22 +20,9 @@ public class Player : LivingEntity
     [SerializeField]
     private AudioClip waves;
 
-    buoyancy buoyant;
-
     protected override void Start()
     {
         base.Start();
-
-        StartCoroutine(PlayWaves());
-    }
-
-    private IEnumerator PlayWaves()
-    {
-        audioSource.PlayOneShot(waves, Random.Range(0.4f, 0.9f));
-
-        yield return new WaitForSeconds(Random.Range(waves.length, waves.length * 2));
-
-        StartCoroutine(PlayWaves());
     }
 
     private void Awake()
@@ -45,7 +32,7 @@ public class Player : LivingEntity
         components = GetComponent<ComponentManager>();
 
         audioSource = GetComponent<AudioSource>();
-        buoyant = GetComponentInChildren<buoyancy>();
+        
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -86,8 +73,6 @@ public class Player : LivingEntity
 
     private void SetBuildMode(bool isBuildMode)
     {
-        buoyant.enabled = !isBuildMode;
-
         if (!isBuildMode)
         {
             UpdateAttachments();

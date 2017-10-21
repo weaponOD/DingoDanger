@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
         GameState.BuildMode = false;
 
+        PC.Buoyant(true);
+
         CC.SwitchToPlayMode();
     }
 
@@ -67,12 +69,15 @@ public class GameManager : MonoBehaviour
 
         GameState.BuildMode = true;
 
+        PC.Buoyant(false);
+
         PC.transform.position = pier.position;
         PC.transform.rotation = pier.rotation;
 
         PC.transform.GetChild(0).localPosition = Vector3.zero;
         PC.transform.GetChild(0).localRotation = Quaternion.identity;
 
+        PC.ResetHeading();
 
         CC.SwitchToBuildMode();
         builder.moveGridToPlayer(pier);

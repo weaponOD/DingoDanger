@@ -5,7 +5,12 @@ using UnityEngine;
 public class PreviewPiece : MonoBehaviour
 {
     [SerializeField]
-    private Material previewMat;
+    private Material previewMatGreen;
+
+    [SerializeField]
+    private Material previewMatRed;
+
+    private Material currentMat;
 
     private MeshFilter meshFilter;
     private Material[] cachedMaterials;
@@ -21,33 +26,52 @@ public class PreviewPiece : MonoBehaviour
         meshFilter = GetComponentInChildren<MeshFilter>();
         cachedRenderer = GetComponentInChildren<MeshRenderer>();
 
+        currentMat = previewMatGreen;
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-
 
     public void setAttachment(string _type, Mesh _mesh)
     {
         attachmentName = _type;
         meshFilter.mesh = _mesh;
+        UpdateMesh();
+    }
 
+    private void UpdateMesh()
+    {
         cachedMaterials = cachedRenderer.materials;
         previewMaterials = new Material[cachedMaterials.Length];
 
         for (int x = 0; x < previewMaterials.Length; x++)
         {
-            previewMaterials[x] = previewMat;
+            previewMaterials[x] = currentMat;
         }
 
         cachedRenderer.materials = previewMaterials;
 
-        if (_type.Contains("Cannon"))
+        if (attachmentName.Contains("Cannon"))
         {
-            transform.localEulerAngles = new Vector3(0f, -90, 0f);
+            //transform.localEulerAngles = new Vector3(0f, -90, 0f);
         }
         else
         {
             transform.rotation = player.rotation;
         }
+    }
+
+    public void SetCanBuild(bool _canBuild)
+    {
+        if(_canBuild)
+        {
+            currentMat = previewMatGreen;
+        }
+        else
+        {
+            currentMat = previewMatRed;
+        }
+
+        UpdateMesh();
     }
 
     public string AttachmentName
@@ -59,5 +83,6 @@ public class PreviewPiece : MonoBehaviour
     public void MoveToSpot(Vector3 _spot)
     {
         transform.position = _spot;
+        transform.rotation = player.rotation;
     }
 }

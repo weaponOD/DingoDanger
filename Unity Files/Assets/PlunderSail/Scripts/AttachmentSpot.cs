@@ -14,6 +14,12 @@ public class AttachmentSpot : MonoBehaviour
         set { transform.position = value; }
     }
 
+    public Transform Attachment
+    {
+        get { return attachment; }
+        set { attachment = value; }
+    }
+
     public bool BuiltOn
     {
         get { return built; }

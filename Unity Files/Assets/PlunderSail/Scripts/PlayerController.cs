@@ -177,9 +177,9 @@ public class PlayerController : MonoBehaviour
 
             turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
 
-            if(turnSpeed < 0)
+            if (turnSpeed < 0)
             {
-                turnSpeed = 0;
+                turnSpeed = 1;
             }
 
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
@@ -210,8 +210,6 @@ public class PlayerController : MonoBehaviour
 
         maxMoveSpeed = baseMoveSpeed + bonusMoveSpeed;
         moveSpeed = maxMoveSpeed;
-
-        turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
     }
 
     void OnCollisionEnter(Collision c)

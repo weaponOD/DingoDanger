@@ -50,6 +50,12 @@ public class ShipBuilding : MonoBehaviour
 
     private PreviewPiece preview;
 
+    [SerializeField]
+    private bool canPlace = true;
+
+    [SerializeField]
+    private bool dirty = true;
+
     private int previewGridPosX = 0;
     private int previewGridPosY = 0;
     private int previewGridPosZ = 0;
@@ -60,6 +66,7 @@ public class ShipBuilding : MonoBehaviour
 
     Dictionary<string, Attachment> attachments;
 
+    [SerializeField]
     private string currentPiece;
 
     private int xLength;
@@ -96,54 +103,64 @@ public class ShipBuilding : MonoBehaviour
         }
 
         preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
+        currentPiece = preview.AttachmentName;
     }
 
     private void Update()
     {
-        // Move preview right
-        if (Input.GetAxisRaw("Horizontal") > 0.8f)
+        if(GameState.BuildMode)
         {
-            CalculatePerspectiveMovement("right");
-        }
+            // Move preview right
+            if (Input.GetAxisRaw("Horizontal") > 0.8f)
+            {
+                CalculatePerspectiveMovement("right");
+            }
 
-        // Move preview Left
-        if (Input.GetAxisRaw("Horizontal") < -0.8f)
-        {
-            CalculatePerspectiveMovement("left");
-        }
+            // Move preview Left
+            if (Input.GetAxisRaw("Horizontal") < -0.8f)
+            {
+                CalculatePerspectiveMovement("left");
+            }
 
-        // Move preview forward
-        if (Input.GetAxisRaw("Vertical") > 0.8f)
-        {
-            CalculatePerspectiveMovement("forward");
-        }
+            // Move preview forward
+            if (Input.GetAxisRaw("Vertical") > 0.8f)
+            {
+                CalculatePerspectiveMovement("forward");
+            }
 
-        // Move preview back
-        if (Input.GetAxisRaw("Vertical") < -0.8f)
-        {
-            CalculatePerspectiveMovement("back");
-        }
+            // Move preview back
+            if (Input.GetAxisRaw("Vertical") < -0.8f)
+            {
+                CalculatePerspectiveMovement("back");
+            }
 
-        // Move preview down
-        if (Input.GetAxisRaw("Left_Trigger") > 0.8f)
-        {
-            CalculatePerspectiveMovement("down");
-        }
+            // Move preview down
+            if (Input.GetAxisRaw("Left_Trigger") > 0.8f)
+            {
+                CalculatePerspectiveMovement("down");
+            }
 
-        // Move preview up
-        if (Input.GetAxisRaw("Right_Trigger") > 0.8f)
-        {
-            CalculatePerspectiveMovement("up");
-        }
+            // Move preview up
+            if (Input.GetAxisRaw("Right_Trigger") > 0.8f)
+            {
+                CalculatePerspectiveMovement("up");
+            }
 
-        if (Input.GetButtonDown("A_Button"))
-        {
-            placeAttachment();
-        }
+            if (Input.GetButtonDown("A_Button"))
+            {
+                placeAttachment();
+            }
 
-        if (Time.time > nextTimeToMove)
-        {
-            canMove = true;
+            if (dirty)
+            {
+                ApplyPlacementRules();
+                dirty = false;
+            }
+
+            if (Time.time > nextTimeToMove)
+            {
+                canMove = true;
+            }
         }
     }
 
@@ -255,6 +272,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosX += x;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -283,6 +301,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosX -= x;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -311,6 +330,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosZ += z;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -339,6 +359,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosZ -= z;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -367,6 +388,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosY += y;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -395,6 +417,7 @@ public class ShipBuilding : MonoBehaviour
                         previewGridPosY -= y;
                         preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
+                        dirty = true;
                         return true;
                     }
                 }
@@ -422,25 +445,37 @@ public class ShipBuilding : MonoBehaviour
 
     private void placeAttachment()
     {
-        Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip);
-        grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
-
-        // move the preview away //
-
-        // First try move it up the y-axis
-        if(!MoveUp())
+        if (canPlace)
         {
-            if(!MoveRight())
+            grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
+
+            if (currentPiece.Contains("Sail"))
             {
-                if (!MoveLeft())
+                for(int y = 0; y < 8;y++)
                 {
-                    if (!MoveForward())
+                    grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
+                }
+            }
+            else
+            {
+                grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
+            }
+
+            // First try move it up the y-axis
+            if (!MoveUp())
+            {
+                if (!MoveRight())
+                {
+                    if (!MoveLeft())
                     {
-                        if (!MoveBack())
+                        if (!MoveForward())
                         {
-                            if (!MoveDown())
+                            if (!MoveBack())
                             {
-                                preview.gameObject.SetActive(false);
+                                if (!MoveDown())
+                                {
+                                    preview.gameObject.SetActive(false);
+                                }
                             }
                         }
                     }
@@ -472,10 +507,52 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    private void ApplyPlacementRules()
+    {
+        canPlace = CalculateCanPlace();
+        preview.SetCanBuild(canPlace);
+    }
+
+    private bool CalculateCanPlace()
+    {
+        if (currentPiece.Contains("Cabin"))
+        {
+            preview.SetCanBuild(true);
+            return true;
+        }
+        else if (currentPiece.Contains("Sail"))
+        {
+            // First check if preview has enough space up
+            if (previewGridPosY < yLength - 8)
+            {
+                int lengthToEnd = yLength - previewGridPosY;
+
+                // loop until an open spot is found
+                for (int y = 1; y < lengthToEnd; y++)
+                {
+                    if (grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                    {
+                        preview.SetCanBuild(false);
+                        return false;
+                    }
+                }
+
+                preview.SetCanBuild(true);
+
+                return true;
+            }
+        }
+
+        preview.SetCanBuild(false);
+        return false;
+    }
+
     public void UpdatePreview(string _name)
     {
         currentPiece = _name;
         preview.setAttachment(_name, attachments[_name].mesh);
+
+        dirty = true;
     }
 
     public void moveGridToPlayer(Transform _target)

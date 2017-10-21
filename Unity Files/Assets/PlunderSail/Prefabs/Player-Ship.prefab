@@ -1873,7 +1873,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
   - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
-  waves: {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
+  waves: {fileID: 0}
 --- !u!114 &114422352416139054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1989,21 +1989,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sailBonus: 4
-  baseTurnSpeed: 6
-  TurnRatePenalty: 1
-  acceleration: 2
+  baseTurnSpeed: 2
+  acceleration: 6
+  deacceleration: 1
   maxRoll: 3
+  bonusSpeed: 4
+  bonusDropoff: 0.3
+  minBonusSpeed: 0.5
+  turnSpeedDecay: 3
+  turnSpeeGrowth: 5
+  minTurnSpeed: 3
+  maxTurnSpeed: 10
   startBuild: []
   fullSpeed: []
   slowDown: []
   moveSpeed: 0
-  bonusMoveSpeed: 0
   maxMoveSpeed: 0
   turnSpeed: 0
   sailsOpen: 1
   heading: 0
   rudder: 0
-  maxRudder: 6
   rudderAngle: 0
   steering: 0

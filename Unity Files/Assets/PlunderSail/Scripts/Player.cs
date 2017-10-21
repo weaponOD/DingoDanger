@@ -42,12 +42,12 @@ public class Player : LivingEntity
     {
         if (Input.GetAxis("Left_Trigger") == 1)
         {
-            weaponController.FireWeaponsLeft();
+            weaponController.FireWeaponsRight();
         }
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
-            weaponController.FireWeaponsRight();
+            weaponController.FireWeaponsLeft();
         }
     }
 

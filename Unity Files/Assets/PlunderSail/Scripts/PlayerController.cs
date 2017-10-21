@@ -5,23 +5,50 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
-    [SerializeField]
-    [Tooltip("The additional speed per sail when the sails are open")]
-    private float sailBonus;
 
     [SerializeField]
     [Tooltip("The degrees per frame the ship can rotate with no open sails")]
     private float baseTurnSpeed;
 
     [SerializeField]
-    [Tooltip("The reduction per sail to turn rate when sails are open")]
-    private float TurnRatePenalty;
-
-    [SerializeField]
+    [Tooltip("The change in speed per second while speeding up")]
     private float acceleration;
 
     [SerializeField]
+    [Tooltip("The change in speed per second while slowing down")]
+    private float deacceleration;
+
+    private float maxRudder = 6.0f;
+
+    [SerializeField]
     private float maxRoll;
+
+    [Header("sail bonuses")]
+    [Tooltip("The additional speed per sail when the sails are open")]
+    [SerializeField]
+    private float bonusSpeed;
+
+    [Tooltip("how much less speed each sail gives you")]
+    [SerializeField]
+    private float bonusDropoff;
+
+    [Tooltip("how much less speed each sail gives you")]
+    [SerializeField]
+    private float minBonusSpeed;
+
+    [Header("Turn Speed Attributes")]
+
+    [SerializeField]
+    private float turnSpeedDecay;
+
+    [SerializeField]
+    private float turnSpeeGrowth;
+
+    [SerializeField]
+    private float minTurnSpeed;
+
+    [SerializeField]
+    private float maxTurnSpeed;
 
     [Header("Sound Resources")]
     [SerializeField]
@@ -36,9 +63,6 @@ public class PlayerController : MonoBehaviour
     [Header("Debug Info")]
     [SerializeField]
     private float moveSpeed;
-
-    [SerializeField]
-    private float bonusMoveSpeed;
 
     [SerializeField]
     private float maxMoveSpeed;
@@ -65,10 +89,14 @@ public class PlayerController : MonoBehaviour
 
     private buoyancy buoyant;
 
-    public float heading = 0.0f;
-    public float rudder = 0.0f;
-    public float maxRudder = 6.0f;
-    public float rudderAngle = 0.0f;
+    [SerializeField]
+    private float heading = 0.0f;
+    [SerializeField]
+    private float rudder = 0.0f;
+    [SerializeField]
+    private float rudderAngle = 0.0f;
+
+    private float totalBonusSpeed;
 
     [SerializeField]
     private float steering;
@@ -122,8 +150,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameState.BuildMode)
         {
-            heading = (heading + rudder * Time.deltaTime * signedSqrt(turnSpeed * (maxMoveSpeed - moveSpeed))) % 360;
-            
+            heading = (heading + rudder * Time.deltaTime * signedSqrt(turnSpeed)) % 360;
+
             rb.MoveRotation(Quaternion.Euler(new Vector3(0f, heading, -rudder)));
 
             if (rudderControl)
@@ -142,18 +170,44 @@ public class PlayerController : MonoBehaviour
                 rudder = -maxRudder;
             }
 
-            if(sailsOpen)
+            if (sailsOpen)
             {
-                if(moveSpeed < maxMoveSpeed)
+                if (moveSpeed < maxMoveSpeed)
                 {
                     moveSpeed += acceleration * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    moveSpeed = maxMoveSpeed;
+                }
+
+                if(turnSpeed > minTurnSpeed)
+                {
+                    turnSpeed -= turnSpeedDecay * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    turnSpeed = minTurnSpeed;
                 }
             }
             else
             {
                 if (moveSpeed > 0)
                 {
-                    moveSpeed -= acceleration * Time.fixedDeltaTime;
+                    moveSpeed -= deacceleration * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    moveSpeed = 0f;
+                }
+
+                if (turnSpeed < maxTurnSpeed)
+                {
+                    turnSpeed += turnSpeeGrowth * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    turnSpeed = maxTurnSpeed;
                 }
             }
 
@@ -196,13 +250,6 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOpen)
         {
-            turnSpeed = baseTurnSpeed;
-
-            if (turnSpeed < 0)
-            {
-                turnSpeed = 0;
-            }
-
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
             {
                 audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
@@ -212,8 +259,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            turnSpeed = baseTurnSpeed;
-
             if (slowDown.Length > 0)
             {
                 audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
@@ -221,6 +266,13 @@ public class PlayerController : MonoBehaviour
 
             components.RaiseSails();
         }
+
+        //turnSpeed = baseTurnSpeed * (maxMoveSpeed - moveSpeed);
+
+        //if (turnSpeed <= 0)
+        //{
+        //    turnSpeed = 1;
+        //}
     }
 
     public void Buoyant(bool _isBuoyant)
@@ -228,11 +280,16 @@ public class PlayerController : MonoBehaviour
         //buoyant.enabled = _isBuoyant;
     }
 
-    public void setSpeedBonus(float _bonus)
+    public void setSpeedBonus(float _numOfSails)
     {
-        bonusMoveSpeed = (_bonus * sailBonus);
+        totalBonusSpeed = 0;
 
-        maxMoveSpeed =  bonusMoveSpeed;
+        for (int x = 0; x < _numOfSails; x++)
+        {
+            totalBonusSpeed += Mathf.Clamp(bonusSpeed - (bonusDropoff * x), minBonusSpeed, bonusSpeed);
+        }
+
+        maxMoveSpeed = totalBonusSpeed;
     }
 
     void OnCollisionEnter(Collision c)

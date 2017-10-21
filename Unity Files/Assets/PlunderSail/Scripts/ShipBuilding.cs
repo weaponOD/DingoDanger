@@ -272,7 +272,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosX += x;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "right";
@@ -302,7 +302,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosX -= x;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "left";
@@ -332,7 +332,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosZ += z;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "forward";
@@ -362,7 +362,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosZ -= z;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "back";
@@ -392,7 +392,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosY += y;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "up";
@@ -422,7 +422,7 @@ public class ShipBuilding : MonoBehaviour
                         canMove = false;
                         nextTimeToMove = Time.time + timeBetweenMoves;
                         previewGridPosY -= y;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
 
                         dirty = true;
                         lastDirection = "down";
@@ -469,26 +469,26 @@ public class ShipBuilding : MonoBehaviour
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
             }
 
-            // First try move it up the y-axis
-            if (!MoveUp())
-            {
-                if (!MoveRight())
-                {
-                    if (!MoveLeft())
-                    {
-                        if (!MoveForward())
-                        {
-                            if (!MoveBack())
-                            {
-                                if (!MoveDown())
-                                {
-                                    preview.gameObject.SetActive(false);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //// First try move it up the y-axis
+            //if (!MoveUp())
+            //{
+            //    if (!MoveRight())
+            //    {
+            //        if (!MoveLeft())
+            //        {
+            //            if (!MoveForward())
+            //            {
+            //                if (!MoveBack())
+            //                {
+            //                    if (!MoveDown())
+            //                    {
+            //                        preview.gameObject.SetActive(false);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
     }
 
@@ -621,6 +621,11 @@ public class ShipBuilding : MonoBehaviour
             preview.SetCanBuild(true);
             return true;
         }
+        else if (currentPiece.Contains("Cannon"))
+        {
+            preview.SetCanBuild(true);
+            return true;
+        }
         else if (currentPiece.Contains("Sail"))
         {
             // First check if preview has enough space up
@@ -681,7 +686,7 @@ public class ShipBuilding : MonoBehaviour
         previewGridPosZ = (int)centreSpot.z;
 
         preview.gameObject.SetActive(true);
-        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position, centreSpot);
     }
 
     private void SetBuildMode(bool isBuildMode)
@@ -693,7 +698,7 @@ public class ShipBuilding : MonoBehaviour
             preview.gameObject.SetActive(isBuildMode);
         }
 
-        if(!isBuildMode)
+        if (!isBuildMode)
         {
             Buildgrid.position = Vector3.zero;
             Buildgrid.rotation = Quaternion.identity;

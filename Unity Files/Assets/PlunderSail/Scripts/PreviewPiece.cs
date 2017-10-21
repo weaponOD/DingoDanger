@@ -49,16 +49,6 @@ public class PreviewPiece : MonoBehaviour
         }
 
         cachedRenderer.materials = previewMaterials;
-
-        if (attachmentName.Contains("Cannon"))
-        {
-            //transform.localEulerAngles = new Vector3(0f, -90, 0f);
-        }
-        else
-        {
-            transform.rotation = player.rotation;
-            transform.Rotate(Vector3.up, 90f, Space.Self);
-        }
     }
 
     public void SetCanBuild(bool _canBuild)
@@ -80,10 +70,23 @@ public class PreviewPiece : MonoBehaviour
         get { return attachmentName; }
     }
 
-
-    public void MoveToSpot(Vector3 _spot)
+    public void MoveToSpot(Vector3 _spot, Vector3 _centre)
     {
         transform.position = _spot;
-        //transform.rotation = player.rotation;
+
+        if (attachmentName.Contains("Cannon"))
+        {
+            transform.rotation = player.rotation;
+
+            if(_spot.z > _centre.z)
+            {
+                transform.Rotate(Vector3.up, 180f, Space.Self);
+            }
+        }
+        else if (attachmentName.Contains("Sail"))
+        {
+            transform.rotation = player.rotation;
+            transform.Rotate(Vector3.up, 180f, Space.Self);
+        }
     }
 }

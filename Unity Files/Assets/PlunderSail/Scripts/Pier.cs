@@ -26,7 +26,7 @@ public class Pier : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //GM.setPier(null);
+            GM.setPier(null);
         }
     }
 }

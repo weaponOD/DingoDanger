@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da6265124145e245ba8552a329a83bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: {x: 3, y: 10, z: 3}
+  GridSize: {x: 13, y: 10, z: 13}
   AttachmentSpotPrefab: {fileID: 1736294380650708, guid: 600c73df434d5ca409163e588c3df74f,
     type: 2}
   previewPiecePrefab: {fileID: 1736294380650708, guid: 7a3b36f8485ea2b4aa2a5ce0dbfcfc22,
@@ -148,6 +148,9 @@ MonoBehaviour:
   - {fileID: 1890685103475722, guid: 35bde9ed85b9d5544bfe29d70e29f513, type: 2}
   - {fileID: 1890685103475722, guid: bb9ae555f81b4224983a635718852a5b, type: 2}
   baseShip: {fileID: 0}
+  canPlace: 1
+  dirty: 1
+  currentPiece: 
 --- !u!114 &114994603169521724
 MonoBehaviour:
   m_ObjectHideFlags: 1

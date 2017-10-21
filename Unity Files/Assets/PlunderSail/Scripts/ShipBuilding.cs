@@ -108,7 +108,7 @@ public class ShipBuilding : MonoBehaviour
 
     private void Update()
     {
-        if(GameState.BuildMode)
+        if (GameState.BuildMode)
         {
             // Move preview right
             if (Input.GetAxisRaw("Horizontal") > 0.8f)
@@ -451,7 +451,7 @@ public class ShipBuilding : MonoBehaviour
 
             if (currentPiece.Contains("Sail"))
             {
-                for(int y = 0; y < 8;y++)
+                for (int y = 0; y < 8; y++)
                 {
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
                 }
@@ -505,6 +505,16 @@ public class ShipBuilding : MonoBehaviour
                 }
             }
         }
+
+        // Loop through 3x3 grid on ship and set Anchored to true
+        for (int x = (int)centreSpot.x - 1; x < (int)centreSpot.x + 2; x++)
+        {
+            for (int z = (int)centreSpot.z - 1; z < (int)centreSpot.z + 2; z++)
+            {
+                Debug.Log("Spot [" + x + ", " + z + "]");
+                grid[x, 0, z].Anchored = true;
+            }
+        }
     }
 
     private void ApplyPlacementRules()
@@ -513,7 +523,92 @@ public class ShipBuilding : MonoBehaviour
         preview.SetCanBuild(canPlace);
     }
 
+    // Applies each rule of legal placement and returns true if legal.
     private bool CalculateCanPlace()
+    {
+        if (!CheckNotFloating())
+        {
+            return false;
+        }
+       
+        if(!CheckAttachmentRules())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    // Returns true if any of the six neighbours are built on
+    private bool CheckNotFloating()
+    {
+        // If the preview is on the ship then don't check
+        if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Anchored)
+        {
+            return true;
+        }
+        else
+        {
+            // Check Left
+            if (previewGridPosX > 0)
+            {
+                if (grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    return true;
+                }
+            }
+
+            // Check Right
+            if (previewGridPosX < xLength - 1)
+            {
+                if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    return true;
+                }
+            }
+
+            // Check Up
+            if (previewGridPosY < yLength - 1)
+            {
+                if (grid[previewGridPosX, previewGridPosY + 1, previewGridPosZ].BuiltOn)
+                {
+                    return true;
+                }
+            }
+
+            // Check Down
+            if (previewGridPosY > 0)
+            {
+                if (grid[previewGridPosX, previewGridPosY - 1, previewGridPosZ].BuiltOn)
+                {
+                    return true;
+                }
+            }
+
+            // Check Forward
+            if (previewGridPosZ < zLength - 1)
+            {
+                if (grid[previewGridPosX, previewGridPosY, previewGridPosZ + 1].BuiltOn)
+                {
+                    return true;
+                }
+            }
+
+            // Check back
+            if (previewGridPosZ > 0)
+            {
+                if (grid[previewGridPosX, previewGridPosY, previewGridPosZ - 1].BuiltOn)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // Applies rules for current attachment type, returns true if the placement is legal
+    private bool CheckAttachmentRules()
     {
         if (currentPiece.Contains("Cabin"))
         {
@@ -543,10 +638,10 @@ public class ShipBuilding : MonoBehaviour
             }
         }
 
-        preview.SetCanBuild(false);
         return false;
     }
 
+    // Sets the preview 
     public void UpdatePreview(string _name)
     {
         currentPiece = _name;

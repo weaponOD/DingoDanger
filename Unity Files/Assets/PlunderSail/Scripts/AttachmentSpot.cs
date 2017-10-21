@@ -6,6 +6,7 @@ public class AttachmentSpot : MonoBehaviour
 {
     private bool disabled;
     private bool built = false;
+    private bool anchored = false;
     private Transform attachment;
 
     public Vector3 Pos
@@ -18,6 +19,12 @@ public class AttachmentSpot : MonoBehaviour
     {
         get { return attachment; }
         set { attachment = value; }
+    }
+
+    public bool Anchored
+    {
+        get { return anchored; }
+        set { anchored = value; }
     }
 
     public bool BuiltOn

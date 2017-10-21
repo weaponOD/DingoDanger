@@ -64,6 +64,8 @@ public class ShipBuilding : MonoBehaviour
     private float nextTimeToMove;
     private float timeBetweenMoves = 0.1f;
 
+    private string lastDirection;
+
     Dictionary<string, Attachment> attachments;
 
     [SerializeField]
@@ -511,7 +513,6 @@ public class ShipBuilding : MonoBehaviour
         {
             for (int z = (int)centreSpot.z - 1; z < (int)centreSpot.z + 2; z++)
             {
-                Debug.Log("Spot [" + x + ", " + z + "]");
                 grid[x, 0, z].Anchored = true;
             }
         }

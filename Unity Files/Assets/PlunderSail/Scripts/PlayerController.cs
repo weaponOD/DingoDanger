@@ -6,10 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Attributes")]
     [SerializeField]
-    [Tooltip("The speed at which the player will move when no sails are open")]
-    private float baseMoveSpeed;
-
-    [SerializeField]
     [Tooltip("The additional speed per sail when the sails are open")]
     private float sailBonus;
 
@@ -20,6 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Tooltip("The reduction per sail to turn rate when sails are open")]
     private float TurnRatePenalty;
+
+    [SerializeField]
+    private float acceleration;
 
     [SerializeField]
     private float maxRoll;
@@ -71,6 +70,7 @@ public class PlayerController : MonoBehaviour
     public float maxRudder = 6.0f;
     public float rudderAngle = 0.0f;
 
+    [SerializeField]
     private float steering;
 
     private void Awake()
@@ -122,8 +122,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameState.BuildMode)
         {
-            heading = (heading + rudder * Time.deltaTime * signedSqrt(moveSpeed)) % 360;
-
+            heading = (heading + rudder * Time.deltaTime * signedSqrt(turnSpeed * (maxMoveSpeed - moveSpeed))) % 360;
+            
             rb.MoveRotation(Quaternion.Euler(new Vector3(0f, heading, -rudder)));
 
             if (rudderControl)
@@ -140,6 +140,21 @@ public class PlayerController : MonoBehaviour
             else if (rudder < -maxRudder)
             {
                 rudder = -maxRudder;
+            }
+
+            if(sailsOpen)
+            {
+                if(moveSpeed < maxMoveSpeed)
+                {
+                    moveSpeed += acceleration * Time.fixedDeltaTime;
+                }
+            }
+            else
+            {
+                if (moveSpeed > 0)
+                {
+                    moveSpeed -= acceleration * Time.fixedDeltaTime;
+                }
             }
 
             rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
@@ -181,13 +196,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOpen)
         {
-            moveSpeed = maxMoveSpeed;
-
-            turnSpeed = baseTurnSpeed - (bonusMoveSpeed * TurnRatePenalty);
+            turnSpeed = baseTurnSpeed;
 
             if (turnSpeed < 0)
             {
-                turnSpeed = 1;
+                turnSpeed = 0;
             }
 
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
@@ -199,8 +212,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            moveSpeed = baseMoveSpeed;
-
             turnSpeed = baseTurnSpeed;
 
             if (slowDown.Length > 0)
@@ -221,8 +232,7 @@ public class PlayerController : MonoBehaviour
     {
         bonusMoveSpeed = (_bonus * sailBonus);
 
-        maxMoveSpeed = baseMoveSpeed + bonusMoveSpeed;
-        moveSpeed = maxMoveSpeed;
+        maxMoveSpeed =  bonusMoveSpeed;
     }
 
     void OnCollisionEnter(Collision c)

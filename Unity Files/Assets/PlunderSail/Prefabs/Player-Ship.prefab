@@ -893,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -114, y: 0, z: 84.21}
+  m_LocalPosition: {x: -114, y: 0, z: 97.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -1989,10 +1989,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 8
   sailBonus: 4
   baseTurnSpeed: 6
   TurnRatePenalty: 1
+  acceleration: 2
   maxRoll: 3
   startBuild: []
   fullSpeed: []
@@ -2006,3 +2006,4 @@ MonoBehaviour:
   rudder: 0
   maxRudder: 6
   rudderAngle: 0
+  steering: 0

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4184056185532098}
   - component: {fileID: 33442319618267402}
   - component: {fileID: 23240881387455158}
-  - component: {fileID: 95128370262466600}
   m_Layer: 0
   m_Name: Island_007_OceanStandard_007_SmallRock
   m_TagString: Untagged
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,20 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310926221984708}
   m_Mesh: {fileID: 4300000, guid: 17044920965f3f549b8ed97de6d6234a, type: 3}
---- !u!95 &95128370262466600
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310926221984708}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 17044920965f3f549b8ed97de6d6234a, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

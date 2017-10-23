@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4708342239894310}
   - component: {fileID: 33500030546671810}
   - component: {fileID: 23653732627536612}
-  - component: {fileID: 95639928269980418}
   m_Layer: 0
   m_Name: Island_003_OceanStandard_003_LargeSand
   m_TagString: Untagged
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8729c5827c2cb4c4888c1319efb3c264, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,20 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1817206534735594}
   m_Mesh: {fileID: 4300002, guid: 3e73dce5b1bb39f48b07557e86bc767c, type: 3}
---- !u!95 &95639928269980418
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1817206534735594}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3e73dce5b1bb39f48b07557e86bc767c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4085956220287908}
   - component: {fileID: 33998092961725346}
   - component: {fileID: 23058903519850590}
-  - component: {fileID: 95161688740194856}
   m_Layer: 0
   m_Name: Island_006_OceanStandard_006_LargeGrass
   m_TagString: Untagged
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3b86a5a1846273b4a91312f91d504f88, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,20 +109,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467003517891136}
   m_Mesh: {fileID: 4300002, guid: 6f91b3b9bc716a14b98f8909f562553c, type: 3}
---- !u!95 &95161688740194856
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1467003517891136}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6f91b3b9bc716a14b98f8909f562553c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

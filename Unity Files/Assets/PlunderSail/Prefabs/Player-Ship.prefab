@@ -893,7 +893,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -114, y: 0, z: 97.9}
+  m_LocalPosition: {x: -123.27, y: 0, z: 122.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -1885,8 +1885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0.15
-  maxFireTime: 0.2
+  minFireTime: 0.02
+  maxFireTime: 0.15
   FireShout:
   - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
   - {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
@@ -1990,16 +1990,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseTurnSpeed: 2
-  acceleration: 6
-  deacceleration: 1
-  maxRoll: 3
-  bonusSpeed: 4
-  bonusDropoff: 0.3
-  minBonusSpeed: 0.5
+  acceleration: 7
+  deacceleration: 3
+  maxRoll: 12
+  bonusSpeed: 14
+  bonusDropoff: 8
+  minBonusSpeed: 6
   turnSpeedDecay: 3
   turnSpeeGrowth: 5
-  minTurnSpeed: 3
-  maxTurnSpeed: 10
+  minTurnSpeed: 3.5
+  maxTurnSpeed: 11
   startBuild: []
   fullSpeed: []
   slowDown: []

@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4647915456584636}
   - component: {fileID: 33800674344272052}
   - component: {fileID: 23778201429504514}
-  - component: {fileID: 95877132450925392}
   m_Layer: 0
   m_Name: Grass_002_OceanStandard_002_Scattered
   m_TagString: Untagged
@@ -64,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424668109475310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70, y: 1.36, z: -88}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4647915456584636}
@@ -84,7 +83,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3b86a5a1846273b4a91312f91d504f88, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,21 +108,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539360759895366}
-  m_Mesh: {fileID: 4300000, guid: d3fddb2e412eee0428e4972d180ccab5, type: 3}
---- !u!95 &95877132450925392
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539360759895366}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: d3fddb2e412eee0428e4972d180ccab5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Mesh: {fileID: 4300000, guid: 607fa8ec7546d2447bc0ccaa7e8d1201, type: 3}

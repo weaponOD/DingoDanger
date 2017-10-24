@@ -50,10 +50,10 @@ public class ShipBuilding : MonoBehaviour
 
     private PreviewPiece preview;
 
-    [SerializeField]
+    private bool deleteMode = false;
+
     private bool canPlace = true;
 
-    [SerializeField]
     private bool dirty = true;
 
     private int previewGridPosX = 0;
@@ -106,6 +106,7 @@ public class ShipBuilding : MonoBehaviour
 
         preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
         currentPiece = preview.AttachmentName;
+        preview.ShipCentre = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position;
     }
 
     private void Update()
@@ -150,7 +151,24 @@ public class ShipBuilding : MonoBehaviour
 
             if (Input.GetButtonDown("A_Button"))
             {
-                placeAttachment();
+                if (!deleteMode)
+                {
+                    PlaceAttachment();
+                }
+                else
+                {
+                    DeleteAttachment();
+                }
+            }
+
+            if (Input.GetButtonDown("X_Button"))
+            {
+                MovePreviewToCentre();
+            }
+
+            if (Input.GetButtonDown("B_Button"))
+            {
+                deleteMode = !deleteMode;
             }
 
             if (dirty)
@@ -267,16 +285,34 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int x = 1; x < lengthToEnd; x++)
                 {
-                    if (!grid[previewGridPosX + x, previewGridPosY, previewGridPosZ].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosX += x;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX + x, previewGridPosY, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosX += x;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "right";
-                        return true;
+                            dirty = true;
+                            lastDirection = "right";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX + x, previewGridPosY, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosX += x;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "right";
+                            return true;
+                        }
                     }
                 }
             }
@@ -297,16 +333,34 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int x = 1; x <= lengthToEnd; x++)
                 {
-                    if (!grid[previewGridPosX - x, previewGridPosY, previewGridPosZ].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosX -= x;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX - x, previewGridPosY, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosX -= x;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "left";
-                        return true;
+                            dirty = true;
+                            lastDirection = "left";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX - x, previewGridPosY, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosX -= x;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "left";
+                            return true;
+                        }
                     }
                 }
             }
@@ -327,16 +381,34 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int z = 1; z < lengthToEnd; z++)
                 {
-                    if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ + z].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosZ += z;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ + z].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosZ += z;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "forward";
-                        return true;
+                            dirty = true;
+                            lastDirection = "forward";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ + z].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosZ += z;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "forward";
+                            return true;
+                        }
                     }
                 }
             }
@@ -357,16 +429,34 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int z = 1; z <= lengthToEnd; z++)
                 {
-                    if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ - z].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosZ -= z;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ - z].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosZ -= z;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "back";
-                        return true;
+                            dirty = true;
+                            lastDirection = "back";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ - z].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosZ -= z;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "back";
+                            return true;
+                        }
                     }
                 }
             }
@@ -387,16 +477,34 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int y = 1; y < lengthToEnd; y++)
                 {
-                    if (!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosY += y;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosY += y;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "up";
-                        return true;
+                            dirty = true;
+                            lastDirection = "up";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosY += y;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "up";
+                            return true;
+                        }
                     }
                 }
             }
@@ -417,16 +525,35 @@ public class ShipBuilding : MonoBehaviour
                 // loop until an open spot is found
                 for (int y = 1; y <= lengthToEnd; y++)
                 {
-                    if (!grid[previewGridPosX, previewGridPosY - y, previewGridPosZ].BuiltOn)
+                    // Loop till open slot if not delete mode, loop till built spot if delete mode
+                    if (!deleteMode)
                     {
-                        canMove = false;
-                        nextTimeToMove = Time.time + timeBetweenMoves;
-                        previewGridPosY -= y;
-                        preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+                        if (!grid[previewGridPosX, previewGridPosY - y, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosY -= y;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
-                        dirty = true;
-                        lastDirection = "down";
-                        return true;
+                            dirty = true;
+                            lastDirection = "down";
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (grid[previewGridPosX, previewGridPosY - y, previewGridPosZ].BuiltOn)
+                        {
+                            canMove = false;
+                            nextTimeToMove = Time.time + timeBetweenMoves;
+                            previewGridPosY -= y;
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+
+                            dirty = true;
+                            lastDirection = "down";
+                            return true;
+                        }
+
                     }
                 }
             }
@@ -451,16 +578,20 @@ public class ShipBuilding : MonoBehaviour
         return convertedAngle;
     }
 
-    private void placeAttachment()
+    private void PlaceAttachment()
     {
         if (canPlace)
         {
-            grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
+            Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
+            grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
+
+            dirty = true;
 
             if (currentPiece.Contains("Sail"))
             {
                 for (int y = 0; y < 8; y++)
                 {
+                    grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].Attachment = newAttachment;
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
                 }
             }
@@ -469,27 +600,38 @@ public class ShipBuilding : MonoBehaviour
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
             }
 
-            //// First try move it up the y-axis
-            //if (!MoveUp())
-            //{
-            //    if (!MoveRight())
-            //    {
-            //        if (!MoveLeft())
-            //        {
-            //            if (!MoveForward())
-            //            {
-            //                if (!MoveBack())
-            //                {
-            //                    if (!MoveDown())
-            //                    {
-            //                        preview.gameObject.SetActive(false);
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
+            switch (lastDirection)
+            {
+                case "right":
+                    MoveRight();
+                    break;
+                case "left":
+                    MoveLeft();
+                    break;
+                case "forward":
+                    MoveForward();
+                    break;
+                case "back":
+                    MoveBack();
+                    break;
+                case "up":
+                    MoveUp();
+                    break;
+                case "down":
+                    MoveDown();
+                    break;
+            }
         }
+    }
+
+    private void DeleteAttachment()
+    {
+        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment != null)
+        {
+            Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
+        }
+
+        dirty = true;
     }
 
     private void InitGrid()
@@ -538,6 +680,11 @@ public class ShipBuilding : MonoBehaviour
         }
 
         if (!CheckAttachmentRules())
+        {
+            return false;
+        }
+
+        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
         {
             return false;
         }
@@ -681,12 +828,20 @@ public class ShipBuilding : MonoBehaviour
         Buildgrid.position -= Buildgrid.forward * Mathf.FloorToInt((GridSize.z / 2)) * 2;
         Buildgrid.position -= Buildgrid.right * Mathf.FloorToInt((GridSize.x / 2)) * 2;
 
+        preview.gameObject.SetActive(true);
+        MovePreviewToCentre();
+        preview.ShipCentre = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position;
+    }
+
+    private void MovePreviewToCentre()
+    {
+        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+
         previewGridPosX = (int)centreSpot.x;
         previewGridPosY = (int)centreSpot.y;
         previewGridPosZ = (int)centreSpot.z;
 
-        preview.gameObject.SetActive(true);
-        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position, centreSpot);
+        dirty = true;
     }
 
     private void SetBuildMode(bool isBuildMode)

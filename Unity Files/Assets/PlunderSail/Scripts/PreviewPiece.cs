@@ -12,6 +12,8 @@ public class PreviewPiece : MonoBehaviour
 
     private Material currentMat;
 
+    private Vector3 centre;
+
     private MeshFilter meshFilter;
     private Material[] cachedMaterials;
     private MeshRenderer cachedRenderer;
@@ -49,6 +51,8 @@ public class PreviewPiece : MonoBehaviour
         }
 
         cachedRenderer.materials = previewMaterials;
+
+        ApplyRules();
     }
 
     public void SetCanBuild(bool _canBuild)
@@ -65,20 +69,13 @@ public class PreviewPiece : MonoBehaviour
         UpdateMesh();
     }
 
-    public string AttachmentName
+    private void ApplyRules()
     {
-        get { return attachmentName; }
-    }
-
-    public void MoveToSpot(Vector3 _spot, Vector3 _centre)
-    {
-        transform.position = _spot;
-
         if (attachmentName.Contains("Cannon"))
         {
             transform.rotation = player.rotation;
 
-            if(_spot.z > _centre.z)
+            if (transform.position.z > centre.z)
             {
                 transform.Rotate(Vector3.up, 180f, Space.Self);
             }
@@ -88,5 +85,23 @@ public class PreviewPiece : MonoBehaviour
             transform.rotation = player.rotation;
             transform.Rotate(Vector3.up, 180f, Space.Self);
         }
+    }
+
+    public Vector3 ShipCentre
+    {
+        set { centre = value; }
+    }
+
+
+    public string AttachmentName
+    {
+        get { return attachmentName; }
+    }
+
+    public void MoveToSpot(Vector3 _spot)
+    {
+        transform.position = _spot;
+
+        ApplyRules();
     }
 }

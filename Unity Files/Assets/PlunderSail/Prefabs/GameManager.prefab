@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4923085419656894}
   - component: {fileID: 114256727963917046}
   - component: {fileID: 114153618981797618}
-  - component: {fileID: 114347702168056404}
   - component: {fileID: 114994603169521724}
   - component: {fileID: 114168663654171056}
   - component: {fileID: 114883611100677676}
@@ -51,7 +50,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
   m_Name: 
@@ -100,25 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
   playerCentre: {fileID: 0}
---- !u!114 &114347702168056404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ba9f2374844f44eab20878d17d59dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachmentPrefabs:
-  - {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-  - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
-  - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
-  - {fileID: 0}
-  - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
-  ghostMatGreen: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  buildCam: {fileID: 0}
 --- !u!114 &114883611100677676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,8 +128,6 @@ MonoBehaviour:
   - {fileID: 1890685103475722, guid: 35bde9ed85b9d5544bfe29d70e29f513, type: 2}
   - {fileID: 1890685103475722, guid: bb9ae555f81b4224983a635718852a5b, type: 2}
   baseShip: {fileID: 0}
-  canPlace: 1
-  dirty: 1
   currentPiece: 
 --- !u!114 &114994603169521724
 MonoBehaviour:

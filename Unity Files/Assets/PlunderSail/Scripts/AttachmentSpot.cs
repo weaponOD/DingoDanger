@@ -5,8 +5,12 @@ using UnityEngine;
 public class AttachmentSpot : MonoBehaviour
 {
     private bool disabled;
+
+    [SerializeField]
     private bool built = false;
+    [SerializeField]
     private bool anchored = false;
+    [SerializeField]
     private Transform attachment = null;
 
     public Vector3 Pos

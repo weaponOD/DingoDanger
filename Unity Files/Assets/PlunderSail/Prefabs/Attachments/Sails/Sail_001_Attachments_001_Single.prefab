@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4166353514932742}
   - component: {fileID: 114396275195017276}
   - component: {fileID: 65555757380659590}
+  - component: {fileID: 95410773159392660}
   m_Layer: 0
   m_Name: Sail_001_Attachments_001_Single
   m_TagString: Sail
@@ -124,6 +125,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1, z: 1.8}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!95 &95410773159392660
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545959945178424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6c09f2e3fd6dee4097244308d8c3bac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114396275195017276
 MonoBehaviour:
   m_ObjectHideFlags: 1

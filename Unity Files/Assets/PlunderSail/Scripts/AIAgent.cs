@@ -196,7 +196,7 @@ public class AIAgent : LivingEntity
         if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
         {
             float hitDamage = collision.relativeVelocity.magnitude;
-            Debug.Log("Hit piece with a force of " + hitDamage);
+            Debug.Log("AI: Hit piece with a force of " + hitDamage);
 
             if (hitDamage < 10)
             {

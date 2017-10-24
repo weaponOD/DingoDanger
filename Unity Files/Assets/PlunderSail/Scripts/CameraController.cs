@@ -22,6 +22,11 @@ public class CameraController : MonoBehaviour
         buildCam = buildCamGO.GetComponentInChildren<BuildModeCam>();
     }
 
+    private void Start()
+    {
+        MovePlayCameraToPlayer();
+    }
+
     public void SwitchToBuildMode()
     {
         playCamGO.SetActive(false);
@@ -41,6 +46,11 @@ public class CameraController : MonoBehaviour
         {
             buildCamGO.transform.position = _pier.position;
         }
+    }
+
+    private void MovePlayCameraToPlayer()
+    {
+        //buildCamGO.transform.position = playerCentre.position;
     }
 
     public Transform PlayerCentre

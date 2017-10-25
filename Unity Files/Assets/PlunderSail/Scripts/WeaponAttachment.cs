@@ -40,18 +40,6 @@ public class WeaponAttachment : AttachmentBase
         audioSource = transform.root.GetComponent<AudioSource>();
     }
 
-    public bool NeedToMirror
-    {
-        set
-        {
-            needToMirror = value;
-            if (needToMirror)
-            {
-                Mirror();
-            }
-        }
-    }
-
     public bool FacingLeft
     {
         get

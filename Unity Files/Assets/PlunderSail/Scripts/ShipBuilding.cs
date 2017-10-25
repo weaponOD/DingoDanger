@@ -35,7 +35,7 @@ public class ShipBuilding : MonoBehaviour
     GameObject[] Rams;
 
     // System References
-    private UIManager UI;
+    private UIController UI;
 
     private CameraController CC;
 
@@ -82,7 +82,7 @@ public class ShipBuilding : MonoBehaviour
 
         CC = GetComponent<CameraController>();
 
-        UI = GetComponent<UIManager>();
+        UI = GetComponent<UIController>();
 
         attachments = new Dictionary<string, Attachment>();
 

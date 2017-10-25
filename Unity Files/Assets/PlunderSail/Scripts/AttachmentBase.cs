@@ -14,28 +14,13 @@ public class AttachmentBase : MonoBehaviour
 
     protected bool isPreview = false;
 
+    protected Player player;
+
     private void Awake()
     {
-        maxHealth = 100;
         currentHealth = maxHealth;
-    }
 
-    public void DisableAttachments()
-    {
-        AttachmentPoint[] points = GetComponentsInChildren<AttachmentPoint>();
-
-        foreach(AttachmentPoint point in points)
-        {
-            point.GetComponent<BoxCollider>().enabled = false;
-            point.GetComponent<AttachmentPoint>().enabled = false;
-        }
-
-        GetComponent<BoxCollider>().enabled = false;
-    }
-
-    public void Mirror()
-    {
-        transform.Rotate(Vector3.up, 180, Space.Self);
+        player = transform.root.GetComponent<Player>();
     }
 
     public virtual void TakeDamage(float _damage)
@@ -44,27 +29,25 @@ public class AttachmentBase : MonoBehaviour
 
         Debug.Log("Took Damage");
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             transform.parent = null;
-            gameObject.AddComponent<Rigidbody>();
-            //GameObject.Destroy(gameObject);
-        }
-    }
 
-    public bool CanPlace
-    {
-        get { return canPlace; }
-        set { canPlace = value; }
-    }
-    public bool IsPreview
-    {
-        set { isPreview = value; }
+            if (player != null)
+            {
+                player.UpdateAttachments();
+            }
+
+            if (!GetComponent<Rigidbody>())
+            {
+                gameObject.AddComponent<Rigidbody>();
+            }
+        }
     }
 
     private void OnDestroy()
     {
-        if(GetComponentInParent<Player>())
+        if (GetComponentInParent<Player>())
         {
             GetComponentInParent<Player>().UpdateAttachments();
         }

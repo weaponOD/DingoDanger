@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 92856646460851780}
   - component: {fileID: 114381019599122282}
   - component: {fileID: 81776402131636350}
+  - component: {fileID: 114969331679779304}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -83,7 +84,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1660470033819464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4165225345560532}
@@ -120,7 +121,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 500
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -165,12 +166,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 1.5
   orbitDampening: 4
-  MaxClamp: 80
+  MaxClamp: 40
   minclamp: 5
   zoomSensitivity: 0.05
   zoomDampening: 5
   minZoomDistance: 7.5
   maxZoomDistance: 22.5
+  invertedY: 1
+--- !u!114 &114969331679779304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660470033819464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 74fbc82f3fcb0f04d99f6b58fa549408, type: 2}
 --- !u!124 &124387452465324306
 Behaviour:
   m_ObjectHideFlags: 1

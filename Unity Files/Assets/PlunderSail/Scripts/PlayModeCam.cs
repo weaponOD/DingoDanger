@@ -31,13 +31,11 @@ public class PlayModeCam : MonoBehaviour
     [SerializeField]
     private float turnSpeed;                        // How fast the rig will turn to keep up with target's rotation
 
-    [SerializeField]
     private Mode currentMode = Mode.BACKSIDE;
 
     [SerializeField]
     private float timeBetweenInput = 0.5f;
 
-    [SerializeField]
     private bool canTurn = true;
 
     [SerializeField]
@@ -48,6 +46,8 @@ public class PlayModeCam : MonoBehaviour
 
     [SerializeField]
     private float zOffset;
+
+    private Vector3 targetForward;
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class PlayModeCam : MonoBehaviour
 
     private void Update()
     {
-        if(canTurn)
+        if (canTurn)
         {
             // Move to left Mode
             if (Input.GetAxis("Mouse_X") < 0)
@@ -108,8 +108,6 @@ public class PlayModeCam : MonoBehaviour
         // if no time has passed then we quit early, as there is nothing to do
         if (!(deltaTime > 0))
             return;
-
-        Vector3 targetForward;
 
         if (currentMode == Mode.BACKSIDE)
         {

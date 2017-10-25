@@ -6,6 +6,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
+
+    [SerializeField]
     private float initialForce = 15;
 
     private AudioSource audioSource;
@@ -28,9 +30,11 @@ public class Projectile : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    public void FireProjectile(Vector2 _velocity)
     {
-        initialForce += Random.Range(6, 8);
+        initialForce += Random.Range(initialForce * 0.5f, initialForce * 0.7f);
+
+        rb.velocity = _velocity;
 
         rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
     }

@@ -86,9 +86,9 @@ public class BuildModeCam : MonoBehaviour
         }
 
         // Zoom input from our mouse scroll wheel
-        if (Input.GetAxis("Right_Bumper") != 0f)
+        if (Input.GetAxis("Right_Trigger") != 0f)
         {
-            float zoomAmount = Input.GetAxis("Right_Bumper") * -1f * zoomSensitivity;
+            float zoomAmount = Input.GetAxis("Right_Trigger") * -1f * zoomSensitivity;
 
             // Makes camera zoom faster the further away it is from the target
             zoomAmount *= (cameraDistance * 0.3f);
@@ -100,9 +100,9 @@ public class BuildModeCam : MonoBehaviour
         }
 
         // Zoom input from our mouse scroll wheel
-        if (Input.GetAxis("Left_Bumper") != 0f)
+        if (Input.GetAxis("Left_Trigger") != 0f)
         {
-            float zoomAmount = Input.GetAxis("Left_Bumper") * zoomSensitivity;
+            float zoomAmount = Input.GetAxis("Left_Trigger") * zoomSensitivity;
 
             // Makes camera zoom faster the further away it is from the target
             zoomAmount *= (cameraDistance * 0.3f);

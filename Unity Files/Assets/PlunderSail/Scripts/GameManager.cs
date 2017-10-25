@@ -71,16 +71,19 @@ public class GameManager : MonoBehaviour
 
         PC.Buoyant(false);
 
-        PC.transform.position = pier.position;
-        PC.transform.rotation = pier.rotation;
+        if(pier != null)
+        {
+            PC.transform.position = pier.position;
+            PC.transform.rotation = pier.rotation;
 
-        PC.transform.GetChild(0).localPosition = Vector3.zero;
-        PC.transform.GetChild(0).localRotation = Quaternion.identity;
+            PC.transform.GetChild(0).localPosition = Vector3.zero;
+            PC.transform.GetChild(0).localRotation = Quaternion.identity;
 
-        PC.ResetHeading();
+            PC.ResetHeading();
 
-        CC.SwitchToBuildMode();
-        builder.moveGridToPlayer(pier);
+            CC.SwitchToBuildMode();
+            builder.moveGridToPlayer(pier);
+        }
     }
 
     public void setPier(Transform _dockPos)

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 92982519508467290}
   - component: {fileID: 81010055764573100}
   - component: {fileID: 114535665418444950}
+  - component: {fileID: 114415410423058744}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -82,27 +83,27 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1074126963174228}
-  m_LocalRotation: {x: 0.06713178, y: -0, z: -0, w: 0.99774414}
-  m_LocalPosition: {x: -125.26, y: 6.08, z: 123.39}
+  m_LocalRotation: {x: 0.0659833, y: 0.18376675, z: 0.012364484, w: 0.98067486}
+  m_LocalPosition: {x: -123.64, y: 5.79, z: 125.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4503543416067158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7.7, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.1730003, y: 21.403002, z: 2.802}
 --- !u!4 &4854380686446150
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061543052213030}
-  m_LocalRotation: {x: 0.121497296, y: -0, z: -0, w: 0.9925918}
+  m_LocalRotation: {x: 0.11320323, y: 0, z: 0, w: 0.9935719}
   m_LocalPosition: {x: 0, y: 0.45, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4503543416067158}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 13.957001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13, y: 0, z: 0}
 --- !u!20 &20972984466923464
 Camera:
   m_ObjectHideFlags: 1
@@ -153,6 +154,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061543052213030}
   m_Enabled: 1
+--- !u!114 &114415410423058744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1061543052213030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: ed165ed64d2f5fd479a3a6c0f7a11b50, type: 2}
 --- !u!114 &114535665418444950
 MonoBehaviour:
   m_ObjectHideFlags: 1

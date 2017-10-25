@@ -138,13 +138,13 @@ public class ShipBuilding : MonoBehaviour
             }
 
             // Move preview down
-            if (Input.GetAxisRaw("Left_Trigger") > 0.8f)
+            if (Input.GetAxisRaw("Left_Bumper") > 0.8f)
             {
                 CalculatePerspectiveMovement("down");
             }
 
             // Move preview up
-            if (Input.GetAxisRaw("Right_Trigger") > 0.8f)
+            if (Input.GetAxisRaw("Right_Bumper") > 0.8f)
             {
                 CalculatePerspectiveMovement("up");
             }
@@ -600,27 +600,27 @@ public class ShipBuilding : MonoBehaviour
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
             }
 
-            switch (lastDirection)
-            {
-                case "right":
-                    MoveRight();
-                    break;
-                case "left":
-                    MoveLeft();
-                    break;
-                case "forward":
-                    MoveForward();
-                    break;
-                case "back":
-                    MoveBack();
-                    break;
-                case "up":
-                    MoveUp();
-                    break;
-                case "down":
-                    MoveDown();
-                    break;
-            }
+            //switch (lastDirection)
+            //{
+            //    case "right":
+            //        MoveRight();
+            //        break;
+            //    case "left":
+            //        MoveLeft();
+            //        break;
+            //    case "forward":
+            //        MoveForward();
+            //        break;
+            //    case "back":
+            //        MoveBack();
+            //        break;
+            //    case "up":
+            //        MoveUp();
+            //        break;
+            //    case "down":
+            //        MoveDown();
+            //        break;
+            //}
         }
     }
 

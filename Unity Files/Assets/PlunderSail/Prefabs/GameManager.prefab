@@ -115,6 +115,7 @@ MonoBehaviour:
     type: 2}
   previewPiecePrefab: {fileID: 1736294380650708, guid: 7a3b36f8485ea2b4aa2a5ce0dbfcfc22,
     type: 2}
+  baseShip: {fileID: 0}
   cabins:
   - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
   Cannons:
@@ -127,8 +128,7 @@ MonoBehaviour:
   Rams:
   - {fileID: 1890685103475722, guid: 35bde9ed85b9d5544bfe29d70e29f513, type: 2}
   - {fileID: 1890685103475722, guid: bb9ae555f81b4224983a635718852a5b, type: 2}
-  baseShip: {fileID: 0}
-  currentPiece: 
+  skipBuilt: 0
 --- !u!114 &114994603169521724
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,10 +15,15 @@ public class Player : LivingEntity
     private AudioSource audioSource;
 
     [SerializeField]
+    private Vector3 velocity;
+
+    [SerializeField]
     private AudioClip[] goldPickup;
 
     [SerializeField]
     private AudioClip waves;
+
+    private Rigidbody rb;
 
     protected override void Start()
     {
@@ -42,12 +47,13 @@ public class Player : LivingEntity
     {
         if (Input.GetAxis("Left_Trigger") == 1)
         {
-            weaponController.FireWeaponsRight();
+            
         }
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
-            weaponController.FireWeaponsLeft();
+            weaponController.FireWeaponsRight(controller.Velocity);
+            weaponController.FireWeaponsLeft(controller.Velocity);
         }
     }
 

@@ -73,6 +73,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool sailsOpen = true;
 
+    [SerializeField]
+    private Vector3 velocity;
 
     // The stearing wheel on the ship
     private Transform wheel;
@@ -100,6 +102,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float steering;
+
+    private Vector3 previousPos;
 
     private void Awake()
     {
@@ -143,6 +147,12 @@ public class PlayerController : MonoBehaviour
 
                 LowerSails(sailsOpen);
             }
+
+            if (Time.deltaTime != 0)
+            {
+                velocity = (transform.position - previousPos) / Time.deltaTime;
+                previousPos = transform.position;
+            }
         }
     }
 
@@ -181,7 +191,7 @@ public class PlayerController : MonoBehaviour
                     moveSpeed = maxMoveSpeed;
                 }
 
-                if(turnSpeed > minTurnSpeed)
+                if (turnSpeed > minTurnSpeed)
                 {
                     turnSpeed -= turnSpeedDecay * Time.fixedDeltaTime;
                 }
@@ -214,6 +224,12 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
         }
     }
+
+    public Vector3 Velocity
+    {
+        get { return velocity; }
+    }
+
 
     private float signedSqrt(float _input)
     {

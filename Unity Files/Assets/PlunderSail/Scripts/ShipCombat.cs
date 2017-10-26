@@ -114,7 +114,7 @@ public class ShipCombat : MonoBehaviour
 
         foreach (WeaponAttachment weapon in leftWeapons)
         {
-            weapon.FireLeft();
+            weapon.FireLeft(new Vector3());
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }
@@ -125,7 +125,9 @@ public class ShipCombat : MonoBehaviour
 
         foreach (WeaponAttachment weapon in rightWeapons)
         {
-            weapon.FireRight();
+
+            Debug.Log("Ship Combat still in use");
+            weapon.FireRight(new Vector3());
             yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }

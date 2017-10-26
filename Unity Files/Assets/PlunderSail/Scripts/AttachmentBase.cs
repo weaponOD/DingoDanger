@@ -42,6 +42,8 @@ public class AttachmentBase : MonoBehaviour
             {
                 gameObject.AddComponent<Rigidbody>();
             }
+
+            Destroy(gameObject, 3f);
         }
     }
 

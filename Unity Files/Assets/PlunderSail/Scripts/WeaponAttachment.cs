@@ -50,36 +50,19 @@ public class WeaponAttachment : AttachmentBase
         set { facingLeft = value; }
     }
 
-    public void FireLeft()
+    public void FireLeft(Vector3 _shipVelocity)
     {
-        StartCoroutine(Fire());
+        StartCoroutine(Fire(_shipVelocity));
     }
 
-    public void FireRight()
+    public void FireRight(Vector3 _shipVelocity)
     {
-        StartCoroutine(Fire());
+        StartCoroutine(Fire(_shipVelocity));
     }
 
-    protected virtual IEnumerator Fire()
+    protected virtual IEnumerator Fire(Vector3 _shipVelocity)
     {
-        Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation);
-
-        Destroy(Instantiate(shootParticle.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
-        PlayRandomSound();
-
-        yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
-
-        Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation);
-
-        Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
-        PlayRandomSound();
-
-        yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
-
-        Instantiate(projectilePrefab, firePoints[2].position, firePoints[2].rotation);
-
-        Destroy(Instantiate(shootParticle.gameObject, firePoints[2].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
-        PlayRandomSound();
+        yield return null;
     }
 
     protected void PlayRandomSound()

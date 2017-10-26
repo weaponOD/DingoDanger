@@ -419,7 +419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -123.27, y: 0, z: 122.99}
+  m_LocalPosition: {x: 738.27, y: 0, z: 536.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -849,6 +849,7 @@ MonoBehaviour:
   currentHealth: 0
   gold: 5000
   ramDamage: 12
+  velocity: {x: 0, y: 0, z: 0}
   goldPickup:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
@@ -927,6 +928,7 @@ MonoBehaviour:
   maxMoveSpeed: 0
   turnSpeed: 0
   sailsOpen: 1
+  speed: 0
   heading: 0
   rudder: 0
   rudderAngle: 0

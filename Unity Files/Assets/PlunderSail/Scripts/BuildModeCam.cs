@@ -42,30 +42,17 @@ public class BuildModeCam : MonoBehaviour
 
     [SerializeField]
     private bool invertedY = false;
-    private bool invertedX = false;
 
     // Camera Rotation Variables
     private float cameraDistance;
 
-    private Transform pivotPoint;
-
     private Vector3 localRotation;
-
-    private Transform targetPivot;
 
     // Camera Pivot Point
     private Transform pivot;
 
-    // if true the a timer has been set for the camera to snap back
-    private bool snapIsDelayed = false;
-
-    // The time that the camera will snap to the last block
-    private float timeToSnapBack;
-
     private void Awake()
     {
-        pivotPoint = transform.parent.GetChild(1);
-
         pivot = transform.parent;
     }
 

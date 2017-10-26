@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 423a2911462a51f42a81bb25ebd5f370
-timeCreated: 1505732028
+timeCreated: 1508978040
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -10,9 +10,8 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Rock_001_OceanStandard_001_RoundSmall
-    9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -43,8 +42,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,7 +60,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

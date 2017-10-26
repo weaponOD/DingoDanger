@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4888697244567052}
   - component: {fileID: 33814873544281064}
   - component: {fileID: 23157940976329044}
-  - component: {fileID: 95964212645947296}
   m_Layer: 0
   m_Name: Rock_002_OceanStandard_002_RoundLarge
   m_TagString: Untagged
@@ -109,21 +108,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873497381966336}
-  m_Mesh: {fileID: 4300000, guid: 3fa354495b533f7429adee26b6b5ca10, type: 3}
---- !u!95 &95964212645947296
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873497381966336}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3fa354495b533f7429adee26b6b5ca10, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Mesh: {fileID: 4300000, guid: b7127adb0fb5f0248870b6d801cf84f6, type: 3}

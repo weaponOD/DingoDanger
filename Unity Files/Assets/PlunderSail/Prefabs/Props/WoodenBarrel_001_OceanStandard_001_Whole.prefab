@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4091480350061392}
   - component: {fileID: 33937471433550620}
   - component: {fileID: 23204101070347176}
-  - component: {fileID: 95344939908474908}
   m_Layer: 0
   m_Name: WoodenBarrel_001_OceanStandard_001_Whole
   m_TagString: Untagged
@@ -87,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 88ff10de3d6fc24459d38a575031d3b5, type: 2}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,23 +112,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024971677007442}
   m_Mesh: {fileID: 4300000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
---- !u!95 &95344939908474908
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1024971677007442}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114642704906129664
 MonoBehaviour:
   m_ObjectHideFlags: 1

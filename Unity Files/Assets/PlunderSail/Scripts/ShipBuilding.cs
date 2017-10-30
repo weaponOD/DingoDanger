@@ -751,24 +751,24 @@ public class ShipBuilding : MonoBehaviour
         else if (currentPiece.Contains("Sail"))
         {
             // First check if preview has enough space up
-            if (previewGridPosY < yLength - 8)
+            // if (previewGridPosY < yLength - 8)
+            //{
+            int lengthToEnd = yLength - previewGridPosY;
+
+            // loop until an open spot is found
+            for (int y = 1; y < lengthToEnd; y++)
             {
-                int lengthToEnd = yLength - previewGridPosY;
-
-                // loop until an open spot is found
-                for (int y = 1; y < lengthToEnd; y++)
+                if (grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
                 {
-                    if (grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
-                    {
-                        preview.SetCanBuild(false);
-                        return false;
-                    }
+                    preview.SetCanBuild(false);
+                    return false;
                 }
-
-                preview.SetCanBuild(true);
-
-                return true;
             }
+
+            preview.SetCanBuild(true);
+
+            return true;
+            //}
         }
 
         return false;

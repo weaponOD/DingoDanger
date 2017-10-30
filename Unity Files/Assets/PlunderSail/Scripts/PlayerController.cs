@@ -317,6 +317,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(dir * (5 * moveSpeed));
     }
 
+    public Vector3 Speed
+    {
+        get { return velocity; }
+    }
+
     private void OnDestroy()
     {
         // Unsubscribe to game state

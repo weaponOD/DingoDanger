@@ -48,12 +48,21 @@ public class WeaponController : MonoBehaviour
 
     public WeaponAttachment[] LeftWeapons
     {
+        get { return leftWeapons; }
+
         set { leftWeapons = value; }
     }
 
     public WeaponAttachment[] RightWeapons
     {
+        get { return rightWeapons; }
+
         set { rightWeapons = value; }
+    }
+
+    public bool HasWeapons
+    {
+        get { return (rightWeapons.Length > 0 && leftWeapons.Length > 0); }
     }
 
     private void Update()

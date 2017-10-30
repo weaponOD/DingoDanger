@@ -23,7 +23,13 @@ public class Player : LivingEntity
     [SerializeField]
     private AudioClip waves;
 
-    private Rigidbody rb;
+    [Header("Arc Creator")]
+    [SerializeField]
+    private GameObject arc;
+
+    private bool aiming = false;
+
+    private LaunchArcMesh[] aimers = null;
 
     protected override void Start()
     {
@@ -37,7 +43,6 @@ public class Player : LivingEntity
         components = GetComponent<ComponentManager>();
 
         audioSource = GetComponent<AudioSource>();
-        
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -47,13 +52,49 @@ public class Player : LivingEntity
     {
         if (Input.GetAxis("Left_Trigger") == 1)
         {
-            
+            if (!aiming)
+            {
+                Aim(true);
+            }
+        }
+        else
+        {
+            Aim(false);
         }
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
-            weaponController.FireWeaponsRight(controller.Velocity);
-            weaponController.FireWeaponsLeft(controller.Velocity);
+            weaponController.FireWeaponsRight(controller.Speed);
+            weaponController.FireWeaponsLeft(controller.Speed);
+        }
+    }
+
+
+    private void Aim(bool _isAiming)
+    {
+        aiming = _isAiming;
+
+        if (aimers == null)
+        {
+            aimers = new LaunchArcMesh[2];
+
+            aimers[0] = Instantiate(arc, transform.position - transform.right * 3, Quaternion.LookRotation(-transform.right), transform).GetComponent<LaunchArcMesh>();
+            aimers[1] = Instantiate(arc, transform.position + transform.right * 3, Quaternion.LookRotation(transform.right), transform).GetComponent<LaunchArcMesh>();
+
+            aimers[0].gameObject.SetActive(false);
+            aimers[1].gameObject.SetActive(false);
+        }
+
+        if (weaponController.LeftWeapons.Length > 0)
+        {
+            aimers[1].angle = Mathf.Abs(transform.root.rotation.eulerAngles.z);
+            aimers[1].gameObject.SetActive(aiming);
+        }
+
+        if (weaponController.RightWeapons.Length > 0)
+        {
+            aimers[0].angle = Mathf.Abs(transform.root.rotation.eulerAngles.z);
+            aimers[0].gameObject.SetActive(aiming);
         }
     }
 

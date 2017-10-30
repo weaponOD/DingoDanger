@@ -18,10 +18,7 @@ public class WeaponAttachmentDouble : WeaponAttachment
     {
         Projectile shot = Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
         shot.Damage = damage;
-
-        Debug.Log("player's velocity: " + _shipVelocity);
-
-        shot.FireProjectile(_shipVelocity);
+        shot.FireProjectile(transform.forward);
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
@@ -30,7 +27,7 @@ public class WeaponAttachmentDouble : WeaponAttachment
 
         Projectile shot2 =  Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation).GetComponent<Projectile>();
         shot2.Damage = damage;
-        shot2.FireProjectile(_shipVelocity);
+        shot2.FireProjectile(transform.forward);
 
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);

@@ -419,7 +419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 738.27, y: 0, z: 536.7}
+  m_LocalPosition: {x: 748.94, y: 0, z: 536.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -855,6 +855,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
   - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
   waves: {fileID: 0}
+  arc: {fileID: 1164836918719604, guid: ca0d035d08e7bbd4a847b3c4a84d9b4b, type: 2}
 --- !u!114 &114422352416139054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -928,7 +929,7 @@ MonoBehaviour:
   maxMoveSpeed: 0
   turnSpeed: 0
   sailsOpen: 1
-  speed: 0
+  velocity: {x: 0, y: 0, z: 0}
   heading: 0
   rudder: 0
   rudderAngle: 0

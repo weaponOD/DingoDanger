@@ -34,11 +34,7 @@ public class Projectile : MonoBehaviour
     {
         initialForce += Random.Range(initialForce * 0.5f, initialForce * 0.7f);
 
-        Debug.Log(string.Format("original velocity: {0}", rb.velocity));
-
         rb.velocity = _shipVelocity;
-
-        Debug.Log(string.Format("modified velocity: {0}", rb.velocity));
 
         rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
     }

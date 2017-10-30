@@ -28,13 +28,13 @@ public class AttachmentSail : AttachmentBase
     {
         Debug.Log("Raised");
 
-        anim.Play("Sail_Single_Open");
+        anim.SetBool("Raised", true);
     }
 
     public void Lower()
     {
         Debug.Log("Lowered");
 
-        anim.Play("Sail_Single_Open");
+        anim.SetBool("Raised", false);
     }
 }

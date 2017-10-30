@@ -17,11 +17,11 @@ public class LaunchArcMesh : MonoBehaviour {
 
 	[SerializeField]
 	[Range (0, 40)]
-	private float velocity;
+	public float velocity;
 
 	[SerializeField]
 	[Range (0, 85)]
-	private float angle;
+    public float angle;
 
 	[SerializeField]
 	private int divisions = 10; //Resolution of the curve,or how many divisions will be in it. Higher number creates a smoother arc
@@ -85,11 +85,7 @@ public class LaunchArcMesh : MonoBehaviour {
 
 			mesh.vertices = vertices;
 			mesh.triangles = triangles;
-
-
-
 		}
-
 	}
 
 	//create an array of Vector3 positions for Arc

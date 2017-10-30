@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The change in speed per second while slowing down")]
     private float deacceleration;
 
+    [SerializeField]
+    private float maxSpeed = 45.0f;
+
     private float maxRudder = 6.0f;
 
     [SerializeField]
@@ -305,7 +308,7 @@ public class PlayerController : MonoBehaviour
             totalBonusSpeed += Mathf.Clamp(bonusSpeed - (bonusDropoff * x), minBonusSpeed, bonusSpeed);
         }
 
-        maxMoveSpeed = totalBonusSpeed;
+        maxMoveSpeed = Mathf.Clamp(totalBonusSpeed, 0f, maxSpeed);
     }
 
     void OnCollisionEnter(Collision c)

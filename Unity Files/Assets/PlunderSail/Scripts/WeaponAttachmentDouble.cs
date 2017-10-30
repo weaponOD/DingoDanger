@@ -29,7 +29,6 @@ public class WeaponAttachmentDouble : WeaponAttachment
         shot2.Damage = damage;
         shot2.FireProjectile(transform.forward);
 
-
         Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
 

@@ -63,7 +63,7 @@ public class PlayModeCameraTwo : MonoBehaviour
                 localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
             }
 
-            localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
+            localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
             localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);

@@ -131,6 +131,8 @@ public class Player : LivingEntity
 
     public void UpdateAttachments()
     {
+        Debug.Log("Updating Attachments");
+
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
         controller.setSpeedBonus(components.getSpeedBonus());
@@ -147,6 +149,7 @@ public class Player : LivingEntity
         if (collision.contacts[0].thisCollider.CompareTag("Ram"))
         {
             float hitDamage = collision.relativeVelocity.magnitude;
+
             Debug.Log("Hit with Ram with a force of " + hitDamage);
 
             if (collision.collider.gameObject.GetComponent<AttachmentBase>())

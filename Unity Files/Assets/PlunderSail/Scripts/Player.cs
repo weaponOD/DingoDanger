@@ -59,7 +59,10 @@ public class Player : LivingEntity
         }
         else
         {
-            Aim(false);
+            if (aiming)
+            {
+                Aim(false);
+            }
         }
 
         if (Input.GetAxis("Right_Trigger") == 1)
@@ -78,8 +81,8 @@ public class Player : LivingEntity
         {
             aimers = new LaunchArcMesh[2];
 
-            aimers[0] = Instantiate(arc, transform.position - transform.right * 3, Quaternion.LookRotation(-transform.right), transform).GetComponent<LaunchArcMesh>();
-            aimers[1] = Instantiate(arc, transform.position + transform.right * 3, Quaternion.LookRotation(transform.right), transform).GetComponent<LaunchArcMesh>();
+            aimers[0] = Instantiate(arc, transform.position - transform.right * 3 + transform.forward * 2, Quaternion.LookRotation(-transform.right), transform).GetComponent<LaunchArcMesh>();
+            aimers[1] = Instantiate(arc, transform.position + transform.right * 3 + transform.forward * 2, Quaternion.LookRotation(transform.right), transform).GetComponent<LaunchArcMesh>();
 
             aimers[0].gameObject.SetActive(false);
             aimers[1].gameObject.SetActive(false);
@@ -87,13 +90,13 @@ public class Player : LivingEntity
 
         if (weaponController.LeftWeapons.Length > 0)
         {
-            aimers[1].angle = Mathf.Abs(transform.root.rotation.eulerAngles.z);
+            //aimers[1].angle = Mathf.Clamp(transform.root.rotation.eulerAngles.z, 0, 85);
             aimers[1].gameObject.SetActive(aiming);
         }
 
         if (weaponController.RightWeapons.Length > 0)
         {
-            aimers[0].angle = Mathf.Abs(transform.root.rotation.eulerAngles.z);
+            //aimers[0].angle = Mathf.Clamp(transform.root.rotation.eulerAngles.z, 0, 85);
             aimers[0].gameObject.SetActive(aiming);
         }
     }

@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-guid: f701d24a5cd0cd04392d09ef94139885
-timeCreated: 1505732029
+guid: 728890fd6392d7f459e4323f1f787ee9
+timeCreated: 1509404792
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Bottle_001_OceanStandard_001_Alcohol
-    9500000: //RootNode
+    100000: Bottle_001_Rum_001_Round
+    100002: //RootNode
+    400000: Bottle_001_Rum_001_Round
+    400002: //RootNode
+    2300000: Bottle_001_Rum_001_Round
+    3300000: Bottle_001_Rum_001_Round
+    4300000: Bottle_001_Rum_001_Round
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -43,8 +44,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,7 +62,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

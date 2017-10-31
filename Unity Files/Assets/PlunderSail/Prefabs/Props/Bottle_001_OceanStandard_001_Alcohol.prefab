@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4533832433316780}
   - component: {fileID: 33909927385961206}
   - component: {fileID: 23675721078785944}
-  - component: {fileID: 95759807388377964}
   m_Layer: 0
   m_Name: Bottle_001_OceanStandard_001_Alcohol
   m_TagString: Untagged
@@ -84,7 +83,8 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 3c40c8fdc50a841579d7cb15882ac9d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,21 +109,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1778321063342762}
-  m_Mesh: {fileID: 4300000, guid: f701d24a5cd0cd04392d09ef94139885, type: 3}
---- !u!95 &95759807388377964
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778321063342762}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f701d24a5cd0cd04392d09ef94139885, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_Mesh: {fileID: 4300000, guid: 728890fd6392d7f459e4323f1f787ee9, type: 3}

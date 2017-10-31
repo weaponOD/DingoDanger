@@ -88,7 +88,7 @@ public class ComponentManager : MonoBehaviour
 
         foreach (WeaponAttachment weapon in weapons)
         {
-            if (weapon.FacingLeft)
+            if (!weapon.FacingLeft)
             {
                 weaponsLeftCount++;
             }
@@ -106,7 +106,7 @@ public class ComponentManager : MonoBehaviour
 
         foreach (WeaponAttachment weapon in weapons)
         {
-            if (weapon.FacingLeft)
+            if (!weapon.FacingLeft)
             {
                 leftWeapons[weaponsLeftCount] = weapon;
                 weaponsLeftCount++;

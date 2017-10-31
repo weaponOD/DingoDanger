@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(TransitionToPlayMode());
             }
         }
+
+        if (Input.GetButtonDown("Back_Button"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     private IEnumerator TransitionToPlayMode()
@@ -71,7 +77,7 @@ public class GameManager : MonoBehaviour
 
         PC.Buoyant(false);
 
-        if(pier != null)
+        if (pier != null)
         {
             PC.transform.position = pier.position;
             PC.transform.rotation = pier.rotation;

@@ -15,9 +15,6 @@ public class Player : LivingEntity
     private AudioSource audioSource;
 
     [SerializeField]
-    private Vector3 velocity;
-
-    [SerializeField]
     private AudioClip[] goldPickup;
 
     [SerializeField]
@@ -28,6 +25,8 @@ public class Player : LivingEntity
     private GameObject arc;
 
     private bool aiming = false;
+
+    private Vector3 aimTarget;
 
     private LaunchArcMesh[] aimers = null;
 
@@ -67,37 +66,61 @@ public class Player : LivingEntity
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
-            weaponController.FireWeaponsRight(controller.Speed);
-            weaponController.FireWeaponsLeft(controller.Speed);
+            weaponController.FireWeaponsRight();
+            weaponController.FireWeaponsLeft();
         }
-    }
 
+        if (aiming)
+        {
+            aimTarget = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+
+            foreach (LaunchArcMesh arc in aimers)
+            {
+                // arc.end += aimTarget;
+            }
+        }
+
+        velocity = controller.Speed;
+    }
 
     private void Aim(bool _isAiming)
     {
         aiming = _isAiming;
 
+        controller.Aiming = aiming;
+
         if (aimers == null)
         {
-            aimers = new LaunchArcMesh[2];
+            WeaponAttachment[] leftWeapons = weaponController.LeftWeapons;
 
-            aimers[0] = Instantiate(arc, transform.position - transform.right * 3 + transform.forward * 2, Quaternion.LookRotation(-transform.right), transform).GetComponent<LaunchArcMesh>();
-            aimers[1] = Instantiate(arc, transform.position + transform.right * 3 + transform.forward * 2, Quaternion.LookRotation(transform.right), transform).GetComponent<LaunchArcMesh>();
+            aimers = new LaunchArcMesh[leftWeapons.Length];
 
-            aimers[0].gameObject.SetActive(false);
-            aimers[1].gameObject.SetActive(false);
+            int count = 0;
+
+            foreach (WeaponAttachment weapon in leftWeapons)
+            {
+                aimers[count] = Instantiate(arc, weapon.transform.position, Quaternion.LookRotation(-transform.right), transform).GetComponent<LaunchArcMesh>();
+                count++;
+            }
+
+            foreach (LaunchArcMesh arc in aimers)
+            {
+                arc.gameObject.SetActive(false);
+                // aimTarget = arc.end;
+            }
         }
 
         if (weaponController.LeftWeapons.Length > 0)
         {
-            //aimers[1].angle = Mathf.Clamp(transform.root.rotation.eulerAngles.z, 0, 85);
-            aimers[1].gameObject.SetActive(aiming);
+            foreach (LaunchArcMesh arc in aimers)
+            {
+                arc.gameObject.SetActive(aiming);
+            }
         }
 
         if (weaponController.RightWeapons.Length > 0)
         {
-            //aimers[0].angle = Mathf.Clamp(transform.root.rotation.eulerAngles.z, 0, 85);
-            aimers[0].gameObject.SetActive(aiming);
+            //aimers[0].gameObject.SetActive(aiming);
         }
     }
 

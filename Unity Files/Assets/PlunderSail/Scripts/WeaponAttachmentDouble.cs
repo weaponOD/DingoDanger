@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponAttachmentDouble : WeaponAttachment
 {
+    private Vector3 shipVelocity;
+
     protected override void Awake()
     {
         base.Awake();
@@ -14,11 +16,13 @@ public class WeaponAttachmentDouble : WeaponAttachment
         firePoints[1] = transform.GetChild(0).GetChild(1).transform;
     }
 
-    protected override IEnumerator Fire(Vector3 _shipVelocity)
+    protected override IEnumerator Fire()
     {
+        shipVelocity = entity.Velocity;
+
         Projectile shot = Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
         shot.Damage = damage;
-        shot.FireProjectile(transform.forward);
+        shot.FireProjectile(shipVelocity, projectileForce);
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[0].position, firePoints[0].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();
@@ -27,7 +31,7 @@ public class WeaponAttachmentDouble : WeaponAttachment
 
         Projectile shot2 =  Instantiate(projectilePrefab, firePoints[1].position, firePoints[1].rotation).GetComponent<Projectile>();
         shot2.Damage = damage;
-        shot2.FireProjectile(transform.forward);
+        shot2.FireProjectile(shipVelocity, projectileForce);
 
         Destroy(Instantiate(shootParticle.gameObject, firePoints[1].position, firePoints[1].rotation) as GameObject, shootParticle.main.startLifetime.constant);
         PlayRandomSound();

@@ -21,12 +21,11 @@ public class WeaponAttachment : AttachmentBase
 
     protected bool facingLeft;
 
-    protected bool needToRotate = false;
-
-    protected bool needToMirror = false;
-
     [SerializeField]
     protected float damage;
+
+    [SerializeField]
+    protected float projectileForce;
 
     [SerializeField]
     protected GameObject projectilePrefab;
@@ -35,9 +34,20 @@ public class WeaponAttachment : AttachmentBase
 
     protected Transform[] effectPoints;
 
-    protected virtual void Awake()
+    protected LivingEntity entity;
+
+    protected override void Awake()
     {
         audioSource = transform.root.GetComponent<AudioSource>();
+
+        if(transform.root.GetComponent<Player>())
+        {
+            entity = transform.root.GetComponent<Player>();
+        }
+        else
+        {
+            entity = transform.root.GetComponent<AIAgent>();
+        }
     }
 
     public bool FacingLeft
@@ -50,17 +60,17 @@ public class WeaponAttachment : AttachmentBase
         set { facingLeft = value; }
     }
 
-    public void FireLeft(Vector3 _shipVelocity)
+    public void FireLeft()
     {
-        StartCoroutine(Fire(_shipVelocity));
+        StartCoroutine(Fire());
     }
 
-    public void FireRight(Vector3 _shipVelocity)
+    public void FireRight()
     {
-        StartCoroutine(Fire(_shipVelocity));
+        StartCoroutine(Fire());
     }
 
-    protected virtual IEnumerator Fire(Vector3 _shipVelocity)
+    protected virtual IEnumerator Fire()
     {
         yield return null;
     }

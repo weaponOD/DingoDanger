@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeedDecay;
 
     [SerializeField]
-    private float turnSpeeGrowth;
+    private float turnSpeedGrowth;
 
     [SerializeField]
     private float minTurnSpeed;
@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 previousPos;
 
+    private bool aiming = false;
+
     private void Awake()
     {
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -129,7 +131,14 @@ public class PlayerController : MonoBehaviour
         if (!GameState.BuildMode)
         {
             // steering
-            steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+            if(!aiming)
+            {
+                steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
+            }
+            else
+            {
+                steering = 0;
+            }
 
             if (steering != 0)
             {
@@ -157,6 +166,11 @@ public class PlayerController : MonoBehaviour
                 previousPos = transform.position;
             }
         }
+    }
+
+    public bool Aiming
+    {
+        set { aiming = value; }
     }
 
     private void FixedUpdate()
@@ -216,7 +230,7 @@ public class PlayerController : MonoBehaviour
 
                 if (turnSpeed < maxTurnSpeed)
                 {
-                    turnSpeed += turnSpeeGrowth * Time.fixedDeltaTime;
+                    turnSpeed += turnSpeedGrowth * Time.fixedDeltaTime;
                 }
                 else
                 {

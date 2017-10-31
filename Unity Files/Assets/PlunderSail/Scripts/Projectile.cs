@@ -7,9 +7,6 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
 
-    [SerializeField]
-    private float initialForce = 15;
-
     private AudioSource audioSource;
 
     private float damage;
@@ -30,13 +27,11 @@ public class Projectile : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void FireProjectile(Vector3 _shipVelocity)
+    public void FireProjectile(Vector3 _shipVelocity, float _initialForce)
     {
-        initialForce += Random.Range(initialForce * 0.5f, initialForce * 0.7f);
-
         rb.velocity = _shipVelocity;
 
-        rb.AddForce(transform.forward * initialForce, ForceMode.Impulse);
+        rb.AddForce(transform.forward * _initialForce, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision _collision)

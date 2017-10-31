@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4421717932525286}
   - component: {fileID: 33768167486175074}
   - component: {fileID: 23337016110967674}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonBall_001_Ammunition_001_Single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 96470093671313084}
   - component: {fileID: 135307556624297948}
   - component: {fileID: 82552495226267490}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CannonBall_001_Ammunition_001_Single
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1804301577746708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.801, z: 0}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 4421717932525286}
@@ -301,7 +301,7 @@ TrailRenderer:
       m_NumAlphaKeys: 4
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     generateLightingData: 0
   m_MinVertexDistance: 0.1
@@ -317,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30263a5f792945347b64c585d70c8fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialForce: 25
   splashSound: {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
   splashEffect: {fileID: 198034797215869406, guid: 8634271c6a670524ab8f0068778d65bc,
     type: 2}

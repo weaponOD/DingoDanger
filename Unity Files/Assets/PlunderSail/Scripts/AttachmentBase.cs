@@ -16,7 +16,7 @@ public class AttachmentBase : MonoBehaviour
 
     protected Player player;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         currentHealth = maxHealth;
 

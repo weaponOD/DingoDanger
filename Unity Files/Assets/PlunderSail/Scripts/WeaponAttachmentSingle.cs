@@ -15,7 +15,7 @@ public class WeaponAttachmentSingle : WeaponAttachment
         effectPoints[0] = firePoints[0].GetChild(0);
     }
 
-    protected override IEnumerator Fire(Vector3 _shipVelocity)
+    protected override IEnumerator Fire()
     {
         Projectile shot =  Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
         shot.Damage = damage;

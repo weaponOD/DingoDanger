@@ -12,6 +12,12 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float starterHealth;
 
     [SerializeField]
+    protected float leadReloadTime;
+
+    [SerializeField]
+    protected float tridentReloadTime;
+
+    [SerializeField]
     protected float bountyDelay;
 
     [SerializeField]
@@ -27,6 +33,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected WeaponController weaponController;
 
     protected ComponentManager components;
+
+    protected Vector3 velocity;
 
     protected bool dead;
 
@@ -58,7 +66,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
             OnDeath();
         }
 
-        if(!gameObject.CompareTag("Player"))
+        if (!gameObject.CompareTag("Player"))
         {
             Rigidbody rb = GetComponent<Rigidbody>();
 
@@ -73,11 +81,19 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
     }
 
+    public Vector3 Velocity
+    {
+        get { return velocity; }
+
+        set { velocity = value; }
+    }
+
+
     IEnumerator SpawnBounty()
     {
         yield return new WaitForSeconds(bountyDelay);
 
-        foreach(GameObject reward in bounty)
+        foreach (GameObject reward in bounty)
         {
             Instantiate(reward, deathPos, Quaternion.identity);
         }

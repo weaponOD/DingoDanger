@@ -148,12 +148,12 @@ public class AIAgent : LivingEntity
 
                 if (Physics.Raycast(transform.position + transform.forward * 0.2f, transform.right, attackRange))
                 {
-                    weaponController.FireWeaponsRight(new Vector3());
+                    weaponController.FireWeaponsRight();
                 }
 
                 if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.right, attackRange))
                 {
-                    weaponController.FireWeaponsLeft(new Vector3());
+                    weaponController.FireWeaponsLeft();
                 }
             }
             else

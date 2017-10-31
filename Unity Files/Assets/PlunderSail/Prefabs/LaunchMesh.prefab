@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4283219067108742}
   - component: {fileID: 33911447709009354}
   - component: {fileID: 23597844875772658}
-  - component: {fileID: 114932388439369674}
+  - component: {fileID: 114850275284485304}
   m_Layer: 0
   m_Name: LaunchMesh
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 03361faebd2a2354aa4ccfcca09533ca, type: 2}
+  - {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,7 +81,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164836918719604}
   m_Mesh: {fileID: 0}
---- !u!114 &114932388439369674
+--- !u!114 &114850275284485304
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3cc1d384363345409b171ba77bad418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshWidth: 0.4
-  velocity: 30
-  angle: 52.9
+  meshWidth: 1
+  velocity: 40
+  angle: 10
   divisions: 10

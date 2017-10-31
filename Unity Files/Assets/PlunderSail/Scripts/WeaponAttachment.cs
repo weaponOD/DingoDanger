@@ -60,12 +60,7 @@ public class WeaponAttachment : AttachmentBase
         set { facingLeft = value; }
     }
 
-    public void FireLeft()
-    {
-        StartCoroutine(Fire());
-    }
-
-    public void FireRight()
+    public void FireWeapon()
     {
         StartCoroutine(Fire());
     }

@@ -97,7 +97,13 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                StartCoroutine(FireRight());
+                foreach (WeaponAttachment weapon in leftWeapons)
+                {
+                    if (weapon != null)
+                    {
+                        weapon.FireWeapon();
+                    }
+                }
 
                 canShootRight = false;
                 nextReloadTimeRight = Time.time + reloadTime;
@@ -107,10 +113,12 @@ public class WeaponController : MonoBehaviour
 
     public void FireWeaponsLeft()
     {
+        // 
         if (canShootLeft)
         {
             if (leftWeapons.Length > 0)
             {
+                // Play audio if any
                 if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
@@ -121,41 +129,17 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                StartCoroutine(FireLeft());
+                foreach (WeaponAttachment weapon in leftWeapons)
+                {
+                    if (weapon != null)
+                    {
+                        weapon.FireWeapon();
+                    }
+                }
 
                 canShootLeft = false;
                 nextReloadTimeLeft = Time.time + reloadTime;
             }
-        }
-    }
-
-    private IEnumerator FireLeft()
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        foreach (WeaponAttachment weapon in leftWeapons)
-        {
-            if (weapon != null)
-            {
-                weapon.FireLeft();
-            }
-            
-            yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
-        }
-    }
-
-    private IEnumerator FireRight()
-    {
-        yield return new WaitForSeconds(0.2f);
-
-        foreach (WeaponAttachment weapon in rightWeapons)
-        {
-            if(weapon != null)
-            {
-                weapon.FireRight();
-            }
-           
-            yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));
         }
     }
 

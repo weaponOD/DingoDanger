@@ -1005,18 +1005,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseTurnSpeed: 1
-  acceleration: 7
-  deacceleration: 3
+  baseTurnSpeed: 3.5
+  acceleration: 8
+  deacceleration: 3.5
   maxSpeed: 45
   maxRoll: 12
   bonusSpeed: 12
   bonusDropoff: 8
   minBonusSpeed: 6
   turnSpeedDecay: 1.2
-  turnSpeedGrowth: 0.3
-  minTurnSpeed: 2
-  maxTurnSpeed: 11
+  turnSpeedGrowth: 1.8
+  minTurnSpeed: 3.5
+  maxTurnSpeed: 8
   startBuild: []
   fullSpeed: []
   slowDown: []

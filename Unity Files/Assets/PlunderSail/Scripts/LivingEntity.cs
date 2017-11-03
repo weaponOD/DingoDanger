@@ -45,7 +45,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
         currentHealth = starterHealth;
     }
 
-    virtual public void TakeDamage(float damgage)
+    public virtual void TakeDamage(float damgage)
     {
         Debug.Log("Took " + damgage + "Damage");
 

@@ -3258,8 +3258,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1, z: 1.8}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1.8, y: 8, z: 1.8}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!65 &65618222828933798
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3486,6 +3486,7 @@ MonoBehaviour:
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   damage: 0
+  projectileForce: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114095904835115582
@@ -3585,6 +3586,7 @@ MonoBehaviour:
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   damage: 0
+  projectileForce: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114467721433140164
@@ -3740,6 +3742,7 @@ MonoBehaviour:
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   damage: 0
+  projectileForce: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114690667290587374
@@ -3780,6 +3783,7 @@ MonoBehaviour:
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   damage: 0
+  projectileForce: 0
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
 --- !u!114 &114752485335300356
@@ -3859,6 +3863,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 100
+  leadReloadTime: 0
+  tridentReloadTime: 0
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
@@ -3868,6 +3874,7 @@ MonoBehaviour:
   rotationSpeed: 0.6
   attackRange: 70
   awarenessRange: 100
+  KnockBackForce: 5000
   difficulty: 0
   goldReward: 100
   currentMoveSpeed: 0

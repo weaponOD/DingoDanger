@@ -56,10 +56,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 4048326658710050, guid: 27fc5e387c5c5334cafb85aa057f3945, type: 2}
+  - {fileID: 4508677944220884, guid: 37020359f72837449b011c87970e4a7c, type: 2}
   - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
-  maxEnemies: 2
-  spawnRange: 300
+  - {fileID: 4048326658710050, guid: 27fc5e387c5c5334cafb85aa057f3945, type: 2}
+  maxEnemies: 3
+  spawnRange: 250
   deSpawnRange: 1000
 --- !u!114 &114168663654171056
 MonoBehaviour:
@@ -79,8 +80,6 @@ MonoBehaviour:
   goldText: {fileID: 0}
   fadePlane: {fileID: 0}
   horizontalMenu:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

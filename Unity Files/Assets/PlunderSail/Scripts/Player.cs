@@ -10,15 +10,15 @@ public class Player : LivingEntity
     [SerializeField]
     private float ramDamage = 20;
 
+    [SerializeField]
+    private float KnockBackForce;
+
     PlayerController controller;
 
     private AudioSource audioSource;
 
     [SerializeField]
     private AudioClip[] goldPickup;
-
-    [SerializeField]
-    private AudioClip waves;
 
     [Header("Arc Creator")]
     [SerializeField]
@@ -169,6 +169,19 @@ public class Player : LivingEntity
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // how much the character should be knocked back
+            var magnitude = 5000;
+            // calculate force vector
+            var force = transform.position - collision.transform.position;
+            // normalize force vector to get direction only and trim magnitude
+            force.Normalize();
+            gameObject.GetComponent<Rigidbody>().AddForce(force * magnitude);
+
+            Debug.Log("Knocked Back");
+        }
+
         if (collision.contacts[0].thisCollider.CompareTag("Ram"))
         {
             float hitDamage = collision.relativeVelocity.magnitude;
@@ -184,26 +197,6 @@ public class Player : LivingEntity
             {
                 collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
             }
-        }
-
-        if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
-        {
-            float hitDamage = collision.relativeVelocity.magnitude;
-            Debug.Log("Hit piece with a force of " + hitDamage);
-
-            if (hitDamage < 10)
-            {
-                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(5 * collision.relativeVelocity.magnitude);
-            }
-            else
-            {
-                collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>().TakeDamage(100 * collision.relativeVelocity.magnitude);
-            }
-        }
-        else
-        {
-            float hitDamage = collision.relativeVelocity.magnitude;
-            Debug.Log("Hit hull with a force of " + hitDamage);
         }
     }
 }

@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
 
         GameState.BuildMode = false;
 
-        PC.Buoyant(true);
-
         CC.SwitchToPlayMode();
     }
 
@@ -74,8 +72,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.2f);
 
         GameState.BuildMode = true;
-
-        PC.Buoyant(false);
 
         if (pier != null)
         {

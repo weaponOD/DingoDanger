@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float minBonusSpeed;
 
+    [Header("Cannon weight")]
+    private float cannonWeight = 0;
+
     [Header("Turn Speed Attributes")]
 
     [SerializeField]
@@ -299,18 +302,6 @@ public class PlayerController : MonoBehaviour
 
             components.RaiseSails();
         }
-
-        //turnSpeed = baseTurnSpeed * (maxMoveSpeed - moveSpeed);
-
-        //if (turnSpeed <= 0)
-        //{
-        //    turnSpeed = 1;
-        //}
-    }
-
-    public void Buoyant(bool _isBuoyant)
-    {
-        //buoyant.enabled = _isBuoyant;
     }
 
     public void setSpeedBonus(float _numOfSails)
@@ -321,6 +312,8 @@ public class PlayerController : MonoBehaviour
         {
             totalBonusSpeed += Mathf.Clamp(bonusSpeed - (bonusDropoff * x), minBonusSpeed, bonusSpeed);
         }
+
+        totalBonusSpeed -= (cannonWeight * components.GetAttachedLeftWeapons().Length) + (cannonWeight * components.GetAttachedRightWeapons().Length);
 
         maxMoveSpeed = Mathf.Clamp(totalBonusSpeed, 0f, maxSpeed);
     }

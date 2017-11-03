@@ -92,7 +92,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 500
+  far clip plane: 1300
   field of view: 50
   orthographic: 0
   orthographic size: 5
@@ -100,7 +100,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: 3
+  m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 74fbc82f3fcb0f04d99f6b58fa549408, type: 2}
+  profile: {fileID: 11400000, guid: 019816bfc25322b41b73a6da284199c9, type: 2}
 --- !u!114 &114535665418444950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,12 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf6d6d8aba195741b6ec393e8f7db13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 2.5
-  MaxClamp: 60
-  minclamp: 5
-  orbitDampening: 10
+  mouseSensitivity: 2
+  MaxClamp: 35
+  minclamp: 2
+  orbitDampening: 8
   invertedY: 1
-  offset: {x: 0, y: 8, z: 5}
+  offset: {x: 1.5, y: 9, z: 5}
 --- !u!124 &124997453130610502
 Behaviour:
   m_ObjectHideFlags: 1

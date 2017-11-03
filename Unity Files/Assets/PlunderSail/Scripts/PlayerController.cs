@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private float minBonusSpeed;
 
     [Header("Cannon weight")]
+    [SerializeField]
     private float cannonWeight = 0;
 
     [Header("Turn Speed Attributes")]

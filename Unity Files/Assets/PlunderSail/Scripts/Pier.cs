@@ -9,24 +9,47 @@ public class Pier : MonoBehaviour
 
     private GameManager GM;
 
+    [SerializeField]
+    private bool open = false;
+
+    [SerializeField]
+    private float timeToRemovePier = 0;
+
     private void Awake()
     {
         GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
+    public bool isUnlocked
+    {
+        get { return open; }
+        set { open = value; }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (open)
         {
-            GM.setPier(dockingPos);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                GM.setPier(dockingPos);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (open)
         {
-            GM.setPier(null);
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Invoke("RemovePier", timeToRemovePier);
+            }
         }
+    }
+
+    private void RemovePier()
+    {
+        GM.setPier(null);
     }
 }

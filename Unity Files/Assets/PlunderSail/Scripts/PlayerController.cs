@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player Attributes")]
+    [Header("Movement Attributes")]
 
     [SerializeField]
     [Tooltip("The degrees per frame the ship can rotate with no open sails")]
@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float maxSpeed = 45.0f;
+
+    [SerializeField]
+    [Tooltip("The number of seconds that the player does not move forward after a collision")]
+    private float stunDuration = 0;
 
     private float maxRudder = 6.0f;
 
@@ -113,6 +117,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 previousPos;
 
     private bool aiming = false;
+
+    private bool stunned = false;
 
     private void Awake()
     {
@@ -242,7 +248,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
+            if(!stunned)
+            {
+                rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 
@@ -326,6 +335,18 @@ public class PlayerController : MonoBehaviour
         dir = -dir.normalized;
 
         rb.AddForce(dir * (5 * moveSpeed));
+    }
+
+    private void RemoveStun()
+    {
+        stunned = false;
+    }
+
+    public void AddStun()
+    {
+        stunned = true;
+
+        Invoke("RemoveStun", stunDuration);
     }
 
     public Vector3 Speed

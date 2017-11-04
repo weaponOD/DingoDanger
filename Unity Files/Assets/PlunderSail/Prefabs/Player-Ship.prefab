@@ -806,7 +806,7 @@ Rigidbody:
   m_AngularDrag: 2.7
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 84
   m_CollisionDetection: 2
 --- !u!65 &65174081235644978
@@ -944,7 +944,7 @@ MonoBehaviour:
   currentHealth: 0
   gold: 5000
   ramDamage: 12
-  KnockBackForce: 10000
+  KnockBackForce: 500000
   goldPickup:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
@@ -1009,10 +1009,12 @@ MonoBehaviour:
   acceleration: 8
   deacceleration: 3.5
   maxSpeed: 45
+  stunDuration: 2
   maxRoll: 12
   bonusSpeed: 12
   bonusDropoff: 8
   minBonusSpeed: 6
+  cannonWeight: 0
   turnSpeedDecay: 1.2
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5

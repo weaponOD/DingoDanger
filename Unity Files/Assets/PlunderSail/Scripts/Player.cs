@@ -171,13 +171,13 @@ public class Player : LivingEntity
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            // how much the character should be knocked back
-            var magnitude = 5000;
+            controller.AddStun();
+
             // calculate force vector
             var force = transform.position - collision.transform.position;
             // normalize force vector to get direction only and trim magnitude
             force.Normalize();
-            gameObject.GetComponent<Rigidbody>().AddForce(force * magnitude);
+            gameObject.GetComponent<Rigidbody>().AddForce(force * KnockBackForce);
 
             Debug.Log("Knocked Back");
         }

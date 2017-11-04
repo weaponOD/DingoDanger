@@ -43,7 +43,7 @@ public class DrawCircle : MonoBehaviour
     {
         _line = gameObject.GetComponent<LineRenderer>();
 
-        _line.SetVertexCount(_segments + 1);
+        _line.positionCount = _segments + 1;
         _line.useWorldSpace = false;
 
         UpdateValuesChanged();
@@ -68,6 +68,14 @@ public class DrawCircle : MonoBehaviour
         }
     }
 
+    public float Radius
+    {
+        set { _horizRadius = value;
+            _vertRadius = value;
+        }
+    }
+
+
     void UpdateValuesChanged()
     {
         _previousSegmentsValue = _segments;
@@ -82,7 +90,7 @@ public class DrawCircle : MonoBehaviour
 
         if (_previousSegmentsValue != _segments)
         {
-            _line.SetVertexCount(_segments + 1);
+            _line.positionCount = _segments + 1;
         }
 
         float x;

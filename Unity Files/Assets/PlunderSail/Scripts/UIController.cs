@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     // UI References
+
+    [SerializeField]
+    private float goldDisplayTime = 2;
+
+    [Header("Drag References into these")]
     [SerializeField]
     private GameObject Canvas = null;
 
@@ -60,6 +65,9 @@ public class UIController : MonoBehaviour
         builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilding>();
 
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
+
+        // Subscribe to player's gold change
+        player.GoldChanged += GoldChanged;
 
         if (Canvas)
         {
@@ -132,6 +140,18 @@ public class UIController : MonoBehaviour
         DpadCanPress = true;
     }
 
+    private void GoldChanged()
+    {
+        goldHUD.SetActive(true);
+
+        Invoke("HideGoldHUD", goldDisplayTime);
+    }
+
+    private void HideGoldHUD()
+    {
+        goldHUD.SetActive(false);
+    }
+
     private void Update()
     {
         if (DpadCanPress)
@@ -150,7 +170,7 @@ public class UIController : MonoBehaviour
             // Move down the vertical menu
             if (Input.GetAxis("Dpad_Y") == -1)
             {
-                if (selectedGenre < horizontalMenu.Length - 1) 
+                if (selectedGenre < horizontalMenu.Length - 1)
                 {
                     ChangeGenreSelection(1);
 
@@ -255,6 +275,8 @@ public class UIController : MonoBehaviour
     public void SetBuildPanelStatus(bool _isEnabled)
     {
         buildPanel.SetActive(_isEnabled);
+
+        goldHUD.SetActive(_isEnabled);
 
         if (_isEnabled)
         {

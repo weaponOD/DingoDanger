@@ -19,6 +19,7 @@ public class WeaponAttachment : AttachmentBase
 
     protected AudioSource audioSource;
 
+    [SerializeField]
     protected bool facingLeft;
 
     [SerializeField]

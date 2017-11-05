@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                foreach (WeaponAttachment weapon in leftWeapons)
+                foreach (WeaponAttachment weapon in rightWeapons)
                 {
                     if (weapon != null)
                     {

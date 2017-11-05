@@ -30,6 +30,10 @@ public class Player : LivingEntity
 
     private LaunchArcMesh[] aimers = null;
 
+    public delegate void GoldReceiced();
+
+    public event GoldReceiced GoldChanged;
+
     protected override void Start()
     {
         base.Start();
@@ -51,23 +55,23 @@ public class Player : LivingEntity
     {
         if (Input.GetAxis("Left_Trigger") == 1)
         {
+            weaponController.FireWeaponsLeft();
             if (!aiming)
             {
-                Aim(true);
+                //Aim(true);
             }
         }
         else
         {
             if (aiming)
             {
-                Aim(false);
+                //Aim(false);
             }
         }
 
         if (Input.GetAxis("Right_Trigger") == 1)
         {
             weaponController.FireWeaponsRight();
-            weaponController.FireWeaponsLeft();
         }
 
         if (aiming)
@@ -139,6 +143,11 @@ public class Player : LivingEntity
         if (goldPickup.Length > 0)
         {
             audioSource.PlayOneShot(goldPickup[Random.Range(0, goldPickup.Length)], Random.Range(0.9f, 1.3f));
+        }
+
+        if(GoldChanged != null)
+        {
+            GoldChanged();
         }
 
         gold += _amount;

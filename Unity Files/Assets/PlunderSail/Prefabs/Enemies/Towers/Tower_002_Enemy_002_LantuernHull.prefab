@@ -967,7 +967,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -979,7 +979,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -991,7 +991,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &114182742455166858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1010,6 +1010,10 @@ MonoBehaviour:
   bounty: []
   currentHealth: 0
   awarenessRange: 0
+  damage: 0
+  projectileForce: 0
+  wheel: {fileID: 0}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &114368145559499878
 MonoBehaviour:
   m_ObjectHideFlags: 1

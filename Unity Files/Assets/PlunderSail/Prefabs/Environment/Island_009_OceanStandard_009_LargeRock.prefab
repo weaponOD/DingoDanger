@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4875330449726484}
   - component: {fileID: 33663319720419516}
   - component: {fileID: 23077496096564138}
-  - component: {fileID: 95582858877360658}
+  - component: {fileID: 135064856130866688}
   m_Layer: 0
   m_Name: Island_009_OceanStandard_009_LargeRock
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,21 +109,16 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901504112926002}
-  m_Mesh: {fileID: 4300000, guid: b6395d357fb34144bb512c105c83ff7f, type: 3}
---- !u!95 &95582858877360658
-Animator:
-  serializedVersion: 3
+  m_Mesh: {fileID: 4300002, guid: b6395d357fb34144bb512c105c83ff7f, type: 3}
+--- !u!135 &135064856130866688
+SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901504112926002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b6395d357fb34144bb512c105c83ff7f, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: -1.75, y: 1.3971119, z: -10.4}

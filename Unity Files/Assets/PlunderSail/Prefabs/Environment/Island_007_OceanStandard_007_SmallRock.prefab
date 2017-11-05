@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4184056185532098}
   - component: {fileID: 33442319618267402}
   - component: {fileID: 23240881387455158}
+  - component: {fileID: 135056070563972684}
   m_Layer: 0
   m_Name: Island_007_OceanStandard_007_SmallRock
   m_TagString: Untagged
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310926221984708}
   m_Mesh: {fileID: 4300000, guid: 17044920965f3f549b8ed97de6d6234a, type: 3}
+--- !u!135 &135056070563972684
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310926221984708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11.083782
+  m_Center: {x: 0.4009881, y: -2.7958517, z: -1.1372223}

@@ -16,6 +16,7 @@ public class WeaponAttachment : AttachmentBase
     [SerializeField]
     protected float projectileForce;
 
+    [SerializeField]
     protected int numberOfFirePoints = 0;
 
     [Header("Effects resources")]
@@ -30,6 +31,7 @@ public class WeaponAttachment : AttachmentBase
 
     protected AudioSource audioSource;
 
+    [SerializeField]
     protected Transform[] firePoints;
 
     protected Transform[] effectPoints;
@@ -44,9 +46,11 @@ public class WeaponAttachment : AttachmentBase
 
     protected override void Awake()
     {
+        base.Awake();
+
         audioSource = transform.root.GetComponent<AudioSource>();
 
-        if(transform.root.GetComponent<Player>())
+        if (transform.root.GetComponent<Player>())
         {
             entity = transform.root.GetComponent<Player>();
         }
@@ -57,10 +61,13 @@ public class WeaponAttachment : AttachmentBase
 
         firePoints = new Transform[numberOfFirePoints];
 
-        foreach(Transform child in transform)
+        Debug.Log("length: " + firePoints.Length);
+
+        foreach (Transform child in transform.GetChild(0))
         {
-            if(child.CompareTag("FirePoint"))
+            if (child.CompareTag("FirePoint"))
             {
+                Debug.Log("Found a firePoint and saved it to slot " + pointCount);
                 firePoints[pointCount] = child;
                 pointCount++;
             }
@@ -79,8 +86,11 @@ public class WeaponAttachment : AttachmentBase
 
     public void FireWeapon()
     {
+        Debug.Log("FireWeapon");
+
         foreach (Transform firePoint in firePoints)
         {
+            Debug.Log("starting coroutine");
             StartCoroutine(Fire(firePoint));
         }
     }
@@ -95,17 +105,19 @@ public class WeaponAttachment : AttachmentBase
         shot.Damage = damage;
         shot.FireProjectile(shipVelocity, projectileForce);
 
-        if(shootParticle != null)
+        if (shootParticle != null)
         {
             Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
         }
+
+        Debug.Log("In coroutine");
 
         PlayRandomSound();
     }
 
     protected void PlayRandomSound()
     {
-        if(shootSound.Length > 0)
+        if (shootSound.Length > 0)
         {
             audioSource.pitch = Random.Range(0.9f, 1.1f);
             audioSource.volume = Random.Range(0.9f, 1.1f);

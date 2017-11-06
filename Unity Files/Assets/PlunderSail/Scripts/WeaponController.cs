@@ -13,19 +13,19 @@ public class WeaponController : MonoBehaviour
     private bool canShootRight = true;
     private bool canShootLeft = true;
 
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
 
-    private PlayerController player;
+    private PlayerController player = null;
 
     [SerializeField]
-    private AudioClip[] FireShout;
+    private AudioClip[] FireShout = null;
 
     [Header("Debug Info")]
     [SerializeField]
-    private WeaponAttachment[] leftWeapons;
+    private WeaponAttachment[] leftWeapons = null;
 
     [SerializeField]
-    private WeaponAttachment[] rightWeapons;
+    private WeaponAttachment[] rightWeapons = null;
 
     private int currentShout = 0;
 
@@ -80,6 +80,8 @@ public class WeaponController : MonoBehaviour
         {
             if (rightWeapons.Length > 0)
             {
+
+                // If there are sounds to play, play them
                 if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);
@@ -106,12 +108,11 @@ public class WeaponController : MonoBehaviour
 
     public void FireWeaponsLeft()
     {
-        // 
         if (canShootLeft)
         {
             if (leftWeapons.Length > 0)
             {
-                // Play audio if any
+                // If there are sounds to play, play them
                 if (FireShout.Length > 0)
                 {
                     currentShout = Random.Range(0, FireShout.Length);

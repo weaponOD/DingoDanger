@@ -52,7 +52,7 @@ public class LaunchArcRenderer : MonoBehaviour {
 	private void RenderArc(){
 		
 		//we add 1 because the arc needs an endpoint also
-		arcLineRenderer.SetVertexCount (divisions + 1); 
+		arcLineRenderer.positionCount = divisions + 1; 
 
 		arcLineRenderer.SetPositions (CalcArcArray () );
 	}

@@ -937,12 +937,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 100
-  leadReloadTime: 0
+  leadReloadTime: 0.5
   tridentReloadTime: 0
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  gold: 5000
+  gold: 500
   ramDamage: 12
   KnockBackForce: 500000
   goldPickup:
@@ -961,8 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0.02
-  maxFireTime: 0.15
   FireShout:
   - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
   - {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
@@ -1010,11 +1008,12 @@ MonoBehaviour:
   deacceleration: 3.5
   maxSpeed: 45
   stunDuration: 0.25
-  maxRoll: 12
   bonusSpeed: 16
   bonusDropoff: 8
   minBonusSpeed: 6
-  cannonWeight: 2
+  cannonWeight: 1.25
+  slowMaxSpeedPercent: 0
+  slowAccelerationPercent: 0
   turnSpeedDecay: 1.2
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5
@@ -1025,7 +1024,7 @@ MonoBehaviour:
   moveSpeed: 0
   maxMoveSpeed: 0
   turnSpeed: 0
-  sailsOpen: 1
+  sailState: 0
   velocity: {x: 0, y: 0, z: 0}
   heading: 0
   rudder: 0

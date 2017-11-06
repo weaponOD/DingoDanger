@@ -197,8 +197,10 @@ MonoBehaviour:
   maxFireTime: 0.02
   damage: 40
   projectileForce: 150
+  numberOfFirePoints: 1
   shootSound: []
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   projectilePrefab: {fileID: 1804301577746708, guid: e5617f14bfa55f144b27b00e8fbc8f6a,
     type: 2}
+  firePoints: []

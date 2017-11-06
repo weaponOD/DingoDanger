@@ -17,13 +17,6 @@ public class WeaponController : MonoBehaviour
 
     private PlayerController player;
 
-    [Header("Combat Attributes")]
-    [SerializeField]
-    private float minFireTime;
-
-    [SerializeField]
-    private float maxFireTime;
-
     [SerializeField]
     private AudioClip[] FireShout;
 

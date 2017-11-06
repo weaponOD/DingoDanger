@@ -5,10 +5,10 @@ using UnityEngine;
 public class WeaponAttachment : AttachmentBase
 {
     [SerializeField]
-    protected float minFireTime;
+    protected float minFireTime = 0;
 
     [SerializeField]
-    protected float maxFireTime;
+    protected float maxFireTime = 0;
 
     [Header("Effects resources")]
     [SerializeField]

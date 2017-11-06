@@ -142,6 +142,7 @@ public class UIController : MonoBehaviour
 
     private void GoldChanged()
     {
+        goldText.text = "" + player.Gold;
         goldHUD.SetActive(true);
 
         Invoke("HideGoldHUD", goldDisplayTime);

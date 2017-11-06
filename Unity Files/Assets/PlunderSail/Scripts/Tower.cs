@@ -74,6 +74,18 @@ public class Tower : LivingEntity
         Invoke("Reload", leadReloadTime);
     }
 
+    public override void TakeDamage(float damgage)
+    {
+        Debug.Log("Tower Took  " + damgage + "Damage");
+
+        currentHealth -= damgage;
+
+        if (currentHealth <= 0 && !dead)
+        {
+            Die();
+        }
+    }
+
     protected void Reload()
     {
         canFire = true;

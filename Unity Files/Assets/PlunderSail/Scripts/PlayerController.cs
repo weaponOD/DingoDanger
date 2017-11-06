@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement Attributes")]
+    private enum SailingState { IDLE, SLOW, FAST };
 
+    [Header("Movement Attributes")]
     [SerializeField]
     [Tooltip("The degrees per frame the ship can rotate with no open sails")]
     private float baseTurnSpeed;
@@ -27,10 +28,9 @@ public class PlayerController : MonoBehaviour
 
     private float maxRudder = 6.0f;
 
-    [SerializeField]
-    private float maxRoll;
+    private float maxRoll = 12;
 
-    [Header("sail bonuses")]
+    [Header("Speed Modifiers")]
     [Tooltip("The additional speed per sail when the sails are open")]
     [SerializeField]
     private float bonusSpeed;
@@ -43,9 +43,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float minBonusSpeed;
 
-    [Header("Cannon weight")]
     [SerializeField]
     private float cannonWeight = 0;
+
+    [SerializeField]
+    private float slowMaxSpeedPercent = 0;
+
+    [SerializeField]
+    private float slowAccelerationPercent = 0;
 
     [Header("Turn Speed Attributes")]
 
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour
     private float turnSpeed;
 
     [SerializeField]
-    private bool sailsOpen = true;
+    private SailingState sailState = SailingState.IDLE;
 
     [SerializeField]
     private Vector3 velocity;
@@ -99,8 +104,6 @@ public class PlayerController : MonoBehaviour
     private GameObject rudderControl;
 
     private Rigidbody rb;
-
-    private buoyancy buoyant;
 
     [SerializeField]
     private float heading = 0.0f;
@@ -128,8 +131,6 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        buoyant = GetComponentInChildren<buoyancy>();
-
         rudderControl = GameObject.Find("rudderControl");
 
         // Subscribe to game state
@@ -141,7 +142,7 @@ public class PlayerController : MonoBehaviour
         if (!GameState.BuildMode)
         {
             // steering
-            if(!aiming)
+            if (!aiming)
             {
                 steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
             }
@@ -165,9 +166,16 @@ public class PlayerController : MonoBehaviour
             // Lower or raise Sails
             if (Input.GetButtonDown("A_Button"))
             {
-                sailsOpen = !sailsOpen;
+                if ((int)sailState < 2)
+                {
+                    sailState++;
+                }
+                else
+                {
+                    sailState = SailingState.IDLE;
+                }
 
-                LowerSails(sailsOpen);
+                SetSailsToState(sailState);
             }
 
             if (Time.deltaTime != 0)
@@ -207,27 +215,7 @@ public class PlayerController : MonoBehaviour
                 rudder = -maxRudder;
             }
 
-            if (sailsOpen)
-            {
-                if (moveSpeed < maxMoveSpeed)
-                {
-                    moveSpeed += acceleration * Time.fixedDeltaTime;
-                }
-                else
-                {
-                    moveSpeed = maxMoveSpeed;
-                }
-
-                if (turnSpeed > minTurnSpeed)
-                {
-                    turnSpeed -= turnSpeedDecay * Time.fixedDeltaTime;
-                }
-                else
-                {
-                    turnSpeed = minTurnSpeed;
-                }
-            }
-            else
+            if (sailState == SailingState.IDLE)
             {
                 if (moveSpeed > 0)
                 {
@@ -247,8 +235,48 @@ public class PlayerController : MonoBehaviour
                     turnSpeed = maxTurnSpeed;
                 }
             }
+            else if (sailState == SailingState.SLOW)
+            {
+                if (moveSpeed < (maxMoveSpeed * slowMaxSpeedPercent))
+                {
+                    moveSpeed += (acceleration * slowAccelerationPercent) * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    moveSpeed = maxMoveSpeed;
+                }
 
-            if(!stunned)
+                if (turnSpeed > minTurnSpeed)
+                {
+                    turnSpeed -= turnSpeedDecay * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    turnSpeed = minTurnSpeed;
+                }
+            }
+            else if (sailState == SailingState.FAST)
+            {
+                if (moveSpeed < maxMoveSpeed)
+                {
+                    moveSpeed += acceleration * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    moveSpeed = maxMoveSpeed;
+                }
+
+                if (turnSpeed > minTurnSpeed)
+                {
+                    turnSpeed -= turnSpeedDecay * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    turnSpeed = minTurnSpeed;
+                }
+            }
+
+            if (!stunned)
             {
                 rb.MovePosition(rb.position + transform.forward * moveSpeed * Time.fixedDeltaTime);
             }
@@ -281,9 +309,9 @@ public class PlayerController : MonoBehaviour
 
         if (isBuildMode)
         {
-            sailsOpen = true;
+            sailState = SailingState.SLOW;
 
-            LowerSails(sailsOpen);
+            SetSailsToState(sailState);
         }
     }
 
@@ -292,25 +320,34 @@ public class PlayerController : MonoBehaviour
         heading = transform.root.localEulerAngles.y;
     }
 
-    private void LowerSails(bool _isOpen)
+    private void SetSailsToState(SailingState _state)
     {
-        if (_isOpen)
+        if (_state == SailingState.IDLE)
         {
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
             {
                 audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
 
-            components.LowerSails();
+            components.RaiseSails();
         }
-        else
+        else if (_state == SailingState.SLOW)
         {
             if (slowDown.Length > 0)
             {
                 audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
 
-            components.RaiseSails();
+            components.LowerSails();
+        }
+        else if (_state == SailingState.FAST)
+        {
+            if (slowDown.Length > 0)
+            {
+                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+            }
+
+            components.LowerSails();
         }
     }
 

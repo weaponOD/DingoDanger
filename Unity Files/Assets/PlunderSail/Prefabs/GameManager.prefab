@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4923085419656894}
   - component: {fileID: 114256727963917046}
-  - component: {fileID: 114153618981797618}
   - component: {fileID: 114994603169521724}
   - component: {fileID: 114168663654171056}
   - component: {fileID: 114883611100677676}
@@ -44,24 +43,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114153618981797618
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1568195136468266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4508677944220884, guid: 37020359f72837449b011c87970e4a7c, type: 2}
-  - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
-  - {fileID: 4048326658710050, guid: 27fc5e387c5c5334cafb85aa057f3945, type: 2}
-  maxEnemies: 3
-  spawnRange: 250
-  deSpawnRange: 1000
 --- !u!114 &114168663654171056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479b41e03e2da7743b9e665d5d724be6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldDisplayTime: 2
   Canvas: {fileID: 0}
   buildPanel: {fileID: 0}
   DockPopUp: {fileID: 0}
@@ -120,6 +102,7 @@ MonoBehaviour:
   Cannons:
   - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
   - {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
+  - {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
   Sails:
   - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
   Armours:

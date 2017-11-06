@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4882310010816306}
   m_Layer: 0
   m_Name: FirePoint1
-  m_TagString: Untagged
+  m_TagString: FirePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4897805453051124}
   - component: {fileID: 65591315311440640}
-  - component: {fileID: 114377648550266080}
+  - component: {fileID: 114804075917486750}
   m_Layer: 0
   m_Name: Cannon_002_Attachments_002_T.N.Trident
   m_TagString: Weapon
@@ -181,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1, z: 1.8}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &114377648550266080
+--- !u!114 &114804075917486750
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -189,17 +189,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586404089410776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3514a55aa32b24242ac2cc1e272134ee, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 400
   minFireTime: 0
   maxFireTime: 0.02
-  shootSound: []
-  shootParticle: {fileID: 198939462423171256, guid: 778e91c598e5f2a4e817488f596dca50,
-    type: 2}
-  facingLeft: 0
   damage: 40
   projectileForce: 150
+  shootSound: []
+  shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
+    type: 2}
   projectilePrefab: {fileID: 1804301577746708, guid: e5617f14bfa55f144b27b00e8fbc8f6a,
     type: 2}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4146407559453954}
   m_Layer: 0
   m_Name: 'FirePoint2 '
-  m_TagString: Untagged
+  m_TagString: FirePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4380739364548794}
   m_Layer: 0
   m_Name: FirePoint1
-  m_TagString: Untagged
+  m_TagString: FirePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4897805453051124}
   - component: {fileID: 65591315311440640}
-  - component: {fileID: 114546145938828430}
+  - component: {fileID: 114797892904272308}
   m_Layer: 0
   m_Name: Cannon_001_Attachments_001_LeadThrower
   m_TagString: Weapon
@@ -239,7 +239,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1, z: 1.8}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &114546145938828430
+--- !u!114 &114797892904272308
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -247,12 +247,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586404089410776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 604589984c4d6c74da48ed6222bfb470, type: 3}
+  m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
+  damage: 9
+  projectileForce: 120
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -264,8 +266,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
-  facingLeft: 0
-  damage: 9
-  projectileForce: 120
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}

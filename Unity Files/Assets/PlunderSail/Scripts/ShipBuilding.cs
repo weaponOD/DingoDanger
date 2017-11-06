@@ -574,28 +574,6 @@ public class ShipBuilding : MonoBehaviour
             {
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
             }
-
-            //switch (lastDirection)
-            //{
-            //    case "right":
-            //        MoveRight();
-            //        break;
-            //    case "left":
-            //        MoveLeft();
-            //        break;
-            //    case "forward":
-            //        MoveForward();
-            //        break;
-            //    case "back":
-            //        MoveBack();
-            //        break;
-            //    case "up":
-            //        MoveUp();
-            //        break;
-            //    case "down":
-            //        MoveDown();
-            //        break;
-            //}
         }
     }
 

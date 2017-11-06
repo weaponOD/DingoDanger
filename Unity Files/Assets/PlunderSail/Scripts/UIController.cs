@@ -138,6 +138,8 @@ public class UIController : MonoBehaviour
         horizontalMenu[selectedGenre].SetActive(true);
 
         DpadCanPress = true;
+
+        goldText.text = "" + player.Gold;
     }
 
     private void GoldChanged()

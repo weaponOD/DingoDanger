@@ -1,20 +1,22 @@
 fileFormatVersion: 2
-guid: b6395d357fb34144bb512c105c83ff7f
-timeCreated: 1505732029
+guid: d9b4ab9719921614e8b6fb8b6f1fdc65
+timeCreated: 1509942062
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Island_003_OceanStandard_003_LargeSand1
-    4300002: Island_009_OceanStandard_009_LargeRock
-    4300004: Island_009_OceanStandard_009_LargeRock1
-    9500000: //RootNode
+    100000: Bully_Rudder
+    100002: //RootNode
+    400000: Bully_Rudder
+    400002: //RootNode
+    2300000: Bully_Rudder
+    2300002: //RootNode
+    3300000: Bully_Rudder
+    3300002: //RootNode
+    4300000: Hull_003_Ship_003_Bully
+    4300002: Bully_Rudder
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -45,8 +47,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -63,7 +65,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

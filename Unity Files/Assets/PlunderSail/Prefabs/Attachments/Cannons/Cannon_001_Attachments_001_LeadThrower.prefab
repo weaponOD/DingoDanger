@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161248318989130}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -1.25, y: 0.601, z: -0.637}
+  m_LocalPosition: {x: -1.692, y: 0.601, z: -0.762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4541414726964630}
@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161517679512034}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -1.25, y: 0.601, z: 0.59}
+  m_LocalPosition: {x: -1.692, y: 0.601, z: 0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4064766631866036}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604589984c4d6c74da48ed6222bfb470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 175
+  maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
   shootSound:
@@ -264,7 +264,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
-  damage: 20
-  projectileForce: 40
+  facingLeft: 0
+  damage: 9
+  projectileForce: 120
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}

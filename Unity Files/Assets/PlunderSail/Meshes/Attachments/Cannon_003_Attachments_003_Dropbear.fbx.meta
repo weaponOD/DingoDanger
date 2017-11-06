@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b6395d357fb34144bb512c105c83ff7f
-timeCreated: 1505732029
+guid: 24add4a2383fd6b4fb95f04cd6eafe9b
+timeCreated: 1509937234
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,12 +9,11 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Island_003_OceanStandard_003_LargeSand1
-    4300002: Island_009_OceanStandard_009_LargeRock
-    4300004: Island_009_OceanStandard_009_LargeRock1
-    9500000: //RootNode
+    4300000: Hook_001_OceanStandard_FishHook
+    4300002: Hook_001_OceanStandard_FishHook1
+    4300004: Cannon_003_Attachments_003_Dropbear
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -45,8 +44,8 @@ ModelImporter:
     addColliders: 0
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -63,7 +62,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

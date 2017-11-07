@@ -142,14 +142,7 @@ public class PlayerController : MonoBehaviour
         if (!GameState.BuildMode)
         {
             // steering
-            if (!aiming)
-            {
-                steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
-            }
-            else
-            {
-                steering = 0;
-            }
+            steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
 
             if (steering != 0)
             {
@@ -241,9 +234,13 @@ public class PlayerController : MonoBehaviour
                 {
                     moveSpeed += (acceleration * slowAccelerationPercent) * Time.fixedDeltaTime;
                 }
+                else if(moveSpeed > (maxMoveSpeed * slowMaxSpeedPercent) + 1)
+                {
+                    moveSpeed -= deacceleration * Time.fixedDeltaTime;
+                }
                 else
                 {
-                    moveSpeed = maxMoveSpeed;
+                    moveSpeed = (maxMoveSpeed * slowMaxSpeedPercent);
                 }
 
                 if (turnSpeed > minTurnSpeed)

@@ -30,6 +30,9 @@ public class AIAgent : LivingEntity
     [SerializeField]
     private float KnockBackForce = 5000;
 
+    [SerializeField]
+    private float stunDuration = 1;
+
     [Header("Difficulty and Reward")]
     [SerializeField]
     TIER difficulty;
@@ -60,6 +63,10 @@ public class AIAgent : LivingEntity
 
     protected Quaternion targetRotation;
     protected Vector3 targetDirection;
+
+    protected bool isStunned = false;
+
+    protected Vector3 previousPos = Vector3.zero;
 
     private enum TIER { BASIC, MIDLEVEL, ELITE }
 
@@ -187,11 +194,32 @@ public class AIAgent : LivingEntity
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
+        if (Time.deltaTime != 0)
+        {
+            velocity = (transform.position - previousPos) / Time.deltaTime;
+            previousPos = transform.position;
+        }
     }
 
     protected virtual void FixedUpdate()
     {
-        rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
+        if(!isStunned)
+        {
+            rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    private void RemoveStun()
+    {
+        isStunned = false;
+    }
+
+    public void AddStun()
+    {
+        isStunned = true;
+
+        Invoke("RemoveStun", stunDuration);
     }
 
     private void OnCollisionEnter(Collision collision)

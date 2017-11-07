@@ -383,11 +383,6 @@ public class PlayerController : MonoBehaviour
         Invoke("RemoveStun", stunDuration);
     }
 
-    public Vector3 Speed
-    {
-        get { return velocity; }
-    }
-
     private void OnDestroy()
     {
         // Unsubscribe to game state

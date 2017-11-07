@@ -51,6 +51,7 @@ public class UIController : MonoBehaviour
     private float timeBetweenPresses;
 
     // Functionality variables
+    [SerializeField]
     private int selectedAttachment;
 
     private bool DpadCanPress = false;
@@ -184,9 +185,12 @@ public class UIController : MonoBehaviour
             // Move right along the horizontal menu
             if (Input.GetAxis("Dpad_X") == 1)
             {
+                Debug.Log(string.Format("There are {0} in the current genre", horizontalMenu[selectedGenre].transform.childCount));
+
                 if (selectedAttachment < horizontalMenu[selectedGenre].transform.childCount - 1)
                 {
                     ChangeAttachmentSelection(+1);
+
                     DpadCanPress = false;
                 }
             }
@@ -197,11 +201,12 @@ public class UIController : MonoBehaviour
                 if (selectedAttachment > 0)
                 {
                     ChangeAttachmentSelection(-1);
+
                     DpadCanPress = false;
                 }
             }
 
-            if (!DpadCanPress)
+            if(!DpadCanPress)
             {
                 timeTillCanPress = Time.time + timeBetweenPresses;
             }
@@ -213,7 +218,7 @@ public class UIController : MonoBehaviour
                 DpadCanPress = true;
             }
 
-            if (Input.GetAxis("Dpad_Y") == 0)
+            if (Input.GetAxis("Dpad_Y") == 0 && Input.GetAxis("Dpad_X") == 0)
             {
                 DpadCanPress = true;
             }

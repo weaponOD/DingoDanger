@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4850862601772030}
+  - component: {fileID: 135758130973063382}
   m_Layer: 0
   m_Name: Island_004_OceanStandard_004_SmallGrass
   m_TagString: Untagged
@@ -63,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552280181271666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4741806717826812}
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1430847156931998}
   m_Mesh: {fileID: 4300002, guid: b1aa7de41315cc749a402b68fadd38fb, type: 3}
+--- !u!135 &135758130973063382
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552280181271666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0.10294652, y: 0.12225866, z: -0.85395765}

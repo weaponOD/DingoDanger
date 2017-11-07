@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4008915877635554}
+  - component: {fileID: 135526024445027684}
   m_Layer: 0
   m_Name: Island_002_OceanStandard_002_MediumSand
   m_TagString: Untagged
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270290381433780}
   m_Mesh: {fileID: 4300002, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
+--- !u!135 &135526024445027684
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573109794520150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 21
+  m_Center: {x: -0.8698797, y: -0.74857044, z: -1.8068666}

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     CameraController CC;
     ShipBuilding builder;
 
+    private bool canPressY = true;
+
     private void Awake()
     {
         UI = GetComponent<UIController>();
@@ -36,19 +38,26 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Y_Button"))
         {
-            if (!GameState.BuildMode)
+            if (canPressY)
             {
-                if (pier != null)
+                if (!GameState.BuildMode)
+                {
+                    if (pier != null)
+                    {
+                        UI.FadeScreen();
+                        StartCoroutine(TransitionToBuildMode());
+                        UI.ShowPierPopUp(false);
+                        canPressY = false;
+                        Invoke("CanExitBuildMode", 3);
+                    }
+                }
+                else
                 {
                     UI.FadeScreen();
-                    StartCoroutine(TransitionToBuildMode());
-                    UI.ShowPierPopUp(false);
+                    StartCoroutine(TransitionToPlayMode());
+                    canPressY = false;
+                    Invoke("CanExitBuildMode", 3);
                 }
-            }
-            else
-            {
-                UI.FadeScreen();
-                StartCoroutine(TransitionToPlayMode());
             }
         }
 
@@ -88,9 +97,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void CanExitBuildMode()
+    {
+        canPressY = true;
+    }
+
+
     public void setPier(Transform _dockPos)
     {
         pier = _dockPos;
+
+        canPressY = (pier != null);
 
         CC.MoveBuildCameraToPier(pier);
         UI.ShowPierPopUp((pier != null));

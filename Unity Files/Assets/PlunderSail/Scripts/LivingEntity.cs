@@ -38,7 +38,9 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     protected bool dead;
 
-    public event System.Action OnDeath;
+
+    public delegate void Dead(LivingEntity _entity);
+    public event Dead OnDeath;
 
     protected virtual void Start()
     {
@@ -58,14 +60,24 @@ public class LivingEntity : MonoBehaviour, IDamageable
     }
 
     [ContextMenu("Self Destruct")]
-    protected void Die()
+    protected virtual void Die()
     {
+        Debug.Log("Dead!");
         dead = true;
+
         if (OnDeath != null)
         {
-            OnDeath();
+            OnDeath(this);
         }
 
+        if(gameObject.CompareTag("Enemy"))
+        {
+            Crumble();
+        }
+    }
+
+    protected void Crumble()
+    {
         if (!gameObject.CompareTag("Player"))
         {
             Rigidbody rb = GetComponent<Rigidbody>();

@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 82044392155487164}
   - component: {fileID: 114368782272536002}
   - component: {fileID: 114685972620092296}
+  - component: {fileID: 136435896945262716}
   m_Layer: 0
   m_Name: Tower_001_Enemy_001_CrowsNest
   m_TagString: Untagged
@@ -414,7 +415,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 9021295adc157e2478f49772e27f1da6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,7 +503,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -514,7 +515,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -526,7 +527,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &114368782272536002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -538,8 +539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0
-  maxFireTime: 0
   FireShout: []
   leftWeapons: []
   rightWeapons: []
@@ -716,3 +715,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!136 &136435896945262716
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338434875501470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3
+  m_Height: 22
+  m_Direction: 1
+  m_Center: {x: 0, y: 8.38, z: 0.5000001}

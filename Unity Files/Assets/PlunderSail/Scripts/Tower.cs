@@ -86,6 +86,14 @@ public class Tower : LivingEntity
         }
     }
 
+    [ContextMenu("Self Destruct")]
+    protected override void Die()
+    {
+        base.Die();
+
+        Destroy(gameObject);
+    }
+
     protected void Reload()
     {
         canFire = true;

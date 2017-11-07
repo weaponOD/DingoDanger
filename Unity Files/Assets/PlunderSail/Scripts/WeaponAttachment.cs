@@ -61,13 +61,10 @@ public class WeaponAttachment : AttachmentBase
 
         firePoints = new Transform[numberOfFirePoints];
 
-        Debug.Log("length: " + firePoints.Length);
-
         foreach (Transform child in transform.GetChild(0))
         {
             if (child.CompareTag("FirePoint"))
             {
-                Debug.Log("Found a firePoint and saved it to slot " + pointCount);
                 firePoints[pointCount] = child;
                 pointCount++;
             }
@@ -86,11 +83,8 @@ public class WeaponAttachment : AttachmentBase
 
     public void FireWeapon()
     {
-        Debug.Log("FireWeapon");
-
         foreach (Transform firePoint in firePoints)
         {
-            Debug.Log("starting coroutine");
             StartCoroutine(Fire(firePoint));
         }
     }
@@ -109,8 +103,6 @@ public class WeaponAttachment : AttachmentBase
         {
             Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
         }
-
-        Debug.Log("In coroutine");
 
         PlayRandomSound();
     }

@@ -28,7 +28,8 @@ public class EnemySpawner : MonoBehaviour
 
     private DrawCircle radiusIndicator = null;
 
-    private GameObject[] activeEnemies = null;
+    [SerializeField]
+    private List<AIAgent> activeEnemies = null;
 
     private Transform player = null;
 
@@ -38,6 +39,10 @@ public class EnemySpawner : MonoBehaviour
 
     private bool shouldHaveTowers = false;
 
+    private int towerCount = 0;
+
+    private bool isDefeated = false;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -45,11 +50,21 @@ public class EnemySpawner : MonoBehaviour
         radiusIndicator = GetComponent<DrawCircle>();
 
         shouldHaveTowers = (towers.Length > 0);
+
+        towerCount = towers.Length;
+
+        if (shouldHaveTowers)
+        {
+            foreach (Tower tower in towers)
+            {
+                tower.OnDeath += EnemyDied;
+            }
+        }
     }
 
     private void Start()
     {
-        activeEnemies = new GameObject[enemyLimit];
+        activeEnemies = new List<AIAgent>(enemyLimit);
 
         StartCoroutine(CheckPlayerInRange());
     }
@@ -63,10 +78,11 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Vector3.Distance(player.position, transform.position) <= radius)
         {
-            if (towers.Length == 0 && shouldHaveTowers)
+            if (towerCount == 0 && shouldHaveTowers)
             {
                 dock.isUnlocked = true;
-                Destroy(gameObject);
+                isDefeated = true;
+                CancelArms();
             }
             else if (!attackingPlayer)
             {
@@ -85,22 +101,24 @@ public class EnemySpawner : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        StartCoroutine(CheckPlayerInRange());
+
+        if(!isDefeated)
+        {
+            StartCoroutine(CheckPlayerInRange());
+        }
     }
 
     // Checks if the number of active enemies is less than the limit, if so spawn an enemy.
     private IEnumerator CheckEnemies()
     {
-        activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (activeEnemies.Length < enemyLimit && !GameState.BuildMode)
+        if (activeEnemies.Count < enemyLimit && !GameState.BuildMode)
         {
             SpawnEnemy();
         }
 
         yield return new WaitForSeconds(0.5f);
 
-        if(attackingPlayer)
+        if (attackingPlayer)
         {
             StartCoroutine(CheckEnemies());
         }
@@ -110,7 +128,7 @@ public class EnemySpawner : MonoBehaviour
     {
         cancelAttack = false;
 
-        foreach(Tower tower in towers)
+        foreach (Tower tower in towers)
         {
             tower.enabled = true;
         }
@@ -120,13 +138,24 @@ public class EnemySpawner : MonoBehaviour
 
     private void CancelArms()
     {
-        if (Vector3.Distance(player.position, transform.position) > radius)
+        if (Vector3.Distance(player.position, transform.position) > radius || isDefeated)
         {
             attackingPlayer = false;
 
             foreach (Tower tower in towers)
             {
-                tower.enabled = false;
+                if(tower != null)
+                {
+                    tower.enabled = false;
+                }
+            }
+
+            foreach (AIAgent ship in activeEnemies)
+            {
+                if(ship != null)
+                {
+                    ship.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -137,11 +166,19 @@ public class EnemySpawner : MonoBehaviour
 
         if ((Physics2D.OverlapCircle(spawnPos, 100f, 0, 0, 0)) == null)
         {
-            Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
+            activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
         }
         else
         {
             SpawnEnemy();
+        }
+    }
+
+    private void EnemyDied(LivingEntity _entity)
+    {
+        if (_entity.GetComponent<Tower>())
+        {
+            towerCount--;
         }
     }
 

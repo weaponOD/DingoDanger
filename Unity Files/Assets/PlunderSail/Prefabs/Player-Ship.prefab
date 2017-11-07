@@ -937,8 +937,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 100
-  leadReloadTime: 0.5
-  tridentReloadTime: 0
+  leadReloadTime: 0.2
+  tridentReloadTime: 2
   bountyDelay: 0
   bounty: []
   currentHealth: 0
@@ -1012,8 +1012,8 @@ MonoBehaviour:
   bonusDropoff: 8
   minBonusSpeed: 6
   cannonWeight: 1.25
-  slowMaxSpeedPercent: 0
-  slowAccelerationPercent: 0
+  slowMaxSpeedPercent: 0.3
+  slowAccelerationPercent: 0.7
   turnSpeedDecay: 1.2
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5

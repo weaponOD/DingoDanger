@@ -28,15 +28,11 @@ public class AttachmentSail : AttachmentBase
 
     public void Raise()
     {
-        Debug.Log("Raised");
-
         anim.SetBool("Open", true);
     }
 
     public void Lower()
     {
-        Debug.Log("Lowered");
-
         anim.SetBool("Open", false);
     }
 }

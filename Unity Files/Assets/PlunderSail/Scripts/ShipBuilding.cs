@@ -74,6 +74,7 @@ public class ShipBuilding : MonoBehaviour
     private int xLength;
     private int yLength;
     private int zLength;
+
     private Vector3 centreSpot;
 
     private void Awake()
@@ -161,6 +162,8 @@ public class ShipBuilding : MonoBehaviour
 
             if (Input.GetButtonDown("B_Button"))
             {
+                Debug.Log("" + CalculatePerspectiveAngle());
+
                 DeleteAttachment();
             }
 
@@ -184,76 +187,76 @@ public class ShipBuilding : MonoBehaviour
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveBack();
+                MoveRight(); 
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveLeft();
+                MoveBack(); 
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
-                MoveForward();
+                MoveLeft();
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveRight();
+                MoveForward(); 
             }
         }
         else if (_dir.Equals("left"))
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveForward();
+                MoveLeft(); 
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveRight();
+                MoveForward();
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
-                MoveBack();
+                MoveRight();
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveLeft();
+                MoveBack();
             }
         }
         else if (_dir.Equals("forward"))
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveRight();
+                MoveForward();
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveBack();
+                MoveRight(); 
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
-                MoveLeft();
+                MoveBack();
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveForward();
+                MoveLeft();  
             }
         }
         else if (_dir.Equals("back"))
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveLeft();
+                MoveBack();
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveForward();
+                MoveLeft();
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
-                MoveRight();
+                MoveForward();
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveBack();
+                MoveRight(); 
             }
         }
         else if (_dir.Equals("up"))
@@ -540,7 +543,11 @@ public class ShipBuilding : MonoBehaviour
     // convert raw angle of camera to the nearest cardinonal point
     private float CalculatePerspectiveAngle()
     {
-        float rawAngle = CC.BuildCam.transform.root.localEulerAngles.y;
+        Quaternion relative = Quaternion.Inverse(player.transform.rotation) * CC.BuildCam.transform.root.rotation;
+
+        float rawAngle = relative.eulerAngles.y;
+
+        //float rawAngle = CC.BuildCam.transform.root.localEulerAngles.y;
 
         float convertedAngle = Mathf.Round(rawAngle / 90) * 90;
 
@@ -869,5 +876,49 @@ public class Attachment
     {
         GO = _gameObject;
         mesh = _mesh;
+    }
+}
+
+public static class Utility
+{
+    public static float RelativeAngle(Vector3 fwd, Vector3 targetDir, Vector3 upDir)
+    {
+        var angle = Vector3.Angle(fwd, targetDir);
+        if (Utility.AngleDirection(fwd, targetDir, upDir) == -1)
+            return -angle;
+        else
+            return angle;
+    }
+
+    public static float RelativeAngle(Vector2 fwd, Vector2 targetDir, Vector3 upDir)
+    {
+        var angle = Vector2.Angle(fwd, targetDir);
+        if (Utility.AngleDirection(fwd, targetDir, upDir) == -1)
+            return -angle;
+        else
+            return angle;
+    }
+    public static float AngleDirection(Vector3 fwd, Vector3 targetDir, Vector3 up)
+    {
+        Vector3 perp = Vector3.Cross(fwd, targetDir);
+        float dir = Vector3.Dot(perp, up);
+        if (dir > 0F)
+            return 1F;
+        else if (dir < 0F)
+            return -1F;
+        else
+            return 0F;
+    }
+    public static float AngleDirection(Vector2 fwd, Vector2 targetDir, Vector3 up)
+    {
+        Vector3 perp = Vector3.Cross(new Vector3(fwd.x, 0f, fwd.y),
+                                     new Vector3(targetDir.x, 0f, targetDir.y));
+        float dir = Vector3.Dot(perp, up);
+        if (dir > 0F)
+            return 1F;
+        else if (dir < 0F)
+            return -1F;
+        else
+            return 0F;
     }
 }

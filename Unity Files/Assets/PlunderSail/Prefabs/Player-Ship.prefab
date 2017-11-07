@@ -949,7 +949,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
   - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
   - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
-  arc: {fileID: 1164836918719604, guid: ca0d035d08e7bbd4a847b3c4a84d9b4b, type: 2}
 --- !u!114 &114422352416139054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1009,7 +1008,7 @@ MonoBehaviour:
   maxSpeed: 45
   stunDuration: 0.25
   bonusSpeed: 16
-  bonusDropoff: 8
+  bonusDropoff: 4.5
   minBonusSpeed: 6
   cannonWeight: 1.25
   slowMaxSpeedPercent: 0.3

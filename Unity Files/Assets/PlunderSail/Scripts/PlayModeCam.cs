@@ -10,26 +10,22 @@ public class PlayModeCam : MonoBehaviour
 {
     private enum Mode { LEFTSIDE, BACKSIDE, RIGHTSIDE }
 
-    private Transform cam;                          // the transform of the camera
-    private Transform pivot;                        // the point at which the camera pivots around
+    private Transform cam = null;                         // the transform of the camera
 
-    private Vector3 lastTargetPosition;
-
-    private Transform target;                       // The target object to follow
-    private Rigidbody targetRigidbody;
+    private Transform target = null;                       // The target object to follow
 
     [SerializeField]
     private float spinTurnLimit = 90;               // The threshold beyond which the camera stops following the target's rotation. (used in situations where a car spins out, for example)
 
-    private float lastFlatAngle;                    // The relative angle of the target and the rig from the previous frame.
-    private float currentTurnAmount;                // How much to turn the camera
-    private float turnSpeedVelocityChange;          // The change in the turn speed velocity
+    private float lastFlatAngle = 0;                    // The relative angle of the target and the rig from the previous frame.
+    private float currentTurnAmount = 0;                // How much to turn the camera
+    private float turnSpeedVelocityChange = 0;          // The change in the turn speed velocity
 
     [SerializeField]
-    private float moveSpeed;                        // How fast the rig will move to keep up with target's position
+    private float moveSpeed = 0;                        // How fast the rig will move to keep up with target's position
 
     [SerializeField]
-    private float turnSpeed;                        // How fast the rig will turn to keep up with target's rotation
+    private float turnSpeed = 0;                        // How fast the rig will turn to keep up with target's rotation
 
     private Mode currentMode = Mode.BACKSIDE;
 
@@ -39,15 +35,15 @@ public class PlayModeCam : MonoBehaviour
     private bool canTurn = true;
 
     [SerializeField]
-    private float xOffset;
+    private float xOffset = 0;
 
     [SerializeField]
-    private float yOffset;
+    private float yOffset = 0;
 
     [SerializeField]
-    private float zOffset;
+    private float zOffset = 0;
 
-    private Vector3 targetForward;
+    private Vector3 targetForward = Vector3.zero;
 
     private void Awake()
     {
@@ -55,7 +51,6 @@ public class PlayModeCam : MonoBehaviour
         cam = GetComponentInChildren<Camera>().transform;
 
         cam.localPosition = new Vector3(cam.localPosition.x, cam.localPosition.y, -zOffset);
-        pivot = cam.parent;
     }
 
     private void Start()

@@ -27,8 +27,6 @@ public class AttachmentBase : MonoBehaviour
     {
         currentHealth -= _damage;
 
-        Debug.Log("Took Damage");
-
         if (currentHealth <= 0)
         {
             transform.parent = null;

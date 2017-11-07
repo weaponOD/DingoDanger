@@ -70,11 +70,11 @@ public class IntroMenu : MonoBehaviour
 
         yield return new WaitForSeconds(3.5f);
 
+        waitOnInput = true;
+
         StartCoroutine(Fade(Color.clear, Color.white, 2, PressAnyKey));
 
         yield return new WaitForSeconds(2f);
-
-        waitOnInput = true;
     }
 
     // Fades the fadePlane image from a colour to another over x seconds.

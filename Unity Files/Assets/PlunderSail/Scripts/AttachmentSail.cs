@@ -4,19 +4,6 @@ using UnityEngine;
 
 public class AttachmentSail : AttachmentBase
 {
-    private RaycastHit hitInfo;
-
-    [SerializeField]
-    private Material greenMat;
-
-    [SerializeField]
-    private Material redMat;
-
-    [SerializeField]
-    private bool currentlyGreen = true;
-
-    private Vector3 lastPos;
-
     private Animator anim;
 
     protected override void Awake()

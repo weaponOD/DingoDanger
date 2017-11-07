@@ -28,9 +28,6 @@ public class AIAgent : LivingEntity
     protected float awarenessRange;
 
     [SerializeField]
-    private float KnockBackForce = 5000;
-
-    [SerializeField]
     private float stunDuration = 1;
 
     [Header("Difficulty and Reward")]
@@ -46,12 +43,6 @@ public class AIAgent : LivingEntity
 
     [SerializeField]
     protected float BonusMoveSpeed;
-
-    [SerializeField]
-    private bool chasingTarget;
-
-    [SerializeField]
-    private bool aligningWithTarget;
 
     [SerializeField]
     protected List<IBehaviour> behaviours;
@@ -124,30 +115,22 @@ public class AIAgent : LivingEntity
 
             if (distanceToPlayer > awarenessRange)
             {
-                WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
+                // WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
 
-                behaviours.Add(wander);
+                // behaviours.Add(wander);
             }
 
             // Check if the target is further than attack range, if so Chase target.
             if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
             {
-                chasingTarget = true;
-
                 ChaseBehaviour chase = (ChaseBehaviour)ScriptableObject.CreateInstance("ChaseBehaviour");
 
                 behaviours.Add(chase);
-            }
-            else
-            {
-                chasingTarget = false;
             }
 
             // Check if the target is in attack range, if so align to target.
             if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
             {
-                aligningWithTarget = true;
-
                 AlignmentBehaviour align = (AlignmentBehaviour)ScriptableObject.CreateInstance("AlignmentBehaviour");
 
                 behaviours.Add(align);
@@ -165,11 +148,6 @@ public class AIAgent : LivingEntity
                 {
                     weaponController.FireWeaponsLeft();
                 }
-            }
-            else
-            {
-
-                aligningWithTarget = false;
             }
         }
         else
@@ -204,7 +182,7 @@ public class AIAgent : LivingEntity
 
     protected virtual void FixedUpdate()
     {
-        if(!isStunned)
+        if (!isStunned)
         {
             rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
         }

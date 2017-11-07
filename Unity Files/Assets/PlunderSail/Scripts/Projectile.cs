@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private ParticleSystem hitEffect;
 
+    private bool hasSplashed = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -38,7 +40,7 @@ public class Projectile : MonoBehaviour
     {
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-            if(_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
+            if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
                 rb.AddForce(-transform.forward * 2f, ForceMode.Impulse);
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
@@ -47,15 +49,18 @@ public class Projectile : MonoBehaviour
             {
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
                 Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
-                GameObject.Destroy(gameObject);
+                Destroy(gameObject);
             }
         }
-
-        if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
+        else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
             _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
             Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -69,9 +74,14 @@ public class Projectile : MonoBehaviour
     {
         if (transform.position.y < 0)
         {
-            audioSource.PlayOneShot(splashSound, 5f);
-            Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
-            GameObject.Destroy(gameObject);
+            if (!hasSplashed)
+            {
+                audioSource.PlayOneShot(splashSound, 5f);
+                Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
+                Destroy(gameObject, 3f);
+
+                hasSplashed = true;
+            }
         }
     }
 }

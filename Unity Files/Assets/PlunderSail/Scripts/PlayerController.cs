@@ -97,8 +97,6 @@ public class PlayerController : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private GameManager GM;
-
     private ComponentManager components;
 
     private GameObject rudderControl;
@@ -119,14 +117,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 previousPos;
 
-    private bool aiming = false;
-
     private bool stunned = false;
 
     private void Awake()
     {
-        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
         components = GetComponent<ComponentManager>();
 
         rb = GetComponent<Rigidbody>();
@@ -177,11 +171,6 @@ public class PlayerController : MonoBehaviour
                 previousPos = transform.position;
             }
         }
-    }
-
-    public bool Aiming
-    {
-        set { aiming = value; }
     }
 
     private void FixedUpdate()
@@ -258,6 +247,10 @@ public class PlayerController : MonoBehaviour
                 {
                     moveSpeed += acceleration * Time.fixedDeltaTime;
                 }
+                else if (moveSpeed > maxMoveSpeed + 1)
+                {
+                    moveSpeed -= deacceleration * Time.fixedDeltaTime;
+                }
                 else
                 {
                     moveSpeed = maxMoveSpeed;
@@ -288,8 +281,6 @@ public class PlayerController : MonoBehaviour
 
     private float signedSqrt(float _input)
     {
-        float output = Mathf.Sqrt(Mathf.Abs(_input));
-
         if (_input < 0)
         {
             return -_input;
@@ -350,6 +341,8 @@ public class PlayerController : MonoBehaviour
 
     public void setSpeedBonus(float _numOfSails)
     {
+        Debug.Log("PC is updating speed bonus with " + _numOfSails + " Sails.");
+
         totalBonusSpeed = 0;
 
         for (int x = 0; x < _numOfSails; x++)

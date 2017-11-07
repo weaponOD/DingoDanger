@@ -37,8 +37,6 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject[] horizontalMenu = null;
 
-    private Image verticalMenu = null;
-
     // Functionality variables
     [SerializeField]
     private int selectedGenre;
@@ -77,12 +75,6 @@ public class UIController : MonoBehaviour
             {
                 buildPanel = Canvas.transform.Find("BuildingUI").gameObject;
                 buildPanel.SetActive(false);
-
-                // Look for Vertical Panel in BuildingUI
-                if (Canvas.transform.GetChild(0).Find("VerticalPanel"))
-                {
-                    verticalMenu = Canvas.transform.GetChild(0).Find("VerticalPanel").GetComponent<Image>();
-                }
             }
             else
             {

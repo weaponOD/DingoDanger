@@ -35,8 +35,6 @@ public class ShipBuilding : MonoBehaviour
     GameObject[] Rams;
 
     // System References
-    private UIController UI;
-
     private CameraController CC;
 
     private Transform player;
@@ -62,7 +60,7 @@ public class ShipBuilding : MonoBehaviour
     private float nextTimeToMove;
     private float timeBetweenMoves = 0.1f;
 
-    private string lastDirection = null;
+    //private string lastDirection = null;
 
     [SerializeField]
     private bool skipBuilt = false;
@@ -82,8 +80,6 @@ public class ShipBuilding : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         CC = GetComponent<CameraController>();
-
-        UI = GetComponent<UIController>();
 
         attachments = new Dictionary<string, Attachment>();
 
@@ -292,7 +288,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "right";
+                            //lastDirection = "right";
                             return true;
                         }
                     }
@@ -305,7 +301,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "right";
+                    //lastDirection = "right";
                     return true;
                 }
             }
@@ -337,7 +333,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "left";
+                            //lastDirection = "left";
                             return true;
                         }
                     }
@@ -350,7 +346,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "left";
+                    //lastDirection = "left";
 
                     return true;
                 }
@@ -383,7 +379,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "forward";
+                            //lastDirection = "forward";
                             return true;
                         }
                     }
@@ -396,7 +392,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "forward";
+                    //lastDirection = "forward";
                     return true;
                 }
             }
@@ -428,7 +424,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "back";
+                            //lastDirection = "back";
                             return true;
                         }
                     }
@@ -441,7 +437,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "back";
+                    //lastDirection = "back";
                     return true;
                 }
             }
@@ -473,7 +469,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "up";
+                            //lastDirection = "up";
                             return true;
                         }
                     }
@@ -486,7 +482,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "up";
+                    //lastDirection = "up";
                     return true;
                 }
             }
@@ -518,7 +514,7 @@ public class ShipBuilding : MonoBehaviour
                             preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                             dirty = true;
-                            lastDirection = "down";
+                            //lastDirection = "down";
                             return true;
                         }
                     }
@@ -531,7 +527,7 @@ public class ShipBuilding : MonoBehaviour
                     preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
 
                     dirty = true;
-                    lastDirection = "down";
+                    //lastDirection = "down";
                     return true;
                 }
             }
@@ -876,49 +872,5 @@ public class Attachment
     {
         GO = _gameObject;
         mesh = _mesh;
-    }
-}
-
-public static class Utility
-{
-    public static float RelativeAngle(Vector3 fwd, Vector3 targetDir, Vector3 upDir)
-    {
-        var angle = Vector3.Angle(fwd, targetDir);
-        if (Utility.AngleDirection(fwd, targetDir, upDir) == -1)
-            return -angle;
-        else
-            return angle;
-    }
-
-    public static float RelativeAngle(Vector2 fwd, Vector2 targetDir, Vector3 upDir)
-    {
-        var angle = Vector2.Angle(fwd, targetDir);
-        if (Utility.AngleDirection(fwd, targetDir, upDir) == -1)
-            return -angle;
-        else
-            return angle;
-    }
-    public static float AngleDirection(Vector3 fwd, Vector3 targetDir, Vector3 up)
-    {
-        Vector3 perp = Vector3.Cross(fwd, targetDir);
-        float dir = Vector3.Dot(perp, up);
-        if (dir > 0F)
-            return 1F;
-        else if (dir < 0F)
-            return -1F;
-        else
-            return 0F;
-    }
-    public static float AngleDirection(Vector2 fwd, Vector2 targetDir, Vector3 up)
-    {
-        Vector3 perp = Vector3.Cross(new Vector3(fwd.x, 0f, fwd.y),
-                                     new Vector3(targetDir.x, 0f, targetDir.y));
-        float dir = Vector3.Dot(perp, up);
-        if (dir > 0F)
-            return 1F;
-        else if (dir < 0F)
-            return -1F;
-        else
-            return 0F;
     }
 }

@@ -12,13 +12,13 @@ public class CameraController : MonoBehaviour
 
     private BuildModeCam buildCam;
 
-    private PlayModeCam playCam;
+    //private PlayModeCam playCam;
 
     private Transform playerCentre;
 
     private void Awake()
     {
-        playCam = playCamGO.GetComponentInChildren<PlayModeCam>();
+        //playCam = playCamGO.GetComponentInChildren<PlayModeCam>();
         buildCam = buildCamGO.GetComponentInChildren<BuildModeCam>();
     }
 

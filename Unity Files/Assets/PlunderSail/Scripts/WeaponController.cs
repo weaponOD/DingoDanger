@@ -15,8 +15,6 @@ public class WeaponController : MonoBehaviour
 
     private AudioSource audioSource = null;
 
-    private PlayerController player = null;
-
     [SerializeField]
     private AudioClip[] FireShout = null;
 
@@ -32,8 +30,6 @@ public class WeaponController : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-
-        player = GetComponent<PlayerController>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;

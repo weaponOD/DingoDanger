@@ -12,13 +12,13 @@ public class CameraController : MonoBehaviour
 
     private BuildModeCam buildCam;
 
-    //private PlayModeCam playCam;
+    private PlayModeCameraTwo playCam;
 
     private Transform playerCentre;
 
     private void Awake()
     {
-        //playCam = playCamGO.GetComponentInChildren<PlayModeCam>();
+        playCam = playCamGO.GetComponentInChildren<PlayModeCameraTwo>();
         buildCam = buildCamGO.GetComponentInChildren<BuildModeCam>();
     }
 
@@ -42,10 +42,20 @@ public class CameraController : MonoBehaviour
 
     public void MoveBuildCameraToPier(Transform _pier)
     {
-        if(_pier)
+        if (_pier)
         {
             buildCamGO.transform.position = _pier.position;
         }
+    }
+
+    public void EnableFastMode()
+    {
+        playCam.FastMode(true);
+    }
+
+    public void DisableFastMode()
+    {
+        playCam.FastMode(false);
     }
 
     private void MovePlayCameraToPlayer()

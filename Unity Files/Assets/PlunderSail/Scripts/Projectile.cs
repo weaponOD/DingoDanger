@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
         {
             if (!hasSplashed)
             {
-                audioSource.PlayOneShot(splashSound, 5f);
+                audioSource.PlayOneShot(splashSound, 1f);
                 Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
                 Destroy(gameObject, 3f);
 

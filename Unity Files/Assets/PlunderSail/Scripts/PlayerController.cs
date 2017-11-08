@@ -103,6 +103,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private CameraController CC;
+
     [SerializeField]
     private float heading = 0.0f;
     [SerializeField]
@@ -122,6 +124,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         components = GetComponent<ComponentManager>();
+
+        CC = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -223,7 +227,7 @@ public class PlayerController : MonoBehaviour
                 {
                     moveSpeed += (acceleration * slowAccelerationPercent) * Time.fixedDeltaTime;
                 }
-                else if(moveSpeed > (maxMoveSpeed * slowMaxSpeedPercent) + 1)
+                else if (moveSpeed > (maxMoveSpeed * slowMaxSpeedPercent) + 1)
                 {
                     moveSpeed -= deacceleration * Time.fixedDeltaTime;
                 }
@@ -318,6 +322,8 @@ public class PlayerController : MonoBehaviour
             }
 
             components.RaiseSails();
+
+            CC.DisableFastMode();
         }
         else if (_state == SailingState.SLOW)
         {
@@ -336,6 +342,8 @@ public class PlayerController : MonoBehaviour
             }
 
             components.LowerSails();
+
+            CC.EnableFastMode();
         }
     }
 

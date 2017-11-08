@@ -10,10 +10,15 @@ public class AIAgent : LivingEntity
 {
     // Editor Variables
     [Header("AI Attributes")]
+
     [SerializeField]
     [Range(0, 50)]
     [Tooltip("The movement speed the ship will move with no sails.")]
     protected float baseMoveSpeed;
+
+    protected float currentSpeed;
+
+    protected float speedPerSail;
 
     [SerializeField]
     [Range(0, 1)]
@@ -77,18 +82,21 @@ public class AIAgent : LivingEntity
     {
         base.Start();
 
+        speedPerSail = baseMoveSpeed / components.getSpeedBonus();
+
+        UpdateAttachments();
+    }
+
+    public void UpdateAttachments()
+    {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
-        BonusMoveSpeed = components.getSpeedBonus();
+        setSpeedBonus(components.getSpeedBonus());
+    }
 
-        currentMoveSpeed = baseMoveSpeed + BonusMoveSpeed;
-
-        AttachmentPoint[] allPoints = GetComponentsInChildren<AttachmentPoint>();
-
-        foreach (AttachmentPoint point in allPoints)
-        {
-            Destroy(point.gameObject);
-        }
+    public void setSpeedBonus(float _numOfSails)
+    {
+        currentSpeed = (_numOfSails * speedPerSail);
     }
 
     protected virtual void Update()

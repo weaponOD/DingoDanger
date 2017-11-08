@@ -807,6 +807,7 @@ public class ShipBuilding : MonoBehaviour
         if (preview)
         {
             preview.gameObject.SetActive(isBuildMode);
+            preview.transform.rotation = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.rotation;
         }
 
         if (!isBuildMode)

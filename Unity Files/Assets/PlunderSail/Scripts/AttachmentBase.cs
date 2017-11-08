@@ -16,13 +16,18 @@ public class AttachmentBase : MonoBehaviour
 
     protected Player player;
 
+    protected AIAgent AI;
+
     protected virtual void Awake()
     {
         currentHealth = maxHealth;
 
         player = transform.root.GetComponent<Player>();
+
+        AI = transform.root.GetComponent<AIAgent>();
     }
 
+    [ContextMenu("Self Destruct")]
     public virtual void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
@@ -34,6 +39,11 @@ public class AttachmentBase : MonoBehaviour
             if (player != null)
             {
                 player.UpdateAttachments();
+            }
+
+            if(AI != null)
+            {
+                AI.UpdateAttachments();
             }
 
             if (!GetComponent<Rigidbody>())

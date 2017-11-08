@@ -23,6 +23,17 @@ public class PlayModeCameraTwo : MonoBehaviour
     private float orbitDampening = 10f;
 
     [SerializeField]
+    private float FovWhenFast = 0;
+
+    [SerializeField]
+    private float zoomOutRate = 0;
+
+    [SerializeField]
+    private float zoomInRate = 0;
+
+    private float defaultFoV = 0;
+
+    [SerializeField]
     private bool invertedY = false;
 
     private Transform target;
@@ -31,6 +42,8 @@ public class PlayModeCameraTwo : MonoBehaviour
     private Vector3 offset;
 
     private Transform pivot;
+
+    private Camera myCamera;
 
     private Vector3 localRotation;
 
@@ -41,10 +54,14 @@ public class PlayModeCameraTwo : MonoBehaviour
         pivot = transform.parent;
 
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
+
+        myCamera = GetComponent<Camera>();
+
+        defaultFoV = myCamera.fieldOfView;
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
     }
@@ -75,8 +92,38 @@ public class PlayModeCameraTwo : MonoBehaviour
         }
     }
 
+    public void FastMode(bool _isFast)
+    {
+        if(_isFast)
+        {
+            StartCoroutine("ZoomOut");
+        }
+        else
+        {
+            StartCoroutine("ZoomIn");
+        }
+    }
+
+    private IEnumerator ZoomOut()
+    {
+        while(myCamera.fieldOfView < FovWhenFast)
+        {
+            myCamera.fieldOfView += zoomOutRate;
+            yield return null;
+        }
+    }
+
+    private IEnumerator ZoomIn()
+    {
+        while (myCamera.fieldOfView > defaultFoV)
+        {
+            myCamera.fieldOfView -= zoomInRate;
+            yield return null;
+        }
+    }
+
     private void LateUpdate()
-    { 
+    {
         pivot.position = target.position + target.forward * offset.z + target.right * offset.x + target.up * offset.y;
 
 

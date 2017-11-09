@@ -35,6 +35,8 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private Transform target;
 
+    private bool aiming = false;
+
     [SerializeField]
     private Vector3 offset;
 
@@ -42,6 +44,7 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private Camera myCamera;
 
+    [SerializeField]
     private Vector3 localRotation;
 
     private void Awake()
@@ -68,13 +71,35 @@ public class PlayModeCameraTwo : MonoBehaviour
         // Rotate the camera based on right thumb stick input
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {
-            localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+            if(!aiming)
+            {
+                localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
 
-            localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+                localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+            }
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
             localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
         }
+    }
+
+    public void AimRight()
+    {
+        aiming = true;
+        localRotation.x = 0;
+        localRotation.y = 15;
+    }
+
+    public void AimLeft()
+    {
+        aiming = true;
+        localRotation.x = -180;
+        localRotation.y = 15;
+    }
+
+    public void CancelAim()
+    {
+        aiming = false;
     }
 
     public void FastMode(bool _isFast)

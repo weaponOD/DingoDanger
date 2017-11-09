@@ -49,7 +49,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damgage)
     {
-        Debug.Log("Took " + damgage + "Damage");
+        Debug.Log(gameObject.name + " took " + damgage + " damage");
 
         currentHealth -= damgage;
 
@@ -82,7 +82,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             Rigidbody rb = GetComponent<Rigidbody>();
 
-            GetComponentInChildren<buoyancy>().enabled = false;
             rb.constraints = RigidbodyConstraints.None;
             rb.mass = 2f;
             rb.useGravity = true;

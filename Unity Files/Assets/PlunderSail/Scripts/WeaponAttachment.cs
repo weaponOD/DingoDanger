@@ -19,6 +19,9 @@ public class WeaponAttachment : AttachmentBase
     [SerializeField]
     protected int numberOfFirePoints = 0;
 
+    [SerializeField]
+    protected bool canAim = false;
+
     [Header("Effects resources")]
     [SerializeField]
     protected AudioClip[] shootSound;
@@ -44,6 +47,10 @@ public class WeaponAttachment : AttachmentBase
 
     protected int pointCount = 0;
 
+    protected bool isAiming = false;
+
+    protected Vector3 target;
+
     protected override void Awake()
     {
         base.Awake();
@@ -68,6 +75,37 @@ public class WeaponAttachment : AttachmentBase
                 firePoints[pointCount] = child;
                 pointCount++;
             }
+        }
+    }
+
+    public void Aim(bool _isAiming)
+    {
+        if (!canAim)
+            return;
+
+        isAiming = _isAiming;
+
+        if (isAiming)
+        {
+            StartCoroutine(Aim());
+        }
+    }
+
+    public Vector3 Target
+    {
+        set { target = value; Debug.Log("target has been set"); }
+    }
+
+
+    protected IEnumerator Aim()
+    {
+        Debug.Log("Aiming now!");
+
+        while(isAiming)
+        {
+            transform.LookAt(target, transform.up);
+
+            yield return null;
         }
     }
 

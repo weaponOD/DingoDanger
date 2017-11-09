@@ -48,6 +48,21 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void AimRight()
+    {
+        playCam.AimRight();
+    }
+
+    public void AimLeft()
+    {
+        playCam.AimLeft();
+    }
+
+    public void CancelAim()
+    {
+        playCam.CancelAim();
+    }
+
     public void EnableFastMode()
     {
         playCam.FastMode(true);

@@ -318,7 +318,7 @@ public class PlayerController : MonoBehaviour
         {
             if (fullSpeed.Length > 0 && !GameState.BuildMode)
             {
-                audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+                //audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
 
             components.RaiseSails();
@@ -329,7 +329,7 @@ public class PlayerController : MonoBehaviour
         {
             if (slowDown.Length > 0)
             {
-                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+                //audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
 
             components.LowerSails();
@@ -338,7 +338,7 @@ public class PlayerController : MonoBehaviour
         {
             if (slowDown.Length > 0)
             {
-                audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+                //audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
             }
 
             components.LowerSails();

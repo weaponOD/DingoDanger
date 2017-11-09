@@ -135,7 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeIncrement: 0.01
   goldAmount: 10
 --- !u!114 &114670646091669438
 MonoBehaviour:
@@ -148,4 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OriginalwaveHeight: 0.35
+  OriginalwaveHeight: 1
+  speed: 0.166

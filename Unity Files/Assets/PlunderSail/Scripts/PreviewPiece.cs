@@ -12,7 +12,9 @@ public class PreviewPiece : MonoBehaviour
 
     private Material currentMat;
 
-    private Vector3 centre;
+    private Vector3 centreGridPos;
+
+    private Vector3 gridPos;
 
     private MeshFilter meshFilter;
     private Material[] cachedMaterials;
@@ -75,9 +77,13 @@ public class PreviewPiece : MonoBehaviour
         {
             transform.rotation = player.rotation;
 
-            if (transform.position.z > centre.z)
+            if (gridPos.x > centreGridPos.x)
             {
                 transform.Rotate(Vector3.up, 180f, Space.Self);
+            }
+            else if(gridPos.x < centreGridPos.x)
+            {
+                transform.Rotate(Vector3.up, 0, Space.Self);
             }
         }
         else if (attachmentName.Contains("Sail"))
@@ -89,18 +95,25 @@ public class PreviewPiece : MonoBehaviour
 
     public Vector3 ShipCentre
     {
-        set { centre = value; }
+        set { centreGridPos = value; }
     }
 
+    public Vector3 GridPosition
+    {
+        get { return gridPos; }
+        set { gridPos = value; }
+    }
 
     public string AttachmentName
     {
         get { return attachmentName; }
     }
 
-    public void MoveToSpot(Vector3 _spot)
+    public void MoveToSpot(Vector3 _spot, Vector3 _gridPos)
     {
         transform.position = _spot;
+
+        gridPos = _gridPos;
 
         ApplyRules();
     }

@@ -33,9 +33,6 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private float defaultFoV = 0;
 
-    [SerializeField]
-    private bool invertedY = false;
-
     private Transform target;
 
     [SerializeField]
@@ -71,24 +68,12 @@ public class PlayModeCameraTwo : MonoBehaviour
         // Rotate the camera based on right thumb stick input
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {
-            if (invertedY)
-            {
-                localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
-            }
-            else
-            {
-                localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
-            }
+            localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
 
             localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
             localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
-        }
-
-        if (Input.GetButtonDown("Right_Stick_Click"))
-        {
-            invertedY = !invertedY;
         }
     }
 

@@ -41,9 +41,6 @@ public class BuildModeCam : MonoBehaviour
     private float maxZoomDistance = 25f;
 
     [SerializeField]
-    private bool invertedY = false;
-
-    [SerializeField]
     private bool invertedX = false;
 
     // Camera Rotation Variables
@@ -71,24 +68,10 @@ public class BuildModeCam : MonoBehaviour
         // Rotate the camera based on right thumb stick input
         if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
         {
-            if(invertedY)
-            {
-                localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
-            }
-            else
-            {
-                localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
-            }
+            localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
 
-            if(invertedX)
-            {
-                localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
-            }
-            else
-            {
-                localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
-            }
-            
+            localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+
             // Clamp the Y rotation to horizon and not flipping it over at the top
             localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
         }
@@ -119,11 +102,6 @@ public class BuildModeCam : MonoBehaviour
 
             // Zoom no closer than 1.5 units and no futher than 100 units away
             cameraDistance = Mathf.Clamp(cameraDistance, minZoomDistance, maxZoomDistance);
-        }
-
-        if(Input.GetButtonDown("Right_Stick_Click"))
-        {
-            invertedY = !invertedY;
         }
     }
 

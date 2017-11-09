@@ -103,7 +103,7 @@ public class ShipBuilding : MonoBehaviour
 
         preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
         currentPiece = preview.AttachmentName;
-        preview.ShipCentre = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position;
+        preview.ShipCentre = new Vector3((int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z);
     }
 
     private void Update()
@@ -285,7 +285,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosX += x;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "right";
@@ -298,7 +298,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosX++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "right";
@@ -330,7 +330,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosX -= x;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "left";
@@ -343,7 +343,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosX--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "left";
@@ -376,7 +376,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosZ += z;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "forward";
@@ -389,7 +389,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosZ++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "forward";
@@ -421,7 +421,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosZ -= z;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "back";
@@ -434,7 +434,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosZ--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "back";
@@ -466,7 +466,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosY += y;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "up";
@@ -479,7 +479,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosY++;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "up";
@@ -511,7 +511,7 @@ public class ShipBuilding : MonoBehaviour
                             canMove = false;
                             nextTimeToMove = Time.time + timeBetweenMoves;
                             previewGridPosY -= y;
-                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                            preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                             dirty = true;
                             //lastDirection = "down";
@@ -524,7 +524,7 @@ public class ShipBuilding : MonoBehaviour
                     canMove = false;
                     nextTimeToMove = Time.time + timeBetweenMoves;
                     previewGridPosY--;
-                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position);
+                    preview.MoveToSpot(grid[previewGridPosX, previewGridPosY, previewGridPosZ].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
                     dirty = true;
                     //lastDirection = "down";
@@ -786,12 +786,12 @@ public class ShipBuilding : MonoBehaviour
 
         preview.gameObject.SetActive(true);
         MovePreviewToCentre();
-        preview.ShipCentre = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position;
+        preview.ShipCentre = new Vector3((int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z);
     }
 
     private void MovePreviewToCentre()
     {
-        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position);
+        preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
 
         previewGridPosX = (int)centreSpot.x;
         previewGridPosY = (int)centreSpot.y;

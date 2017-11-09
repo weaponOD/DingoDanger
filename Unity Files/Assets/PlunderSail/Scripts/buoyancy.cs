@@ -8,24 +8,40 @@ using UnityEngine;
 /// </summary>
 public class buoyancy : MonoBehaviour
 {
-
     [SerializeField]
     [Range(0, 1)]
     [Tooltip("Height of the sin wave that makes the object bob up and down.")]
     private float OriginalwaveHeight = 0.35f;
 
-    private Vector3 OriginalPos;
+    [SerializeField]
+    [Range(0, 1)]
+    private float speed = 0.35f;
+
+    private Vector3 targetPos;
 
     private float waveHeight = 0.35f;
 
-    private void Awake()
+    private void Start()
     {
-        OriginalPos = transform.position;
+        transform.rotation = Random.rotation;
+        waveHeight = OriginalwaveHeight;
     }
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, OriginalPos.y + Mathf.Sin(Time.time) * waveHeight - 0.7f, transform.position.z);
+        targetPos = new Vector3(transform.position.x, Mathf.Cos(Time.time) * waveHeight, transform.position.z);
+        Vector3 vecBetween = targetPos - transform.position;
+
+        transform.position += vecBetween.normalized * Time.deltaTime * speed;
+
+        //if (vecBetween.magnitude > 0.2f)
+        //{
+            
+        //}
+        //else
+        //{
+        //    transform.position = new Vector3(transform.position.x, -1 + Mathf.Sin(Time.time) * waveHeight - 0.7f, transform.position.z);
+        //}
     }
 
     public float WaveHeight

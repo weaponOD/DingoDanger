@@ -2208,8 +2208,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7193985, y: 4.1331596, z: 11.934036}
-  m_Center: {x: 0.033348083, y: 0.5506935, z: -0.42481995}
+  m_Size: {x: 6, y: 6, z: 20}
+  m_Center: {x: 0.033348083, y: 1.43, z: -0.42481995}
 --- !u!65 &65202398379639580
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2469,7 +2469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 450
+  starterHealth: 150
   leadReloadTime: 0
   tridentReloadTime: 0
   bountyDelay: 0.1
@@ -2511,9 +2511,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 350
-  minFireTime: 0.1
-  maxFireTime: 0.45
-  damage: 18
+  minFireTime: 0.8
+  maxFireTime: 1.2
+  damage: 30
   projectileForce: 140
   numberOfFirePoints: 2
   shootSound:
@@ -2529,7 +2529,9 @@ MonoBehaviour:
     type: 2}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
-  firePoints: []
+  firePoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114228381575798686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2553,7 +2555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 200
 --- !u!114 &114354842054865262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2566,9 +2568,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 350
-  minFireTime: 0.1
-  maxFireTime: 0.45
-  damage: 18
+  minFireTime: 0.8
+  maxFireTime: 1.2
+  damage: 30
   projectileForce: 140
   numberOfFirePoints: 2
   shootSound:
@@ -2584,7 +2586,9 @@ MonoBehaviour:
     type: 2}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
-  firePoints: []
+  firePoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114489932021680938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,9 +2613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 350
-  minFireTime: 0.1
-  maxFireTime: 0.45
-  damage: 18
+  minFireTime: 0.8
+  maxFireTime: 1.2
+  damage: 30
   projectileForce: 140
   numberOfFirePoints: 2
   shootSound:
@@ -2674,7 +2678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 200
 --- !u!114 &114867331986990954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2718,9 +2722,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 350
-  minFireTime: 0.1
-  maxFireTime: 0.45
-  damage: 18
+  minFireTime: 0.8
+  maxFireTime: 1.2
+  damage: 30
   projectileForce: 140
   numberOfFirePoints: 2
   shootSound:
@@ -2736,7 +2740,9 @@ MonoBehaviour:
     type: 2}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
-  firePoints: []
+  firePoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114922876875060476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2760,7 +2766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 200
 --- !u!114 &114990912918010102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2772,7 +2778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 200
 --- !u!120 &120897583584099464
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1461116417234096}
+  m_IsPrefabParent: 1
+--- !u!1 &1461116417234096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4036169202064468}
+  - component: {fileID: 114980615814824566}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4036169202064468
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461116417234096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114980615814824566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1461116417234096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ece47221d6f9b448c84ae560f0b746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BattleTheme
+    audioClip: {fileID: 8300000, guid: bb422c26e7fa5c047b0f04a61be2ec02, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 1
+    audioSource: {fileID: 0}
+  - name: Bell
+    audioClip: {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: DropBearRelease
+    audioClip: {fileID: 8300000, guid: 510b3233d5eef174da43d2ee32c9c705, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: Float
+    audioClip: {fileID: 8300000, guid: de91d06a2333dac458939a10b7e81766, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: Sink
+    audioClip: {fileID: 8300000, guid: f18076bbd419e284a9e04c759789457d, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: ImpactWater
+    audioClip: {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: ImpactWood
+    audioClip: {fileID: 8300000, guid: 70a344a4de0c3664686597fd091502bc, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: SailRaise
+    audioClip: {fileID: 8300000, guid: 1bf4007b4ede25140a4c99cf92b0f21d, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: Wave
+    audioClip: {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}

@@ -2113,8 +2113,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.7193985, y: 4.1331596, z: 11.934036}
-  m_Center: {x: 0.033348083, y: 0.5506935, z: -0.42481995}
+  m_Size: {x: 3.7193985, y: 4.1331596, z: 17}
+  m_Center: {x: 0.033348083, y: 1.3, z: 0.51}
 --- !u!65 &65115396972782800
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2362,7 +2362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 250
+  starterHealth: 120
   leadReloadTime: 0.1
   tridentReloadTime: 0.1
   bountyDelay: 0.1
@@ -2370,9 +2370,9 @@ MonoBehaviour:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   currentHealth: 0
-  baseMoveSpeed: 14.5
+  baseMoveSpeed: 16
   rotationSpeed: 1
-  attackRange: 100
+  attackRange: 120
   awarenessRange: 250
   stunDuration: 0.5
   difficulty: 1

@@ -1071,7 +1071,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4499254201879922}
-  - component: {fileID: 114000627916995810}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -4812,18 +4811,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114000627916995810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730107967378968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OriginalwaveHeight: 0.35
 --- !u!114 &114002092005452398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4860,9 +4847,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114109745307983430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5071,9 +5055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114443480557105096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5109,8 +5090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFireTime: 0.14
-  maxFireTime: 0.8
   FireShout: []
   leftWeapons: []
   rightWeapons: []
@@ -5288,9 +5267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114760410323124178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5392,13 +5368,11 @@ MonoBehaviour:
   rotationSpeed: 0.7
   attackRange: 40
   awarenessRange: 100
-  KnockBackForce: 5000
+  stunDuration: 1
   difficulty: 0
   goldReward: 200
   currentMoveSpeed: 0
-  BonusMoveSpeed: 0
-  chasingTarget: 0
-  aligningWithTarget: 0
+  speedPerSail: 0
   behaviours: []
 --- !u!114 &114914241803900686
 MonoBehaviour:

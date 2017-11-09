@@ -426,7 +426,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4097790947526336}
-  - component: {fileID: 114521093892797524}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -2482,14 +2481,11 @@ MonoBehaviour:
   rotationSpeed: 0.3
   attackRange: 100
   awarenessRange: 130
-  KnockBackForce: 100000
   stunDuration: 1
   difficulty: 0
   goldReward: 100
   currentMoveSpeed: 0
-  BonusMoveSpeed: 0
-  chasingTarget: 0
-  aligningWithTarget: 0
+  speedPerSail: 0
   behaviours: []
 --- !u!114 &114020023289315836
 MonoBehaviour:
@@ -2558,9 +2554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114354842054865262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2635,18 +2628,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
---- !u!114 &114521093892797524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1557263352589880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OriginalwaveHeight: 0.35
 --- !u!114 &114534696894470582
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2694,9 +2675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114867331986990954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2783,9 +2761,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!114 &114990912918010102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2798,9 +2773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
-  greenMat: {fileID: 2100000, guid: 81540a039b28b18499fd821dd5a6e7b8, type: 2}
-  redMat: {fileID: 2100000, guid: 13eac6a89b24f7245a8370654fc1b686, type: 2}
-  currentlyGreen: 1
 --- !u!120 &120897583584099464
 LineRenderer:
   m_ObjectHideFlags: 1

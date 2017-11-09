@@ -23,7 +23,6 @@ public class buoyancy : MonoBehaviour
 
     private void Start()
     {
-        transform.rotation = Random.rotation;
         waveHeight = OriginalwaveHeight;
     }
 

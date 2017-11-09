@@ -16,10 +16,6 @@ public class AIAgent : LivingEntity
     [Tooltip("The movement speed the ship will move with no sails.")]
     protected float baseMoveSpeed;
 
-    protected float currentSpeed;
-
-    protected float speedPerSail;
-
     [SerializeField]
     [Range(0, 1)]
     protected float rotationSpeed;
@@ -47,7 +43,7 @@ public class AIAgent : LivingEntity
     protected float currentMoveSpeed;
 
     [SerializeField]
-    protected float BonusMoveSpeed;
+    protected float speedPerSail;
 
     [SerializeField]
     protected List<IBehaviour> behaviours;
@@ -96,7 +92,7 @@ public class AIAgent : LivingEntity
 
     public void setSpeedBonus(float _numOfSails)
     {
-        currentSpeed = (_numOfSails * speedPerSail);
+        currentMoveSpeed = (_numOfSails * speedPerSail);
     }
 
     protected virtual void Update()

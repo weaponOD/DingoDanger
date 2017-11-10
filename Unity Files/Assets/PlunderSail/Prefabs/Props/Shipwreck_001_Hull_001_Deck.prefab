@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4093100968969148}
+  - component: {fileID: 136567516313719658}
   m_Layer: 0
   m_Name: Shipwreck_001_Hull_001_Deck
   m_TagString: Untagged
@@ -49,14 +50,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159924388073754}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.103515774, y: -0.43075603, z: -0.41095746, w: 0.7967733}
+  m_LocalPosition: {x: 141.9, y: 1.1881094, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4422358126226984}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -31.265001, y: -44.710003, z: -41.438004}
 --- !u!4 &4422358126226984
 Transform:
   m_ObjectHideFlags: 1
@@ -109,3 +110,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337145780904520}
   m_Mesh: {fileID: 4300000, guid: 294e45e38bde7104298c6ede75da9813, type: 3}
+--- !u!136 &136567516313719658
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159924388073754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 10.27
+  m_Direction: 2
+  m_Center: {x: -0.08854783, y: 0.78716165, z: 0.046783168}

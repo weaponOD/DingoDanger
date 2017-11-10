@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 600
+  starterHealth: 80
   leadReloadTime: 0
   tridentReloadTime: 0
   bountyDelay: 0.1
@@ -445,13 +445,13 @@ MonoBehaviour:
   - {fileID: 100000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
   - {fileID: 100000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
   currentHealth: 0
-  baseMoveSpeed: 14
+  baseMoveSpeed: 12
   rotationSpeed: 0.8
   attackRange: 0
   awarenessRange: 0
   stunDuration: 1
   difficulty: 0
-  goldReward: 800
+  goldReward: 120
   currentMoveSpeed: 0
   speedPerSail: 0
   behaviours: []

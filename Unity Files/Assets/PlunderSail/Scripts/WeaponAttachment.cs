@@ -49,8 +49,6 @@ public class WeaponAttachment : AttachmentBase
 
     protected bool isAiming = false;
 
-    protected Vector3 target;
-
     protected override void Awake()
     {
         base.Awake();
@@ -78,34 +76,16 @@ public class WeaponAttachment : AttachmentBase
         }
     }
 
-    public void Aim(bool _isAiming)
+    public void Aim(Vector3 _target)
     {
         if (!canAim)
             return;
 
-        isAiming = _isAiming;
-
-        if (isAiming)
+        Debug.Log("Looking at target");
+        foreach (Transform firePoint in firePoints)
         {
-            StartCoroutine(Aim());
-        }
-    }
-
-    public Vector3 Target
-    {
-        set { target = value; Debug.Log("target has been set"); }
-    }
-
-
-    protected IEnumerator Aim()
-    {
-        Debug.Log("Aiming now!");
-
-        while(isAiming)
-        {
-            transform.LookAt(target, transform.up);
-
-            yield return null;
+            firePoint.LookAt(new Vector3(_target.x, _target.y + 1, _target.z));
+            firePoint.localEulerAngles = new Vector3(firePoint.localEulerAngles.x, 270f, 0f);
         }
     }
 

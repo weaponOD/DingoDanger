@@ -2,8 +2,8 @@
 using UnityEngine;
 
 [System.Serializable]
-public class SoundClass{
-
+public class SoundClass
+{
 	public string name;
 
 	public AudioClip audioClip;
@@ -18,6 +18,4 @@ public class SoundClass{
 
 	[HideInInspector]
 	public AudioSource audioSource;
-
-
 }

@@ -86,14 +86,14 @@ public class PlayModeCameraTwo : MonoBehaviour
     public void AimRight()
     {
         aiming = true;
-        localRotation.x = 0;
+        localRotation.x = target.localEulerAngles.y + 90;
         localRotation.y = 15;
     }
 
     public void AimLeft()
     {
         aiming = true;
-        localRotation.x = -180;
+        localRotation.x = target.localEulerAngles.y - 90;
         localRotation.y = 15;
     }
 

@@ -31,7 +31,6 @@ public class Player : LivingEntity
 
     public event GoldReceiced GoldChanged;
 
-
     [Header("Aim visualiser Attributes")]
 
     [SerializeField]
@@ -45,6 +44,8 @@ public class Player : LivingEntity
     private float range = 25;
 
     private float previousRange;
+
+    private bool aiming = false;
 
     private void Awake()
     {
@@ -85,45 +86,59 @@ public class Player : LivingEntity
             weaponController.FireWeaponsRight();
         }
 
+        // Check Input for aiming
         if(!GameState.BuildMode)
         {
-            //if (Input.GetAxis("Left_Bumper") == 1)
-            //{
-            //    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
-            //    rangeMeshFilter.gameObject.SetActive(true);
-            //    CC.AimLeft();
+            if (Input.GetAxis("Left_Bumper") == 1)
+            {
+                if (!aiming)
+                {
+                    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
+                    rangeMeshFilter.gameObject.SetActive(true);
 
-            //    range += Input.GetAxis("Mouse_Y");
+                    aiming = true;
+                }
 
-            //    range = Mathf.Clamp(range, minimumRange, maxRange);
+                CC.AimLeft();
 
-            //    if (previousRange != range)
-            //    {
-            //        previousRange = range;
+                foreach (WeaponAttachment weapon in components.GetAttachedLeftWeapons())
+                {
+                    weapon.Aim(new Vector3((transform.position - transform.right * range).x, 0f, (transform.position - transform.right * range).z));
+                }
+            }
+            else if (Input.GetAxis("Right_Bumper") == 1)
+            {
+                if (!aiming)
+                {
+                    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
+                    rangeMeshFilter.gameObject.SetActive(true);
 
-            //        Debug.Log("Previous was not the same, updating weapons now");
+                    aiming = true;
+                }
 
-            //        foreach (WeaponAttachment weapon in components.GetAttachedLeftWeapons())
-            //        {
-            //            weapon.Target = transform.position - transform.right * range;
-            //            weapon.Aim(true);
-            //        }
-            //    }
-            //}
-            //else if (Input.GetAxis("Right_Bumper") == 1)
-            //{
-            //    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
-            //    rangeMeshFilter.gameObject.SetActive(true);
-            //    CC.AimRight();
+                CC.AimRight();
 
-            //    range += Input.GetAxis("Mouse_Y");
-            //    range = Mathf.Clamp(range, minimumRange, maxRange);
-            //}
-            //else
-            //{
-            //    rangeMeshFilter.gameObject.SetActive(false);
-            //    CC.CancelAim();
-            //}
+                foreach (WeaponAttachment weapon in components.GetAttachedRightWeapons())
+                {
+                    weapon.Aim(new Vector3((transform.position + transform.right * range).x, 0f, (transform.position + transform.right * range).z));
+                }
+            }
+            else
+            {
+                if (aiming)
+                {
+                    aiming = false;
+
+                    rangeMeshFilter.gameObject.SetActive(false);
+                    CC.CancelAim();
+                }
+            }
+
+            if(aiming)
+            {
+                range += Input.GetAxis("Mouse_Y");
+                range = Mathf.Clamp(range, minimumRange, maxRange);
+            }
         }
 
         velocity = controller.Velocity;
@@ -131,9 +146,13 @@ public class Player : LivingEntity
 
     private void LateUpdate()
     {
-        Vector3 eular = rangeMeshFilter.gameObject.transform.eulerAngles;
-        rangeMeshFilter.gameObject.transform.eulerAngles = new Vector3(0f, eular.y, 0f);
-        DrawRangeMesh();
+        if (aiming)
+        {
+            Vector3 eular = rangeMeshFilter.gameObject.transform.eulerAngles;
+            rangeMeshFilter.gameObject.transform.eulerAngles = new Vector3(0f, eular.y, 0f);
+
+            DrawRangeMesh();
+        }
     }
 
     public int Gold
@@ -187,8 +206,6 @@ public class Player : LivingEntity
 
     public void UpdateAttachments()
     {
-        Debug.Log("Updating Attachments");
-
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
         controller.setSpeedBonus(components.getSpeedBonus());

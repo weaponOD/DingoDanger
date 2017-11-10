@@ -349,8 +349,6 @@ public class PlayerController : MonoBehaviour
 
     public void setSpeedBonus(float _numOfSails)
     {
-        Debug.Log("PC is updating speed bonus with " + _numOfSails + " Sails.");
-
         totalBonusSpeed = 0;
 
         for (int x = 0; x < _numOfSails; x++)

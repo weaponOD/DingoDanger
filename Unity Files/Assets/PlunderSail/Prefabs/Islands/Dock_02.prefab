@@ -3874,8 +3874,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484104714954366}
-  m_LocalRotation: {x: -0, y: 0.6272935, z: -0, w: 0.77878296}
-  m_LocalPosition: {x: 1060, y: 0, z: 340}
+  m_LocalRotation: {x: -0, y: 0.42533535, z: -0, w: 0.9050359}
+  m_LocalPosition: {x: 743, y: 0, z: 138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4958572793292752}
@@ -3889,7 +3889,7 @@ Transform:
   - {fileID: 4474166938656646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 77.701004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 50.344, z: 0}
 --- !u!4 &4296433256643506
 Transform:
   m_ObjectHideFlags: 1
@@ -9789,8 +9789,8 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  awarenessRange: 125
-  damage: 60
+  awarenessRange: 130
+  damage: 85
   projectileForce: 120
   wheel: {fileID: 4574448098898130}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
@@ -9801,14 +9801,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1962851266866840}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _segments: 60
-  _horizRadius: 70
-  _vertRadius: 70
+  _horizRadius: 130
+  _vertRadius: 130
   _offset: 0
   _axis: 1
   _checkValuesChanged: 1
@@ -9829,14 +9829,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1861315600690354}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _segments: 60
-  _horizRadius: 70
-  _vertRadius: 70
+  _horizRadius: 130
+  _vertRadius: 130
   _offset: 0
   _axis: 1
   _checkValuesChanged: 1
@@ -9868,8 +9868,8 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  awarenessRange: 125
-  damage: 60
+  awarenessRange: 130
+  damage: 85
   projectileForce: 120
   wheel: {fileID: 4498210938008118}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
@@ -9891,8 +9891,8 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  awarenessRange: 125
-  damage: 60
+  awarenessRange: 130
+  damage: 85
   projectileForce: 120
   wheel: {fileID: 4304827914207986}
   projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
@@ -9903,14 +9903,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021423408324478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _segments: 60
-  _horizRadius: 70
-  _vertRadius: 70
+  _horizRadius: 130
+  _vertRadius: 130
   _offset: 0
   _axis: 1
   _checkValuesChanged: 1
@@ -9960,7 +9960,8 @@ MonoBehaviour:
   - {fileID: 114405585671171044}
   enemyPrefabs:
   - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
-  - {fileID: 4508677944220884, guid: 37020359f72837449b011c87970e4a7c, type: 2}
+  - {fileID: 4508677944220884, guid: 3a2d264cb5bf1a64d8eb9947745b70d4, type: 2}
+  - {fileID: 4508677944220884, guid: e54dc52ee4b047443967bea3261f4049, type: 2}
   - {fileID: 4508677944220884, guid: 7e585cd6a2dab7341803042775017e2a, type: 2}
   activeEnemies: []
 --- !u!114 &114785316706832574

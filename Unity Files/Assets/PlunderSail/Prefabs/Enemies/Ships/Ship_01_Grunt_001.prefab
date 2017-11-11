@@ -3416,7 +3416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114060097061541494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3431,9 +3431,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3459,7 +3460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114114737234085292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3474,9 +3475,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3505,9 +3507,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3547,9 +3550,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3578,9 +3582,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3609,9 +3614,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3640,9 +3646,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3668,7 +3675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114463293159390734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3709,9 +3716,10 @@ MonoBehaviour:
   maxHealth: 300
   minFireTime: 0.05
   maxFireTime: 0.15
-  damage: 6
+  damage: 24
   projectileForce: 120
   numberOfFirePoints: 2
+  canAim: 0
   shootSound:
   - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
   - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
@@ -3737,7 +3745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114762784615863748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3766,7 +3774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114925094078764634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3778,7 +3786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!114 &114958628415664874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3790,7 +3798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 80
+  starterHealth: 120
   leadReloadTime: 0
   tridentReloadTime: 0
   bountyDelay: 0.1
@@ -3819,7 +3827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62684455fe6899946a5446d780178cc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
+  maxHealth: 300
 --- !u!120 &120023997691842490
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeIncrement: 0.01
   goldAmount: 10
+  distanceToHook: 30
 --- !u!114 &114977606310889968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
+  speed: 0.35
 --- !u!136 &136436138696282392
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -144,7 +145,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070186356501488}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1

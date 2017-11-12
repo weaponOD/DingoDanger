@@ -284,7 +284,6 @@ GameObject:
   - component: {fileID: 114422352416139054}
   - component: {fileID: 114986026331823280}
   - component: {fileID: 54798596222288430}
-  - component: {fileID: 82350782645885396}
   - component: {fileID: 114739414236451862}
   - component: {fileID: 65767011719516292}
   m_Layer: 9
@@ -517,7 +516,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 168.3, y: 0, z: 83.3}
+  m_LocalPosition: {x: -82.9, y: 0, z: -92.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -915,86 +914,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.62, z: 0}
---- !u!82 &82350782645885396
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867788587878092}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 4.899313
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!114 &114381372721278254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,21 +926,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 100
-  leadReloadTime: 0.2
-  tridentReloadTime: 2
   bountyDelay: 0
   bounty: []
   currentHealth: 0
   gold: 50
-  ramDamage: 2
-  KnockBackForce: 200
-  goldPickup:
-  - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
-  - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
-  - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
-  rangeMeshFilter: {fileID: 33099657156322514}
+  ramDamage: 25
+  KnockBackForce: 500
+  goldGainedSound: 
   maxRange: 100
   minimumRange: 25
+  rangeMeshFilter: {fileID: 33099657156322514}
 --- !u!114 &114422352416139054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1033,14 +947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireShout:
-  - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
-  - {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
-  - {fileID: 8300000, guid: 5b216242132641c488b0c129cf2a9642, type: 3}
-  - {fileID: 8300000, guid: 1670172309548bf488becf92441061ba, type: 3}
-  - {fileID: 8300000, guid: a1d8082622e1ee7438ae8ccae71f5077, type: 3}
-  leftWeapons: []
-  rightWeapons: []
+  FireShoutSound: 
+  reloadTime: 0
 --- !u!114 &114739414236451862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1091,9 +999,9 @@ MonoBehaviour:
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5
   maxTurnSpeed: 12
-  startBuild: []
-  fullSpeed: []
-  slowDown: []
+  startBuildSound: startBuildSound
+  fullSpeedSound: fullSpeedSound
+  slowDownSound: slowDownSound
   moveSpeed: 0
   maxMoveSpeed: 0
   turnSpeed: 0

@@ -16,6 +16,8 @@ public class CameraController : MonoBehaviour
 
     private Transform playerCentre;
 
+    private bool inverted = false;
+
     private void Awake()
     {
         playCam = playCamGO.GetComponentInChildren<PlayModeCameraTwo>();
@@ -26,8 +28,19 @@ public class CameraController : MonoBehaviour
     {
         MovePlayCameraToPlayer();
 
-        InvertX();
-        InvertY();
+        InvertX(true);
+        InvertY(true);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            inverted = !inverted;
+
+            InvertX(inverted);
+            InvertY(inverted);
+        }
     }
 
     public void SwitchToBuildMode()
@@ -51,16 +64,16 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void InvertX()
+    public void InvertX(bool _isInverted)
     {
-        playCam.InvertX = true;
-        buildCam.InvertX = true;
+        playCam.InvertX = _isInverted;
+        buildCam.InvertX = _isInverted;
     }
 
-    public void InvertY()
+    public void InvertY(bool _isInverted)
     {
-        playCam.InvertY = true;
-        buildCam.InvertY = true;
+        playCam.InvertY = _isInverted;
+        buildCam.InvertY = _isInverted;
     }
 
     public void AimRight()

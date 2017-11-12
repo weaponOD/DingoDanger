@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4545928612524586}
+  - component: {fileID: 136357741657455888}
   m_Layer: 0
   m_Name: Rock_003_OceanStandard_003_SharpSmall
   m_TagString: Untagged
@@ -49,14 +50,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788616701716156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.45764607, z: -0, w: -0.88913447}
+  m_LocalPosition: {x: -2.08, y: -1.3899999, z: 13.84}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4930430199327444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 305.529, z: 0}
 --- !u!4 &4930430199327444
 Transform:
   m_ObjectHideFlags: 1
@@ -109,3 +110,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1586977575184018}
   m_Mesh: {fileID: 4300000, guid: baa147becef87054f81ccbf598897988, type: 3}
+--- !u!136 &136357741657455888
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788616701716156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5.8108845
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.9054422, z: 0}

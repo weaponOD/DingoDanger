@@ -9,74 +9,74 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1552280181271666}
+  m_RootGameObject: {fileID: 1463095166427088}
   m_IsPrefabParent: 1
---- !u!1 &1310926221984708
+--- !u!1 &1207327567797802
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4184056185532098}
-  - component: {fileID: 33442319618267402}
-  - component: {fileID: 23240881387455158}
+  - component: {fileID: 4640578225974894}
+  - component: {fileID: 33110307996220254}
+  - component: {fileID: 23623252471730044}
   m_Layer: 0
-  m_Name: Island_007_OceanStandard_007_SmallRock
+  m_Name: Rock_007_OceanStandard_007_FlatBoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1552280181271666
+--- !u!1 &1463095166427088
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4850862601772030}
-  - component: {fileID: 136275795858435964}
+  - component: {fileID: 4996657994697454}
+  - component: {fileID: 136199225070034960}
   m_Layer: 0
-  m_Name: Island_007_OceanStandard_007_SmallRock
+  m_Name: Rock_007_OceanStandard_007_FlatBoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4184056185532098
+--- !u!4 &4640578225974894
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310926221984708}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_GameObject: {fileID: 1207327567797802}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4850862601772030}
+  m_Father: {fileID: 4996657994697454}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4850862601772030
+--- !u!4 &4996657994697454
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1552280181271666}
-  m_LocalRotation: {x: -0.000000014901161, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30.4, y: 10.8, z: 0.5}
+  m_GameObject: {fileID: 1463095166427088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4184056185532098}
+  - {fileID: 4640578225974894}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23240881387455158
+--- !u!23 &23623252471730044
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310926221984708}
+  m_GameObject: {fileID: 1207327567797802}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -103,23 +103,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33442319618267402
+--- !u!33 &33110307996220254
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310926221984708}
-  m_Mesh: {fileID: 4300000, guid: 17044920965f3f549b8ed97de6d6234a, type: 3}
---- !u!136 &136275795858435964
+  m_GameObject: {fileID: 1207327567797802}
+  m_Mesh: {fileID: 4300000, guid: 28d440185eab1bc4f94c181295e696d3, type: 3}
+--- !u!136 &136199225070034960
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1552280181271666}
+  m_GameObject: {fileID: 1463095166427088}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 9
-  m_Height: 12
+  m_Radius: 3
+  m_Height: 2.7656608
   m_Direction: 1
-  m_Center: {x: 0.4009881, y: -2.7958517, z: -1.1372223}
+  m_Center: {x: 0.7221402, y: 1.371366, z: 0.25970387}

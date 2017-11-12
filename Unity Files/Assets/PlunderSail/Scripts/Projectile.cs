@@ -7,8 +7,6 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody rb;
 
-    private AudioSource audioSource;
-
     private float damage;
 
     [Header("Effects")]
@@ -26,7 +24,6 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()

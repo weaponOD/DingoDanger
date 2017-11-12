@@ -4,24 +4,19 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    private float reloadTime = 2f;
-    private float nextReloadTimeRight = 0;
-    private float nextReloadTimeLeft = 0;
+    private float nextReloadTime = 0;
 
-    private bool canShootRight = true;
-    private bool canShootLeft = true;
+    private bool canShoot = true;
 
     [SerializeField]
-    private AudioClip[] FireShout = null;
+    private string FireShoutSound = "";
 
-    [Header("Debug Info")]
     [SerializeField]
+    private float reloadTime = 0.0f;
+
     private WeaponAttachment[] leftWeapons = null;
 
-    [SerializeField]
     private WeaponAttachment[] rightWeapons = null;
-
-    private int currentShout = 0;
 
     public WeaponAttachment[] LeftWeapons
     {
@@ -46,35 +41,25 @@ public class WeaponController : MonoBehaviour
     {
         if (!GameState.BuildMode)
         {
-            if (Time.time > nextReloadTimeRight)
+            if (Time.time > nextReloadTime)
             {
-                canShootRight = true;
+                canShoot = true;
             }
 
-            if (Time.time > nextReloadTimeLeft)
+            if (Time.time > nextReloadTime)
             {
-                canShootLeft = true;
+                canShoot = true;
             }
         }
     }
 
     public void FireWeaponsRight()
     {
-        if (canShootRight)
+        if (canShoot)
         {
             if (rightWeapons.Length > 0)
             {
-                AudioManager.instance.PlaySound("");
-                // If there are sounds to play, play them
-                //if (FireShout.Length > 0)
-                //{
-                //    currentShout = Random.Range(0, FireShout.Length);
-
-                //    if (!audioSource.isPlaying)
-                //    {
-                //        audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
-                //    }
-                //}
+                AudioManager.instance.PlaySound(FireShoutSound);
 
                 foreach (WeaponAttachment weapon in rightWeapons)
                 {
@@ -84,28 +69,19 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                canShootRight = false;
-                nextReloadTimeRight = Time.time + reloadTime;
+                canShoot = false;
+                nextReloadTime = Time.time + reloadTime;
             }
         }
     }
 
     public void FireWeaponsLeft()
     {
-        if (canShootLeft)
+        if (canShoot)
         {
             if (leftWeapons.Length > 0)
             {
-                // If there are sounds to play, play them
-                //if (FireShout.Length > 0)
-                //{
-                //    currentShout = Random.Range(0, FireShout.Length);
-
-                //    if(!audioSource.isPlaying)
-                //    {
-                //        audioSource.PlayOneShot(FireShout[currentShout], 0.8F);
-                //    }
-                //}
+                AudioManager.instance.PlaySound(FireShoutSound);
 
                 foreach (WeaponAttachment weapon in leftWeapons)
                 {
@@ -115,8 +91,8 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                canShootLeft = false;
-                nextReloadTimeLeft = Time.time + reloadTime;
+                canShoot = false;
+                nextReloadTime = Time.time + reloadTime;
             }
         }
     }

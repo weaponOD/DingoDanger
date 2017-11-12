@@ -12,12 +12,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float starterHealth;
 
     [SerializeField]
-    protected float leadReloadTime;
-
-    [SerializeField]
-    protected float tridentReloadTime;
-
-    [SerializeField]
     protected float bountyDelay;
 
     [SerializeField]

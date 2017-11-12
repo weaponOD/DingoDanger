@@ -11,6 +11,9 @@ public class Tower : LivingEntity
     protected float damage = 0;
 
     [SerializeField]
+    protected float reloadTime = 0.0f;
+
+    [SerializeField]
     protected float projectileForce = 0;
 
     [SerializeField]
@@ -71,7 +74,7 @@ public class Tower : LivingEntity
         shot.Damage = damage;
         shot.FireProjectile(new Vector3(), projectileForce);
 
-        Invoke("Reload", leadReloadTime);
+        Invoke("Reload", reloadTime);
     }
 
     public override void TakeDamage(float damgage)

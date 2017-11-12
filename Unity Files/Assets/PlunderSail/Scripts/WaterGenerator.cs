@@ -2,56 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterGenerator : MonoBehaviour {
+public class WaterGenerator : MonoBehaviour
+{
 
-	[SerializeField]
-	private Transform waterPrefab;
+    [SerializeField]
+    private Transform waterPrefab;
 
-	[SerializeField]
-	private Vector2 mapSize;
+    [SerializeField]
+    private Vector2 mapSize;
 
-	[SerializeField]
-	private float buffer = 0.5f;
+    [SerializeField]
+    private float buffer = 0.5f;
 
-	[SerializeField]
-	private GameObject tempPlane;
+    [SerializeField]
+    private GameObject tempPlane;
 
 
+    private void Start()
+    {
+        tempPlane.SetActive(false);
+        StartCoroutine(GenerateMap());
+    }
 
-	private void Start(){
-		Destroy (tempPlane);
-		GenerateMap ();
-	}
+    public IEnumerator GenerateMap()
+    {
+        //Store Tiles into an empty called Water Tiles
 
-	public void GenerateMap(){
+        string holderName = "Water Tiles";
 
-		//Store Tiles into an empty called Water Tiles
+        if (transform.Find(holderName))
+        {
+            DestroyImmediate(transform.Find(holderName).gameObject);
+        }
 
-		string holderName = "Water Tiles";
+        Transform mapHolder = new GameObject(holderName).transform;
 
-		if(transform.Find(holderName)){
-			DestroyImmediate (transform.Find (holderName).gameObject);
-		}
+        mapHolder.parent = transform;
 
-		Transform mapHolder = new GameObject (holderName).transform;
+        //Generate Map
 
-		mapHolder.parent = transform;
+        for (int x = 0; x < mapSize.x; x++)
+        {
+            for (int y = 0; y < mapSize.y; y++)
+            {
 
-		//Generate Map
+                //Prepare where to place tile
+                Vector3 waterPos = new Vector3(-mapSize.x / 2 + buffer * x, 0, -mapSize.y / 2 + buffer * y);
 
-		for (int x = 0; x < mapSize.x; x++) {
-			for (int y = 0; y < mapSize.y; y++) {
+                //Create the new tile using caluclated psition
+                Transform newWater = Instantiate(waterPrefab, waterPos, Quaternion.identity) as Transform;
 
-				//Prepare where to place tile
-				Vector3 waterPos = new Vector3 (-mapSize.x/ 2 + buffer * x, 0, -mapSize.y / 2 + buffer * y);
+                newWater.parent = mapHolder;
+            }
 
-				//Create the new tile using caluclated psition
-				Transform newWater = Instantiate (waterPrefab, waterPos, Quaternion.identity) as Transform;
-
-				newWater.parent = mapHolder;
-			}
-			
-		}
-	}
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
 }

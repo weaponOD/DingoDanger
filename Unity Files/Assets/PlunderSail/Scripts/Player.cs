@@ -13,17 +13,12 @@ public class Player : LivingEntity
     [SerializeField]
     private float KnockBackForce = 0;
 
+    [SerializeField]
+    private string goldGainedSound = "";
+
     private PlayerController controller = null;
 
-    private AudioSource audioSource = null;
-
     private CameraController CC;
-
-    [SerializeField]
-    private AudioClip[] goldPickup = null;
-
-    [SerializeField]
-    private MeshFilter rangeMeshFilter;
 
     private Mesh rangeMesh;
 
@@ -41,6 +36,9 @@ public class Player : LivingEntity
     [SerializeField]
     private float minimumRange = 0;
 
+    [SerializeField]
+    private MeshFilter rangeMeshFilter;
+
     private float range = 25;
 
     private float previousRange;
@@ -54,8 +52,6 @@ public class Player : LivingEntity
         components = GetComponent<ComponentManager>();
 
         CC = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>();
-
-        audioSource = GetComponent<AudioSource>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -167,10 +163,7 @@ public class Player : LivingEntity
 
     public void GiveGold(int _amount)
     {
-        if (goldPickup.Length > 0)
-        {
-            audioSource.PlayOneShot(goldPickup[Random.Range(0, goldPickup.Length)], Random.Range(0.9f, 1.3f));
-        }
+        AudioManager.instance.PlaySound(goldGainedSound);
 
         if (GoldChanged != null)
         {

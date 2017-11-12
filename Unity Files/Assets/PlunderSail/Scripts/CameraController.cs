@@ -25,6 +25,9 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         MovePlayCameraToPlayer();
+
+        InvertX();
+        InvertY();
     }
 
     public void SwitchToBuildMode()
@@ -46,6 +49,18 @@ public class CameraController : MonoBehaviour
         {
             buildCamGO.transform.position = _pier.position;
         }
+    }
+
+    public void InvertX()
+    {
+        playCam.InvertX = true;
+        buildCam.InvertX = true;
+    }
+
+    public void InvertY()
+    {
+        playCam.InvertY = true;
+        buildCam.InvertY = true;
     }
 
     public void AimRight()

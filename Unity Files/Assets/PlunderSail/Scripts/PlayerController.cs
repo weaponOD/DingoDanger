@@ -66,15 +66,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxTurnSpeed;
 
-    [Header("Sound Resources")]
+    [Header("Sound Clip Names")]
     [SerializeField]
-    private AudioClip[] startBuild;
+    private string startBuildSound = "startBuildSound";
 
     [SerializeField]
-    private AudioClip[] fullSpeed;
+    private string fullSpeedSound = "fullSpeedSound";
 
     [SerializeField]
-    private AudioClip[] slowDown;
+    private string slowDownSound = "slowDownSound";
 
     [Header("Debug Info")]
     [SerializeField]
@@ -94,8 +94,6 @@ public class PlayerController : MonoBehaviour
 
     // The stearing wheel on the ship
     private Transform wheel;
-
-    private AudioSource audioSource;
 
     private ComponentManager components;
 
@@ -314,36 +312,34 @@ public class PlayerController : MonoBehaviour
 
     private void SetSailsToState(SailingState _state)
     {
-        if (_state == SailingState.IDLE)
+        // Sail state can be set to slow if it's build mode
+        if (_state == SailingState.SLOW)
         {
-            if (fullSpeed.Length > 0 && !GameState.BuildMode)
+            if (!GameState.BuildMode)
             {
-                //audioSource.PlayOneShot(fullSpeed[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
-            }
-
-            components.RaiseSails();
-
-            CC.DisableFastMode();
-        }
-        else if (_state == SailingState.SLOW)
-        {
-            if (slowDown.Length > 0)
-            {
-                //audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+                AudioManager.instance.PlaySound(slowDownSound);
             }
 
             components.LowerSails();
         }
-        else if (_state == SailingState.FAST)
+
+        // the other two states cannont be accessed if it's in build mode
+        if (!GameState.BuildMode)
         {
-            if (slowDown.Length > 0)
+            if (_state == SailingState.IDLE)
             {
-                //audioSource.PlayOneShot(slowDown[Random.Range(0, fullSpeed.Length)], Random.Range(0.9f, 1.3f));
+                components.RaiseSails();
+
+                CC.DisableFastMode();
             }
+            else if (_state == SailingState.FAST)
+            {
+                AudioManager.instance.PlaySound(fullSpeedSound);
 
-            components.LowerSails();
+                components.LowerSails();
 
-            CC.EnableFastMode();
+                CC.EnableFastMode();
+            }
         }
     }
 

@@ -1,6 +1,7 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 //List of sounds that we can add or remove as we go, each sound will have options to adjust volume, pitch etc. 
 //During Start of game we go through list of sounds and find one we need, and call Play Fiunction to play sounds in other scripts
@@ -30,14 +31,12 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
-
 		//Don't destroy the Audio Manager in scene
 		DontDestroyOnLoad (gameObject);
 
 		foreach (SoundClass _sounds in sounds)
         {
 			_sounds.audioSource =  gameObject.AddComponent<AudioSource> ();
-			_sounds.audioSource.clip = _sounds.audioClip;
 
 			_sounds.audioSource.volume = _sounds.volume;
 			_sounds.audioSource.pitch = _sounds.pitch;
@@ -56,7 +55,37 @@ public class AudioManager : MonoBehaviour
 			Debug.LogWarning ("Sound: " + _name + " not found.");
 			return;
 		}
-			
-		soundClass.audioSource.Play ();
+
+		if(soundClass.audioClip.Length > 1)
+        {
+            soundClass.audioSource.PlayOneShot(soundClass.audioClip[UnityEngine.Random.Range(0, soundClass.audioClip.Length)]);
+        }
+        else if (soundClass.audioClip.Length > 0)
+        {
+            soundClass.audioSource.PlayOneShot(soundClass.audioClip[0]);
+        }
+        else
+        {
+            Debug.LogError("No sound was played");
+        }
 	}
+}
+
+[System.Serializable]
+public class SoundClass
+{
+    public string name;
+
+    public AudioClip[] audioClip;
+
+    [Range(0f, 1f)]
+    public float volume = 1f;
+
+    [Range(0.5f, 2f)]
+    public float pitch = 1f;
+
+    public bool looping;
+
+    [HideInInspector]
+    public AudioSource audioSource;
 }

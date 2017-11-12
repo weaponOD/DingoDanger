@@ -14,6 +14,9 @@ public class WeaponAttachment : AttachmentBase
     private string ammoType = "";
 
     [SerializeField]
+    private GameObject ProjectilePrefab = null;
+
+    [SerializeField]
     protected float damage;
 
     [SerializeField]
@@ -77,7 +80,6 @@ public class WeaponAttachment : AttachmentBase
         if (!canAim)
             return;
 
-        Debug.Log("Looking at target");
         foreach (Transform firePoint in firePoints)
         {
             firePoint.LookAt(new Vector3(_target.x, _target.y + 1, _target.z));
@@ -109,30 +111,39 @@ public class WeaponAttachment : AttachmentBase
 
         shipVelocity = entity.Velocity;
 
-        GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
+        Projectile shot = Instantiate(ProjectilePrefab, _firePoint.position, _firePoint.rotation).GetComponent<Projectile>();
+        shot.Damage = damage;
+        shot.FireProjectile(shipVelocity, projectileForce);
 
-        if(projectile != null)
+        if (shootParticle != null)
         {
-            projectile.transform.position = _firePoint.position;
-            projectile.transform.rotation = _firePoint.rotation;
-
-            projectile.SetActive(true);
-
-            Projectile shot = projectile.GetComponent<Projectile>();
-            shot.Damage = damage;
-            shot.FireProjectile(shipVelocity, projectileForce);
-
-            if (shootParticle != null)
-            {
-                Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
-            }
-
-            PlayRandomSound();
+            Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
         }
-        else
-        {
-            Debug.LogError("Projectile from resource manager was null");
-        }
+
+        //GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
+
+        //if(projectile != null)
+        //{
+        //    projectile.transform.position = _firePoint.position;
+        //    projectile.transform.rotation = _firePoint.rotation;
+
+        //    projectile.SetActive(true);
+
+        //    Projectile shot = projectile.GetComponent<Projectile>();
+        //    shot.Damage = damage;
+        //    shot.FireProjectile(shipVelocity, projectileForce);
+
+        //    if (shootParticle != null)
+        //    {
+        //        Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
+        //    }
+
+        //    PlayRandomSound();
+        //}
+        //else
+        //{
+        //    Debug.LogError("Projectile from resource manager was null");
+        //}
     }
 
     protected void PlayRandomSound()

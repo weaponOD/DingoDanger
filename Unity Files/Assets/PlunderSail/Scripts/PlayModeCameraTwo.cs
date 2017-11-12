@@ -37,6 +37,10 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private bool aiming = false;
 
+    private bool invertedX = false;
+
+    private bool invertedY = false;
+
     [SerializeField]
     private Vector3 offset;
 
@@ -73,9 +77,23 @@ public class PlayModeCameraTwo : MonoBehaviour
         {
             if(!aiming)
             {
-                localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                if (invertedX)
+                {
+                    localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+                }
+                else
+                {
+                    localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
+                }
 
-                localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+                if (invertedY)
+                {
+                    localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                }
+                else
+                {
+                    localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                }
             }
 
             // Clamp the Y rotation to horizon and not flipping it over at the top
@@ -116,11 +134,23 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private IEnumerator ZoomOut()
     {
-        while(myCamera.fieldOfView < FovWhenFast)
+        while (myCamera.fieldOfView < FovWhenFast)
         {
             myCamera.fieldOfView += zoomOutRate;
             yield return null;
         }
+    }
+
+    public bool InvertX
+    {
+        get { return invertedX; }
+        set { invertedX = value; }
+    }
+
+    public bool InvertY
+    {
+        get { return invertedY; }
+        set { invertedY = value; }
     }
 
     private IEnumerator ZoomIn()

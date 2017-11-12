@@ -158,8 +158,6 @@ public class ShipBuilding : MonoBehaviour
 
             if (Input.GetButtonDown("B_Button"))
             {
-                Debug.Log("" + CalculatePerspectiveAngle());
-
                 DeleteAttachment();
             }
 

@@ -29,6 +29,11 @@ public class Projectile : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void OnEnable()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     public void FireProjectile(Vector3 _shipVelocity, float _initialForce)
     {
         rb.velocity = _shipVelocity;
@@ -49,18 +54,18 @@ public class Projectile : MonoBehaviour
             {
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
                 Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
-                Destroy(gameObject);
+                Destroy();
             }
         }
         else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
             _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
             Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
-            Destroy(gameObject);
+            Destroy();
         }
         else
         {
-            Destroy(gameObject);
+            Destroy();
         }
     }
 
@@ -78,10 +83,21 @@ public class Projectile : MonoBehaviour
             {
                 AudioManager.instance.PlaySound("ImpactWater");
                 Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
-                Destroy(gameObject, 3f);
+                Invoke("Destroy", 3f);
 
                 hasSplashed = true;
             }
         }
+    }
+
+    private void Destroy()
+    {
+        hasSplashed = false;
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
 }

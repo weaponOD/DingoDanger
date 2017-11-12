@@ -177,8 +177,6 @@ public class UIController : MonoBehaviour
             // Move right along the horizontal menu
             if (Input.GetAxis("Dpad_X") == 1)
             {
-                Debug.Log(string.Format("There are {0} in the current genre", horizontalMenu[selectedGenre].transform.childCount));
-
                 if (selectedAttachment < horizontalMenu[selectedGenre].transform.childCount - 1)
                 {
                     ChangeAttachmentSelection(+1);

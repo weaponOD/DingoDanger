@@ -11,6 +11,9 @@ public class WeaponAttachment : AttachmentBase
     protected float maxFireTime = 0;
 
     [SerializeField]
+    private string ammoType = "";
+
+    [SerializeField]
     protected float damage;
 
     [SerializeField]
@@ -30,11 +33,6 @@ public class WeaponAttachment : AttachmentBase
     protected ParticleSystem shootParticle;
 
     [SerializeField]
-    protected GameObject projectilePrefab;
-
-    protected AudioSource audioSource;
-
-    [SerializeField]
     protected Transform[] firePoints;
 
     protected Transform[] effectPoints;
@@ -52,8 +50,6 @@ public class WeaponAttachment : AttachmentBase
     protected override void Awake()
     {
         base.Awake();
-
-        audioSource = transform.root.GetComponent<AudioSource>();
 
         if (transform.root.GetComponent<Player>())
         {
@@ -113,25 +109,39 @@ public class WeaponAttachment : AttachmentBase
 
         shipVelocity = entity.Velocity;
 
-        Projectile shot = Instantiate(projectilePrefab, _firePoint.position, _firePoint.rotation).GetComponent<Projectile>();
-        shot.Damage = damage;
-        shot.FireProjectile(shipVelocity, projectileForce);
+        GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
 
-        if (shootParticle != null)
+        if(projectile != null)
         {
-            Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
-        }
+            projectile.transform.position = _firePoint.position;
+            projectile.transform.rotation = _firePoint.rotation;
 
-        PlayRandomSound();
+            projectile.SetActive(true);
+
+            Projectile shot = projectile.GetComponent<Projectile>();
+            shot.Damage = damage;
+            shot.FireProjectile(shipVelocity, projectileForce);
+
+            if (shootParticle != null)
+            {
+                Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
+            }
+
+            PlayRandomSound();
+        }
+        else
+        {
+            Debug.LogError("Projectile from resource manager was null");
+        }
     }
 
     protected void PlayRandomSound()
     {
-        if (shootSound.Length > 0)
-        {
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.volume = Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
-        }
+        //if (shootSound.Length > 0)
+        //{
+        //    audioSource.pitch = Random.Range(0.9f, 1.1f);
+        //    audioSource.volume = Random.Range(0.9f, 1.1f);
+        //    audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
+        //}
     }
 }

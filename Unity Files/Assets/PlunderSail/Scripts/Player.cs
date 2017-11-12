@@ -76,19 +76,19 @@ public class Player : LivingEntity
 
     private void Update()
     {
-        if (Input.GetAxis("Left_Trigger") == 1)
-        {
-            weaponController.FireWeaponsLeft();
-        }
-
-        if (Input.GetAxis("Right_Trigger") == 1)
-        {
-            weaponController.FireWeaponsRight();
-        }
-
         // Check Input for aiming
         if(!GameState.BuildMode)
         {
+            if (Input.GetAxis("Left_Trigger") == 1)
+            {
+                weaponController.FireWeaponsLeft();
+            }
+
+            if (Input.GetAxis("Right_Trigger") == 1)
+            {
+                weaponController.FireWeaponsRight();
+            }
+
             if (Input.GetAxis("Left_Bumper") == 1)
             {
                 if (!aiming)
@@ -185,10 +185,10 @@ public class Player : LivingEntity
         Vector3[] vertices = new Vector3[4];
         int[] triangles = { 0, 1, 2, 0, 2, 3 };
 
-        vertices[0] = new Vector3(-5, 0, -1);       // left back
-        vertices[1] = new Vector3(-range / 2, 0, range);    // left forward
-        vertices[2] = new Vector3(range / 2, 0, range);     // right forward
-        vertices[3] = new Vector3(5, 0, -1);        // right back
+        vertices[0] = new Vector3(-7, 0, 0);       // left back
+        vertices[1] = new Vector3(-2, 0, range);    // left forward
+        vertices[2] = new Vector3(2, 0, range);     // right forward
+        vertices[3] = new Vector3(7, 0, 0);        // right back
 
         rangeMesh.Clear();
         rangeMesh.vertices = vertices;

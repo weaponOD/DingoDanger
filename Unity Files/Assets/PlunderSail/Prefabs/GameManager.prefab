@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114994603169521724}
   - component: {fileID: 114168663654171056}
   - component: {fileID: 114883611100677676}
+  - component: {fileID: 114276971465702096}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -81,6 +82,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
   playerCentre: {fileID: 0}
+--- !u!114 &114276971465702096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 397cabc3b31a469408d49aa4fc185b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPools:
+  - objectName: cannonBall
+    pooledPrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+      type: 2}
+    poolSize: 100
+    canExpand: 1
+    objects: []
+  - objectName: harpoon
+    pooledPrefab: {fileID: 1804301577746708, guid: e5617f14bfa55f144b27b00e8fbc8f6a,
+      type: 2}
+    poolSize: 30
+    canExpand: 1
+    objects: []
+  - objectName: dropBear
+    pooledPrefab: {fileID: 1804301577746708, guid: a1f24252b9f9cf3429c76ed6d34e7a03,
+      type: 2}
+    poolSize: 30
+    canExpand: 1
+    objects: []
 --- !u!114 &114883611100677676
 MonoBehaviour:
   m_ObjectHideFlags: 1

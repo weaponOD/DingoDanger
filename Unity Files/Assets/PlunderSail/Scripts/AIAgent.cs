@@ -154,15 +154,6 @@ public class AIAgent : LivingEntity
                 }
             }
         }
-        else
-        {
-            if (Vector3.Distance(transform.position, player.transform.position) < awarenessRange)
-            {
-                FleeBehaviour flee = (FleeBehaviour)ScriptableObject.CreateInstance("FleeBehaviour");
-
-                behaviours.Add(flee);
-            }
-        }
 
         foreach (IBehaviour behaviour in behaviours)
         {

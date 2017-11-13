@@ -4,14 +4,31 @@ using UnityEngine;
 
 public class Player : LivingEntity
 {
+    [Header("Player Attributes")]
+
     [SerializeField]
-    private int gold = 0;
+    private int currentGold = 0;
+
+    private int maxGold = 99999;
 
     [SerializeField]
     private float ramDamage = 0;
 
+    [Header("Collision Knockback")]
+
     [SerializeField]
-    private float KnockBackForce = 0;
+    private float islandKnockBack = 700000;
+
+    [SerializeField]
+    [Tooltip("The number of seconds that the player does not move forward after a collision")]
+    private float islandStunDuration = 0;
+
+    [SerializeField]
+    private float shipKnockBack = 0;
+
+    [SerializeField]
+    [Tooltip("The number of seconds that the player does not move forward after a collision")]
+    private float stunDuration = 0;
 
     [SerializeField]
     private string goldGainedSound = "";
@@ -151,16 +168,19 @@ public class Player : LivingEntity
         }
     }
 
+    // Returns how much gold the player currently has
     public int Gold
     {
-        get { return gold; }
+        get { return currentGold; }
     }
 
+    // Remove the specifed amount of gold from the player
     public void DeductGold(int _amount)
     {
-        gold -= _amount;
+        currentGold -= _amount;
     }
 
+    // Add the specified amount of gold to the player
     public void GiveGold(int _amount)
     {
         AudioManager.instance.PlaySound(goldGainedSound);
@@ -170,7 +190,12 @@ public class Player : LivingEntity
             GoldChanged();
         }
 
-        gold += _amount;
+        currentGold += _amount;
+
+        if(currentGold > maxGold)
+        {
+            currentGold = maxGold;
+        }
     }
 
     private void DrawRangeMesh()
@@ -197,6 +222,7 @@ public class Player : LivingEntity
         }
     }
 
+    // Function which checks which attachments are on the ship.
     public void UpdateAttachments()
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
@@ -226,20 +252,22 @@ public class Player : LivingEntity
 
                 // calculate force vector
                 var force = collision.transform.position - transform.position;
+                
                 // normalize force vector to get direction only and trim magnitude
                 force.Normalize();
-                AI.GetComponent<Rigidbody>().AddForce(force * KnockBackForce);
+                AI.GetComponent<Rigidbody>().AddForce(force * shipKnockBack);
             }
             else
             {
                 // Stun stops the player controller from moving forward and allows us to add forces to the player
-                controller.AddStun();
+                controller.AddStun(stunDuration);
 
                 // calculate force vector
                 var force = transform.position - collision.transform.position;
+                
                 // normalize force vector to get direction only and trim magnitude
                 force.Normalize();
-                gameObject.GetComponent<Rigidbody>().AddForce(force * KnockBackForce);
+                gameObject.GetComponent<Rigidbody>().AddForce(force * shipKnockBack);
             }
         }
 
@@ -247,7 +275,7 @@ public class Player : LivingEntity
         {
             float hitDamage = collision.relativeVelocity.magnitude;
 
-            Debug.Log("Hit with Ram with a force of " + hitDamage);
+            // Debug.Log("Hit with Ram with a force of " + hitDamage);
 
             if (collision.collider.gameObject.GetComponent<AttachmentBase>())
             {
@@ -258,6 +286,18 @@ public class Player : LivingEntity
             {
                 collision.collider.gameObject.GetComponent<AIAgent>().TakeDamage(ramDamage);
             }
+        }
+
+        if(collision.gameObject.layer == 8)
+        {
+            // Stun stops the player controller from moving forward and allows us to add forces to the player
+            controller.AddStun(islandStunDuration);
+
+            // calculate force vector
+            var force = transform.position - collision.transform.position;
+            // normalize force vector to get direction only and trim magnitude
+            force.Normalize();
+            gameObject.GetComponent<Rigidbody>().AddForce(force * islandKnockBack);
         }
     }
 }

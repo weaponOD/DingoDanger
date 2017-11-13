@@ -6,7 +6,15 @@ public class CollisionAvoidanceBehaviour : IBehaviour
 {
     public override Vector3 ApplyBehaviour(Vector3 _myPos, Transform _targetPos)
     {
-        // targetDirection = (_targetPos - _myPos).normalized;
+        //// layer mask of islands
+        //int layerMask = 1 << 8;
+
+        //Collider[] islands = Physics.OverlapSphere(_myPos, 15, layerMask);
+
+        //foreach()
+        //{
+
+        //}
 
         return targetDirection;
     }

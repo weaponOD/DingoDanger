@@ -29,6 +29,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image fadePlane = null;
 
+    [SerializeField]
+    private GameObject pauseScreen = null;
+
     // System References
     private Player player = null;
 
@@ -196,7 +199,7 @@ public class UIController : MonoBehaviour
                 }
             }
 
-            if(!DpadCanPress)
+            if (!DpadCanPress)
             {
                 timeTillCanPress = Time.time + timeBetweenPresses;
             }
@@ -213,6 +216,11 @@ public class UIController : MonoBehaviour
                 DpadCanPress = true;
             }
         }
+    }
+
+    public void showPauseMenu(bool _isPaused)
+    {
+        pauseScreen.SetActive(_isPaused);
     }
 
     private void ChangeGenreSelection(int _change)

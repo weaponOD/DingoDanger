@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     private bool canPressY = true;
 
+    private bool paused = false;
+
     private void Awake()
     {
         UI = GetComponent<UIController>();
@@ -64,6 +66,22 @@ public class GameManager : MonoBehaviour
         if (Input.GetButtonDown("Back_Button"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetButtonDown("Start_Button"))
+        {
+            paused = !paused;
+
+            if (paused)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+
+            UI.showPauseMenu(paused);
         }
     }
 

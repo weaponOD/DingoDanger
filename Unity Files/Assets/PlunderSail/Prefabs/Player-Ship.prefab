@@ -929,9 +929,12 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   currentHealth: 0
-  gold: 50
+  currentGold: 0
   ramDamage: 25
-  KnockBackForce: 500
+  islandKnockBack: 700000
+  islandStunDuration: 1.5
+  shipKnockBack: 500
+  stunDuration: 0.5
   goldGainedSound: 
   maxRange: 100
   minimumRange: 25
@@ -948,7 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireShoutSound: 
-  reloadTime: 0
+  reloadTime: 1
 --- !u!114 &114739414236451862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -988,7 +991,6 @@ MonoBehaviour:
   acceleration: 7.5
   deacceleration: 4.2
   maxSpeed: 38
-  stunDuration: 0.25
   bonusSpeed: 16
   bonusDropoff: 4.5
   minBonusSpeed: 6
@@ -999,7 +1001,6 @@ MonoBehaviour:
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5
   maxTurnSpeed: 12
-  startBuildSound: startBuildSound
   fullSpeedSound: fullSpeedSound
   slowDownSound: slowDownSound
   moveSpeed: 0

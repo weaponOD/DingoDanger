@@ -22,10 +22,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 45.0f;
 
-    [SerializeField]
-    [Tooltip("The number of seconds that the player does not move forward after a collision")]
-    private float stunDuration = 0;
-
     private float maxRudder = 6.0f;
 
     private float maxRoll = 12;
@@ -67,8 +63,6 @@ public class PlayerController : MonoBehaviour
     private float maxTurnSpeed;
 
     [Header("Sound Clip Names")]
-    [SerializeField]
-    private string startBuildSound = "startBuildSound";
 
     [SerializeField]
     private string fullSpeedSound = "fullSpeedSound";
@@ -371,11 +365,13 @@ public class PlayerController : MonoBehaviour
         stunned = false;
     }
 
-    public void AddStun()
+    public void AddStun(float _duration)
     {
         stunned = true;
 
-        Invoke("RemoveStun", stunDuration);
+        moveSpeed = 0;
+
+        Invoke("RemoveStun", _duration);
     }
 
     private void OnDestroy()

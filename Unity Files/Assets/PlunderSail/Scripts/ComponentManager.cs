@@ -35,6 +35,8 @@ public class ComponentManager : MonoBehaviour
 
     public AttachmentSail[] GetAttachedSails()
     {
+        UpdateSails();
+
         return sails;
     }
 
@@ -62,6 +64,7 @@ public class ComponentManager : MonoBehaviour
     public int getSpeedBonus()
     {
         UpdateSails();
+
         return sails.Length;
     }
 

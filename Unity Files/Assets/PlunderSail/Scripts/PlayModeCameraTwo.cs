@@ -132,6 +132,15 @@ public class PlayModeCameraTwo : MonoBehaviour
         }
     }
 
+    public float CalculatePerspectiveAngle()
+    {
+        Quaternion relative = Quaternion.Inverse(target.transform.rotation) * transform.root.rotation;
+
+        float rawAngle = relative.eulerAngles.y;
+
+        return rawAngle;
+    }
+
     private IEnumerator ZoomOut()
     {
         while (myCamera.fieldOfView < FovWhenFast)

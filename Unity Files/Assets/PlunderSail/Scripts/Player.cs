@@ -62,6 +62,8 @@ public class Player : LivingEntity
 
     private bool aiming = false;
 
+    private string aimDir = "";
+
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -90,64 +92,67 @@ public class Player : LivingEntity
     private void Update()
     {
         // Check Input for aiming
-        if(!GameState.BuildMode)
+        if (!GameState.BuildMode)
         {
+
+            // if we're not aiming fire both sides
+            if (!aiming)
+            {
+                if (Input.GetAxis("Right_Trigger") == 1)
+                {
+                    Debug.Log("Firing");
+
+                    weaponController.FireWeaponsLeft(false);
+                    weaponController.FireWeaponsRight(true);
+                }
+            }
+            // calculate which direction we're aiming and then fire those cannons
             if (Input.GetAxis("Left_Trigger") == 1)
             {
-                weaponController.FireWeaponsLeft();
-            }
-
-            if (Input.GetAxis("Right_Trigger") == 1)
-            {
-                weaponController.FireWeaponsRight();
-            }
-
-            if (Input.GetAxis("Left_Bumper") == 1)
-            {
+                // first frame that the trigger is held down set aiming to true and activate the aiming mesh in the correct direction.
                 if (!aiming)
                 {
-                    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f);
-                    rangeMeshFilter.gameObject.SetActive(true);
+                    aimDir = CC.TryAim();
 
-                    aiming = true;
-                }
+                    if (aimDir.Equals("left"))
+                    {
+                        rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f); // Left
+                        rangeMeshFilter.gameObject.SetActive(true);
 
-                CC.AimLeft();
+                        aiming = true;
+                    }
 
-                foreach (WeaponAttachment weapon in components.GetAttachedLeftWeapons())
-                {
-                    weapon.Aim(new Vector3((transform.position - transform.right * range).x, 0f, (transform.position - transform.right * range).z));
-                }
-            }
-            else if (Input.GetAxis("Right_Bumper") == 1)
-            {
-                if (!aiming)
-                {
-                    rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f);
-                    rangeMeshFilter.gameObject.SetActive(true);
+                    if (aimDir.Equals("right"))
+                    {
+                        rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f); // Right
+                        rangeMeshFilter.gameObject.SetActive(true);
 
-                    aiming = true;
-                }
-
-                CC.AimRight();
-
-                foreach (WeaponAttachment weapon in components.GetAttachedRightWeapons())
-                {
-                    weapon.Aim(new Vector3((transform.position + transform.right * range).x, 0f, (transform.position + transform.right * range).z));
+                        aiming = true;
+                    }
                 }
             }
             else
             {
-                if (aiming)
-                {
-                    aiming = false;
+                aiming = false;
+                rangeMeshFilter.gameObject.SetActive(false);
 
-                    rangeMeshFilter.gameObject.SetActive(false);
-                    CC.CancelAim();
+                CC.CancelAim();
+            }
+
+            if (Input.GetAxis("Right_Trigger") == 1)
+            {
+                if (aimDir.Equals("left"))
+                {
+                    weaponController.FireWeaponsLeft(true);
+                }
+
+                if (aimDir.Equals("right"))
+                {
+                    weaponController.FireWeaponsRight(true);
                 }
             }
 
-            if(aiming)
+            if (aiming)
             {
                 range += Input.GetAxis("Mouse_Y");
                 range = Mathf.Clamp(range, minimumRange, maxRange);
@@ -192,7 +197,7 @@ public class Player : LivingEntity
 
         currentGold += _amount;
 
-        if(currentGold > maxGold)
+        if (currentGold > maxGold)
         {
             currentGold = maxGold;
         }
@@ -252,7 +257,7 @@ public class Player : LivingEntity
 
                 // calculate force vector
                 var force = collision.transform.position - transform.position;
-                
+
                 // normalize force vector to get direction only and trim magnitude
                 force.Normalize();
                 AI.GetComponent<Rigidbody>().AddForce(force * shipKnockBack);
@@ -264,7 +269,7 @@ public class Player : LivingEntity
 
                 // calculate force vector
                 var force = transform.position - collision.transform.position;
-                
+
                 // normalize force vector to get direction only and trim magnitude
                 force.Normalize();
                 gameObject.GetComponent<Rigidbody>().AddForce(force * shipKnockBack);
@@ -288,7 +293,7 @@ public class Player : LivingEntity
             }
         }
 
-        if(collision.gameObject.layer == 8)
+        if (collision.gameObject.layer == 8)
         {
             // Stun stops the player controller from moving forward and allows us to add forces to the player
             controller.AddStun(islandStunDuration);

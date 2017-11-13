@@ -76,12 +76,12 @@ public class CameraController : MonoBehaviour
         buildCam.InvertY = _isInverted;
     }
 
-    public void AimRight()
+    private void AimRight()
     {
         playCam.AimRight();
     }
 
-    public void AimLeft()
+    private void AimLeft()
     {
         playCam.AimLeft();
     }
@@ -89,6 +89,27 @@ public class CameraController : MonoBehaviour
     public void CancelAim()
     {
         playCam.CancelAim();
+    }
+
+    public string TryAim()
+    {
+        Debug.Log("Trying to aim");
+
+        float angle = playCam.CalculatePerspectiveAngle();
+
+        if(angle > 12 && angle < 168)
+        {
+            AimRight();
+            return "right";
+        }
+
+        if(angle > 192 && angle < 348)
+        {
+            AimLeft();
+            return "left"; 
+        }
+
+        return "no";
     }
 
     public void EnableFastMode()
@@ -114,5 +135,10 @@ public class CameraController : MonoBehaviour
     public BuildModeCam BuildCam
     {
         get { return buildCam; }
+    }
+
+    public PlayModeCameraTwo PlayCam
+    {
+        get { return playCam; }
     }
 }

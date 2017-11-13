@@ -149,16 +149,19 @@ public class PlayerController : MonoBehaviour
             // Lower or raise Sails
             if (Input.GetButtonDown("A_Button"))
             {
-                if ((int)sailState < 2)
+                if (components.getSpeedBonus() > 0)
                 {
-                    sailState++;
-                }
-                else
-                {
-                    sailState = SailingState.IDLE;
-                }
+                    if ((int)sailState < 2)
+                    {
+                        sailState++;
+                    }
+                    else
+                    {
+                        sailState = SailingState.IDLE;
+                    }
 
-                SetSailsToState(sailState);
+                    SetSailsToState(sailState);
+                }
             }
 
             if (Time.deltaTime != 0)

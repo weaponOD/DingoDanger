@@ -53,7 +53,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void FireWeaponsRight()
+    public void FireWeaponsRight(bool _useCoolDown)
     {
         if (canShoot)
         {
@@ -69,13 +69,13 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                canShoot = false;
+                canShoot = !_useCoolDown;
                 nextReloadTime = Time.time + reloadTime;
             }
         }
     }
 
-    public void FireWeaponsLeft()
+    public void FireWeaponsLeft(bool _useCoolDown)
     {
         if (canShoot)
         {
@@ -91,7 +91,7 @@ public class WeaponController : MonoBehaviour
                     }
                 }
 
-                canShoot = false;
+                canShoot = !_useCoolDown;
                 nextReloadTime = Time.time + reloadTime;
             }
         }

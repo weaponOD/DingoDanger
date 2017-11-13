@@ -137,18 +137,21 @@ MonoBehaviour:
     type: 2}
   baseShip: {fileID: 0}
   cabins:
-  - {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
+  - GO: {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
+    cost: 10
   Cannons:
-  - {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
-  - {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
-  - {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
+  - GO: {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
+    cost: 10
+  - GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
+    cost: 10
+  - GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
+    cost: 10
   Sails:
-  - {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
+  - GO: {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
+    cost: 10
   Armours:
-  - {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-  Rams:
-  - {fileID: 1890685103475722, guid: 35bde9ed85b9d5544bfe29d70e29f513, type: 2}
-  - {fileID: 1890685103475722, guid: bb9ae555f81b4224983a635718852a5b, type: 2}
+  - GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
+    cost: 10
   skipBuilt: 0
 --- !u!114 &114994603169521724
 MonoBehaviour:

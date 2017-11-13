@@ -278,6 +278,11 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void MadePurchase()
+    {
+        goldText.text = "" + player.Gold;
+    }
+
     public void SetBuildPanelStatus(bool _isEnabled)
     {
         buildPanel.SetActive(_isEnabled);
@@ -294,5 +299,8 @@ public class UIController : MonoBehaviour
     {
         // un-Subscribe to game state
         GameState.buildModeChanged -= SetBuildPanelStatus;
+
+        // un-Subscribe to player's gold change
+        player.GoldChanged -= GoldChanged;
     }
 }

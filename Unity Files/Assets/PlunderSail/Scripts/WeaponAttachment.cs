@@ -14,9 +14,6 @@ public class WeaponAttachment : AttachmentBase
     private string ammoType = "";
 
     [SerializeField]
-    private GameObject ProjectilePrefab = null;
-
-    [SerializeField]
     protected float damage;
 
     [SerializeField]

@@ -20,26 +20,27 @@ public class ShipBuilding : MonoBehaviour
     private Transform baseShip = null;
 
     [SerializeField]
-    GameObject[] cabins;
+    private ShopItem[] cabins;
 
     [SerializeField]
-    GameObject[] Cannons;
+    private ShopItem[] Cannons;
 
     [SerializeField]
-    GameObject[] Sails;
+    private ShopItem[] Sails;
 
     [SerializeField]
-    GameObject[] Armours;
-
-    [SerializeField]
-    GameObject[] Rams;
+    private ShopItem[] Armours;
 
     // System References
     private CameraController CC;
 
-    private Transform player;
+    private Transform playerT;
+
+    private Player player;
 
     private Transform playerCentre;
+
+    private UIController UI;
 
     // Local Variables
     private AttachmentSpot[,,] grid;
@@ -65,9 +66,13 @@ public class ShipBuilding : MonoBehaviour
     [SerializeField]
     private bool skipBuilt = false;
 
-    Dictionary<string, Attachment> attachments;
+    private Dictionary<string, Attachment> attachments;
+
+    private Dictionary<string, int> goldCosts;
 
     private string currentPiece;
+
+    private int goldCost = 0;
 
     private int xLength;
     private int yLength;
@@ -77,11 +82,17 @@ public class ShipBuilding : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerT = GameObject.FindGameObjectWithTag("Player").transform;
+
+        player = playerT.GetComponent<Player>();
 
         CC = GetComponent<CameraController>();
 
         attachments = new Dictionary<string, Attachment>();
+
+        goldCosts = new Dictionary<string, int>();
+
+        UI = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UIController>();
 
         Buildgrid = new GameObject("Grid").transform;
 
@@ -102,6 +113,8 @@ public class ShipBuilding : MonoBehaviour
         }
 
         preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
+        goldCost = goldCosts["Cabin0"];
+
         currentPiece = preview.AttachmentName;
         preview.ShipCentre = new Vector3((int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z);
     }
@@ -537,7 +550,7 @@ public class ShipBuilding : MonoBehaviour
     // convert raw angle of camera to the nearest cardinonal point
     private float CalculatePerspectiveAngle()
     {
-        Quaternion relative = Quaternion.Inverse(player.transform.rotation) * CC.BuildCam.transform.root.rotation;
+        Quaternion relative = Quaternion.Inverse(playerT.transform.rotation) * CC.BuildCam.transform.root.rotation;
 
         float rawAngle = relative.eulerAngles.y;
 
@@ -560,6 +573,10 @@ public class ShipBuilding : MonoBehaviour
         {
             Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
             grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
+
+            player.DeductGold(goldCosts[preview.AttachmentName]);
+
+            UI.MadePurchase();
 
             dirty = true;
 
@@ -628,6 +645,12 @@ public class ShipBuilding : MonoBehaviour
     // Applies each rule of legal placement and returns true if legal.
     private bool CalculateCanPlace()
     {
+        // Can player afford piece
+        if(player.Gold < goldCost)
+        {
+            return false;
+        }
+
         if (!CheckNotFloating())
         {
             return false;
@@ -758,6 +781,7 @@ public class ShipBuilding : MonoBehaviour
     {
         currentPiece = _name;
         preview.setAttachment(_name, attachments[_name].mesh);
+        goldCost = goldCosts[_name];
 
         dirty = true;
     }
@@ -824,33 +848,41 @@ public class ShipBuilding : MonoBehaviour
     {
         int count = 0;
 
-        foreach (GameObject cabin in cabins)
+        foreach (ShopItem cabin in cabins)
         {
-            attachments.Add("Cabin" + count, new Attachment(cabin, cabin.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            attachments.Add("Cabin" + count, new Attachment(cabin.GO, cabin.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Cabin" + count, cabin.cost);
+
             count++;
         }
 
         count = 0;
 
-        foreach (GameObject cannon in Cannons)
+        foreach (ShopItem cannon in Cannons)
         {
-            attachments.Add("Cannon" + count, new Attachment(cannon, cannon.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            attachments.Add("Cannon" + count, new Attachment(cannon.GO, cannon.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Cannon" + count, cannon.cost);
+
             count++;
         }
 
         count = 0;
 
-        foreach (GameObject sail in Sails)
+        foreach (ShopItem sail in Sails)
         {
-            attachments.Add("Sail" + count, new Attachment(sail, sail.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            attachments.Add("Sail" + count, new Attachment(sail.GO, sail.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Sail" + count, sail.cost);
+
             count++;
         }
 
         count = 0;
 
-        foreach (GameObject armour in Armours)
+        foreach (ShopItem armour in Armours)
         {
-            attachments.Add("Armour" + count, new Attachment(armour, armour.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            attachments.Add("Armour" + count, new Attachment(armour.GO, armour.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Armour" + count, armour.cost);
+
             count++;
         }
     }
@@ -872,4 +904,11 @@ public class Attachment
         GO = _gameObject;
         mesh = _mesh;
     }
+}
+
+[System.Serializable]
+public class ShopItem
+{
+    public GameObject GO = null;
+    public int cost = 0;
 }

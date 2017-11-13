@@ -111,39 +111,34 @@ public class WeaponAttachment : AttachmentBase
 
         shipVelocity = entity.Velocity;
 
-        Projectile shot = Instantiate(ProjectilePrefab, _firePoint.position, _firePoint.rotation).GetComponent<Projectile>();
-        shot.Damage = damage;
-        shot.FireProjectile(shipVelocity, projectileForce);
+        GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
 
-        if (shootParticle != null)
+        if (projectile != null)
         {
-            Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
+            projectile.transform.position = _firePoint.position;
+            projectile.transform.rotation = _firePoint.rotation;
+
+            projectile.SetActive(true);
+
+            Projectile shot = projectile.GetComponent<Projectile>();
+            shot.Damage = damage;
+            shot.FireProjectile(shipVelocity, projectileForce);
+
+            GameObject effect = ResourceManager.instance.getPooledObject("projectileEffect");
+
+            effect.transform.position = _firePoint.position;
+            effect.transform.rotation = _firePoint.rotation;
+
+            effect.SetActive(true);
+
+            ResourceManager.instance.DelayedDestroy(effect, effect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
+            PlayRandomSound();
         }
-
-        //GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
-
-        //if(projectile != null)
-        //{
-        //    projectile.transform.position = _firePoint.position;
-        //    projectile.transform.rotation = _firePoint.rotation;
-
-        //    projectile.SetActive(true);
-
-        //    Projectile shot = projectile.GetComponent<Projectile>();
-        //    shot.Damage = damage;
-        //    shot.FireProjectile(shipVelocity, projectileForce);
-
-        //    if (shootParticle != null)
-        //    {
-        //        Destroy(Instantiate(shootParticle.gameObject, _firePoint.position, _firePoint.rotation) as GameObject, shootParticle.main.startLifetime.constant);
-        //    }
-
-        //    PlayRandomSound();
-        //}
-        //else
-        //{
-        //    Debug.LogError("Projectile from resource manager was null");
-        //}
+        else
+        {
+            Debug.LogError("Projectile from resource manager was null");
+        }
     }
 
     protected void PlayRandomSound()

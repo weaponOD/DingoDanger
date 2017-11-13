@@ -8,12 +8,12 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: LPWaterPerformance
   m_Shader: {fileID: 4800000, guid: 8165be4dd0b12774d80426d906df9c38, type: 3}
-  m_ShaderKeywords: LPW_FOAM LPW_SHADOWS WATER_REFLECTIVE WATER_REFRACTIVE _DISTORT_ON
-    _EDGEBLEND_ON _EMISSION _LIGHTABS_ON _SHADING_FLAT _WAVES_HIGHQUALITY _ZWRITE_ON
+  m_ShaderKeywords: LPW_HQFOAM WATER_REFRACTIVE _DISTORT_ON _EDGEBLEND_ON _EMISSION
+    _HQFOAM_ON _LIGHTABS_ON _SHADING_FLAT _WAVES_HIGHQUALITY _ZWRITE_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2500
+  m_CustomRenderQueue: 2501
   stringTagMap:
     QUEUE: AlphaTest+50
   disabledShaderPasses: []
@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - _Absorption: 10
     - _BumpScale: 35
-    - _BumpScale_: 38.5
+    - _BumpScale_: 35
     - _BumpSpeed: 0.2
     - _Cull: 0
     - _Cull_: 2
@@ -52,39 +52,39 @@ Material:
     - _Distort: 1
     - _Distortion: 1
     - _EdgeBlend: 1
-    - _EnableShadows: 1
+    - _EnableShadows: 0
     - _FoamScale: 20
     - _FoamSpeed: 0.3
     - _FoamSpread: 1
     - _FresPower: 1.68
-    - _HQFoam: 0
+    - _HQFoam: 1
     - _Height: 1
-    - _Height_: 1.1
+    - _Height_: 1
     - _Length: 50
     - _LightAbs: 1
     - _NormalOffset: 1
     - _Opacity: 0.4
     - _PointLights: 0
     - _RHeight: 0.3
-    - _RHeight_: 0.33
+    - _RHeight_: 0.3
     - _RSpeed: 0.4
-    - _RSpeed_: 0.44000003
+    - _RSpeed_: 0.4
     - _Reflection: 1.2
     - _Refraction: 2
     - _Scale: 1
-    - _Scale_: 1.1
+    - _Scale_: 1
     - _Shading: 0
     - _Shadow: 0.389
-    - _ShoreDistance: 6.05
-    - _ShoreIntensity: -0.68
+    - _ShoreDistance: 2.5
+    - _ShoreIntensity: 0.84
     - _Specular: 246
     - _Speed: 0.8
-    - _Speed_: 0.88000005
+    - _Speed_: 0.8
     - _Steepness: 0
     - _Stretch: 12
-    - _TexSize_: 70.4
+    - _TexSize_: 64
     - _Time_: 0
-    - _TransformScale_: 1.1
+    - _TransformScale_: 1
     - _Waves: 2
     - _ZWrite: 1
     m_Colors:
@@ -94,5 +94,5 @@ Material:
     - _FresColor: {r: 0.022923876, g: 0.29864272, b: 0.3897059, a: 1}
     - _ShoreColor: {r: 1, g: 0.97794116, b: 0.97794116, a: 1}
     - _SpecColor: {r: 0.86764705, g: 0.86764705, b: 0.28070936, a: 1}
-    - _Sun: {r: 0.20820817, g: 0.30435535, b: 0.92952526, a: 0}
-    - _SunColor: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+    - _Sun: {r: 0.049250163, g: 0.54785943, b: -0.8351194, a: 0}
+    - _SunColor: {r: 0.9632353, g: 0.92333084, b: 0.81450045, a: 1}

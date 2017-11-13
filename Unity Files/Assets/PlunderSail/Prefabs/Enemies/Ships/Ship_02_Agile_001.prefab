@@ -2010,7 +2010,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1223278772130290}
-  m_Mesh: {fileID: 4300000, guid: 28e1fde7d356af640b48e8d7bf1df0f5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a4d7c5811ad9f0a42962d1511d4bc616, type: 3}
 --- !u!33 &33130674792387400
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2066,7 +2066,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1350877998304714}
-  m_Mesh: {fileID: 4300000, guid: 28e1fde7d356af640b48e8d7bf1df0f5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a4d7c5811ad9f0a42962d1511d4bc616, type: 3}
 --- !u!33 &33810829255897118
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2080,7 +2080,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1046715776365684}
-  m_Mesh: {fileID: 4300000, guid: 28e1fde7d356af640b48e8d7bf1df0f5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a4d7c5811ad9f0a42962d1511d4bc616, type: 3}
 --- !u!33 &33933845299655016
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -2363,8 +2363,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 240
-  leadReloadTime: 0.1
-  tridentReloadTime: 0.1
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
@@ -2406,6 +2404,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2420,8 +2421,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!114 &114106545681248890
@@ -2450,6 +2449,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2464,8 +2466,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!114 &114174690118146328
@@ -2482,6 +2482,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2496,8 +2499,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!114 &114244353891393320
@@ -2514,6 +2515,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2528,8 +2532,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!114 &114416529532256374
@@ -2546,6 +2548,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2560,8 +2565,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!114 &114619255810267662
@@ -2627,9 +2630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireShout: []
-  leftWeapons: []
-  rightWeapons: []
+  FireShoutSound: 
+  reloadTime: 0.5
 --- !u!114 &114928650496456302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2656,6 +2658,9 @@ MonoBehaviour:
   maxHealth: 150
   minFireTime: 0.05
   maxFireTime: 0.15
+  ammoType: 
+  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
   damage: 18
   projectileForce: 160
   numberOfFirePoints: 2
@@ -2670,8 +2675,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
   - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
-    type: 2}
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
     type: 2}
   firePoints: []
 --- !u!120 &120897583584099464

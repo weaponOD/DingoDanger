@@ -270,7 +270,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1852390235085222}
-  m_Mesh: {fileID: 4300000, guid: 28e1fde7d356af640b48e8d7bf1df0f5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a4d7c5811ad9f0a42962d1511d4bc616, type: 3}
 --- !u!33 &33580954737881540
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -449,8 +449,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starterHealth: 100
-  leadReloadTime: 0
-  tridentReloadTime: 0
   bountyDelay: 0.1
   bounty:
   - {fileID: 100004, guid: 723a5e4e002853e488501468ad09aedb, type: 3}
@@ -491,9 +489,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireShout: []
-  leftWeapons: []
-  rightWeapons: []
+  FireShoutSound: 
+  reloadTime: 0
 --- !u!120 &120763537414237672
 LineRenderer:
   m_ObjectHideFlags: 1

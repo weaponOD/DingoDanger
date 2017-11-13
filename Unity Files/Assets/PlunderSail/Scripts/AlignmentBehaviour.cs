@@ -8,7 +8,7 @@ using UnityEngine;
 ///
 public class AlignmentBehaviour : IBehaviour
 {
-    public override Vector3 ApplyBehaviour(Vector3 _myPos, Transform _target)
+    public override Vector3 ApplyBehaviour(Transform _me, Transform _target)
     {
         targetDirection = _target.rotation.eulerAngles;
 

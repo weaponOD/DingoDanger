@@ -6,5 +6,12 @@ public abstract class IBehaviour : ScriptableObject
 {
     protected Vector3 targetDirection;
 
-    public abstract Vector3 ApplyBehaviour(Vector3 _myPos, Transform _target);
+    protected string forceName = "";
+
+    public abstract Vector3 ApplyBehaviour(Transform _me, Transform _target);
+
+    public virtual string Name
+    {
+        get { return forceName; }
+    }
 }

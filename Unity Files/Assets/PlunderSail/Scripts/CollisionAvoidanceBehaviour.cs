@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class CollisionAvoidanceBehaviour : IBehaviour
 {
-    public override Vector3 ApplyBehaviour(Vector3 _myPos, Transform _targetPos)
+    public override Vector3 ApplyBehaviour(Transform _me, Transform _targetPos)
     {
-        //// layer mask of islands
-        //int layerMask = 1 << 8;
+        // layer mask of islands
+        int layerMask = 1 << 8;
 
-        //Collider[] islands = Physics.OverlapSphere(_myPos, 15, layerMask);
+        forceName = "collisionAvoidance";
 
-        //foreach()
-        //{
+        Ray ray = new Ray(_me.position, _me.forward);
+        RaycastHit hit;
 
-        //}
+        if (Physics.Raycast(ray, out hit, 15))
+        {
+            targetDirection = hit.transform.position - (_me.forward * 15);
+            targetDirection.Normalize();
+
+            Debug.Log("There's something ahead of me!");
+        }
 
         return targetDirection;
     }

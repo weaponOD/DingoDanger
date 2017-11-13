@@ -11,19 +11,19 @@ public class ChaseBehaviour : IBehaviour
     private Vector3 leftSidePoint;
     private Vector3 RightSidePoint;
 
-    public override Vector3 ApplyBehaviour(Vector3 _myPos, Transform _target)
+    public override Vector3 ApplyBehaviour(Transform _me, Transform _target)
     {
         // work out which side of the player is closer to the AI
         leftSidePoint = _target.position - _target.right * 20;
         RightSidePoint = _target.position + _target.right * 20;
 
-        if (Vector3.Distance(_myPos, leftSidePoint) < Vector3.Distance(_myPos, RightSidePoint))
+        if (Vector3.Distance(_me.position, leftSidePoint) < Vector3.Distance(_me.position, RightSidePoint))
         {
-            targetDirection = (leftSidePoint - _myPos).normalized;
+            targetDirection = (leftSidePoint - _me.position).normalized;
         }
         else
         {
-            targetDirection = (RightSidePoint - _myPos).normalized;
+            targetDirection = (RightSidePoint - _me.position).normalized;
         }
         
         return targetDirection;

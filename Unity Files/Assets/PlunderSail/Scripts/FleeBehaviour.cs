@@ -8,9 +8,9 @@ using UnityEngine;
 /// 
 public class FleeBehaviour : IBehaviour
 {
-    public override Vector3 ApplyBehaviour(Vector3 _myPos, Transform _target)
+    public override Vector3 ApplyBehaviour(Transform _me, Transform _target)
     {
-        targetDirection = (_myPos - _target.position).normalized;
+        targetDirection = (_me.position - _target.position).normalized;
 
         return targetDirection;
     }

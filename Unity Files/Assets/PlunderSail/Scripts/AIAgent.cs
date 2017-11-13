@@ -53,6 +53,8 @@ public class AIAgent : LivingEntity
 
     protected Rigidbody rb;
 
+    protected bool canWander = true;
+
     protected Quaternion targetRotation;
     protected Vector3 targetDirection;
 
@@ -108,7 +110,7 @@ public class AIAgent : LivingEntity
         if (transform.position.y < -5)
         {
             player.GiveGold(goldReward);
-            GameObject.Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         if (!GameState.BuildMode)
@@ -117,11 +119,12 @@ public class AIAgent : LivingEntity
 
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distanceToPlayer > awarenessRange)
+            if (distanceToPlayer > awarenessRange && canWander)
             {
-                // WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
+                WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
 
-                // behaviours.Add(wander);
+                behaviours.Add(wander);
+                // canWander = false;
             }
 
             // Check if the target is further than attack range, if so Chase target.
@@ -139,10 +142,6 @@ public class AIAgent : LivingEntity
 
                 behaviours.Add(align);
 
-                Debug.DrawRay(transform.position + transform.forward * 0.2f, transform.right, Color.red);
-
-                Debug.DrawRay(transform.position + transform.forward * 0.2f, -transform.right, Color.red);
-
                 if (Physics.Raycast(transform.position + transform.forward * 0.2f, transform.right, attackRange))
                 {
                     weaponController.FireWeaponsRight();
@@ -153,12 +152,24 @@ public class AIAgent : LivingEntity
                     weaponController.FireWeaponsLeft();
                 }
             }
+
+            CollisionAvoidanceBehaviour avoid = (CollisionAvoidanceBehaviour)ScriptableObject.CreateInstance("CollisionAvoidanceBehaviour");
+            behaviours.Add(avoid);
         }
 
         foreach (IBehaviour behaviour in behaviours)
         {
-            targetDirection += behaviour.ApplyBehaviour(transform.position, player.transform);
+            if (behaviour.Name.Equals("collisionAvoidance"))
+            {
+                targetDirection += behaviour.ApplyBehaviour(transform, player.transform) * 5;
+            }
+            else
+            {
+                targetDirection += behaviour.ApplyBehaviour(transform, player.transform);
+            }
         }
+
+        Debug.DrawLine(transform.position + Vector3.up * 3, transform.position + Vector3.up * 3 + (targetDirection * 10), Color.red);
 
         //create the rotation we need to be in to look at the target
         targetRotation = Quaternion.LookRotation(targetDirection);
@@ -214,7 +225,7 @@ public class AIAgent : LivingEntity
         if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
         {
             float hitDamage = collision.relativeVelocity.magnitude;
-            Debug.Log("AI: Hit piece with a force of " + hitDamage);
+            //Debug.Log("AI: Hit piece with a force of " + hitDamage);
 
             if (hitDamage < 10)
             {

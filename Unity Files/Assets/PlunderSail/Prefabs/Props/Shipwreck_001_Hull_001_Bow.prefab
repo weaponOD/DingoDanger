@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4693023049115782}
+  - component: {fileID: 136419390731587658}
   m_Layer: 0
   m_Name: Shipwreck_001_Hull_001_Bow
   m_TagString: Untagged
@@ -62,14 +63,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906798973664632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.10218811, y: 0.95070577, z: -0.29069504, w: -0.034820087}
+  m_LocalPosition: {x: -3.53, y: 0.21566124, z: 6.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4470876955604712}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -214.045, y: 360.46997, z: -192.126}
 --- !u!23 &23605546953828858
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -109,3 +110,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1717027391690084}
   m_Mesh: {fileID: 4300000, guid: 7231dab084fadb14c87046174d292135, type: 3}
+--- !u!136 &136419390731587658
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906798973664632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.5
+  m_Height: 4.7083497
+  m_Direction: 1
+  m_Center: {x: 0.13268107, y: 0.053900797, z: 0.325682}

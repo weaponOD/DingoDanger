@@ -2281,16 +2281,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 240
+  starterHealth: 350
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   currentHealth: 0
-  baseMoveSpeed: 18
+  baseMoveSpeed: 22
   rotationSpeed: 1
-  attackRange: 140
-  awarenessRange: 100
+  attackRange: 50
+  awarenessRange: 250
   stunDuration: 0.5
   difficulty: 1
   goldReward: 400
@@ -2550,7 +2550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireShoutSound: 
-  reloadTime: 0.5
+  reloadTime: 0.7
 --- !u!114 &114928650496456302
 MonoBehaviour:
   m_ObjectHideFlags: 1

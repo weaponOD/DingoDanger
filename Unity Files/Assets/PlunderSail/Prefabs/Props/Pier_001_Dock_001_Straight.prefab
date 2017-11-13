@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4486371703390650}
+  - component: {fileID: 65514885516792332}
   m_Layer: 0
   m_Name: Pier_001_Dock_001_Straight
   m_TagString: Untagged
@@ -50,7 +51,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157822689105598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 22.71, y: -0.41, z: 4.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4898033668984180}
@@ -109,3 +110,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527140324700716}
   m_Mesh: {fileID: 4300000, guid: e507784e2ce40da4398cd0c2df5d4b70, type: 3}
+--- !u!65 &65514885516792332
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1157822689105598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 6.298895, z: 16.893293}
+  m_Center: {x: 0, y: -0.8005818, z: 0}

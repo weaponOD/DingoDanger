@@ -3762,15 +3762,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 350
+  starterHealth: 650
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   currentHealth: 0
-  baseMoveSpeed: 7
-  rotationSpeed: 0.4
-  attackRange: 50
+  baseMoveSpeed: 10
+  rotationSpeed: 0.7
+  attackRange: 220
   awarenessRange: 300
   stunDuration: 1
   difficulty: 1
@@ -4194,8 +4194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _segments: 60
-  _horizRadius: 300
-  _vertRadius: 300
+  _horizRadius: 220
+  _vertRadius: 220
   _offset: 0
   _axis: 1
   _checkValuesChanged: 1

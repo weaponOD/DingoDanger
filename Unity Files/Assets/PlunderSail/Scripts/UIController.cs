@@ -141,9 +141,13 @@ public class UIController : MonoBehaviour
     private void GoldChanged()
     {
         goldText.text = "" + player.Gold;
-        goldHUD.SetActive(true);
+        
+        if(!GameState.BuildMode)
+        {
+            goldHUD.SetActive(true);
 
-        Invoke("HideGoldHUD", goldDisplayTime);
+            Invoke("HideGoldHUD", goldDisplayTime);
+        }
     }
 
     private void HideGoldHUD()
@@ -276,11 +280,6 @@ public class UIController : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    public void MadePurchase()
-    {
-        goldText.text = "" + player.Gold;
     }
 
     public void SetBuildPanelStatus(bool _isEnabled)

@@ -183,6 +183,13 @@ public class Player : LivingEntity
     public void DeductGold(int _amount)
     {
         currentGold -= _amount;
+
+        currentGold = Mathf.Clamp(currentGold, 0, maxGold);
+
+        if (GoldChanged != null)
+        {
+            GoldChanged();
+        }
     }
 
     // Add the specified amount of gold to the player
@@ -190,16 +197,13 @@ public class Player : LivingEntity
     {
         AudioManager.instance.PlaySound(goldGainedSound);
 
+        currentGold += _amount;
+
+        currentGold = Mathf.Clamp(currentGold, 0, maxGold);
+
         if (GoldChanged != null)
         {
             GoldChanged();
-        }
-
-        currentGold += _amount;
-
-        if (currentGold > maxGold)
-        {
-            currentGold = maxGold;
         }
     }
 

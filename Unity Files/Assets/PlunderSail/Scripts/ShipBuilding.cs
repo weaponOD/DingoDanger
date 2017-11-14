@@ -20,6 +20,9 @@ public class ShipBuilding : MonoBehaviour
     private Transform baseShip = null;
 
     [SerializeField]
+    private float refundPercent = 0f;
+
+    [SerializeField]
     private ShopItem[] cabins;
 
     [SerializeField]
@@ -171,7 +174,7 @@ public class ShipBuilding : MonoBehaviour
 
             if (Input.GetButtonDown("B_Button"))
             {
-                DeleteAttachment();
+                RemoveAttachment();
             }
 
             if (dirty)
@@ -576,8 +579,6 @@ public class ShipBuilding : MonoBehaviour
 
             player.DeductGold(goldCosts[preview.AttachmentName]);
 
-            UI.MadePurchase();
-
             dirty = true;
 
             if (currentPiece.Contains("Sail"))
@@ -595,10 +596,21 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
-    private void DeleteAttachment()
+    private void RemoveAttachment()
     {
         if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment != null)
         {
+            //player.GiveGold(goldCosts[grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject.name]);
+
+            string wholeName = grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject.name;
+
+            string[] split = wholeName.Split('_');
+
+            wholeName = split[0] + split[1].ToCharArray()[2];
+
+            Debug.Log("Removing " + wholeName);
+
+            player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
             Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
         }
 

@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461116417234096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -53,55 +53,121 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: BattleTheme
-    audioClip: {fileID: 8300000, guid: bb422c26e7fa5c047b0f04a61be2ec02, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: bb422c26e7fa5c047b0f04a61be2ec02, type: 3}
     volume: 1
     pitch: 1
     looping: 1
     audioSource: {fileID: 0}
   - name: Bell
-    audioClip: {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: DropBearRelease
-    audioClip: {fileID: 8300000, guid: 510b3233d5eef174da43d2ee32c9c705, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: 4c6e2666e2daf454e8a4fb4c4b3e6b36, type: 3}
+    - {fileID: 8300000, guid: 510b3233d5eef174da43d2ee32c9c705, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: Float
-    audioClip: {fileID: 8300000, guid: de91d06a2333dac458939a10b7e81766, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: de91d06a2333dac458939a10b7e81766, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: Sink
-    audioClip: {fileID: 8300000, guid: f18076bbd419e284a9e04c759789457d, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: f18076bbd419e284a9e04c759789457d, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: ImpactWater
-    audioClip: {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: ImpactWood
-    audioClip: {fileID: 8300000, guid: 70a344a4de0c3664686597fd091502bc, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: 70a344a4de0c3664686597fd091502bc, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: SailRaise
-    audioClip: {fileID: 8300000, guid: 1bf4007b4ede25140a4c99cf92b0f21d, type: 3}
+  - name: sailMedium
+    audioClip:
+    - {fileID: 8300000, guid: 1bf4007b4ede25140a4c99cf92b0f21d, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
   - name: Wave
-    audioClip: {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
+    audioClip:
+    - {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: cannonFire
+    audioClip:
+    - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
+    - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
+    - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
+    - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
+    - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
+    - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
+    - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
+    - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: fireShouts
+    audioClip:
+    - {fileID: 8300000, guid: 036d8a336bce81f48bcc8d3913fe0f6c, type: 3}
+    - {fileID: 8300000, guid: 5b216242132641c488b0c129cf2a9642, type: 3}
+    - {fileID: 8300000, guid: 7d97a210eb3beb7438b97e40c5bf2a14, type: 3}
+    - {fileID: 8300000, guid: a1d8082622e1ee7438ae8ccae71f5077, type: 3}
+    - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
+    - {fileID: 8300000, guid: be30966ab2734044aa3c6f660104f922, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: sailFast
+    audioClip:
+    - {fileID: 8300000, guid: a2abb6e0dcd79984dbacdfc23e7e2746, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: sailSlow
+    audioClip: []
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: enterDock
+    audioClip:
+    - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: receiveDamage
+    audioClip:
+    - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
+    - {fileID: 8300000, guid: 5589a6cc35ac7c545982755a718ca9af, type: 3}
+    - {fileID: 8300000, guid: 0dcd67d065b5f9f43b31833e9637e478, type: 3}
+    - {fileID: 8300000, guid: 7fbafc42b40313946b89e63d92e7724f, type: 3}
     volume: 1
     pitch: 1
     looping: 0

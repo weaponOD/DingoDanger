@@ -307,7 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4169928339545286}
   - component: {fileID: 135404000306792856}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Island_002_OceanStandard_002_MediumSand (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4350459286364436}
   - component: {fileID: 135327418433530870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Island_002_OceanStandard_002_MediumSand (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,7 +1285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4775838583376416}
   - component: {fileID: 135976873600108088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Oasis_007_Islands_007_Medium_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4671,6 +4671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldAmount: 10
   distanceToHook: 30
+  moveSpeed: 0
+  floatSound: CHANGE
 --- !u!135 &135178347444908660
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -326,13 +326,10 @@ MonoBehaviour:
   minFireTime: 0.03
   maxFireTime: 0.15
   ammoType: dropBear
-  ProjectilePrefab: {fileID: 1804301577746708, guid: a1f24252b9f9cf3429c76ed6d34e7a03,
-    type: 2}
   damage: 100
   projectileForce: 0
   numberOfFirePoints: 1
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 510b3233d5eef174da43d2ee32c9c705, type: 3}
+  shootSound: dropBearRelease
   shootParticle: {fileID: 0}
   firePoints: []

@@ -295,13 +295,11 @@ MonoBehaviour:
   minFireTime: 0
   maxFireTime: 0.02
   ammoType: harpoon
-  ProjectilePrefab: {fileID: 1804301577746708, guid: e5617f14bfa55f144b27b00e8fbc8f6a,
-    type: 2}
   damage: 55
   projectileForce: 22
   numberOfFirePoints: 1
   canAim: 1
-  shootSound: []
+  shootSound: s
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:

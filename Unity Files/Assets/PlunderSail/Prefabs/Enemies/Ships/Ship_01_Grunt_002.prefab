@@ -3532,6 +3532,8 @@ MonoBehaviour:
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
+  sinkingSound: sink
+  takeDamageSound: 
   currentHealth: 0
   baseMoveSpeed: 8
   rotationSpeed: 0.3
@@ -3582,21 +3584,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints: []
@@ -3639,21 +3631,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:
@@ -3698,21 +3680,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:
@@ -3733,21 +3705,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:
@@ -3780,21 +3742,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:
@@ -3815,21 +3767,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints: []
@@ -3848,21 +3790,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:
@@ -3948,21 +3880,11 @@ MonoBehaviour:
   minFireTime: 0.8
   maxFireTime: 1.2
   ammoType: cannonBall
-  ProjectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
   damage: 26
   projectileForce: 140
   numberOfFirePoints: 2
   canAim: 0
-  shootSound:
-  - {fileID: 8300000, guid: 330dfeaf4f0770945a45b7439f496935, type: 3}
-  - {fileID: 8300000, guid: acf097be1a3101a47bac13ba0f3773db, type: 3}
-  - {fileID: 8300000, guid: ce394051715c31344841bb346d73b296, type: 3}
-  - {fileID: 8300000, guid: 433c0fdfeae54d14094bdff1e5f65861, type: 3}
-  - {fileID: 8300000, guid: be3c113fbc40f2241aab92b657e7ae57, type: 3}
-  - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
-  - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
-  - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
+  shootSound: <
   shootParticle: {fileID: 198834818001750804, guid: c15d96c4253a92246bdd90374b9e5431,
     type: 2}
   firePoints:

@@ -66,7 +66,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: DropBearRelease
+  - name: dropBearRelease
     audioClip:
     - {fileID: 8300000, guid: 4c6e2666e2daf454e8a4fb4c4b3e6b36, type: 3}
     - {fileID: 8300000, guid: 510b3233d5eef174da43d2ee32c9c705, type: 3}
@@ -81,21 +81,21 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: Sink
+  - name: sink
     audioClip:
     - {fileID: 8300000, guid: f18076bbd419e284a9e04c759789457d, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: ImpactWater
+  - name: impactWater
     audioClip:
     - {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
     volume: 1
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: ImpactWood
+  - name: impactWood
     audioClip:
     - {fileID: 8300000, guid: 70a344a4de0c3664686597fd091502bc, type: 3}
     volume: 1
@@ -162,7 +162,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
-  - name: receiveDamage
+  - name: takeDamage
     audioClip:
     - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
     - {fileID: 8300000, guid: 5589a6cc35ac7c545982755a718ca9af, type: 3}

@@ -115,8 +115,8 @@ public class ShipBuilding : MonoBehaviour
             preview.gameObject.SetActive(false);
         }
 
-        preview.setAttachment("Cabin0", attachments["Cabin0"].mesh);
-        goldCost = goldCosts["Cabin0"];
+        preview.setAttachment("Cabin001", attachments["Cabin001"].mesh);
+        goldCost = goldCosts["Cabin001"];
 
         currentPiece = preview.AttachmentName;
         preview.ShipCentre = new Vector3((int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z);
@@ -606,9 +606,7 @@ public class ShipBuilding : MonoBehaviour
 
             string[] split = wholeName.Split('_');
 
-            wholeName = split[0] + split[1].ToCharArray()[2];
-
-            Debug.Log("Removing " + wholeName);
+            wholeName = split[0] + split[1];
 
             player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
             Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
@@ -858,42 +856,42 @@ public class ShipBuilding : MonoBehaviour
 
     private void PopulateDictionary()
     {
-        int count = 0;
+        int count = 1;
 
         foreach (ShopItem cabin in cabins)
         {
-            attachments.Add("Cabin" + count, new Attachment(cabin.GO, cabin.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
-            goldCosts.Add("Cabin" + count, cabin.cost);
+            attachments.Add("Cabin00" + count, new Attachment(cabin.GO, cabin.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Cabin00" + count, cabin.cost);
 
             count++;
         }
 
-        count = 0;
+        count = 1;
 
         foreach (ShopItem cannon in Cannons)
         {
-            attachments.Add("Cannon" + count, new Attachment(cannon.GO, cannon.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
-            goldCosts.Add("Cannon" + count, cannon.cost);
+            attachments.Add("Cannon00" + count, new Attachment(cannon.GO, cannon.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Cannon00" + count, cannon.cost);
 
             count++;
         }
 
-        count = 0;
+        count = 1;
 
         foreach (ShopItem sail in Sails)
         {
-            attachments.Add("Sail" + count, new Attachment(sail.GO, sail.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
-            goldCosts.Add("Sail" + count, sail.cost);
+            attachments.Add("Sail00" + count, new Attachment(sail.GO, sail.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Sail00" + count, sail.cost);
 
             count++;
         }
 
-        count = 0;
+        count = 1;
 
         foreach (ShopItem armour in Armours)
         {
-            attachments.Add("Armour" + count, new Attachment(armour.GO, armour.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
-            goldCosts.Add("Armour" + count, armour.cost);
+            attachments.Add("Armour00" + count, new Attachment(armour.GO, armour.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
+            goldCosts.Add("Armour00" + count, armour.cost);
 
             count++;
         }

@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour
 
     private bool inverted = false;
 
+    private bool aiming = false;
+
+    private bool aimLeft = false;
+
     private void Awake()
     {
         playCam = playCamGO.GetComponentInChildren<PlayModeCameraTwo>();
@@ -40,6 +44,20 @@ public class CameraController : MonoBehaviour
 
             InvertX(inverted);
             InvertY(inverted);
+        }
+
+        if(aiming)
+        {
+            if(aimLeft)
+            {
+                Debug.Log("Aiming left");
+                AimLeft();
+            }
+            else
+            {
+                Debug.Log("Aiming right");
+                AimRight();
+            }
         }
     }
 
@@ -88,6 +106,7 @@ public class CameraController : MonoBehaviour
 
     public void CancelAim()
     {
+        aiming = false;
         playCam.CancelAim();
     }
 
@@ -100,14 +119,20 @@ public class CameraController : MonoBehaviour
         if(angle > 12 && angle < 168)
         {
             AimRight();
+            aiming = true;
+            aimLeft = false;
             return "right";
         }
 
         if(angle > 192 && angle < 348)
         {
             AimLeft();
+            aiming = true;
+            aimLeft = true;
             return "left"; 
         }
+
+        aiming = false;
 
         return "no";
     }

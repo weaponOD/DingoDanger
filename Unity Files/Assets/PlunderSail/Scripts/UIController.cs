@@ -141,8 +141,8 @@ public class UIController : MonoBehaviour
     private void GoldChanged()
     {
         goldText.text = "" + player.Gold;
-        
-        if(!GameState.BuildMode)
+
+        if (!GameState.BuildMode)
         {
             goldHUD.SetActive(true);
 
@@ -235,7 +235,7 @@ public class UIController : MonoBehaviour
 
         selectedGenre += _change;
 
-        builder.UpdatePreview(genres[selectedGenre] + selectedAttachment);
+        builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
 
         horizontalMenu[selectedGenre].SetActive(true);
     }
@@ -244,7 +244,7 @@ public class UIController : MonoBehaviour
     {
         selectedAttachment += _change;
 
-        builder.UpdatePreview(genres[selectedGenre] + selectedAttachment);
+        builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
     }
 
     public void ShowPierPopUp(bool _show)

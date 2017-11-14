@@ -2128,6 +2128,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114256727963917046, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: playerCentre
+      value: 
+      objectReference: {fileID: 367801791}
+    - target: {fileID: 114883611100677676, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: baseShip
+      value: 
+      objectReference: {fileID: 390037630}
     - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
       propertyPath: buildCamGO
@@ -2138,16 +2148,6 @@ Prefab:
       propertyPath: playCamGO
       value: 
       objectReference: {fileID: 1699494557}
-    - target: {fileID: 114883611100677676, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: baseShip
-      value: 
-      objectReference: {fileID: 390037630}
-    - target: {fileID: 114256727963917046, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: playerCentre
-      value: 
-      objectReference: {fileID: 367801791}
     - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
       propertyPath: Canvas
@@ -2180,6 +2180,26 @@ Prefab:
       objectReference: {fileID: 1534173433}
     - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
+      propertyPath: menuItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 1335565272}
+    - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: menuItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 556527754}
+    - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: menuItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 1255296321}
+    - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: mapMenu
+      value: 
+      objectReference: {fileID: 1399492214}
+    - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
       propertyPath: horizontalMenu.Array.data[0]
       value: 
       objectReference: {fileID: 309048076}
@@ -2193,13 +2213,7 @@ Prefab:
       propertyPath: horizontalMenu.Array.data[2]
       value: 
       objectReference: {fileID: 1016794475}
-    - target: {fileID: 114883611100677676, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: refundPercent
-      value: 0.8
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114276971465702096, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &141155920 stripped
@@ -6871,8 +6885,8 @@ Transform:
   - {fileID: 1768885041}
   - {fileID: 465633173}
   - {fileID: 261394152}
-  - {fileID: 141155920}
   - {fileID: 1486095295}
+  - {fileID: 141155920}
   - {fileID: 1740903972}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -18239,7 +18253,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1242014785}
-  m_LocalRotation: {x: 0.31410748, y: -0.6335113, z: 0.31410748, w: 0.6335113}
+  m_LocalRotation: {x: 0.31410745, y: -0.63351125, z: 0.31410745, w: 0.63351125}
   m_LocalPosition: {x: 0.812, y: 1.728, z: -1.813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20417,7 +20431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1399492215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21857,7 +21871,7 @@ Transform:
   - {fileID: 32417313}
   - {fileID: 1729246926}
   m_Father: {fileID: 467292283}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1486230512 stripped
 Transform:
@@ -25184,7 +25198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1730628878
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,15 @@ public class LivingEntity : MonoBehaviour, IDamageable
     [Tooltip("The GameObjects to spawn after the entity dies")]
     protected GameObject[] bounty;
 
+
+    [Header("Sounds")]
+
+    [SerializeField]
+    private string sinkingSound = "CHANGE";
+
+    [SerializeField]
+    private string takeDamageSound = "CHANGE";
+
     [Header("Debug Info")]
     [SerializeField]
     protected float currentHealth;
@@ -44,6 +53,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damgage)
     {
         Debug.Log(gameObject.name + " took " + damgage + " damage");
+
+        if (gameObject.tag.Equals("Player"))
+        {
+            AudioManager.instance.PlaySound(takeDamageSound);
+        }
 
         currentHealth -= damgage;
 
@@ -83,6 +97,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
             deathPos = transform.position;
             deathPos.y = -2f;
             StartCoroutine(SpawnBounty());
+
+            AudioManager.instance.PlaySound(sinkingSound);
         }
     }
 

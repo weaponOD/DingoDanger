@@ -9,9 +9,16 @@ public class Projectile : MonoBehaviour
 
     private float damage;
 
-    [Header("Effects")]
+    [Header("Sound")]
+
     [SerializeField]
-    private AudioClip splashSound;
+    private string waterImpact = "CHANGE";
+
+    [SerializeField]
+    private string woodImpact = "CHANGE";
+
+
+    [Header("Effects")]
 
     [SerializeField]
     private ParticleSystem splashEffect;
@@ -42,6 +49,9 @@ public class Projectile : MonoBehaviour
     {
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
+
+            AudioManager.instance.PlaySound(woodImpact);
+
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
                 rb.AddForce(-transform.forward * 2f, ForceMode.Impulse);
@@ -78,7 +88,8 @@ public class Projectile : MonoBehaviour
         {
             if (!hasSplashed)
             {
-                AudioManager.instance.PlaySound("ImpactWater");
+                AudioManager.instance.PlaySound(waterImpact);
+
                 Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
                 Invoke("Destroy", 3f);
 

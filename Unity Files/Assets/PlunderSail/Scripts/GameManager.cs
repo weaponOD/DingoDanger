@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Transform playerCentre;
 
+    [Header("Sounds")]
+
+    [SerializeField]
+    private string enterDockSound = "CHANGE";
+
     UIController UI;
     PlayerController PC;
     CameraController CC;
@@ -59,6 +64,9 @@ public class GameManager : MonoBehaviour
                         StartCoroutine(TransitionToBuildMode());
                         UI.ShowPierPopUp(false);
                         canPressY = false;
+
+                        AudioManager.instance.PlaySound(enterDockSound);
+
                         Invoke("CanExitBuildMode", 3);
                     }
                 }
@@ -67,6 +75,7 @@ public class GameManager : MonoBehaviour
                     UI.FadeScreen();
                     StartCoroutine(TransitionToPlayMode());
                     canPressY = false;
+
                     Invoke("CanExitBuildMode", 3);
                 }
             }

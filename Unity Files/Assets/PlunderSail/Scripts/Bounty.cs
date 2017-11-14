@@ -13,6 +13,9 @@ public class Bounty : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 0;
 
+    [SerializeField]
+    private string floatSound = "CHANGE";
+
     private Transform player;
 
     private void OnCollisionEnter(Collision collision)
@@ -27,6 +30,8 @@ public class Bounty : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        AudioManager.instance.PlaySound(floatSound);
 
         StartCoroutine(Hooked());
     }

@@ -7,7 +7,7 @@ public class CollisionAvoidanceBehaviour : IBehaviour
     public override Vector3 ApplyBehaviour(Transform _me, Transform _targetPos)
     {
         // layer mask of islands
-        int layerMask = 1 << 8;
+        // int layerMask = 1 << 8;
 
         forceName = "collisionAvoidance";
 

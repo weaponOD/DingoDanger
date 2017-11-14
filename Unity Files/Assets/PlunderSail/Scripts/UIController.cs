@@ -30,12 +30,22 @@ public class UIController : MonoBehaviour
     private Image fadePlane = null;
 
     [SerializeField]
-    private GameObject pauseScreen = null;
+    private GameObject[] menuItems = null;
+
+    [SerializeField]
+    private GameObject mapMenu = null;
+
+    [SerializeField]
+    int selectedMenuItem = 0;
 
     // System References
     private Player player = null;
 
     private ShipBuilding builder = null;
+
+    private GameManager GM = null;
+
+    private CameraController CC = null;
 
     [SerializeField]
     private GameObject[] horizontalMenu = null;
@@ -57,6 +67,10 @@ public class UIController : MonoBehaviour
 
     private bool DpadCanPress = false;
 
+    private bool paused = false;
+
+    private int currentMenu = 0;
+
     private void Awake()
     {
         // Subscribe to game state
@@ -65,6 +79,10 @@ public class UIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilding>();
+
+        GM = builder.gameObject.GetComponent<GameManager>();
+
+        CC = GM.GetComponent<CameraController>();
 
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
 
@@ -119,6 +137,7 @@ public class UIController : MonoBehaviour
         }
 
         genres = new string[5];
+
         genres[0] = "Cabin";
         genres[1] = "Cannon";
         genres[2] = "Sail";
@@ -131,6 +150,7 @@ public class UIController : MonoBehaviour
         selectedGenre = 0;
 
         selectedAttachment = 0;
+
         horizontalMenu[selectedGenre].SetActive(true);
 
         DpadCanPress = true;
@@ -157,74 +177,235 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (DpadCanPress)
+        if (paused)
         {
-            // Move up the vertical menu
-            if (Input.GetAxis("Dpad_Y") == 1)
+            if (Input.GetButtonDown("A_Button"))
             {
-                if (selectedGenre > 0)
-                {
-                    ChangeGenreSelection(-1);
-
-                    DpadCanPress = false;
-                }
+                ProcessInput(selectedMenuItem);
             }
 
-            // Move down the vertical menu
-            if (Input.GetAxis("Dpad_Y") == -1)
+            if (Input.GetButtonDown("B_Button"))
             {
-                if (selectedGenre < horizontalMenu.Length - 1)
-                {
-                    ChangeGenreSelection(1);
-
-                    DpadCanPress = false;
-                }
+                ProcessInput(-1);
             }
 
-            // Move right along the horizontal menu
-            if (Input.GetAxis("Dpad_X") == 1)
+            if (DpadCanPress)
             {
-                if (selectedAttachment < horizontalMenu[selectedGenre].transform.childCount - 1)
+                // Move up the vertical menu
+                if (Input.GetAxis("Dpad_Y") == 1)
                 {
-                    ChangeAttachmentSelection(+1);
+                    if (selectedMenuItem > 0)
+                    {
+                        selectedMenuItem--;
 
-                    DpadCanPress = false;
+                        DpadCanPress = false;
+                    }
+                }
+
+                // Move down the vertical menu
+                if (Input.GetAxis("Dpad_Y") == -1)
+                {
+                    if (selectedMenuItem < 3)
+                    {
+                        selectedMenuItem++;
+
+                        DpadCanPress = false;
+                    }
+                }
+
+                if (!DpadCanPress)
+                {
+                    timeTillCanPress = Time.time + timeBetweenPresses;
                 }
             }
-
-            // Move left along the horizontal menu
-            if (Input.GetAxis("Dpad_X") == -1)
+            else
             {
-                if (selectedAttachment > 0)
+                if (Time.time > timeTillCanPress)
                 {
-                    ChangeAttachmentSelection(-1);
-
-                    DpadCanPress = false;
+                    DpadCanPress = true;
                 }
-            }
 
-            if (!DpadCanPress)
-            {
-                timeTillCanPress = Time.time + timeBetweenPresses;
+                if (Input.GetAxis("Dpad_Y") == 0 && Input.GetAxis("Dpad_X") == 0)
+                {
+                    DpadCanPress = true;
+                }
             }
         }
         else
         {
-            if (Time.time > timeTillCanPress)
+            if (DpadCanPress)
             {
-                DpadCanPress = true;
-            }
+                // Move up the vertical menu
+                if (Input.GetAxis("Dpad_Y") == 1)
+                {
+                    if (selectedGenre > 0)
+                    {
+                        ChangeGenreSelection(-1);
 
-            if (Input.GetAxis("Dpad_Y") == 0 && Input.GetAxis("Dpad_X") == 0)
-            {
-                DpadCanPress = true;
+                        DpadCanPress = false;
+                    }
+                }
+
+                // Move down the vertical menu
+                if (Input.GetAxis("Dpad_Y") == -1)
+                {
+                    if (selectedGenre < horizontalMenu.Length - 1)
+                    {
+                        ChangeGenreSelection(1);
+
+                        DpadCanPress = false;
+                    }
+                }
+
+                // Move right along the horizontal menu
+                if (Input.GetAxis("Dpad_X") == 1)
+                {
+                    if (selectedAttachment < horizontalMenu[selectedGenre].transform.childCount - 1)
+                    {
+                        ChangeAttachmentSelection(+1);
+
+                        DpadCanPress = false;
+                    }
+                }
+
+                // Move left along the horizontal menu
+                if (Input.GetAxis("Dpad_X") == -1)
+                {
+                    if (selectedAttachment > 0)
+                    {
+                        ChangeAttachmentSelection(-1);
+
+                        DpadCanPress = false;
+                    }
+                }
+
+                if (!DpadCanPress)
+                {
+                    timeTillCanPress = Time.time + timeBetweenPresses;
+                }
             }
+            else
+            {
+                if (Time.time > timeTillCanPress)
+                {
+                    DpadCanPress = true;
+                }
+
+                if (Input.GetAxis("Dpad_Y") == 0 && Input.GetAxis("Dpad_X") == 0)
+                {
+                    DpadCanPress = true;
+                }
+            }
+        }
+    }
+
+    private void ProcessInput(int _buttonSelected)
+    {
+        if (_buttonSelected == -1)
+        {
+            menuItems[currentMenu].SetActive(false);
+            menuItems[0].SetActive(true);
+            currentMenu = 0;
+        }
+
+        // Pause menu
+        if (currentMenu == 0)
+        {
+            PauseMenuInput(_buttonSelected);
+            selectedMenuItem = 0;
+        }
+
+        // Sound Menu
+        if (currentMenu == 1)
+        {
+            SoundMenuInput(_buttonSelected);
+            selectedMenuItem = 0;
+        }
+
+        // controls Menu
+        if (currentMenu == 2)
+        {
+            ControlsMenuInput(_buttonSelected);
+            selectedMenuItem = 0;
+        }
+    }
+
+    private void PauseMenuInput(int _button)
+    {
+        if (_button == 0)
+        {
+            GM.Pause();
+        }
+
+        if (_button == 1)
+        {
+            menuItems[0].SetActive(false);
+            menuItems[1].SetActive(true);
+            currentMenu = 1;
+        }
+
+        if (_button == 2)
+        {
+            menuItems[0].SetActive(false);
+            menuItems[2].SetActive(true);
+            currentMenu = 2;
+        }
+
+        if (_button == 3)
+        {
+            Application.Quit();
+        }
+    }
+
+    private void SoundMenuInput(int _button)
+    {
+        if (_button == 0)
+        {
+           
+        }
+
+        if (_button == 1)
+        {
+            
+        }
+
+        if (_button == 2)
+        {
+           
+        }
+
+        if (_button == 3)
+        {
+            
+        }
+    }
+
+    private void ControlsMenuInput(int _button)
+    {
+        if (_button == 0)
+        {
+            CC.InvertY();
+        }
+
+        if (_button == 1)
+        {
+            CC.InvertX();
         }
     }
 
     public void showPauseMenu(bool _isPaused)
     {
-        pauseScreen.SetActive(_isPaused);
+        paused = true;
+        menuItems[0].SetActive(_isPaused);
+        currentMenu = 0;
+
+        if (!_isPaused)
+        {
+            foreach (GameObject item in menuItems)
+            {
+                item.SetActive(false);
+            }
+        }
     }
 
     private void ChangeGenreSelection(int _change)

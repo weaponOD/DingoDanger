@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour
 
     private bool inverted = false;
 
+    private bool invertedX = true;
+
+    private bool invertedY = true;
+
     private bool aiming = false;
 
     private bool aimLeft = false;
@@ -31,31 +35,26 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         MovePlayCameraToPlayer();
-
-        InvertX(true);
-        InvertY(true);
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             inverted = !inverted;
 
-            InvertX(inverted);
-            InvertY(inverted);
+            InvertX();
+            InvertY();
         }
 
-        if(aiming)
+        if (aiming)
         {
-            if(aimLeft)
+            if (aimLeft)
             {
-                Debug.Log("Aiming left");
                 AimLeft();
             }
             else
             {
-                Debug.Log("Aiming right");
                 AimRight();
             }
         }
@@ -82,16 +81,20 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void InvertX(bool _isInverted)
+    public void InvertX()
     {
-        playCam.InvertX = _isInverted;
-        buildCam.InvertX = _isInverted;
+        invertedX = !invertedX;
+
+        playCam.InvertX = invertedX;
+        buildCam.InvertX = invertedX;
     }
 
-    public void InvertY(bool _isInverted)
+    public void InvertY()
     {
-        playCam.InvertY = _isInverted;
-        buildCam.InvertY = _isInverted;
+        invertedY = !invertedY;
+
+        playCam.InvertY = invertedY;
+        buildCam.InvertY = invertedY;
     }
 
     private void AimRight()
@@ -116,7 +119,7 @@ public class CameraController : MonoBehaviour
 
         float angle = playCam.CalculatePerspectiveAngle();
 
-        if(angle > 12 && angle < 168)
+        if (angle > 12 && angle < 168)
         {
             AimRight();
             aiming = true;
@@ -124,12 +127,12 @@ public class CameraController : MonoBehaviour
             return "right";
         }
 
-        if(angle > 192 && angle < 348)
+        if (angle > 192 && angle < 348)
         {
             AimLeft();
             aiming = true;
             aimLeft = true;
-            return "left"; 
+            return "left";
         }
 
         aiming = false;

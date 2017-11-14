@@ -30,6 +30,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        string[] names = Input.GetJoystickNames();
+
+        foreach (string n in names)
+        {
+            Debug.Log(n);
+        }
+
         builder.PlayerCentre = playerCentre;
         CC.PlayerCentre = playerCentre;
 
@@ -70,19 +77,24 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("Start_Button"))
         {
-            paused = !paused;
-
-            if (paused)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
-
-            UI.showPauseMenu(paused);
+            Pause();
         }
+    }
+
+    public void Pause()
+    {
+        paused = !paused;
+
+        if (paused)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+
+        UI.showPauseMenu(paused);
     }
 
     private IEnumerator TransitionToPlayMode()

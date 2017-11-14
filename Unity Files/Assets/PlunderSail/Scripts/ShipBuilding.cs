@@ -35,22 +35,22 @@ public class ShipBuilding : MonoBehaviour
     private ShopItem[] Armours;
 
     // System References
-    private CameraController CC;
+    private CameraController CC = null;
 
-    private Transform playerT;
+    private Transform playerT = null;
 
-    private Player player;
+    private Player player = null;
 
-    private Transform playerCentre;
+    private Transform playerCentre = null;
 
-    private UIController UI;
+    private UIController UI = null;
 
     // Local Variables
-    private AttachmentSpot[,,] grid;
+    private AttachmentSpot[,,] grid = null;
 
-    private Transform Buildgrid;
+    private Transform Buildgrid = null;
 
-    private PreviewPiece preview;
+    private PreviewPiece preview = null;
 
     private bool canPlace = true;
 
@@ -61,7 +61,7 @@ public class ShipBuilding : MonoBehaviour
     private int previewGridPosZ = 0;
 
     private bool canMove = true;
-    private float nextTimeToMove;
+    private float nextTimeToMove = 0;
     private float timeBetweenMoves = 0.1f;
 
     //private string lastDirection = null;
@@ -197,11 +197,11 @@ public class ShipBuilding : MonoBehaviour
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveRight(); 
+                MoveRight();
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveBack(); 
+                MoveBack();
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
@@ -209,14 +209,14 @@ public class ShipBuilding : MonoBehaviour
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveForward(); 
+                MoveForward();
             }
         }
         else if (_dir.Equals("left"))
         {
             if (CalculatePerspectiveAngle() == 0)
             {
-                MoveLeft(); 
+                MoveLeft();
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
@@ -239,7 +239,7 @@ public class ShipBuilding : MonoBehaviour
             }
             else if (CalculatePerspectiveAngle() == 90)
             {
-                MoveRight(); 
+                MoveRight();
             }
             else if (CalculatePerspectiveAngle() == 180)
             {
@@ -247,7 +247,7 @@ public class ShipBuilding : MonoBehaviour
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveLeft();  
+                MoveLeft();
             }
         }
         else if (_dir.Equals("back"))
@@ -266,7 +266,7 @@ public class ShipBuilding : MonoBehaviour
             }
             else if (CalculatePerspectiveAngle() == 270)
             {
-                MoveRight(); 
+                MoveRight();
             }
         }
         else if (_dir.Equals("up"))
@@ -656,7 +656,7 @@ public class ShipBuilding : MonoBehaviour
     private bool CalculateCanPlace()
     {
         // Can player afford piece
-        if(player.Gold < goldCost)
+        if (player.Gold < goldCost)
         {
             return false;
         }
@@ -762,9 +762,6 @@ public class ShipBuilding : MonoBehaviour
         }
         else if (currentPiece.Contains("Sail"))
         {
-            // First check if preview has enough space up
-            // if (previewGridPosY < yLength - 8)
-            //{
             int lengthToEnd = yLength - previewGridPosY;
 
             // loop until an open spot is found
@@ -780,7 +777,10 @@ public class ShipBuilding : MonoBehaviour
             preview.SetCanBuild(true);
 
             return true;
-            //}
+        }
+        else if (currentPiece.Contains("Armour"))
+        {
+            return true;
         }
 
         return false;

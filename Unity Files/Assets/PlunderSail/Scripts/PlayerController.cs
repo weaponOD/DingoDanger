@@ -65,10 +65,10 @@ public class PlayerController : MonoBehaviour
     [Header("Sound Clip Names")]
 
     [SerializeField]
-    private string fullSpeedSound = "fullSpeedSound";
+    private string fullSpeedSound = "default Value";
 
     [SerializeField]
-    private string slowDownSound = "slowDownSound";
+    private string slowDownSound = "default Value";
 
     [Header("Debug Info")]
     [SerializeField]

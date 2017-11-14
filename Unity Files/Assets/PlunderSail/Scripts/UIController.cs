@@ -179,11 +179,13 @@ public class UIController : MonoBehaviour
     {
         if (paused)
         {
+            // Interact with the currently selected button
             if (Input.GetButtonDown("A_Button"))
             {
                 ProcessInput(selectedMenuItem);
             }
 
+            // move back to the pause menu
             if (Input.GetButtonDown("B_Button"))
             {
                 ProcessInput(-1);
@@ -357,6 +359,7 @@ public class UIController : MonoBehaviour
         }
     }
 
+  
     private void SoundMenuInput(int _button)
     {
         if (_button == 0)
@@ -395,6 +398,8 @@ public class UIController : MonoBehaviour
 
     public void showPauseMenu(bool _isPaused)
     {
+        ShowMap(false);
+
         paused = true;
         menuItems[0].SetActive(_isPaused);
         currentMenu = 0;
@@ -406,6 +411,11 @@ public class UIController : MonoBehaviour
                 item.SetActive(false);
             }
         }
+    }
+
+    public void ShowMap(bool _show)
+    {
+        mapMenu.SetActive(_show);
     }
 
     private void ChangeGenreSelection(int _change)
@@ -465,6 +475,8 @@ public class UIController : MonoBehaviour
 
     public void SetBuildPanelStatus(bool _isEnabled)
     {
+        ShowMap(false);
+
         buildPanel.SetActive(_isEnabled);
 
         goldHUD.SetActive(_isEnabled);

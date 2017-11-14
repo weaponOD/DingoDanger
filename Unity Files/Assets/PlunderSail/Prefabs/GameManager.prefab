@@ -62,7 +62,12 @@ MonoBehaviour:
   goldHUD: {fileID: 0}
   goldText: {fileID: 0}
   fadePlane: {fileID: 0}
-  pauseScreen: {fileID: 0}
+  menuItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  mapMenu: {fileID: 0}
+  selectedMenuItem: 0
   horizontalMenu:
   - {fileID: 0}
   - {fileID: 0}
@@ -136,6 +141,7 @@ MonoBehaviour:
   previewPiecePrefab: {fileID: 1736294380650708, guid: 7a3b36f8485ea2b4aa2a5ce0dbfcfc22,
     type: 2}
   baseShip: {fileID: 0}
+  refundPercent: 0.8
   cabins:
   - GO: {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
     cost: 10

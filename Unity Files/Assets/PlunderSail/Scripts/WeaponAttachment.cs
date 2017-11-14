@@ -27,7 +27,7 @@ public class WeaponAttachment : AttachmentBase
 
     [Header("Effects resources")]
     [SerializeField]
-    protected AudioClip[] shootSound;
+    protected string shootSound;
 
     [SerializeField]
     protected ParticleSystem shootParticle;
@@ -130,21 +130,11 @@ public class WeaponAttachment : AttachmentBase
 
             ResourceManager.instance.DelayedDestroy(effect, effect.GetComponent<ParticleSystem>().main.startLifetime.constant);
 
-            PlayRandomSound();
+            AudioManager.instance.PlaySound(shootSound);
         }
         else
         {
             Debug.LogError("Projectile from resource manager was null");
         }
-    }
-
-    protected void PlayRandomSound()
-    {
-        //if (shootSound.Length > 0)
-        //{
-        //    audioSource.pitch = Random.Range(0.9f, 1.1f);
-        //    audioSource.volume = Random.Range(0.9f, 1.1f);
-        //    audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)], 0.4F);
-        //}
     }
 }

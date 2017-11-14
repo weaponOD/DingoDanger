@@ -91,6 +91,19 @@ public class PreviewPiece : MonoBehaviour
             transform.rotation = player.rotation;
             transform.Rotate(Vector3.up, 180f, Space.Self);
         }
+        else if(attachmentName.Contains("Armour"))
+        {
+            transform.rotation = player.rotation;
+
+            if (gridPos.x > centreGridPos.x)
+            {
+                transform.Rotate(Vector3.up, 180f, Space.Self);
+            }
+            else if (gridPos.x < centreGridPos.x)
+            {
+                transform.Rotate(Vector3.up, 0, Space.Self);
+            }
+        }
     }
 
     public Vector3 ShipCentre

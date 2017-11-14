@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private bool paused = false;
 
+    private bool mapActive = false;
+
     private void Awake()
     {
         UI = GetComponent<UIController>();
@@ -72,7 +74,10 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("Back_Button"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            mapActive = !mapActive;
+            UI.ShowMap(mapActive);
         }
 
         if (Input.GetButtonDown("Start_Button"))

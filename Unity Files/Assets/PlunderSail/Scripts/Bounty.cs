@@ -10,6 +10,9 @@ public class Bounty : MonoBehaviour
     [SerializeField]
     private float distanceToHook = 30;
 
+    [SerializeField]
+    private float moveSpeed = 0;
+
     private Transform player;
 
     private void OnCollisionEnter(Collision collision)
@@ -34,7 +37,7 @@ public class Bounty : MonoBehaviour
 
         if(vecBetween.magnitude < distanceToHook)
         {
-            transform.position += vecBetween.normalized * Time.deltaTime;
+            transform.position += vecBetween.normalized * Time.deltaTime * moveSpeed;
         }
 
         yield return null;

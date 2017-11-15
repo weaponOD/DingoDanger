@@ -7,9 +7,6 @@ using UnityEngine.SceneManagement;
 public class IntroMenu : MonoBehaviour
 {
     [SerializeField]
-    private Image DangerDingo;
-
-    [SerializeField]
     private Image PlunderSail;
 
     [SerializeField]
@@ -58,14 +55,6 @@ public class IntroMenu : MonoBehaviour
 
     private IEnumerator IntroFadeIn()
     {
-        StartCoroutine(Fade(Color.clear, Color.white, 4, DangerDingo));
-
-        yield return new WaitForSeconds(4f);
-
-        StartCoroutine(Fade(Color.white, Color.clear, 3, DangerDingo));
-
-        yield return new WaitForSeconds(2.8f);
-
         StartCoroutine(Fade(Color.clear, Color.white, 4, PlunderSail));
 
         yield return new WaitForSeconds(3.5f);

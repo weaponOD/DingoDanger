@@ -337,6 +337,7 @@ public class UIController : MonoBehaviour
         if (_button == 0)
         {
             GM.Pause();
+            showPauseMenu(false);
         }
 
         if (_button == 1)
@@ -359,27 +360,27 @@ public class UIController : MonoBehaviour
         }
     }
 
-  
+
     private void SoundMenuInput(int _button)
     {
         if (_button == 0)
         {
-           
+
         }
 
         if (_button == 1)
         {
-            
+
         }
 
         if (_button == 2)
         {
-           
+
         }
 
         if (_button == 3)
         {
-            
+
         }
     }
 
@@ -400,7 +401,8 @@ public class UIController : MonoBehaviour
     {
         ShowMap(false);
 
-        paused = true;
+        paused = _isPaused;
+
         menuItems[0].SetActive(_isPaused);
         currentMenu = 0;
 

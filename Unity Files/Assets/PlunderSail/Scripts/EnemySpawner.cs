@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class EnemySpawner : MonoBehaviour
     [Header("Drag references into these")]
     [SerializeField]
     private Pier dock = null;
+
+    [SerializeField]
+    private GameObject islandCross = null;
 
     [SerializeField]
     private Tower[] towers = null;
@@ -82,6 +86,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 dock.isUnlocked = true;
                 isDefeated = true;
+
+                islandCross.SetActive(true);
+
                 CancelArms();
             }
             else if (!attackingPlayer)
@@ -102,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        if(!isDefeated)
+        if (!isDefeated)
         {
             StartCoroutine(CheckPlayerInRange());
         }
@@ -144,7 +151,7 @@ public class EnemySpawner : MonoBehaviour
 
             foreach (Tower tower in towers)
             {
-                if(tower != null)
+                if (tower != null)
                 {
                     tower.enabled = false;
                 }
@@ -152,7 +159,7 @@ public class EnemySpawner : MonoBehaviour
 
             foreach (AIAgent ship in activeEnemies)
             {
-                if(ship != null)
+                if (ship != null)
                 {
                     ship.gameObject.SetActive(false);
                 }

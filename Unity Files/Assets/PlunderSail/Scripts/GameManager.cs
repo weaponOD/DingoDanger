@@ -81,17 +81,23 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Back_Button"))
+        if (!GameState.BuildMode)
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (Input.GetButtonDown("Back_Button"))
+            {
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Pause();
 
-            mapActive = !mapActive;
-            UI.ShowMap(mapActive);
-        }
+                mapActive = !mapActive;
+                UI.ShowMap(mapActive);
+            }
 
-        if (Input.GetButtonDown("Start_Button"))
-        {
-            Pause();
+            if (Input.GetButtonDown("Start_Button"))
+            {
+                Pause();
+
+                UI.showPauseMenu(paused);
+            }
         }
     }
 
@@ -107,8 +113,6 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-
-        UI.showPauseMenu(paused);
     }
 
     private IEnumerator TransitionToPlayMode()

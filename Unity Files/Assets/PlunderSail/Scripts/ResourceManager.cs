@@ -26,8 +26,7 @@ public class ResourceManager : MonoBehaviour
     {
         StartCoroutine(InitializePools());
     }
-
-
+    
     // Runs over several frames to instantiate the game objects needed for each pool.
     private IEnumerator InitializePools()
     {
@@ -69,43 +68,15 @@ public class ResourceManager : MonoBehaviour
         _object.SetActive(false);
     }
 
-    public GameObject getPooledObject(string _objectType)
+    // Returns a reference to a pool of objects matching the specified object type
+    public Pool getPool(string _objectType)
     {
-        int neededPool = -1;
-
-        // First find out which pool the needed object belongs to.
-
         for(int i = 0; i < objectPools.Length; i++)
         {
             if(objectPools[i].objectName.Equals(_objectType))
             {
-                neededPool = i;
-                break;
+                return objectPools[i];
             }
-        }
-        
-        // return null if a pool can't be matched to the object type
-        if(neededPool == -1)
-        {
-            return null;
-        }
-
-        // loop through the correct pool until an inactive object can be found
-        for (int i = 0; i < objectPools[neededPool].objects.Count; i++)
-        {
-            if (!objectPools[neededPool].objects[i].activeInHierarchy)
-            {
-                return objectPools[neededPool].objects[i];
-            }
-        }
-
-        // If an inactive object can't be found check if they pool can be expanded with a new gameobject
-        if (objectPools[neededPool].canExpand)
-        {
-            GameObject obj = (GameObject)Instantiate(objectPools[neededPool].pooledPrefab);
-            objectPools[neededPool].objects.Add(obj);
-
-            return obj;
         }
 
         return null;
@@ -115,6 +86,11 @@ public class ResourceManager : MonoBehaviour
     public bool PoolsReady
     {
         get { return AllPoolsReady; }
+    }
+
+    public GameObject AddToPool(GameObject _prefab)
+    {
+        return (GameObject)Instantiate(_prefab);
     }
 }
 
@@ -132,4 +108,27 @@ public class Pool
     public bool canExpand = false;
 
     public List<GameObject> objects = null;
+
+    public GameObject getPooledObject()
+    {
+        // loop through the correct pool until an inactive object can be found
+        for (int i = 0; i < objects.Count; i++)
+        {
+            if (!objects[i].activeInHierarchy)
+            {
+                return objects[i];
+            }
+        }
+
+        // If an inactive object can't be found check if they pool can be expanded with a new gameobject
+        if (canExpand)
+        {
+            GameObject obj = ResourceManager.instance.AddToPool(pooledPrefab);
+            objects.Add(obj);
+
+            return obj;
+        }
+
+        return null;
+    }
 }

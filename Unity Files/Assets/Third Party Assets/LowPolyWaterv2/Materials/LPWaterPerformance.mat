@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: LPWaterPerformance
   m_Shader: {fileID: 4800000, guid: 8165be4dd0b12774d80426d906df9c38, type: 3}
-  m_ShaderKeywords: LPW_HQFOAM WATER_REFRACTIVE _DISTORT_ON _EDGEBLEND_ON _EMISSION
-    _HQFOAM_ON _LIGHTABS_ON _SHADING_FLAT _WAVES_HIGHQUALITY _ZWRITE_ON
+  m_ShaderKeywords: LPW_FOAM WATER_REFRACTIVE _DISTORT_ON _EDGEBLEND_ON _EMISSION
+    _HQFOAM_ON _LIGHTABS_ON _SHADING_FLAT _WAVES_LOWQUALITY _ZWRITE_ON
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -57,7 +57,7 @@ Material:
     - _FoamSpeed: 0.3
     - _FoamSpread: 1
     - _FresPower: 1.68
-    - _HQFoam: 1
+    - _HQFoam: 0
     - _Height: 1
     - _Height_: 1
     - _Length: 50
@@ -76,7 +76,7 @@ Material:
     - _Shading: 0
     - _Shadow: 0.389
     - _ShoreDistance: 2.5
-    - _ShoreIntensity: 0.84
+    - _ShoreIntensity: -0.52
     - _Specular: 246
     - _Speed: 0.8
     - _Speed_: 0.8
@@ -85,7 +85,7 @@ Material:
     - _TexSize_: 64
     - _Time_: 0
     - _TransformScale_: 1
-    - _Waves: 2
+    - _Waves: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.06487888, g: 0.4799545, b: 0.58823526, a: 1}

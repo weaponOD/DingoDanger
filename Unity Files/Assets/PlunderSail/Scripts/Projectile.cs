@@ -21,16 +21,28 @@ public class Projectile : MonoBehaviour
     [Header("Effects")]
 
     [SerializeField]
-    private ParticleSystem splashEffect;
+    private string waterHitEffect;
 
     [SerializeField]
-    private ParticleSystem hitEffect;
+    private string woodHitEffect;
+
+    [SerializeField]
+    private string stoneHitEffect;
 
     private bool hasSplashed = false;
+
+    private Pool waterHitPool = null;
+
+    private Pool woodHitPool = null;
+
+    private Pool stoneHitPool = null;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        waterHitPool = ResourceManager.instance.getPool(waterHitEffect);
+        woodHitPool = ResourceManager.instance.getPool(woodHitEffect);
+        stoneHitPool = ResourceManager.instance.getPool(stoneHitEffect);
     }
 
     private void OnEnable()
@@ -49,7 +61,6 @@ public class Projectile : MonoBehaviour
     {
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-
             AudioManager.instance.PlaySound(woodImpact);
 
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
@@ -60,14 +71,31 @@ public class Projectile : MonoBehaviour
             else
             {
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
-                Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+
+                GameObject hitEffect = woodHitPool.getPooledObject();
+
+                hitEffect.transform.position = transform.position;
+                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+                hitEffect.SetActive(true);
+
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
                 Destroy();
             }
         }
         else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
             _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
-            Destroy(Instantiate(hitEffect.gameObject, transform.position, Quaternion.LookRotation(-transform.rotation.eulerAngles)) as GameObject, hitEffect.main.startLifetime.constant);
+
+            GameObject hitEffect = woodHitPool.getPooledObject();
+
+            hitEffect.transform.position = transform.position;
+            hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+            hitEffect.SetActive(true);
+
+            ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
             Destroy();
         }
         else
@@ -90,7 +118,15 @@ public class Projectile : MonoBehaviour
             {
                 AudioManager.instance.PlaySound(waterImpact);
 
-                Destroy(Instantiate(splashEffect.gameObject, transform.position, Quaternion.identity) as GameObject, splashEffect.main.startLifetime.constant);
+                GameObject splash = waterHitPool.getPooledObject();
+
+                splash.transform.position = transform.position;
+                splash.transform.rotation = Quaternion.identity;
+
+                splash.SetActive(true);
+
+                ResourceManager.instance.DelayedDestroy(splash, splash.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
                 Invoke("Destroy", 3f);
 
                 hasSplashed = true;
@@ -98,6 +134,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    // De-activates the gameObject
     private void Destroy()
     {
         hasSplashed = false;

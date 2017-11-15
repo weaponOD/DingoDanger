@@ -51,7 +51,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4407330050044302}
-  - component: {fileID: 114880913466061150}
   m_Layer: 9
   m_Name: Mesh
   m_TagString: Untagged
@@ -516,7 +515,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -82.9, y: 0, z: -92.1}
+  m_LocalPosition: {x: -53.49996, y: 0, z: -22.930016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -928,8 +927,10 @@ MonoBehaviour:
   starterHealth: 100
   bountyDelay: 0
   bounty: []
+  sinkingSound: sink
+  takeDamageSound: takeDamage
   currentHealth: 0
-  currentGold: 100
+  currentGold: 117
   ramDamage: 25
   islandKnockBack: 700000
   islandStunDuration: 0.8
@@ -950,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireShoutSound: 
+  FireShoutSound: fireShouts
   reloadTime: 1.25
 --- !u!114 &114739414236451862
 MonoBehaviour:
@@ -963,19 +964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd93a0c9f6867846968e37e1f0345a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114880913466061150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1054315825985302}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OriginalwaveHeight: 0
-  speed: 0.35
 --- !u!114 &114986026331823280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1001,8 +989,8 @@ MonoBehaviour:
   turnSpeedGrowth: 1.8
   minTurnSpeed: 3.5
   maxTurnSpeed: 12
-  fullSpeedSound: fullSpeedSound
-  slowDownSound: slowDownSound
+  fullSpeedSound: sailFast
+  slowDownSound: sailSlow
   moveSpeed: 0
   maxMoveSpeed: 0
   turnSpeed: 0

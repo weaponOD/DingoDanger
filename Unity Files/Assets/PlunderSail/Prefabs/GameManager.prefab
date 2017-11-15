@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114168663654171056}
   - component: {fileID: 114883611100677676}
   - component: {fileID: 114658638090109668}
+  - component: {fileID: 114806529755598304}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -69,6 +70,7 @@ MonoBehaviour:
   mapMenu: {fileID: 0}
   selectedMenuItem: 0
   horizontalMenu:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -125,6 +127,33 @@ MonoBehaviour:
     poolSize: 100
     canExpand: 1
     objects: []
+  - objectName: splashEffect
+    pooledPrefab: {fileID: 1727050701200568, guid: 8634271c6a670524ab8f0068778d65bc,
+      type: 2}
+    poolSize: 30
+    canExpand: 1
+    objects: []
+  - objectName: woodHitEffect
+    pooledPrefab: {fileID: 1978962939801300, guid: df12c07971cdb1c4c8283643b36c6143,
+      type: 2}
+    poolSize: 30
+    canExpand: 0
+    objects: []
+--- !u!114 &114806529755598304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1568195136468266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f505357b096fbe4469df52d2175726c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firingDelay: 10
+  firingTip: {fileID: 0}
+  aimingDelay: 10
+  aimingTip: {fileID: 0}
 --- !u!114 &114883611100677676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,15 +179,15 @@ MonoBehaviour:
   - GO: {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
     cost: 10
   - GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
-    cost: 10
+    cost: 12000
   - GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
-    cost: 10
+    cost: 20000
   Sails:
   - GO: {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
     cost: 10
   Armours:
   - GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-    cost: 10
+    cost: 1000
   skipBuilt: 0
 --- !u!114 &114994603169521724
 MonoBehaviour:

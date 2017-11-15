@@ -37,13 +37,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        string[] names = Input.GetJoystickNames();
-
-        foreach (string n in names)
-        {
-            Debug.Log(n);
-        }
-
         builder.PlayerCentre = playerCentre;
         CC.PlayerCentre = playerCentre;
 

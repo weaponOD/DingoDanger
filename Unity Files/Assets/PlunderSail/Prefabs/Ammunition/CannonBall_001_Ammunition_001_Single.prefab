@@ -142,10 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterImpact: impactWater
   woodImpact: impactWood
-  splashEffect: {fileID: 198034797215869406, guid: 8634271c6a670524ab8f0068778d65bc,
-    type: 2}
-  hitEffect: {fileID: 198210705322419820, guid: fef4890aca2ebf14281eb1778ab7fe4c,
-    type: 2}
+  waterHitEffect: splashEffect
+  woodHitEffect: woodHitEffect
+  stoneHitEffect: woodHitEffect
 --- !u!135 &135307556624297948
 SphereCollider:
   m_ObjectHideFlags: 1

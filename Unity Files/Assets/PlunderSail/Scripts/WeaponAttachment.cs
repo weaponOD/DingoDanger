@@ -30,7 +30,7 @@ public class WeaponAttachment : AttachmentBase
     protected string shootSound;
 
     [SerializeField]
-    protected ParticleSystem shootParticle;
+    protected string fireEffect = "";
 
     [SerializeField]
     protected Transform[] firePoints;
@@ -45,7 +45,9 @@ public class WeaponAttachment : AttachmentBase
 
     protected int pointCount = 0;
 
-    protected bool isAiming = false;
+    private Pool projectilePool = null;
+
+    private Pool fireEffectPool = null;
 
     protected override void Awake()
     {
@@ -59,6 +61,10 @@ public class WeaponAttachment : AttachmentBase
         {
             entity = transform.root.GetComponent<AIAgent>();
         }
+
+        projectilePool = ResourceManager.instance.getPool(ammoType);
+
+        fireEffectPool = ResourceManager.instance.getPool(fireEffect);
 
         firePoints = new Transform[numberOfFirePoints];
 
@@ -108,7 +114,7 @@ public class WeaponAttachment : AttachmentBase
 
         shipVelocity = entity.Velocity;
 
-        GameObject projectile = ResourceManager.instance.getPooledObject(ammoType);
+        GameObject projectile = projectilePool.getPooledObject();
 
         if (projectile != null)
         {
@@ -121,14 +127,21 @@ public class WeaponAttachment : AttachmentBase
             shot.Damage = damage;
             shot.FireProjectile(shipVelocity, projectileForce);
 
-            GameObject effect = ResourceManager.instance.getPooledObject("projectileEffect");
+            GameObject effect = fireEffectPool.getPooledObject();
 
-            effect.transform.position = _firePoint.position;
-            effect.transform.rotation = _firePoint.rotation;
+            if(effect != null)
+            {
+                effect.transform.position = _firePoint.position;
+                effect.transform.rotation = _firePoint.rotation;
 
-            effect.SetActive(true);
+                effect.SetActive(true);
 
-            ResourceManager.instance.DelayedDestroy(effect, effect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                ResourceManager.instance.DelayedDestroy(effect, effect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+            }
+            else
+            {
+                Debug.LogError("fire effect from resource manager was null");
+            }
 
             AudioManager.instance.PlaySound(shootSound);
         }

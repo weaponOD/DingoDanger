@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 124997453130610502}
   - component: {fileID: 92982519508467290}
   - component: {fileID: 81010055764573100}
-  - component: {fileID: 114535665418444950}
   - component: {fileID: 114415410423058744}
   - component: {fileID: 114565386398896992}
   m_Layer: 0
@@ -137,23 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 019816bfc25322b41b73a6da284199c9, type: 2}
---- !u!114 &114535665418444950
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1061543052213030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4c7f4da64854941b65dced47dcc5c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  northDir: {x: 0, y: 0, z: 1}
-  player: {fileID: 0}
-  objectiveDir: {x: 0, y: 0, z: 0, w: 0}
-  northArrow: {fileID: 0}
-  objectiveArrow: {fileID: 0}
-  objectiveDestination: {fileID: 0}
 --- !u!114 &114565386398896992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,13 +148,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 2
-  MaxClamp: 35
+  MaxClamp: 40
   minclamp: 2
   orbitDampening: 8
   FovWhenFast: 70
   zoomOutRate: 0.5
   zoomInRate: 0.25
-  offset: {x: 1.5, y: 9, z: 5}
+  offset: {x: 1.5, y: 7.5, z: 5}
   localRotation: {x: 0, y: 0, z: 0}
 --- !u!124 &124997453130610502
 Behaviour:

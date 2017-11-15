@@ -32,6 +32,10 @@ public class IntroMenu : MonoBehaviour
 
     private float range;
 
+    public float progress;
+
+    public bool isDone = false;
+
     private void Start ()
     {
         StartCoroutine(LoadScene());
@@ -43,6 +47,9 @@ public class IntroMenu : MonoBehaviour
     private void Update()
     {
         PressAnyKey.rectTransform.localScale = new Vector3(minSize + Mathf.PingPong(Time.time * speed, range), minSize + Mathf.PingPong(Time.time * speed, range), 1);
+
+        
+        isDone = async.isDone;
 
         if (waitOnInput)
         {
@@ -100,15 +107,16 @@ public class IntroMenu : MonoBehaviour
     {
         Debug.LogWarning("ASYNC LOAD STARTED - DO NOT EXIT PLAY MODE UNTIL SCENE LOADS... UNITY WILL CRASH");
 
-        async = SceneManager.LoadSceneAsync(1);
+        async = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         async.allowSceneActivation = false;
 
-        while (!async.isDone)
+        while (async.progress <= 0.89f)
         {
+            progress = async.progress;
             yield return null;
         }
 
-        Debug.LogWarning("ASYNC LOAD FINISHED - SAFE TO EXIT PLAY MODE");
+        async.allowSceneActivation = true;
     }
 
     private IEnumerator ChangeScenes()
@@ -116,8 +124,6 @@ public class IntroMenu : MonoBehaviour
         StartCoroutine(Fade(Color.white, Color.clear, 2, PlunderSail));
         StartCoroutine(Fade(Color.white, Color.clear, 2, PressAnyKey));
 
-        yield return new WaitForSeconds(2f);
-
-        async.allowSceneActivation = true;
+        yield return new WaitForSeconds(3f);
     }
 }

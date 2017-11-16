@@ -52,6 +52,15 @@ public class UIController : MonoBehaviour
     private GameObject[] horizontalMenu = null;
 
     [SerializeField]
+    private Image[] genreImage = null;
+
+    [SerializeField]
+    private Sprite defaultSprite = null;
+
+    [SerializeField]
+    private Sprite highlightSprite = null;
+
+    [SerializeField]
     private Slider speedSlider = null; 
 
     // Functionality variables
@@ -261,6 +270,11 @@ public class UIController : MonoBehaviour
 
                         DpadCanPress = false;
                     }
+                    else
+                    {
+                        ChangeGenreSelection(horizontalMenu.Length - 1);
+                        DpadCanPress = false;
+                    }
                 }
 
                 // Move down the vertical menu
@@ -269,6 +283,12 @@ public class UIController : MonoBehaviour
                     if (selectedGenre < horizontalMenu.Length - 1)
                     {
                         ChangeGenreSelection(1);
+
+                        DpadCanPress = false;
+                    }
+                    else
+                    {
+                        ChangeGenreSelection(-selectedGenre);
 
                         DpadCanPress = false;
                     }
@@ -438,6 +458,7 @@ public class UIController : MonoBehaviour
     private void ChangeGenreSelection(int _change)
     {
         horizontalMenu[selectedGenre].SetActive(false);
+        genreImage[selectedGenre].sprite = defaultSprite;
 
         selectedAttachment = 0;
 
@@ -446,6 +467,7 @@ public class UIController : MonoBehaviour
         builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
 
         horizontalMenu[selectedGenre].SetActive(true);
+        genreImage[selectedGenre].sprite = highlightSprite;
     }
 
     private void ChangeAttachmentSelection(int _change)

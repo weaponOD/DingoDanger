@@ -1397,10 +1397,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (26)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -1478,10 +1474,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (54)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -1565,10 +1557,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (43)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -1966,7 +1954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4923085419656894, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
@@ -2033,11 +2021,16 @@ Prefab:
       propertyPath: horizontalMenu.Array.data[2]
       value: 
       objectReference: {fileID: 1016794475}
-    - target: {fileID: 114168663654171056, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+    - target: {fileID: 114256727963917046, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
-      propertyPath: horizontalMenu.Array.data[3]
+      propertyPath: playerCentre
       value: 
-      objectReference: {fileID: 1390300932}
+      objectReference: {fileID: 367801791}
+    - target: {fileID: 114883611100677676, guid: 08d6c2caf70c67543aaba6f8738fbb71,
+        type: 2}
+      propertyPath: baseShip
+      value: 
+      objectReference: {fileID: 390037630}
     - target: {fileID: 114994603169521724, guid: 08d6c2caf70c67543aaba6f8738fbb71,
         type: 2}
       propertyPath: buildCamGO
@@ -2048,16 +2041,6 @@ Prefab:
       propertyPath: playCamGO
       value: 
       objectReference: {fileID: 1699494557}
-    - target: {fileID: 114883611100677676, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: baseShip
-      value: 
-      objectReference: {fileID: 390037630}
-    - target: {fileID: 114256727963917046, guid: 08d6c2caf70c67543aaba6f8738fbb71,
-        type: 2}
-      propertyPath: playerCentre
-      value: 
-      objectReference: {fileID: 367801791}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d6c2caf70c67543aaba6f8738fbb71, type: 2}
   m_IsPrefabParent: 0
@@ -2434,10 +2417,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.9999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -3322,7 +3301,7 @@ RectTransform:
   - {fileID: 664196477}
   - {fileID: 665988805}
   m_Father: {fileID: 467292283}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3476,10 +3455,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (55)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -3713,10 +3688,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000005
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -3800,10 +3771,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (29)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -3881,10 +3848,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -4145,10 +4108,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5271803
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -4406,10 +4365,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1555532965741948, guid: 0ac6aa6075d739245a73fba36a6e2ea1, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ac6aa6075d739245a73fba36a6e2ea1, type: 2}
   m_IsPrefabParent: 0
@@ -4636,10 +4591,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -4869,10 +4820,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (44)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -5688,10 +5635,6 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 105.00001
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -5709,7 +5652,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 91
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5717,7 +5660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -74.2
+      value: -91
       objectReference: {fileID: 0}
     - target: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5741,32 +5684,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
         type: 2}
-      propertyPath: displayProgress
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
-        type: 2}
       propertyPath: sun
       value: 
       objectReference: {fileID: 1740903973}
     - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
         type: 2}
-      propertyPath: receiveShadows
+      propertyPath: displayProgress
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010242649756, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
-        type: 2}
-      propertyPath: sizeX
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013230019050, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
-        type: 2}
-      propertyPath: sizeZ
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd, type: 2}
@@ -6081,10 +6005,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (45)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -6208,6 +6128,34 @@ Transform:
   m_Father: {fileID: 1437835481}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+--- !u!1 &465633172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 465633173}
+  m_Layer: 0
+  m_Name: Objective
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465633173
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 465633172}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 275.13977, y: 0.5295687, z: -317.6413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 467292283}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &467292282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6234,6 +6182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1768885041}
+  - {fileID: 465633173}
   - {fileID: 261394152}
   - {fileID: 1486095295}
   - {fileID: 141155920}
@@ -6347,10 +6296,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -6507,10 +6452,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -6769,116 +6710,6 @@ Prefab:
     - target: {fileID: 1932763159083742, guid: 55d62fe0b9122d34da36b1184c3ad5bd, type: 2}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1363404292707796, guid: 55d62fe0b9122d34da36b1184c3ad5bd, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224927817698066162, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224282048876005882, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -217.02328
-      objectReference: {fileID: 0}
-    - target: {fileID: 224124015372395850, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -384.04657
-      objectReference: {fileID: 0}
-    - target: {fileID: 224999826874768368, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -551.0698
-      objectReference: {fileID: 0}
-    - target: {fileID: 224881853313791832, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -718.09314
-      objectReference: {fileID: 0}
-    - target: {fileID: 114541502043173572, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c7baa06f016845c40a9f004f0b4ef896,
-        type: 3}
-    - target: {fileID: 224927817698066162, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224927817698066162, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224927817698066162, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 641
-      objectReference: {fileID: 0}
-    - target: {fileID: 224282048876005882, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224282048876005882, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224282048876005882, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 641
-      objectReference: {fileID: 0}
-    - target: {fileID: 224124015372395850, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224124015372395850, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224124015372395850, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 641
-      objectReference: {fileID: 0}
-    - target: {fileID: 224999826874768368, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224999826874768368, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224999826874768368, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 641
-      objectReference: {fileID: 0}
-    - target: {fileID: 224881853313791832, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224881853313791832, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224881853313791832, guid: 55d62fe0b9122d34da36b1184c3ad5bd,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 641
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55d62fe0b9122d34da36b1184c3ad5bd, type: 2}
@@ -7153,10 +6984,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (27)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -7424,10 +7251,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000007
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -7716,10 +7539,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -71.622
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -8098,10 +7917,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (46)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -8646,10 +8461,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (24)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -8727,10 +8538,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (22)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -8975,10 +8782,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.5271804
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -9538,10 +9341,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (52)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -10169,10 +9968,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (50)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -10609,10 +10404,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (28)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -10757,10 +10548,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -11270,10 +11057,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (37)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -11747,10 +11530,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -12239,10 +12018,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (39)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -12430,10 +12205,6 @@ Prefab:
     - target: {fileID: 4724285069707570, guid: a2851687b4802234aa8e1e5273f89907, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4407330050044302, guid: a2851687b4802234aa8e1e5273f89907, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2851687b4802234aa8e1e5273f89907, type: 2}
@@ -12684,10 +12455,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (20)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -13218,10 +12985,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -13368,10 +13131,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (49)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -13763,10 +13522,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -14313,10 +14068,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (42)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -14454,6 +14205,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114535665418444950, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1988420285}
+    - target: {fileID: 114535665418444950, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: northArrow
+      value: 
+      objectReference: {fileID: 2142573633}
+    - target: {fileID: 114535665418444950, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: objectiveArrow
+      value: 
+      objectReference: {fileID: 1502477001}
+    - target: {fileID: 114535665418444950, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: objectiveDestination
+      value: 
+      objectReference: {fileID: 465633173}
+    - target: {fileID: 114565386398896992, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: offset.y
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114565386398896992, guid: d9098fef11ba4734e843dee92fbfc057,
+        type: 2}
+      propertyPath: MaxClamp
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9098fef11ba4734e843dee92fbfc057, type: 2}
   m_IsPrefabParent: 0
@@ -14536,10 +14317,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (47)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -14645,144 +14422,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1411600093275414, guid: 64e773c44d3f09840b3aaa6c94b28532, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224178464227208608, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224056664153842006, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 224241406215821198, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -270
-      objectReference: {fileID: 0}
-    - target: {fileID: 224559958201241724, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -380
-      objectReference: {fileID: 0}
-    - target: {fileID: 1160502748164668, guid: 64e773c44d3f09840b3aaa6c94b28532, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114435537732293586, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114902123826437888, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114902123826437888, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114902123826437888, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114902123826437888, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c7baa06f016845c40a9f004f0b4ef896,
-        type: 3}
-    - target: {fileID: 114902123826437888, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114709403756479898, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114709403756479898, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Transition
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224056664153842006, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224056664153842006, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224056664153842006, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224559958201241724, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224559958201241724, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224559958201241724, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224241406215821198, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224241406215821198, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224241406215821198, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 224178464227208608, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224178464227208608, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224178464227208608, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114709403756479898, guid: 64e773c44d3f09840b3aaa6c94b28532,
-        type: 2}
-      propertyPath: m_Interactable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592456491949442, guid: 64e773c44d3f09840b3aaa6c94b28532, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 64e773c44d3f09840b3aaa6c94b28532, type: 2}
@@ -15999,10 +15638,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.5271803
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -16117,10 +15752,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (38)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -16164,63 +15795,6 @@ Transform:
   m_Father: {fileID: 1552047832}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1177740619
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1522780719}
-    m_Modifications:
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -21.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -124.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012341209002, guid: c1f03fd4e96302841adf5646cd8a98cd,
-        type: 2}
-      propertyPath: sun
-      value: 
-      objectReference: {fileID: 1740903973}
-    - target: {fileID: 114000012341209002, guid: c1f03fd4e96302841adf5646cd8a98cd,
-        type: 2}
-      propertyPath: sizeX
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012341209002, guid: c1f03fd4e96302841adf5646cd8a98cd,
-        type: 2}
-      propertyPath: sizeZ
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c1f03fd4e96302841adf5646cd8a98cd, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1179999891
 GameObject:
   m_ObjectHideFlags: 0
@@ -16493,10 +16067,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -17469,10 +17039,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -17519,10 +17085,6 @@ Prefab:
     - target: {fileID: 4844284801447020, guid: 79e291252a932fc459447858e6c0f684, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1910470664452936, guid: 79e291252a932fc459447858e6c0f684, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79e291252a932fc459447858e6c0f684, type: 2}
@@ -18077,10 +17639,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (34)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -18314,10 +17872,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (13)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -18555,10 +18109,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (36)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -18714,10 +18264,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -18918,10 +18464,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -19193,11 +18735,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1385707355}
   m_Mesh: {fileID: 4300000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
---- !u!1 &1390300932 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1790732370086800, guid: 64e773c44d3f09840b3aaa6c94b28532,
-    type: 2}
-  m_PrefabInternal: {fileID: 1062867136}
 --- !u!1 &1396197476
 GameObject:
   m_ObjectHideFlags: 0
@@ -19303,10 +18840,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (33)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -19529,10 +19062,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (21)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -20166,10 +19695,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (53)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -20683,7 +20208,7 @@ Transform:
   - {fileID: 32417313}
   - {fileID: 1729246926}
   m_Father: {fileID: 467292283}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1486230512 stripped
 Transform:
@@ -20721,6 +20246,11 @@ Transform:
   m_Father: {fileID: 1553309360}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1502477001 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224365997542901710, guid: 57110949180bedb4a84b5545bd1b7653,
+    type: 2}
+  m_PrefabInternal: {fileID: 1868281039}
 --- !u!4 &1505531207 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8,
@@ -20894,10 +20424,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (48)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -21128,10 +20654,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (30)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -21321,10 +20843,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000002
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -21407,10 +20925,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (18)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -21566,10 +21080,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalScale.z
       value: 1.0000005
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -21889,10 +21399,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -22013,10 +21519,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1.0000007
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -22099,10 +21601,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (31)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -22562,10 +22060,6 @@ Prefab:
     - target: {fileID: 1255780526500482, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_Layer
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -23399,10 +22893,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (40)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -23802,7 +23292,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.0000002, z: 1}
   m_Children: []
   m_Father: {fileID: 467292283}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 33.22, y: -3.3750002, z: -11.38}
 --- !u!108 &1740903973
 Light:
@@ -24094,10 +23584,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -25164,10 +24650,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (16)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -25250,10 +24732,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (19)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -26138,10 +25616,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_02 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -26271,10 +25745,6 @@ Prefab:
     - target: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -103.234
-      objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
@@ -26960,10 +26430,6 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.52718
       objectReference: {fileID: 0}
-    - target: {fileID: 1395470105932530, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8, type: 2}
   m_IsPrefabParent: 0
@@ -27158,10 +26624,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (41)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -27497,6 +26959,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4106240448441834, guid: f4b7fc6c2c3701e4c89d2abffc7d32c8,
     type: 2}
   m_PrefabInternal: {fileID: 307561628}
+--- !u!4 &1988420285 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4724285069707570, guid: a2851687b4802234aa8e1e5273f89907,
+    type: 2}
+  m_PrefabInternal: {fileID: 887369570}
 --- !u!1001 &1990355216
 Prefab:
   m_ObjectHideFlags: 0
@@ -27571,10 +27038,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (51)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -27663,10 +27126,6 @@ Prefab:
     - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
       propertyPath: m_Name
       value: Cliffs_Wall (35)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
@@ -28425,10 +27884,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (25)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -28842,10 +28297,6 @@ Prefab:
       propertyPath: m_Name
       value: Cliffs_Wall (23)
       objectReference: {fileID: 0}
-    - target: {fileID: 1329032525782396, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9a616d4b033f64499281e196fa7cbd, type: 2}
   m_IsPrefabParent: 0
@@ -28934,7 +28385,7 @@ Prefab:
     - target: {fileID: 114602546241060058, guid: 8c7a83bef2844444da39183021c25568,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 64720259264954544, guid: 8c7a83bef2844444da39183021c25568,
         type: 2}
@@ -28948,13 +28399,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1915647213937778, guid: 8c7a83bef2844444da39183021c25568, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114602546241060058, guid: 8c7a83bef2844444da39183021c25568,
         type: 2}
       propertyPath: waterPrefab
       value: 
-      objectReference: {fileID: 4000013665620186, guid: c1f03fd4e96302841adf5646cd8a98cd,
+      objectReference: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
         type: 2}
     - target: {fileID: 114602546241060058, guid: 8c7a83bef2844444da39183021c25568,
         type: 2}
@@ -28970,10 +28421,6 @@ Prefab:
         type: 2}
       propertyPath: buffer
       value: 692
-      objectReference: {fileID: 0}
-    - target: {fileID: 1149617144899352, guid: 8c7a83bef2844444da39183021c25568, type: 2}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64720259264954544, guid: 8c7a83bef2844444da39183021c25568, type: 2}
@@ -29159,6 +28606,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4341631747704428, guid: 02f51a4a7fc81bd46b8d3c733c96f6fa,
     type: 2}
   m_PrefabInternal: {fileID: 710252187}
+--- !u!224 &2142573633 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224704064643568578, guid: 57110949180bedb4a84b5545bd1b7653,
+    type: 2}
+  m_PrefabInternal: {fileID: 1868281039}
 --- !u!1 &2146600590
 GameObject:
   m_ObjectHideFlags: 0

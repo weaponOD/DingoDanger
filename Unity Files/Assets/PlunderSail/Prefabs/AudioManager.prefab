@@ -52,19 +52,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: BattleTheme
+  - name: BattleStart
     audioClip:
-    - {fileID: 8300000, guid: bb422c26e7fa5c047b0f04a61be2ec02, type: 3}
-    volume: 1
-    pitch: 1
-    looping: 1
-    audioSource: {fileID: 0}
-  - name: Bell
-    audioClip:
-    - {fileID: 8300000, guid: bad4848845d8e5e43aa85c651fee8760, type: 3}
+    - {fileID: 8300000, guid: 68ac438dc023df24e962040f508087c7, type: 3}
     volume: 1
     pitch: 1
     looping: 0
+    audioSource: {fileID: 0}
+  - name: BattleLoop
+    audioClip:
+    - {fileID: 8300000, guid: de01e88f8df46844e80074cbc40a005a, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 1
     audioSource: {fileID: 0}
   - name: dropBearRelease
     audioClip:
@@ -91,7 +91,9 @@ MonoBehaviour:
   - name: impactWater
     audioClip:
     - {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
-    volume: 1
+    - {fileID: 8300000, guid: 13ec76bbfa5604449abee5f44c34ed52, type: 3}
+    - {fileID: 8300000, guid: 66cfe11f7bacc464bb27affceb0e9966, type: 3}
+    volume: 0.863
     pitch: 1
     looping: 0
     audioSource: {fileID: 0}
@@ -112,6 +114,14 @@ MonoBehaviour:
   - name: Wave
     audioClip:
     - {fileID: 8300000, guid: b102ca33907b7a745a865659687be83a, type: 3}
+    - {fileID: 8300000, guid: 4b086742d9cf0ad499262a48437e72cf, type: 3}
+    - {fileID: 8300000, guid: d9d988d96468a7c43ae0f65f3f55ae24, type: 3}
+    - {fileID: 8300000, guid: 83a98dff98bdc2c4eb15ff2d6450dba0, type: 3}
+    - {fileID: 8300000, guid: 8cf2740188fee174db84fc4ee9b9562f, type: 3}
+    - {fileID: 8300000, guid: 98bea8df58f7c584789e5a5d2fe5ffd6, type: 3}
+    - {fileID: 8300000, guid: 5f053729b25b2b64381656b9fd5aa305, type: 3}
+    - {fileID: 8300000, guid: 2deef6fff56475447805205afa2a07c9, type: 3}
+    - {fileID: 8300000, guid: c253ef2d24facf4458c3317035f8e771, type: 3}
     volume: 1
     pitch: 1
     looping: 0
@@ -164,11 +174,64 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: takeDamage
     audioClip:
-    - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
+    - {fileID: 8300000, guid: 7d97a210eb3beb7438b97e40c5bf2a14, type: 3}
     - {fileID: 8300000, guid: 5589a6cc35ac7c545982755a718ca9af, type: 3}
     - {fileID: 8300000, guid: 0dcd67d065b5f9f43b31833e9637e478, type: 3}
     - {fileID: 8300000, guid: 7fbafc42b40313946b89e63d92e7724f, type: 3}
     volume: 1
     pitch: 1
     looping: 0
+    audioSource: {fileID: 0}
+  - name: sailMedium
+    audioClip:
+    - {fileID: 8300000, guid: 1bf4007b4ede25140a4c99cf92b0f21d, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: gainGold
+    audioClip:
+    - {fileID: 8300000, guid: 0ca1fb8180fe5b94a944a4cc0b0082ca, type: 3}
+    - {fileID: 8300000, guid: 063d14b2302e9054db902f8bdd9d97c7, type: 3}
+    - {fileID: 8300000, guid: 70f5ad07bb705544b9e0fc6faf7cad78, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: sailMusic
+    audioClip:
+    - {fileID: 8300000, guid: 0e17dd685fe314e408ef4f1120eedc92, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 1
+    audioSource: {fileID: 0}
+  - name: wind
+    audioClip:
+    - {fileID: 8300000, guid: 23ef43318a86e7e43a9f18d254c8147b, type: 3}
+    - {fileID: 8300000, guid: 2313cfe932017644e943a130a73e99a1, type: 3}
+    - {fileID: 8300000, guid: 91faae61bbb41414eb3c2fb5644e72d0, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    audioSource: {fileID: 0}
+  - name: windLoop
+    audioClip:
+    - {fileID: 8300000, guid: 9c9b1036439b1724d83d2e490f7d60d4, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 1
+    audioSource: {fileID: 0}
+  - name: ambientOcean
+    audioClip:
+    - {fileID: 8300000, guid: 6fea56c2f28e762408bf3de899b57605, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 1
+    audioSource: {fileID: 0}
+  - name: ambientDock
+    audioClip:
+    - {fileID: 8300000, guid: 0354501dbd26b1d4caf153df28d8682c, type: 3}
+    volume: 0.716
+    pitch: 1
+    looping: 1
     audioSource: {fileID: 0}

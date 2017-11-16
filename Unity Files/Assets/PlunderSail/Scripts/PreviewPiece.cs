@@ -21,6 +21,7 @@ public class PreviewPiece : MonoBehaviour
     private MeshRenderer cachedRenderer;
     private Material[] previewMaterials;
 
+    [SerializeField]
     private string attachmentName;
 
     private Transform player;
@@ -97,11 +98,11 @@ public class PreviewPiece : MonoBehaviour
 
             if (gridPos.x > centreGridPos.x)
             {
-                transform.Rotate(Vector3.up, 180f, Space.Self);
+                transform.Rotate(Vector3.up, 0, Space.Self);
             }
             else if (gridPos.x < centreGridPos.x)
             {
-                transform.Rotate(Vector3.up, 0, Space.Self);
+                transform.Rotate(Vector3.up, 180f, Space.Self);
             }
         }
     }

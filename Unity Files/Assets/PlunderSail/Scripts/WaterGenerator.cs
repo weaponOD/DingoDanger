@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class WaterGenerator : MonoBehaviour
 {
-
     [SerializeField]
     private Transform waterPrefab;
+
+    [SerializeField]
+    private Transform waterLODPrefab;
 
     [SerializeField]
     private Vector2 mapSize;
@@ -49,7 +51,7 @@ public class WaterGenerator : MonoBehaviour
                 //Prepare where to place tile
                 Vector3 waterPos = new Vector3(-mapSize.x / 2 + buffer * x, 0, -mapSize.y / 2 + buffer * y);
 
-                //Create the new tile using caluclated psition
+                //Create the new tile using caluclated position
                 Transform newWater = Instantiate(waterPrefab, waterPos, Quaternion.identity) as Transform;
 
                 newWater.parent = mapHolder;

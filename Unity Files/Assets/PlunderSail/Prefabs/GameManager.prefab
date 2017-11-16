@@ -173,21 +173,33 @@ MonoBehaviour:
   baseShip: {fileID: 0}
   refundPercent: 0.8
   cabins:
-  - GO: {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
+  - Name: Cabin
+    GO: {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
     cost: 10
+    costText: {fileID: 0}
   Cannons:
-  - GO: {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
+  - Name: Lead Thrower
+    GO: {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
     cost: 10
-  - GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
+    costText: {fileID: 0}
+  - Name: TnTrident
+    GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
     cost: 12000
-  - GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
+    costText: {fileID: 0}
+  - Name: Drop Bear
+    GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
     cost: 20000
+    costText: {fileID: 0}
   Sails:
-  - GO: {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
+  - Name: Sail
+    GO: {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
     cost: 10
+    costText: {fileID: 0}
   Armours:
-  - GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-    cost: 1000
+  - Name: Armour
+    GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
+    cost: 10
+    costText: {fileID: 0}
   skipBuilt: 0
 --- !u!114 &114994603169521724
 MonoBehaviour:

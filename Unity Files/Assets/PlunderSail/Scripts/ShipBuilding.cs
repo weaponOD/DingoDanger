@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipBuilding : MonoBehaviour
 {
@@ -661,17 +662,17 @@ public class ShipBuilding : MonoBehaviour
             return false;
         }
 
+        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
+        {
+            return false;
+        }
+
         if (!CheckNotFloating())
         {
             return false;
         }
 
         if (!CheckAttachmentRules())
-        {
-            return false;
-        }
-
-        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
         {
             return false;
         }
@@ -780,7 +781,34 @@ public class ShipBuilding : MonoBehaviour
         }
         else if (currentPiece.Contains("Armour"))
         {
-            return true;
+
+            // if on left hand side of boat
+            if (previewGridPosX < centreSpot.x)
+            {
+                if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    if (!grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Cannon"))
+                    {
+                        preview.SetCanBuild(true);
+
+                        return true;
+                    }
+                }
+            }
+
+            // if on right hand side of ship
+            if (previewGridPosX > centreSpot.x)
+            {
+                if (grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    if (!grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Cannon"))
+                    {
+                        preview.SetCanBuild(true);
+
+                        return true;
+                    }
+                }
+            }
         }
 
         return false;
@@ -862,6 +890,7 @@ public class ShipBuilding : MonoBehaviour
         {
             attachments.Add("Cabin00" + count, new Attachment(cabin.GO, cabin.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             goldCosts.Add("Cabin00" + count, cabin.cost);
+            cabin.costText.text = "" + cabin.cost;
 
             count++;
         }
@@ -872,6 +901,7 @@ public class ShipBuilding : MonoBehaviour
         {
             attachments.Add("Cannon00" + count, new Attachment(cannon.GO, cannon.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             goldCosts.Add("Cannon00" + count, cannon.cost);
+            cannon.costText.text = "" + cannon.cost;
 
             count++;
         }
@@ -882,6 +912,7 @@ public class ShipBuilding : MonoBehaviour
         {
             attachments.Add("Sail00" + count, new Attachment(sail.GO, sail.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             goldCosts.Add("Sail00" + count, sail.cost);
+            sail.costText.text = "" + sail.cost;
 
             count++;
         }
@@ -892,6 +923,7 @@ public class ShipBuilding : MonoBehaviour
         {
             attachments.Add("Armour00" + count, new Attachment(armour.GO, armour.GO.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh));
             goldCosts.Add("Armour00" + count, armour.cost);
+            armour.costText.text = "" + armour.cost;
 
             count++;
         }
@@ -919,6 +951,8 @@ public class Attachment
 [System.Serializable]
 public class ShopItem
 {
+    public string Name = "";
     public GameObject GO = null;
     public int cost = 0;
+    public Text costText = null;
 }

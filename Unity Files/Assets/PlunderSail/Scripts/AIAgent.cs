@@ -31,10 +31,7 @@ public class AIAgent : LivingEntity
     [SerializeField]
     private float stunDuration = 1;
 
-    [Header("Difficulty and Reward")]
-    [SerializeField]
-    TIER difficulty;
-
+    [Header("Reward")]
     [SerializeField]
     private int goldReward = 50;
 
@@ -45,7 +42,6 @@ public class AIAgent : LivingEntity
     [SerializeField]
     protected float speedPerSail;
 
-    [SerializeField]
     protected List<IBehaviour> behaviours;
 
     // Non editor Variables
@@ -53,22 +49,30 @@ public class AIAgent : LivingEntity
 
     protected Rigidbody rb;
 
-    protected bool canWander = true;
-
     protected Quaternion targetRotation;
+
+    [SerializeField]
     protected Vector3 targetDirection;
 
     protected bool isStunned = false;
 
+    [SerializeField]
+    [Range(0, 100)]
+    protected float sightDistance = 40;
+
+    protected float sightAngle = 0;
+
     protected Vector3 previousPos = Vector3.zero;
 
-    private enum TIER { BASIC, MIDLEVEL, ELITE }
+    protected Vector3 startPos;
+
+    protected Quaternion startRot;
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         components = GetComponent<ComponentManager>();
         weaponController = GetComponent<WeaponController>();
@@ -79,6 +83,12 @@ public class AIAgent : LivingEntity
     protected override void Start()
     {
         base.Start();
+
+        startPos = transform.position;
+
+        startRot = transform.rotation;
+
+        targetDirection = transform.forward;
 
         speedPerSail = baseMoveSpeed / components.getSpeedBonus();
 
@@ -99,83 +109,89 @@ public class AIAgent : LivingEntity
 
     protected virtual void Update()
     {
-        // reset variables before calculating what to do this frame.
-        targetDirection = Vector3.zero;
-        behaviours.Clear();
-
-        targetDirection = transform.forward;
-
         // check if sunk
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transform.position = startPos;
+            transform.rotation = startRot;
+            targetRotation = startRot;
+            targetDirection = transform.forward;
+        }
 
         if (transform.position.y < -5)
         {
-            player.GiveGold(goldReward);
+            if (player != null)
+            {
+                player.GiveGold(goldReward);
+            }
+
             Destroy(gameObject);
         }
 
-        if (!GameState.BuildMode)
+        // Collision Avoidance
+
+        Ray ray1 = new Ray(transform.position, transform.forward + transform.right * 0.1f);
+        Ray ray2 = new Ray(transform.position, transform.forward - transform.right * 0.1f);
+
+        Debug.DrawRay(transform.position, (transform.forward + transform.right * 0.1f) * sightDistance, Color.red);
+        Debug.DrawRay(transform.position, (transform.forward - transform.right * 0.1f) * sightDistance, Color.red);
+
+        int layerMask = LayerMask.GetMask("Island");
+
+        if (Physics.Raycast(ray1, sightDistance) && Physics.Raycast(ray2, sightDistance))
         {
-            // Calculate which behaviours to use this frame.
+            Debug.Log("Something is ahead of me");
 
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            Ray Rightray = new Ray(transform.position, transform.forward + transform.right * sightAngle);
+            Debug.DrawRay(transform.position, (transform.forward + transform.right * sightAngle) * sightDistance, Color.red);
 
-            if (distanceToPlayer > awarenessRange && canWander)
+            Ray Leftray = new Ray(transform.position, transform.forward - transform.right * sightAngle);
+            Debug.DrawRay(transform.position, (transform.forward - transform.right * sightAngle) * sightDistance, Color.red);
+
+            // If there is a collision at both left and right, increase sight angle
+            if (Physics.Raycast(Rightray, sightDistance) && Physics.Raycast(Leftray, sightDistance))
             {
-                WanderBehaviour wander = (WanderBehaviour)ScriptableObject.CreateInstance("WanderBehaviour");
-
-                behaviours.Add(wander);
-                // canWander = false;
+                sightAngle += 0.1f;
             }
 
-            // Check if the target is further than attack range, if so Chase target.
-            if (Vector3.Distance(transform.position, player.transform.position) > attackRange)
-            {
-                ChaseBehaviour chase = (ChaseBehaviour)ScriptableObject.CreateInstance("ChaseBehaviour");
+            // when there's no collision in left or right turn in that direction
 
-                behaviours.Add(chase);
+            if (!Physics.Raycast(Rightray, sightDistance))
+            {
+                // turn right
+                targetDirection = transform.forward + transform.right * sightAngle;
             }
 
-            // Check if the target is in attack range, if so align to target.
-            if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+            if (!Physics.Raycast(Leftray, sightDistance))
             {
-                AlignmentBehaviour align = (AlignmentBehaviour)ScriptableObject.CreateInstance("AlignmentBehaviour");
-
-                behaviours.Add(align);
-
-                if (Physics.Raycast(transform.position + transform.forward * 0.2f, transform.right, attackRange))
-                {
-                    weaponController.FireWeaponsRight(true);
-                }
-
-                if (Physics.Raycast(transform.position + transform.forward * 0.2f, -transform.right, attackRange))
-                {
-                    weaponController.FireWeaponsLeft(true);
-                }
-            }
-
-            CollisionAvoidanceBehaviour avoid = (CollisionAvoidanceBehaviour)ScriptableObject.CreateInstance("CollisionAvoidanceBehaviour");
-            behaviours.Add(avoid);
-        }
-
-        foreach (IBehaviour behaviour in behaviours)
-        {
-            if (behaviour.Name.Equals("collisionAvoidance"))
-            {
-                targetDirection += behaviour.ApplyBehaviour(transform, player.transform) * 5;
-            }
-            else
-            {
-                targetDirection += behaviour.ApplyBehaviour(transform, player.transform);
+                // turn left
+                targetDirection = transform.forward - transform.right * sightAngle;
             }
         }
+        else if(!Physics.Raycast(ray1, sightDistance) && Physics.Raycast(ray2, sightDistance))
+        {
+            // turn right
+            targetDirection = transform.forward + transform.right * 0.1f;
+        }
+        else if (!Physics.Raycast(ray2, sightDistance) && Physics.Raycast(ray1, sightDistance))
+        {
+            // turn left
+            targetDirection = transform.forward - transform.right * 0.1f;
+        }
+        else 
+        {
+            sightAngle = 0f;
+        }
 
-        Debug.DrawLine(transform.position + Vector3.up * 3, transform.position + Vector3.up * 3 + (targetDirection * 10), Color.red);
+        if (targetDirection != Vector3.zero)
+        {
+            //create the rotation we need to be in to look at the target
+            targetRotation = Quaternion.LookRotation(targetDirection);
 
-        //create the rotation we need to be in to look at the target
-        targetRotation = Quaternion.LookRotation(targetDirection);
-
-        //rotate us over time according to speed until we are in the required rotation
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            //rotate us over time according to speed until we are in the required rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
 
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 

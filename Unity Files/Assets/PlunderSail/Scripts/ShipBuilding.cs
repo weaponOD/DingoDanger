@@ -580,6 +580,10 @@ public class ShipBuilding : MonoBehaviour
 
             player.DeductGold(goldCosts[preview.AttachmentName]);
 
+            player.UpdateAttachments();
+
+            UI.UpdateSpeedSlider();
+
             dirty = true;
 
             if (currentPiece.Contains("Sail"))

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private float deacceleration;
 
     [SerializeField]
-    private float maxSpeed = 45.0f;
+    private float moveSpeedCap = 45.0f;
 
     private float maxRudder = 6.0f;
 
@@ -358,7 +358,7 @@ public class PlayerController : MonoBehaviour
 
         totalBonusSpeed -= (totalCannonWeight + totalArmourWeight);
 
-        maxMoveSpeed = Mathf.Clamp(totalBonusSpeed, 0f, maxSpeed);
+        maxMoveSpeed = Mathf.Clamp(totalBonusSpeed, 0f, moveSpeedCap);
     }
 
     void OnCollisionEnter(Collision c)
@@ -382,6 +382,16 @@ public class PlayerController : MonoBehaviour
         moveSpeed = 0;
 
         Invoke("RemoveStun", _duration);
+    }
+
+    public float CappedSpeed
+    {
+        get { return moveSpeedCap; }
+    }
+
+    public float MaxSpeed
+    {
+        get { return maxMoveSpeed; }
     }
 
     private void OnDestroy()

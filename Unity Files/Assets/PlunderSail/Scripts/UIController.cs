@@ -35,11 +35,12 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject mapMenu = null;
 
-    [SerializeField]
     int selectedMenuItem = 0;
 
     // System References
     private Player player = null;
+
+    private PlayerController playerController = null;
 
     private ShipBuilding builder = null;
 
@@ -50,8 +51,10 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject[] horizontalMenu = null;
 
-    // Functionality variables
     [SerializeField]
+    private Slider speedSlider = null; 
+
+    // Functionality variables
     private int selectedGenre;
 
     private string[] genres;
@@ -62,7 +65,6 @@ public class UIController : MonoBehaviour
     private float timeBetweenPresses;
 
     // Functionality variables
-    [SerializeField]
     private int selectedAttachment;
 
     private bool DpadCanPress = false;
@@ -77,6 +79,8 @@ public class UIController : MonoBehaviour
         GameState.buildModeChanged += SetBuildPanelStatus;
 
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        playerController = player.GetComponent<PlayerController>();
 
         builder = GameObject.FindGameObjectWithTag("GameManager").GetComponent<ShipBuilding>();
 
@@ -156,6 +160,8 @@ public class UIController : MonoBehaviour
         DpadCanPress = true;
 
         goldText.text = "" + player.Gold;
+
+        UpdateSpeedSlider();
     }
 
     private void GoldChanged()
@@ -173,6 +179,15 @@ public class UIController : MonoBehaviour
     private void HideGoldHUD()
     {
         goldHUD.SetActive(false);
+    }
+
+    public void UpdateSpeedSlider()
+    {
+        //speedSlider.minValue = 0;
+        //speedSlider.maxValue = ;
+        
+        float percent = playerController.MaxSpeed / playerController.CappedSpeed;
+        speedSlider.value = percent;
     }
 
     private void Update()

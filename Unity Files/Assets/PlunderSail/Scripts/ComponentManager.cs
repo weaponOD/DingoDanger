@@ -9,6 +9,8 @@ public class ComponentManager : MonoBehaviour
     private WeaponAttachment[] leftWeapons;
     private WeaponAttachment[] rightWeapons;
 
+    private ArmourAttachment[] armour;
+
     private void Awake()
     {
         // Subscribe to game state
@@ -31,6 +33,11 @@ public class ComponentManager : MonoBehaviour
         UpdateWeapons();
 
         return rightWeapons;
+    }
+
+    public int Armour
+    {
+        get { return armour.Length; }
     }
 
     public AttachmentSail[] GetAttachedSails()
@@ -74,6 +81,7 @@ public class ComponentManager : MonoBehaviour
         {
             UpdateWeapons();
             UpdateSails();
+            UpdateArmour();
         }
     }
 
@@ -120,6 +128,11 @@ public class ComponentManager : MonoBehaviour
                 weaponsRightCount++;
             }
         }
+    }
+
+    private void UpdateArmour()
+    {
+        armour = GetComponentsInChildren<ArmourAttachment>();
     }
 
     private void OnDestroy()

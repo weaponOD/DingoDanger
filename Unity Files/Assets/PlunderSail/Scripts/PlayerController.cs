@@ -43,6 +43,9 @@ public class PlayerController : MonoBehaviour
     private float cannonWeight = 0;
 
     [SerializeField]
+    private float armourWeight = 0;
+
+    [SerializeField]
     private float slowMaxSpeedPercent = 0;
 
     [SerializeField]
@@ -349,7 +352,11 @@ public class PlayerController : MonoBehaviour
             totalBonusSpeed += Mathf.Clamp(bonusSpeed - (bonusDropoff * x), minBonusSpeed, bonusSpeed);
         }
 
-        totalBonusSpeed -= (cannonWeight * components.GetAttachedLeftWeapons().Length) + (cannonWeight * components.GetAttachedRightWeapons().Length);
+        float totalCannonWeight = (cannonWeight * components.GetAttachedLeftWeapons().Length) + (cannonWeight * components.GetAttachedRightWeapons().Length);
+
+        float totalArmourWeight = (armourWeight * components.Armour);
+
+        totalBonusSpeed -= (totalCannonWeight + totalArmourWeight);
 
         maxMoveSpeed = Mathf.Clamp(totalBonusSpeed, 0f, maxSpeed);
     }

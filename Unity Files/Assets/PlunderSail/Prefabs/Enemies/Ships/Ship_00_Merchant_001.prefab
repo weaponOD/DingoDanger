@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d55f612dfcfe9247848eeef485f3f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterHealth: 100
+  starterHealth: 80
   bountyDelay: 0.1
   bounty:
   - {fileID: 100004, guid: 723a5e4e002853e488501468ad09aedb, type: 3}
@@ -383,7 +383,7 @@ MonoBehaviour:
   awarenessRange: 0
   stunDuration: 1
   difficulty: 0
-  goldReward: 120
+  goldReward: 35
   currentMoveSpeed: 0
   speedPerSail: 0
   behaviours: []
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 220
 --- !u!114 &114935792425935808
 MonoBehaviour:
   m_ObjectHideFlags: 1

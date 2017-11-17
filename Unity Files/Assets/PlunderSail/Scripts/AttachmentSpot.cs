@@ -41,13 +41,7 @@ public class AttachmentSpot : MonoBehaviour
 
     public bool IsOpen
     {
-        get {
-
-            if (!BuiltOn && !Disabled)
-            {
-                Debug.Log("Is Open");
-            }
-            return (!BuiltOn && !Disabled); }
+        get { return (!BuiltOn && !Disabled); }
     }
 
     public bool BuiltOn

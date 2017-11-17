@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private string woodImpact = "CHANGE";
 
-
     [Header("Effects")]
 
     [SerializeField]

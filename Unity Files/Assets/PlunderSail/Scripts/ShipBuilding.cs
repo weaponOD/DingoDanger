@@ -768,6 +768,8 @@ public class ShipBuilding : MonoBehaviour
     // Applies rules for current attachment type, returns true if the placement is legal
     private bool CheckAttachmentRules()
     {
+        sailOverRide = false;
+
         if (currentPiece.Contains("Cabin"))
         {
             // if on left hand side of boat or centre

@@ -4007,11 +4007,11 @@ MonoBehaviour:
   attackRange: 50
   awarenessRange: 250
   stunDuration: 0.5
-  difficulty: 1
   goldReward: 63
   currentMoveSpeed: 0
   speedPerSail: 0
-  behaviours: []
+  targetDirection: {x: 0, y: 0, z: 0}
+  sightDistance: 40
 --- !u!114 &114020023289315836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4378,7 +4378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireShoutSound: 
-  reloadTime: 0.7
+  reloadTime: 0.85
 --- !u!114 &114928650496456302
 MonoBehaviour:
   m_ObjectHideFlags: 1

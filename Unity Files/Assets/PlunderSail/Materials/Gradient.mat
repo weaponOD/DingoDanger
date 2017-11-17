@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: GreyRock
+  m_Name: Gradient
   m_Shader: {fileID: 4800000, guid: 6eef62f0120c6bb48a5574583589eda0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -56,36 +56,33 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Contrast: 1.2
+    - _Contrast: 25
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exp: 1
     - _GlossMapScale: 1
-    - _Glossiness: 0.088
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HeightControl: 0.013
-    - _HighestPos: 1
-    - _Intensity: 2.3
-    - _Level: 1.7
-    - _Metallic: 0.704
+    - _HeightControl: 0.037
+    - _Level: 3.3
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Slider: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UpNode: 1
+    - _UpNode: 0.72
     - _ZWrite: 1
-    - _lowestPos: -2
-    - _maxY: 3.5
-    - _minY: -0.01
-    - _value: 0.842
+    - _intensity: 0.74
+    - _maxY: 4
+    - _minY: 0.96
+    - _value: 0.99
     m_Colors:
-    - _BaseColour: {r: 0.71323526, g: 0.71323526, b: 0.71323526, a: 1}
-    - _Color: {r: 0.37808177, g: 0.4597117, b: 0.46323532, a: 1}
+    - _BaseColour: {r: 0, g: 0.7931032, b: 1, a: 1}
+    - _BottomColour: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientColour: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColour: {r: 0.086087555, g: 0.8161765, b: 0.060012985, a: 1}
+    - _GradientColour: {r: 1, g: 0.1397059, b: 0.90507096, a: 1}
+    - _TopColour: {r: 1, g: 1, b: 1, a: 1}

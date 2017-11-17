@@ -72,7 +72,10 @@ public class AIAgent : LivingEntity
     {
         rb = GetComponent<Rigidbody>();
 
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        }
 
         components = GetComponent<ComponentManager>();
         weaponController = GetComponent<WeaponController>();
@@ -131,57 +134,70 @@ public class AIAgent : LivingEntity
 
         // Collision Avoidance
 
-        Ray ray1 = new Ray(transform.position, transform.forward + transform.right * 0.1f);
-        Ray ray2 = new Ray(transform.position, transform.forward - transform.right * 0.1f);
+        Ray ray1 = new Ray(transform.position, transform.forward);
 
-        Debug.DrawRay(transform.position, (transform.forward + transform.right * 0.1f) * sightDistance, Color.red);
-        Debug.DrawRay(transform.position, (transform.forward - transform.right * 0.1f) * sightDistance, Color.red);
+        Debug.DrawRay(transform.position, transform.forward * sightDistance, Color.red);
 
         int layerMask = LayerMask.GetMask("Island");
 
-        if (Physics.Raycast(ray1, sightDistance) && Physics.Raycast(ray2, sightDistance))
+        if (Physics.Raycast(ray1, sightDistance))
         {
-            Debug.Log("Something is ahead of me");
-
             Ray Rightray = new Ray(transform.position, transform.forward + transform.right * sightAngle);
-            Debug.DrawRay(transform.position, (transform.forward + transform.right * sightAngle) * sightDistance, Color.red);
+            Debug.DrawRay(transform.position, (transform.forward + transform.right * sightAngle) * sightDistance * 1.5f, Color.red);
+            RaycastHit hitRight;
+            float distanceRight = 0;
 
             Ray Leftray = new Ray(transform.position, transform.forward - transform.right * sightAngle);
-            Debug.DrawRay(transform.position, (transform.forward - transform.right * sightAngle) * sightDistance, Color.red);
+            Debug.DrawRay(transform.position, (transform.forward - transform.right * sightAngle) * sightDistance * 1.5f, Color.red);
+            RaycastHit hitLeft;
+            float distanceLeft = 0;
 
-            // If there is a collision at both left and right, increase sight angle
-            if (Physics.Raycast(Rightray, sightDistance) && Physics.Raycast(Leftray, sightDistance))
+            if (Physics.Raycast(Leftray, out hitLeft, sightDistance * 1.5f))
             {
+                distanceLeft = hitLeft.distance;
+            }
+
+            if (Physics.Raycast(Rightray, out hitRight, sightDistance * 1.5f))
+            {
+                distanceRight = hitRight.distance;
+            }
+
+            // No collisions on both sides
+            if (distanceLeft == 0 && distanceRight == 0)
+            {
+                Debug.Log("No collisions on both sides");
+
+                targetDirection = transform.forward + transform.right * 0.2f;
+
+                sightAngle = 0;
+            }
+            else if(distanceLeft != 0 && distanceRight != 0)
+            {
+                Debug.Log("collisions on both sides");
+
+                if (distanceLeft <= distanceRight)
+                {
+                    targetDirection = transform.forward + transform.right * sightAngle;
+                }
+                else
+                {
+                    targetDirection = transform.forward - transform.right * sightAngle;
+                }
+
                 sightAngle += 0.1f;
             }
-
-            // when there's no collision in left or right turn in that direction
-
-            if (!Physics.Raycast(Rightray, sightDistance))
+            else if (distanceLeft != 0)
             {
-                // turn right
+                Debug.Log("collisions on left side");
+                // Turn right
                 targetDirection = transform.forward + transform.right * sightAngle;
             }
-
-            if (!Physics.Raycast(Leftray, sightDistance))
+            else if (distanceRight != 0)
             {
-                // turn left
+                Debug.Log("collisions on right side");
+                // Turn left
                 targetDirection = transform.forward - transform.right * sightAngle;
             }
-        }
-        else if(!Physics.Raycast(ray1, sightDistance) && Physics.Raycast(ray2, sightDistance))
-        {
-            // turn right
-            targetDirection = transform.forward + transform.right * 0.1f;
-        }
-        else if (!Physics.Raycast(ray2, sightDistance) && Physics.Raycast(ray1, sightDistance))
-        {
-            // turn left
-            targetDirection = transform.forward - transform.right * 0.1f;
-        }
-        else 
-        {
-            sightAngle = 0f;
         }
 
         if (targetDirection != Vector3.zero)

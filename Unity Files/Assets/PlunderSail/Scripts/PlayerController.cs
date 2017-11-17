@@ -132,7 +132,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!GameState.BuildMode)
+        if (!GameState.BuildMode && !GameState.Paused)
         {
             // steering
             steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AttachmentSpot : MonoBehaviour
 {
-    private bool disabled;
+    private bool disabled = false;
 
     [SerializeField]
     private bool built = false;
+
     [SerializeField]
     private bool anchored = false;
+
     [SerializeField]
     private Transform attachment = null;
 
@@ -31,6 +33,23 @@ public class AttachmentSpot : MonoBehaviour
         set { anchored = value; }
     }
 
+    public bool Disabled
+    {
+        get { return disabled; }
+        set { disabled = value; }
+    }
+
+    public bool IsOpen
+    {
+        get {
+
+            if (!BuiltOn && !Disabled)
+            {
+                Debug.Log("Is Open");
+            }
+            return (!BuiltOn && !Disabled); }
+    }
+
     public bool BuiltOn
     {
         get
@@ -42,6 +61,14 @@ public class AttachmentSpot : MonoBehaviour
 
             return built;
         }
-        set { built = value; }
+        set
+        {
+            built = value;
+
+            if(!built)
+            {
+                attachment = null;
+            }
+        }
     }
 }

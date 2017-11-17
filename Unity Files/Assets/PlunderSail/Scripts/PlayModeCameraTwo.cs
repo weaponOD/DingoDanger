@@ -37,6 +37,7 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private bool aiming = false;
 
+    [SerializeField]
     private bool invertedX = false;
 
     private bool invertedY = false;
@@ -72,32 +73,35 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private void Update()
     {
-        // Rotate the camera based on right thumb stick input
-        if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
+        if(!GameState.Paused)
         {
-            if(!aiming)
+            // Rotate the camera based on right thumb stick input
+            if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
             {
-                if (invertedX)
+                if (!aiming)
                 {
-                    localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
-                }
-                else
-                {
-                    localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
+                    if (invertedX)
+                    {
+                        localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+                    }
+                    else
+                    {
+                        localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
+                    }
+
+                    if (invertedY)
+                    {
+                        localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                    }
+                    else
+                    {
+                        localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                    }
                 }
 
-                if (invertedY)
-                {
-                    localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
-                }
-                else
-                {
-                    localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
-                }
+                // Clamp the Y rotation to horizon and not flipping it over at the top
+                localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
             }
-
-            // Clamp the Y rotation to horizon and not flipping it over at the top
-            localRotation.y = Mathf.Clamp(localRotation.y, minclamp, MaxClamp);
         }
     }
 

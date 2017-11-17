@@ -65,6 +65,8 @@ public class ShipBuilding : MonoBehaviour
     private float nextTimeToMove = 0;
     private float timeBetweenMoves = 0.1f;
 
+    private bool sailOverRide = false;
+
     //private string lastDirection = null;
 
     [SerializeField]
@@ -575,6 +577,12 @@ public class ShipBuilding : MonoBehaviour
     {
         if (canPlace)
         {
+            if(sailOverRide)
+            {
+                Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
+                sailOverRide = false;
+            }
+
             Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
             grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
 
@@ -592,6 +600,12 @@ public class ShipBuilding : MonoBehaviour
                 {
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].Attachment = newAttachment;
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
+
+                    if(y > 0)
+                    {
+                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
+                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
+                    }
                 }
             }
             else
@@ -605,8 +619,6 @@ public class ShipBuilding : MonoBehaviour
     {
         if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment != null)
         {
-            //player.GiveGold(goldCosts[grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject.name]);
-
             string wholeName = grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject.name;
 
             string[] split = wholeName.Split('_');
@@ -615,6 +627,7 @@ public class ShipBuilding : MonoBehaviour
 
             player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
             Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
+            grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = false;
         }
 
         dirty = true;
@@ -666,17 +679,17 @@ public class ShipBuilding : MonoBehaviour
             return false;
         }
 
-        if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
+        if (!CheckAttachmentRules())
+        {
+            return false;
+        }
+
+        if (!grid[previewGridPosX, previewGridPosY, previewGridPosZ].IsOpen && !sailOverRide)
         {
             return false;
         }
 
         if (!CheckNotFloating())
-        {
-            return false;
-        }
-
-        if (!CheckAttachmentRules())
         {
             return false;
         }
@@ -757,6 +770,51 @@ public class ShipBuilding : MonoBehaviour
     {
         if (currentPiece.Contains("Cabin"))
         {
+            // if on left hand side of boat or centre
+            if (previewGridPosX <= centreSpot.x)
+            {
+                if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Cannon"))
+                    {
+                        if(grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.GetComponent<WeaponAttachment>().FacingLeft)
+                        {
+                            preview.SetCanBuild(false);
+
+                            return false;
+                        }
+                    }
+
+                    if(grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Armour"))
+                    {
+                        preview.SetCanBuild(false);
+
+                        return false;
+                    }
+                }
+            }
+
+            // if on right hand side of ship
+            if (previewGridPosX > centreSpot.x + 1)
+            {
+                if (grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].BuiltOn)
+                {
+                    if (grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Cannon"))
+                    {
+                        preview.SetCanBuild(false);
+
+                        return false;
+                    }
+
+                    if (grid[previewGridPosX - 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Armour"))
+                    {
+                        preview.SetCanBuild(false);
+
+                        return false;
+                    }
+                }
+            }
+
             preview.SetCanBuild(true);
             return true;
         }
@@ -769,13 +827,30 @@ public class ShipBuilding : MonoBehaviour
         {
             int lengthToEnd = yLength - previewGridPosY;
 
-            // loop until an open spot is found
+            // loop through size of sail and check if all spots are open
             for (int y = 1; y < lengthToEnd; y++)
             {
-                if (grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn)
+                if (!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].IsOpen)
                 {
                     preview.SetCanBuild(false);
                     return false;
+                }
+
+                if(previewGridPosZ < GridSize.z - 1)
+                {
+                    if(!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].IsOpen)
+                    {
+                        preview.SetCanBuild(false);
+                        return false;
+                    }
+                }
+            }
+
+            if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
+            {
+                if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.name.Contains("Cabin"))
+                {
+                    sailOverRide = true;
                 }
             }
 
@@ -785,7 +860,6 @@ public class ShipBuilding : MonoBehaviour
         }
         else if (currentPiece.Contains("Armour"))
         {
-
             // if on left hand side of boat
             if (previewGridPosX < centreSpot.x)
             {

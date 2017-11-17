@@ -85,6 +85,14 @@ public class GameManager : MonoBehaviour
                 UI.ShowMap(mapActive);
             }
 
+            if(Input.GetButtonUp("Back_Button"))
+            {
+                Pause();
+
+                mapActive = !mapActive;
+                UI.ShowMap(mapActive);
+            }
+
             if (Input.GetButtonDown("Start_Button"))
             {
                 Pause();
@@ -97,6 +105,8 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         paused = !paused;
+
+        GameState.Paused = paused;
 
         if (paused)
         {
@@ -162,6 +172,8 @@ public static class GameState
 
     private static bool buildMode = false;
 
+    private static bool paused = false;
+
     public static bool BuildMode
     {
         get { return buildMode; }
@@ -178,5 +190,12 @@ public static class GameState
                 buildModeChanged(buildMode);
             }
         }
+    }
+
+    public static bool Paused
+    {
+        get { return paused; }
+
+        set { paused = value; }
     }
 }

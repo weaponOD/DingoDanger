@@ -16,11 +16,9 @@ public class CameraController : MonoBehaviour
 
     private Transform playerCentre;
 
-    private bool inverted = false;
+    private bool invertedX = false;
 
-    private bool invertedX = true;
-
-    private bool invertedY = true;
+    private bool invertedY = false;
 
     private bool aiming = false;
 
@@ -35,18 +33,13 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         MovePlayCameraToPlayer();
+
+        InvertX();
+        InvertY();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inverted = !inverted;
-
-            InvertX();
-            InvertY();
-        }
-
         if (aiming)
         {
             if (aimLeft)

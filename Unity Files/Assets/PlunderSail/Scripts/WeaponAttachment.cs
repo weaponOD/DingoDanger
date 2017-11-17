@@ -94,7 +94,7 @@ public class WeaponAttachment : AttachmentBase
     {
         get
         {
-            facingLeft = (transform.localEulerAngles.y > 95f);
+            facingLeft = (transform.localEulerAngles.y < 95f);
             return facingLeft;
         }
         set { facingLeft = value; }

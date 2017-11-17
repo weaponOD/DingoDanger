@@ -92,7 +92,7 @@ public class Player : LivingEntity
     private void Update()
     {
         // Check Input for aiming
-        if (!GameState.BuildMode)
+        if (!GameState.BuildMode && !GameState.Paused)
         {
 
             // if we're not aiming fire both sides
@@ -110,7 +110,7 @@ public class Player : LivingEntity
             if (Input.GetAxis("Left_Trigger") == 1)
             {
                 // first frame that the trigger is held down set aiming to true and activate the aiming mesh in the correct direction.
-                if (!aiming)
+                if (!aiming && weaponController.HasWeapons)
                 {
                     aimDir = CC.TryAim();
 
@@ -154,7 +154,7 @@ public class Player : LivingEntity
 
             if (aiming)
             {
-                range += Input.GetAxis("Mouse_Y");
+                range += Input.GetAxis("Vertical");
                 range = Mathf.Clamp(range, minimumRange, maxRange);
             }
         }

@@ -142,9 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterImpact: impactWater
   woodImpact: impactWood
-  waterHitEffect: splashEffect
-  woodHitEffect: woodHitEffect
-  stoneHitEffect: woodHitEffect
+  waterHitEffect: waterImpactEffect
+  woodHitEffect: woodImpactEffect
+  stoneHitEffect: stoneImpactEffect
 --- !u!135 &135307556624297948
 SphereCollider:
   m_ObjectHideFlags: 1

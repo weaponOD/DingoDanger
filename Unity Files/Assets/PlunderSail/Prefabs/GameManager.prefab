@@ -78,11 +78,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  speedSlider: {fileID: 0}
   defaultSprite: {fileID: 21300000, guid: c7baa06f016845c40a9f004f0b4ef896, type: 3}
   genreHighlightSprite: {fileID: 21300000, guid: 17f5b376a902a604a9e0b59ef65937b1,
     type: 3}
   highlightSprite: {fileID: 21300000, guid: 53beb5c312010884e8cc66ffd761719f, type: 3}
-  speedSlider: {fileID: 0}
   timeBetweenPresses: 20
 --- !u!114 &114256727963917046
 MonoBehaviour:
@@ -134,14 +134,20 @@ MonoBehaviour:
     poolSize: 100
     canExpand: 1
     objects: []
-  - objectName: splashEffect
+  - objectName: waterImpactEffect
     pooledPrefab: {fileID: 1727050701200568, guid: 8634271c6a670524ab8f0068778d65bc,
       type: 2}
     poolSize: 30
     canExpand: 1
     objects: []
-  - objectName: woodHitEffect
+  - objectName: woodImpactEffect
     pooledPrefab: {fileID: 1978962939801300, guid: df12c07971cdb1c4c8283643b36c6143,
+      type: 2}
+    poolSize: 30
+    canExpand: 0
+    objects: []
+  - objectName: stoneImpactEffect
+    pooledPrefab: {fileID: 1258126965516234, guid: 214af1e2f6e3bcf46be305b846c2a445,
       type: 2}
     poolSize: 30
     canExpand: 0

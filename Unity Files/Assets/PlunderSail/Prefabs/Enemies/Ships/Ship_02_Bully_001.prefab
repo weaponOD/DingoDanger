@@ -5917,6 +5917,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114005735334143256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5934,12 +5938,12 @@ MonoBehaviour:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   sinkingSound: sink
-  takeDamageSound: 
   currentHealth: 0
   baseMoveSpeed: 12
   rotationSpeed: 1
   attackRange: 220
   awarenessRange: 230
+  damageSpreadMultiplier: 0.45
   stunDuration: 1
   goldReward: 73
   currentMoveSpeed: 0
@@ -5958,6 +5962,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114030416796821592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5970,6 +5978,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114038303638799664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5982,6 +5994,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114200189210367780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5994,6 +6010,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6018,6 +6038,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6042,6 +6066,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6066,6 +6094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114274127872389054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6078,6 +6110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6102,6 +6138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114300117816927022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6114,6 +6154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114346501447751410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6126,6 +6170,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 450
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114354842054865262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6138,6 +6186,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6162,6 +6214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6184,6 +6240,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 220
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114455940115338304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6196,6 +6256,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6220,6 +6284,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114502295326784700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6232,6 +6300,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6254,6 +6326,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114554063112636050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6266,6 +6342,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114567376148156478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6278,6 +6358,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6302,6 +6386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6326,6 +6414,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6348,6 +6440,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6372,6 +6468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114779601151531074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6384,6 +6484,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6419,6 +6523,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 450
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114837005578891718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6431,6 +6539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114865716238599792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6443,6 +6555,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6497,6 +6613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6521,6 +6641,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 170
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.2
   maxFireTime: 0.6
   ammoType: cannonBall
@@ -6545,6 +6669,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 300
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 4300000, guid: 25b7e48f585df1744beda229df02d3e7, type: 3}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114928650496456302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6557,6 +6685,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 450
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114990912918010102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6569,6 +6701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 450
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!120 &120897583584099464
 LineRenderer:
   m_ObjectHideFlags: 1

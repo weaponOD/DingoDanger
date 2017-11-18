@@ -58,7 +58,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -79,17 +79,17 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
-  - name: Float
+  - name: float
     audioClip:
     - {fileID: 8300000, guid: de91d06a2333dac458939a10b7e81766, type: 3}
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 1
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 6
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 5.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -191,7 +191,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 10
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 5.75
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -255,7 +255,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 1
-    coolDown: 0
+    coolDown: 5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -267,7 +267,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    coolDown: 14
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}

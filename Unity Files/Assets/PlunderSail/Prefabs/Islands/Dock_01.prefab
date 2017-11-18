@@ -409,7 +409,6 @@ GameObject:
   - component: {fileID: 4053080979847010}
   - component: {fileID: 33662471828414792}
   - component: {fileID: 23453718517366074}
-  - component: {fileID: 95128572671486042}
   m_Layer: 0
   m_Name: Island_002_OceanStandard_002_MediumSand
   m_TagString: Untagged
@@ -1117,7 +1116,7 @@ GameObject:
   - component: {fileID: 4094853947828392}
   - component: {fileID: 33443863925533380}
   - component: {fileID: 23510318543896528}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Island_002_OceanStandard_002_MediumSand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2148,7 @@ GameObject:
   - component: {fileID: 33414342191907928}
   - component: {fileID: 23388789311818420}
   - component: {fileID: 136041367360147488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Island_007_OceanStandard_007_SmallRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2779,7 +2778,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4534285316892800}
-  - component: {fileID: 135519069206460056}
   m_Layer: 2
   m_Name: Oasis_004_Islands_004_Medium_002
   m_TagString: Pier
@@ -3320,7 +3318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1468129393819448}
   m_LocalRotation: {x: -0.05960003, y: 0.02209416, z: -0.02480952, w: 0.99766946}
-  m_LocalPosition: {x: -42.770454, y: -8.4, z: 0.50086975}
+  m_LocalPosition: {x: -85.6, y: -8.4, z: -132.2}
   m_LocalScale: {x: 1.0000005, y: 1.0000001, z: 1.0000006}
   m_Children:
   - {fileID: 4851303644668430}
@@ -4362,7 +4360,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362764559886990}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -98.35829, y: 0, z: -2.7000008}
+  m_LocalPosition: {x: -54.4, y: 0, z: -4.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4754849571531222}
@@ -6626,7 +6624,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 4db0bc82ed17b794dab198a895879ba7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7139,7 +7137,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 4db0bc82ed17b794dab198a895879ba7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7171,7 +7169,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 4db0bc82ed17b794dab198a895879ba7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7363,7 +7361,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 98dde555e1af27542a71ea5ac9dc914f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7459,7 +7457,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
+  - {fileID: 2100000, guid: 98dde555e1af27542a71ea5ac9dc914f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9844,23 +9842,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 7, z: 50}
   m_Center: {x: 8.2, y: 1, z: 29.08}
---- !u!95 &95128572671486042
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106993065686108}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e67fb9454afb48b428c0da6f7545527c, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95816096679674910
 Animator:
   serializedVersion: 3
@@ -9911,18 +9892,6 @@ SphereCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403856244366948}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135519069206460056
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1828038924881800}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 0

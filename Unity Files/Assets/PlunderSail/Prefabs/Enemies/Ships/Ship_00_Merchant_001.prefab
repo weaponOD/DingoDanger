@@ -375,18 +375,18 @@ MonoBehaviour:
   - {fileID: 100000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
   - {fileID: 100000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
   sinkingSound: sink
-  takeDamageSound: 
   currentHealth: 0
   baseMoveSpeed: 12
   rotationSpeed: 0.8
   attackRange: 0
   awarenessRange: 0
+  damageSpreadMultiplier: 0.45
   stunDuration: 1
-  difficulty: 0
-  goldReward: 35
+  goldReward: 15
   currentMoveSpeed: 0
   speedPerSail: 0
-  behaviours: []
+  targetDirection: {x: 0, y: 0, z: 0}
+  sightDistance: 40
 --- !u!114 &114561812697660908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -399,6 +399,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 220
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!114 &114935792425935808
 MonoBehaviour:
   m_ObjectHideFlags: 1

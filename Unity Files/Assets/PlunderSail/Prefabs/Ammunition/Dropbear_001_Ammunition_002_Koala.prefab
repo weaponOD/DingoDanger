@@ -140,11 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30263a5f792945347b64c585d70c8fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splashSound: {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
-  splashEffect: {fileID: 198034797215869406, guid: 8634271c6a670524ab8f0068778d65bc,
-    type: 2}
-  hitEffect: {fileID: 198210705322419820, guid: fef4890aca2ebf14281eb1778ab7fe4c,
-    type: 2}
+  waterImpact: CHANGE
+  woodImpact: CHANGE
+  waterHitEffect: 
+  woodHitEffect: 
+  stoneHitEffect: stoneImpactEffect
 --- !u!135 &135307556624297948
 SphereCollider:
   m_ObjectHideFlags: 1

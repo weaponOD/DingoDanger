@@ -82,7 +82,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4736528257405268}
-  - component: {fileID: 114648792545689134}
   - component: {fileID: 114102094045869348}
   - component: {fileID: 135250198478311302}
   m_Layer: 8
@@ -256,7 +255,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4774178614427102}
-  - component: {fileID: 114804336278328584}
   - component: {fileID: 114133501545647460}
   - component: {fileID: 65237140457421024}
   m_Layer: 8
@@ -340,7 +338,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4315043781175192}
-  - component: {fileID: 114797948789137682}
   - component: {fileID: 114973000731208312}
   - component: {fileID: 65621442099236718}
   m_Layer: 8
@@ -1503,7 +1500,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4253149120494250}
-  - component: {fileID: 114724563779257056}
   - component: {fileID: 65603951095852416}
   - component: {fileID: 95499052889974284}
   m_Layer: 0
@@ -1736,7 +1732,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4488325548976144}
-  - component: {fileID: 114123514100510736}
   - component: {fileID: 65050737595788366}
   - component: {fileID: 95716173974865170}
   m_Layer: 0
@@ -2719,7 +2714,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4725960181662072}
-  - component: {fileID: 114263233873923938}
   - component: {fileID: 114906439954152052}
   - component: {fileID: 136302283980721914}
   m_Layer: 8
@@ -2802,7 +2796,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4945584904358756}
-  - component: {fileID: 114308893355377708}
   - component: {fileID: 114337841091396168}
   - component: {fileID: 65426690006554178}
   m_Layer: 8
@@ -3047,7 +3040,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4346146424347550}
-  - component: {fileID: 114328360139675594}
   - component: {fileID: 114387102364050742}
   - component: {fileID: 135085427154820950}
   m_Layer: 8
@@ -3165,7 +3157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1509099323549778}
   m_LocalRotation: {x: -0, y: -0.9659252, z: -0, w: 0.25882143}
-  m_LocalPosition: {x: 1324.1, y: 0, z: 198}
+  m_LocalPosition: {x: -58, y: 0, z: 1432}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4348134962339378}
@@ -5702,7 +5694,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329685631234978}
   m_LocalRotation: {x: -0, y: 0.9874388, z: -0, w: 0.1580022}
-  m_LocalPosition: {x: 145.8, y: 3, z: -110.9}
+  m_LocalPosition: {x: -134.1, y: 3, z: -2.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4030515268274202}
@@ -9353,10 +9345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114075636891881270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9403,7 +9396,6 @@ MonoBehaviour:
   bountyDelay: 0
   bounty: []
   sinkingSound: CHANGE
-  takeDamageSound: CHANGE
   currentHealth: 800
   awarenessRange: 160
   damage: 120
@@ -9425,18 +9417,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
   speed: 0.35
---- !u!114 &114123514100510736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1547859809715650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 80
 --- !u!114 &114133501545647460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9461,10 +9441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114207238511995502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9489,10 +9470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114249248744471800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9506,21 +9488,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
   speed: 0.35
---- !u!114 &114263233873923938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1888365978718110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
 --- !u!114 &114295031615868952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9532,25 +9499,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
---- !u!114 &114308893355377708
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1899249021316946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114324523316886798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9564,21 +9517,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.35
   speed: 0.35
---- !u!114 &114328360139675594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1986745678105612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
 --- !u!114 &114337841091396168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9627,10 +9565,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114387102364050742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9650,7 +9589,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323340391784554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
@@ -9696,21 +9635,6 @@ MonoBehaviour:
   - {fileID: 4508677944220884, guid: e54dc52ee4b047443967bea3261f4049, type: 2}
   - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
   activeEnemies: []
---- !u!114 &114648792545689134
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1027256567481954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
 --- !u!114 &114671990939277614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9737,25 +9661,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireShoutSound: 
   reloadTime: 0
---- !u!114 &114724563779257056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1461291136487496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 80
 --- !u!114 &114732092165065782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595971256540604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
@@ -9777,25 +9689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
---- !u!114 &114797948789137682
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1122694776909486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114799699020454272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9833,21 +9731,6 @@ MonoBehaviour:
   - {fileID: 4508677944220884, guid: e54dc52ee4b047443967bea3261f4049, type: 2}
   - {fileID: 4406381428663504, guid: de760d1734cdeec47a108e55c5f7dfad, type: 2}
   activeEnemies: []
---- !u!114 &114804336278328584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1100768043952202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldAmount: 10
-  distanceToHook: 30
-  moveSpeed: 0
-  floatSound: CHANGE
 --- !u!114 &114835296274584828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9885,10 +9768,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114949070860044522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9900,17 +9784,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 10
+  goldMin: 10
+  goldMax: 100
   distanceToHook: 30
   moveSpeed: 0
-  floatSound: CHANGE
+  floatSound: float
 --- !u!114 &114967855289889858
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329685631234978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04daedc5b76f5284195656bb870aa572, type: 3}
   m_Name: 
@@ -10075,7 +9960,7 @@ LineRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1323340391784554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 0
@@ -10220,7 +10105,7 @@ LineRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329685631234978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 0
@@ -10365,7 +10250,7 @@ LineRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595971256540604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 0

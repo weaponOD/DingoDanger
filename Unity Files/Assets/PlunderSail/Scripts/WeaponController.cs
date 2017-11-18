@@ -77,6 +77,9 @@ public class WeaponController : MonoBehaviour
 
     public void FireWeaponsLeft(bool _useCoolDown)
     {
+        // the argument _useCoolDown is to let the player fire on both sides, it goes against the intial design of the system to 
+        // be able to fire that way. having it set to false bypasses the cooldown on firing and should only be set to false when 
+        // firing on the first side to fire when firing on both sides.
         if (canShoot)
         {
             if (leftWeapons.Length > 0)

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     // UI References
-
     [SerializeField]
     private float goldDisplayTime = 2;
 
@@ -48,6 +47,8 @@ public class UIController : MonoBehaviour
 
     private CameraController CC = null;
 
+    [Header("Build UI")]
+
     [SerializeField]
     private GameObject[] horizontalMenu = null;
 
@@ -55,13 +56,18 @@ public class UIController : MonoBehaviour
     private Image[] genreImage = null;
 
     [SerializeField]
+    private Slider speedSlider = null;
+
+    [Header("Button State Sprites")]
+
+    [SerializeField]
     private Sprite defaultSprite = null;
 
     [SerializeField]
-    private Sprite highlightSprite = null;
+    private Sprite genreHighlightSprite = null;
 
     [SerializeField]
-    private Slider speedSlider = null; 
+    private Sprite highlightSprite = null;
 
     // Functionality variables
     private int selectedGenre;
@@ -165,6 +171,7 @@ public class UIController : MonoBehaviour
         selectedAttachment = 0;
 
         horizontalMenu[selectedGenre].SetActive(true);
+        genreImage[selectedGenre].sprite = genreHighlightSprite;
 
         DpadCanPress = true;
 
@@ -192,9 +199,6 @@ public class UIController : MonoBehaviour
 
     public void UpdateSpeedSlider()
     {
-        //speedSlider.minValue = 0;
-        //speedSlider.maxValue = ;
-        
         float percent = playerController.MaxSpeed / playerController.CappedSpeed;
         speedSlider.value = percent;
     }
@@ -461,18 +465,22 @@ public class UIController : MonoBehaviour
         genreImage[selectedGenre].sprite = defaultSprite;
 
         selectedAttachment = 0;
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSprite;
 
         selectedGenre += _change;
 
         builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
 
         horizontalMenu[selectedGenre].SetActive(true);
-        genreImage[selectedGenre].sprite = highlightSprite;
+        genreImage[selectedGenre].sprite = genreHighlightSprite;
     }
 
     private void ChangeAttachmentSelection(int _change)
     {
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSprite;
         selectedAttachment += _change;
+
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSprite;
 
         builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
     }

@@ -106,17 +106,23 @@ public class Player : LivingEntity
             {
                 if (Input.GetAxis("Right_Trigger") == 1)
                 {
-                    Debug.Log("Firing");
-
-                    weaponController.FireWeaponsLeft(false);
-                    weaponController.FireWeaponsRight(true);
+                    // check if there's cannons on both sides otherwise left side dones't have cooldown on firing
+                    if(weaponController.RightWeapons.Length > 0)
+                    {
+                        weaponController.FireWeaponsLeft(false);
+                        weaponController.FireWeaponsRight(true);
+                    }
+                    else
+                    {
+                        weaponController.FireWeaponsLeft(true);
+                    }
                 }
             }
             // calculate which direction we're aiming and then fire those cannons
             if (Input.GetAxis("Left_Trigger") == 1)
             {
                 // first frame that the trigger is held down set aiming to true and activate the aiming mesh in the correct direction.
-                if (!aiming && weaponController.HasWeapons)
+                if (!aiming) // && weaponController.HasWeapons
                 {
                     aimDir = CC.TryAim();
 

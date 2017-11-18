@@ -108,8 +108,6 @@ public class CameraController : MonoBehaviour
 
     public string TryAim()
     {
-        Debug.Log("Trying to aim");
-
         float angle = playCam.CalculatePerspectiveAngle();
 
         if (angle > 12 && angle < 168)

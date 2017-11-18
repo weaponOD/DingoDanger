@@ -64,6 +64,8 @@ public class Player : LivingEntity
 
     private string aimDir = "";
 
+    private bool hasControl = true;
+
     private void Awake()
     {
         controller = GetComponent<PlayerController>();
@@ -92,7 +94,7 @@ public class Player : LivingEntity
     private void Update()
     {
         // Check Input for aiming
-        if (!GameState.BuildMode && !GameState.Paused)
+        if (!GameState.BuildMode && !GameState.Paused && hasControl)
         {
 
             // if we're not aiming fire both sides
@@ -160,6 +162,11 @@ public class Player : LivingEntity
         }
 
         velocity = controller.Velocity;
+    }
+
+    public bool HasControl
+    {
+        set { hasControl = value; }
     }
 
     private void LateUpdate()

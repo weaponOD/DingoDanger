@@ -18,7 +18,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     [Tooltip("The GameObjects to spawn after the entity dies")]
     protected GameObject[] bounty;
 
-
     [Header("Sounds")]
 
     [SerializeField]
@@ -40,7 +39,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected Vector3 velocity;
 
     protected bool dead;
-
 
     public delegate void Dead(LivingEntity _entity);
     public event Dead OnDeath;

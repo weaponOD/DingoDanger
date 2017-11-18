@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\PlunderSail\Scripts\AIAgent.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\AIPathFollower.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AlignmentBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\ArmourAttachment.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\AttachmentBase.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Assets\PlunderSail\Scripts\IntroMenu.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Island.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\LivingEntity.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\PathBuilder.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Pier.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\Player.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\PlayerController.cs" />
@@ -133,6 +135,8 @@
     <Compile Include="Assets\PlunderSail\Scripts\UIController.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WanderBehaviour.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WaterGenerator.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\WaterManager.cs" />
+    <Compile Include="Assets\PlunderSail\Scripts\WayPointPath.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WeaponAttachment.cs" />
     <Compile Include="Assets\PlunderSail\Scripts\WeaponController.cs" />
     <Compile Include="Assets\Third Party Assets\LowPolyWaterv2\Demos\Scripts\DemoFreeFlyCamera.cs" />
@@ -239,6 +243,7 @@
     <Compile Include="Assets\Third Party Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\PlunderSail\Shaders\Gradient.shader" />
     <None Include="Assets\PlunderSail\Shaders\SailCloth.shader" />
     <None Include="Assets\PlunderSail\Shaders\UpShader.shader" />
     <None Include="Assets\PlunderSail\Shaders\VertexColour.shader" />

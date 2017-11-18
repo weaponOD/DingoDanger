@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     UIController UI;
     PlayerController PC;
+    Player player;
     CameraController CC;
     ShipBuilding builder;
 
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
     {
         UI = GetComponent<UIController>();
         PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        player = PC.GetComponent<Player>();
         CC = GetComponent<CameraController>();
         builder = GetComponent<ShipBuilding>();
     }
@@ -54,13 +57,15 @@ public class GameManager : MonoBehaviour
                     if (pier != null)
                     {
                         UI.FadeScreen();
+                        PC.CanMove = false;
+                        player.HasControl = false;
                         StartCoroutine(TransitionToBuildMode());
                         UI.ShowPierPopUp(false);
                         canPressY = false;
 
                         AudioManager.instance.PlaySound(enterDockSound);
 
-                        Invoke("CanExitBuildMode", 3);
+                        Invoke("CanExitBuildMode", 2);
                     }
                 }
                 else
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(TransitionToPlayMode());
                     canPressY = false;
 
-                    Invoke("CanExitBuildMode", 3);
+                    Invoke("CanExitBuildMode", 2);
                 }
             }
         }
@@ -125,6 +130,8 @@ public class GameManager : MonoBehaviour
         GameState.BuildMode = false;
 
         CC.SwitchToPlayMode();
+        PC.CanMove = true;
+        player.HasControl = true;
     }
 
     private IEnumerator TransitionToBuildMode()

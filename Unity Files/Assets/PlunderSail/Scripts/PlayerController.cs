@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
     private float totalBonusSpeed;
 
+    private bool canMove;
+
     [SerializeField]
     private float steering;
 
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!GameState.BuildMode && !GameState.Paused)
+        if (!GameState.BuildMode && !GameState.Paused && canMove)
         {
             // steering
             steering = Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime;
@@ -173,6 +175,11 @@ public class PlayerController : MonoBehaviour
                 previousPos = transform.position;
             }
         }
+    }
+
+    public bool CanMove
+    {
+        set { canMove = value; }
     }
 
     private void FixedUpdate()

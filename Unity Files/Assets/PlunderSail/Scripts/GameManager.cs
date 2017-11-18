@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
                         UI.ShowPierPopUp(false);
                         canPressY = false;
 
+                        player.RepairAttachments();
+
                         AudioManager.instance.PlaySound(enterDockSound);
 
                         Invoke("CanExitBuildMode", 2);
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
 
         if (!GameState.BuildMode)
         {
-            if (Input.GetButtonDown("Back_Button"))
+            if (Input.GetButtonDown("Back_Button") && !paused)
             {
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 Pause();

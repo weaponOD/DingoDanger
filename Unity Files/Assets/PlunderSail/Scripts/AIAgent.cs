@@ -57,8 +57,6 @@ public class AIAgent : LivingEntity
     [SerializeField]
     protected Vector3 targetDirection;
 
-    protected AttachmentBase[] attachments;
-
     protected bool isStunned = false;
 
     [SerializeField]

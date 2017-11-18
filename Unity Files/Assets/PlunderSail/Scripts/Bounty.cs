@@ -5,7 +5,10 @@ using UnityEngine;
 public class Bounty : MonoBehaviour
 {
     [SerializeField]
-    private int goldAmount = 10;
+    private int goldMin = 10;
+
+    [SerializeField]
+    private int goldMax = 100;
 
     [SerializeField]
     private float distanceToHook = 30;
@@ -22,7 +25,7 @@ public class Bounty : MonoBehaviour
     {
         if(collision.collider.transform.root.CompareTag("Player"))
         {
-            collision.collider.transform.root.GetComponent<Player>().GiveGold(goldAmount);
+            collision.collider.transform.root.GetComponent<Player>().GiveGold(Random.Range(goldMin, goldMax));
             Destroy(gameObject);
         }
     }

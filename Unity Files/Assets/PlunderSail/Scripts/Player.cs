@@ -254,6 +254,8 @@ public class Player : LivingEntity
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
         controller.setSpeedBonus(components.getSpeedBonus());
+
+        attachments = components.Attachments;
     }
 
     private void OnDestroy()

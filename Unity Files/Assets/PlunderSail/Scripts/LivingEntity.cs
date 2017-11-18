@@ -35,6 +35,8 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     protected Vector3 velocity;
 
+    protected AttachmentBase[] attachments;
+
     protected bool dead;
 
     public delegate void Dead(LivingEntity _entity);
@@ -60,6 +62,14 @@ public class LivingEntity : MonoBehaviour, IDamageable
     public virtual void UpdateParts()
     {
 
+    }
+
+    public void RepairAttachments()
+    {
+        for (int i = 0; i < attachments.Length; i++)
+        {
+            attachments[i].RestoreHealth();
+        }
     }
 
     [ContextMenu("Self Destruct")]

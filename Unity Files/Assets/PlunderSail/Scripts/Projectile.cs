@@ -63,9 +63,11 @@ public class Projectile : MonoBehaviour
         {
             AudioManager.instance.PlaySound(woodImpact);
 
-            // deflect off amrour pieces
+            // deflect off armour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
+                Debug.Log("Hit armoured attachment");
+
                 GameObject hitEffect = stoneHitPool.getPooledObject();
 
                 if (hitEffect)
@@ -84,6 +86,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                Debug.Log("Hit non-armour attachment");
                 // we've hit a non-armour attachment
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
 
@@ -104,6 +107,7 @@ public class Projectile : MonoBehaviour
         }
         else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
+            Debug.Log("Hit Tower"); 
             // we've hit a tower
             if (_collision.collider.gameObject.GetComponent<Tower>() != null)
             {
@@ -122,6 +126,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                Debug.Log("Hit hull of ship");
                 // we've hit the hull of a ship 
                 _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
 
@@ -139,6 +144,10 @@ public class Projectile : MonoBehaviour
         }
         else
         {
+            // hit the environment
+
+            Debug.Log("Hit environment");
+
             GameObject hitEffect = stoneHitPool.getPooledObject();
 
             if (hitEffect)

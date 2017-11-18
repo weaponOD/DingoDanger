@@ -175,7 +175,7 @@ public class AIAgent : LivingEntity
             // No collisions on both sides
             if (distanceLeft == 0 && distanceRight == 0)
             {
-                Debug.Log("No collisions on both sides");
+                //Debug.Log("No collisions on both sides");
 
                 targetDirection = transform.forward + transform.right * 0.2f;
 
@@ -183,7 +183,7 @@ public class AIAgent : LivingEntity
             }
             else if(distanceLeft != 0 && distanceRight != 0)
             {
-                Debug.Log("collisions on both sides");
+                //Debug.Log("collisions on both sides");
 
                 if (distanceLeft <= distanceRight)
                 {
@@ -198,13 +198,13 @@ public class AIAgent : LivingEntity
             }
             else if (distanceLeft != 0)
             {
-                Debug.Log("collisions on left side");
+                //Debug.Log("collisions on left side");
                 // Turn right
                 targetDirection = transform.forward + transform.right * sightAngle;
             }
             else if (distanceRight != 0)
             {
-                Debug.Log("collisions on right side");
+                //Debug.Log("collisions on right side");
                 // Turn left
                 targetDirection = transform.forward - transform.right * sightAngle;
             }

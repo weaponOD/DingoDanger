@@ -292,6 +292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0
   maxFireTime: 0.02
   ammoType: harpoon

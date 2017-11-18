@@ -522,6 +522,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 80
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
 --- !u!137 &137654214390882476
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

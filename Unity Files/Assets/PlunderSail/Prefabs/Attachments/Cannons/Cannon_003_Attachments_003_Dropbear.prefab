@@ -323,6 +323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 120
+  healthWhenBroken: 0.5
+  brokenMesh: {fileID: 0}
+  healthWhenSmoking: 0.25
+  smokeEffect: damagedSmoke
   minFireTime: 0.03
   maxFireTime: 0.15
   ammoType: dropBear
@@ -331,5 +335,5 @@ MonoBehaviour:
   numberOfFirePoints: 1
   canAim: 0
   shootSound: dropBearRelease
-  shootParticle: {fileID: 0}
+  fireEffect: 
   firePoints: []

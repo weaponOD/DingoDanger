@@ -58,18 +58,72 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision _collision)
     {
+        // did we collide with an attachment
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
             AudioManager.instance.PlaySound(woodImpact);
 
+            // deflect off amrour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
+                GameObject hitEffect = stoneHitPool.getPooledObject();
+
+                if (hitEffect)
+                {
+                    hitEffect.transform.position = transform.position;
+                    hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+                    hitEffect.SetActive(true);
+                }
+
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
                 rb.AddForce(-transform.forward * 2f, ForceMode.Impulse);
+
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
             }
             else
             {
+                // we've hit a non-armour attachment
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
+
+                GameObject hitEffect = woodHitPool.getPooledObject();
+
+                if (hitEffect)
+                {
+                    hitEffect.transform.position = transform.position;
+                    hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+                    hitEffect.SetActive(true);
+                }
+
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
+                Destroy();
+            }
+        }
+        else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
+        {
+            // we've hit a tower
+            if (_collision.collider.gameObject.GetComponent<Tower>() != null)
+            {
+                _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+
+                GameObject hitEffect = stoneHitPool.getPooledObject();
+
+                hitEffect.transform.position = transform.position;
+                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+                hitEffect.SetActive(true);
+
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
+                Destroy();
+            }
+            else
+            {
+                // we've hit the hull of a ship 
+                _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
 
                 GameObject hitEffect = woodHitPool.getPooledObject();
 
@@ -79,26 +133,24 @@ public class Projectile : MonoBehaviour
                 hitEffect.SetActive(true);
 
                 ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
                 Destroy();
             }
         }
-        else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
+        else
         {
-            _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+            GameObject hitEffect = stoneHitPool.getPooledObject();
 
-            GameObject hitEffect = woodHitPool.getPooledObject();
+            if (hitEffect)
+            {
+                hitEffect.transform.position = transform.position;
+                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
 
-            hitEffect.transform.position = transform.position;
-            hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
-
-            hitEffect.SetActive(true);
+                hitEffect.SetActive(true);
+            }
 
             ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
 
-            Destroy();
-        }
-        else
-        {
             Destroy();
         }
     }

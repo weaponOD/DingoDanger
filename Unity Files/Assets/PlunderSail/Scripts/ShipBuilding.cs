@@ -588,7 +588,7 @@ public class ShipBuilding : MonoBehaviour
 
             player.DeductGold(goldCosts[preview.AttachmentName]);
 
-            player.UpdateAttachments();
+            player.UpdateParts();
 
             UI.UpdateSpeedSlider();
 

@@ -29,6 +29,9 @@ public class AIAgent : LivingEntity
     protected float awarenessRange;
 
     [SerializeField]
+    protected float damageSpreadMultiplier;
+
+    [SerializeField]
     private float stunDuration = 1;
 
     [Header("Reward")]
@@ -53,6 +56,8 @@ public class AIAgent : LivingEntity
 
     [SerializeField]
     protected Vector3 targetDirection;
+
+    protected AttachmentBase[] attachments;
 
     protected bool isStunned = false;
 
@@ -95,14 +100,21 @@ public class AIAgent : LivingEntity
 
         speedPerSail = baseMoveSpeed / components.getSpeedBonus();
 
-        UpdateAttachments();
+        UpdateParts();
     }
 
-    public void UpdateAttachments()
+    public override void UpdateParts()
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();
         setSpeedBonus(components.getSpeedBonus());
+
+        attachments = components.Attachments;
+
+        if (components.Attachments.Length == 0)
+        {
+            Die();
+        }
     }
 
     public void setSpeedBonus(float _numOfSails)
@@ -226,7 +238,24 @@ public class AIAgent : LivingEntity
         }
     }
 
-    private void RemoveStun()
+    public override void TakeDamage(float damgage)
+    {
+        // spread damage to all attachments
+
+        attachments = components.Attachments;
+
+        for (int i = 0; i < attachments.Length; i++)
+        {
+            attachments[i].TakeDamage(damgage * damageSpreadMultiplier);
+        }
+
+        if(components.Attachments.Length == 0)
+        {
+            Die();
+        }
+    }
+
+    protected void RemoveStun()
     {
         isStunned = false;
     }

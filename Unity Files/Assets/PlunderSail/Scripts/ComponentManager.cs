@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ComponentManager : MonoBehaviour
 {
+    private AttachmentBase[] attachments;
+
     private AttachmentSail[] sails;
 
     private WeaponAttachment[] leftWeapons;
@@ -19,6 +21,16 @@ public class ComponentManager : MonoBehaviour
         sails = new AttachmentSail[0];
 
         UpdateParts(false);
+    }
+
+    public AttachmentBase[] Attachments
+    {
+        get
+        {
+            attachments = GetComponentsInChildren<AttachmentBase>();
+
+            return attachments;
+        }
     }
 
     public WeaponAttachment[] GetAttachedLeftWeapons()

@@ -39,8 +39,6 @@ public class WeaponAttachment : AttachmentBase
 
     protected bool facingLeft;
 
-    protected LivingEntity entity;
-
     protected Vector3 shipVelocity;
 
     protected int pointCount = 0;
@@ -52,15 +50,6 @@ public class WeaponAttachment : AttachmentBase
     protected override void Awake()
     {
         base.Awake();
-
-        if (transform.root.GetComponent<Player>())
-        {
-            entity = transform.root.GetComponent<Player>();
-        }
-        else
-        {
-            entity = transform.root.GetComponent<AIAgent>();
-        }
 
         projectilePool = ResourceManager.instance.getPool(ammoType);
 

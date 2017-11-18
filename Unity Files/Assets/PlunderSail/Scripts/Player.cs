@@ -56,6 +56,10 @@ public class Player : LivingEntity
     [SerializeField]
     private MeshFilter rangeMeshFilter;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private string takeDamageSound = "CHANGE";
+
     private float range = 25;
 
     private float previousRange;
@@ -180,6 +184,12 @@ public class Player : LivingEntity
         }
     }
 
+    public override void TakeDamage(float damgage)
+    {
+        base.TakeDamage(damgage);
+        AudioManager.instance.PlaySound(takeDamageSound);
+    }
+
     // Returns how much gold the player currently has
     public int Gold
     {
@@ -234,12 +244,12 @@ public class Player : LivingEntity
     {
         if (!isBuildMode)
         {
-            UpdateAttachments();
+            UpdateParts();
         }
     }
 
     // Function which checks which attachments are on the ship.
-    public void UpdateAttachments()
+    public override void UpdateParts()
     {
         weaponController.LeftWeapons = components.GetAttachedLeftWeapons();
         weaponController.RightWeapons = components.GetAttachedRightWeapons();

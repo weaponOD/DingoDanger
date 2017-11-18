@@ -23,9 +23,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     [SerializeField]
     private string sinkingSound = "CHANGE";
 
-    [SerializeField]
-    private string takeDamageSound = "CHANGE";
-
     [Header("Debug Info")]
     [SerializeField]
     protected float currentHealth;
@@ -52,11 +49,6 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         Debug.Log(gameObject.name + " took " + damgage + " damage");
 
-        if (gameObject.tag.Equals("Player"))
-        {
-            AudioManager.instance.PlaySound(takeDamageSound);
-        }
-
         currentHealth -= damgage;
 
         if (currentHealth <= 0 && !dead)
@@ -65,10 +57,14 @@ public class LivingEntity : MonoBehaviour, IDamageable
         }
     }
 
+    public virtual void UpdateParts()
+    {
+
+    }
+
     [ContextMenu("Self Destruct")]
     protected virtual void Die()
     {
-        Debug.Log("Dead!");
         dead = true;
 
         if (OnDeath != null)

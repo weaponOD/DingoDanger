@@ -10,24 +10,15 @@ public class AttachmentBase : MonoBehaviour
 
     protected float currentHealth;
 
-    protected bool canPlace = true;
-
-    protected bool isPreview = false;
-
-    protected Player player;
-
-    protected AIAgent AI;
+    protected LivingEntity entity;
 
     protected virtual void Awake()
     {
         currentHealth = maxHealth;
 
-        player = transform.root.GetComponent<Player>();
-
-        AI = transform.root.GetComponent<AIAgent>();
+        entity = transform.root.GetComponent<LivingEntity>();
     }
 
-    [ContextMenu("Self Destruct")]
     public virtual void TakeDamage(float _damage)
     {
         currentHealth -= _damage;
@@ -36,15 +27,7 @@ public class AttachmentBase : MonoBehaviour
         {
             transform.parent = null;
 
-            if (player != null)
-            {
-                player.UpdateAttachments();
-            }
-
-            if(AI != null)
-            {
-                AI.UpdateAttachments();
-            }
+            entity.UpdateParts();
 
             if (!GetComponent<Rigidbody>())
             {
@@ -52,14 +35,6 @@ public class AttachmentBase : MonoBehaviour
             }
 
             Destroy(gameObject, 3f);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (GetComponentInParent<Player>())
-        {
-            GetComponentInParent<Player>().UpdateAttachments();
         }
     }
 }

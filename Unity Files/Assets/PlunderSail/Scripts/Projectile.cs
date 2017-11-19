@@ -56,6 +56,11 @@ public class Projectile : MonoBehaviour
         rb.AddForce(transform.forward * _initialForce, ForceMode.Impulse);
     }
 
+    public void FireProjectile(Vector3 _Velocity)
+    {
+        rb.AddForce(_Velocity, ForceMode.Impulse);
+    }
+
     private void OnCollisionEnter(Collision _collision)
     {
         // did we collide with an attachment

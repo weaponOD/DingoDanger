@@ -39,6 +39,8 @@ public class WeaponAttachment : AttachmentBase
 
     protected bool facingLeft;
 
+    protected LaunchMesh arc;
+
     protected Vector3 shipVelocity;
 
     protected int pointCount = 0;
@@ -57,6 +59,13 @@ public class WeaponAttachment : AttachmentBase
 
         firePoints = new Transform[numberOfFirePoints];
 
+        if(canAim)
+        {
+            arc = GetComponentInChildren<LaunchMesh>();
+
+            arc.gameObject.SetActive(false);
+        }
+
         foreach (Transform child in transform.GetChild(0))
         {
             if (child.CompareTag("FirePoint"))
@@ -67,16 +76,29 @@ public class WeaponAttachment : AttachmentBase
         }
     }
 
-    public void Aim(Vector3 _target)
+    public void UpdateRange(float _velocity)
     {
         if (!canAim)
             return;
 
-        foreach (Transform firePoint in firePoints)
-        {
-            firePoint.LookAt(new Vector3(_target.x, _target.y + 1, _target.z));
-            firePoint.localEulerAngles = new Vector3(firePoint.localEulerAngles.x, 270f, 0f);
-        }
+        arc.Velocity = _velocity;
+    }
+
+    public void Aim(float _velocity)
+    {
+        if (!canAim)
+            return;
+
+        arc.gameObject.SetActive(true);
+        arc.Velocity = _velocity;
+    }
+
+    public void CancelAim()
+    {
+        if (!canAim)
+            return;
+
+        arc.gameObject.SetActive(false);
     }
 
     public bool FacingLeft
@@ -108,13 +130,17 @@ public class WeaponAttachment : AttachmentBase
         if (projectile != null)
         {
             projectile.transform.position = _firePoint.position;
-            projectile.transform.rotation = _firePoint.rotation;
+            //projectile.transform.rotation = _firePoint.rotation;
 
             projectile.SetActive(true);
 
             Projectile shot = projectile.GetComponent<Projectile>();
             shot.Damage = damage;
-            shot.FireProjectile(shipVelocity, projectileForce);
+
+            Vector3 shotVelocity = (transform.GetChild(1).forward * projectileForce + Vector3.up * 0.7f) * arc.Velocity;
+
+            shot.FireProjectile(shotVelocity);
+            //shot.FireProjectile(shipVelocity, projectileForce);
 
             GameObject effect = fireEffectPool.getPooledObject();
 

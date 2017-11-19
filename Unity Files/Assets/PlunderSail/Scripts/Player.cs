@@ -53,8 +53,8 @@ public class Player : LivingEntity
     [SerializeField]
     private float minimumRange = 0;
 
-    [SerializeField]
-    private MeshFilter rangeMeshFilter;
+    //[SerializeField]
+    //private MeshFilter rangeMeshFilter;
 
     [Header("Sounds")]
     [SerializeField]
@@ -88,11 +88,11 @@ public class Player : LivingEntity
 
         rangeMesh = new Mesh();
         rangeMesh.name = "Range Mesh";
-        rangeMeshFilter.mesh = rangeMesh;
+        //rangeMeshFilter.mesh = rangeMesh;
 
         range = minimumRange;
 
-        rangeMeshFilter.gameObject.SetActive(false);
+        //rangeMeshFilter.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -107,7 +107,7 @@ public class Player : LivingEntity
                 if (Input.GetAxis("Right_Trigger") == 1)
                 {
                     // check if there's cannons on both sides otherwise left side dones't have cooldown on firing
-                    if(weaponController.RightWeapons.Length > 0)
+                    if (weaponController.RightWeapons.Length > 0)
                     {
                         weaponController.FireWeaponsLeft(false);
                         weaponController.FireWeaponsRight(true);
@@ -128,27 +128,61 @@ public class Player : LivingEntity
 
                     if (aimDir.Equals("left"))
                     {
-                        rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f); // Left
-                        rangeMeshFilter.gameObject.SetActive(true);
+                        //rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f); // Left
+                        //rangeMeshFilter.gameObject.SetActive(true);
 
                         aiming = true;
+
+                        WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
+
+                        foreach (WeaponAttachment weapon in leftWeapons)
+                        {
+                            weapon.Aim(range);
+                        }
                     }
 
                     if (aimDir.Equals("right"))
                     {
-                        rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f); // Right
-                        rangeMeshFilter.gameObject.SetActive(true);
+                        //rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f); // Right
+                        //rangeMeshFilter.gameObject.SetActive(true);
 
                         aiming = true;
+
+                        WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
+
+                        foreach (WeaponAttachment weapon in rightWeapons)
+                        {
+                            weapon.Aim(range);
+                        }
                     }
                 }
             }
             else
             {
                 aiming = false;
-                rangeMeshFilter.gameObject.SetActive(false);
+                //rangeMeshFilter.gameObject.SetActive(false);
 
                 CC.CancelAim();
+
+                if (aimDir.Equals("right"))
+                {
+                    WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
+
+                    foreach (WeaponAttachment weapon in rightWeapons)
+                    {
+                        weapon.CancelAim();
+                    }
+                }
+
+                if (aimDir.Equals("left"))
+                {
+                    WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
+
+                    foreach (WeaponAttachment weapon in leftWeapons)
+                    {
+                        weapon.CancelAim();
+                    }
+                }
             }
 
             if (Input.GetAxis("Right_Trigger") == 1)
@@ -168,6 +202,26 @@ public class Player : LivingEntity
             {
                 range += Input.GetAxis("Vertical");
                 range = Mathf.Clamp(range, minimumRange, maxRange);
+
+                if (aimDir.Equals("left"))
+                {
+                    WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
+
+                    foreach (WeaponAttachment weapon in leftWeapons)
+                    {
+                        weapon.UpdateRange(range);
+                    }
+                }
+
+                if (aimDir.Equals("right"))
+                {
+                    WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
+
+                    foreach (WeaponAttachment weapon in rightWeapons)
+                    {
+                        weapon.UpdateRange(range);
+                    }
+                }
             }
         }
 
@@ -183,8 +237,8 @@ public class Player : LivingEntity
     {
         if (aiming)
         {
-            Vector3 eular = rangeMeshFilter.gameObject.transform.eulerAngles;
-            rangeMeshFilter.gameObject.transform.eulerAngles = new Vector3(0f, eular.y, 0f);
+            //Vector3 eular = rangeMeshFilter.gameObject.transform.eulerAngles;
+            //rangeMeshFilter.gameObject.transform.eulerAngles = new Vector3(0f, eular.y, 0f);
 
             DrawRangeMesh();
         }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 //List of sounds that we can add or remove as we go, each sound will have options to adjust volume, pitch etc. 
@@ -17,6 +18,8 @@ public class AudioManager : MonoBehaviour
 
     //Static ref to audio manager
     public static AudioManager instance;
+
+    private float currentMusicTime = 0;
 
     //Add a audio source to each clip at the beginning of the game.
     void Awake()
@@ -42,6 +45,85 @@ public class AudioManager : MonoBehaviour
             sound.audioSource.volume = sound.volume;
             sound.audioSource.pitch = sound.pitch;
             sound.audioSource.loop = sound.looping;
+        }
+
+        // Subscribe to scene manager
+        SceneManager.sceneLoaded += OnSceneChanged;
+    }
+
+    private void Start()
+    {
+        if(!SceneManager.GetActiveScene().name.Equals("Main"))
+        {
+            AudioListener.volume = 0;
+
+            StartCoroutine(FadeInVolume(2));
+
+            PlaySound("ambientIntro");
+            PlaySound("ambientDock");
+        }
+        else
+        {
+            Debug.Log("In new scene");
+        }
+    }
+
+    private IEnumerator FadeInVolume(float time)
+    {
+        float speed = 1 / time;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * speed;
+            AudioListener.volume = Mathf.Lerp(0, 1, percent);
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeOutSound(SoundClass _sound, float time)
+    {
+        float speed = 1 / time;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * speed;
+            _sound.audioSource.volume = Mathf.Lerp(1, 0, percent);
+            
+
+            yield return null;
+        }
+
+        _sound.audioSource.Stop();
+        _sound.audioSource.volume = 1f;
+    }
+
+    private IEnumerator FadeInSound(SoundClass _sound, float time)
+    {
+        float speed = 1 / time;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * speed;
+            _sound.audioSource.volume = Mathf.Lerp(0, 1, percent);
+
+            yield return null;
+        }
+    }
+
+    private void Update()
+    {
+        currentMusicTime = sounds[22].audioSource.time;
+    }
+
+    private void OnSceneChanged(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 1)
+        {
+            StartCoroutine(FadeOutSound(sounds[22], 20f));
         }
     }
 
@@ -88,6 +170,12 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogError("No sound was played");
         }
+    }
+
+    void OnDisable()
+    {
+        
+        SceneManager.sceneLoaded -= OnSceneChanged;
     }
 }
 

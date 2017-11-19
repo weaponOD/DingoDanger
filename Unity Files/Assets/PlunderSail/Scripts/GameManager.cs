@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Transform playerCentre;
+
+    [SerializeField]
+    private Text loading = null;
 
     [Header("Sounds")]
 
@@ -44,6 +48,16 @@ public class GameManager : MonoBehaviour
         CC.PlayerCentre = playerCentre;
 
         GameState.BuildMode = false;
+
+        Invoke("UnlockPlayerControl", 0.5f);
+    }
+
+    private void UnlockPlayerControl()
+    {
+        player.HasControl = true;
+        PC.CanMove = true;
+        loading.gameObject.SetActive(false);
+        UI.FadeIn();
     }
 
     private void Update()

@@ -10,27 +10,14 @@ public class IntroMenu : MonoBehaviour
     private Image PlunderSail;
 
     [SerializeField]
-    private Text PressAnyKey;
+    private Image FadePlane;
 
     [SerializeField]
-    private Image FadePlan;
+    private Text loading;
 
     private bool waitOnInput = false;
 
     private AsyncOperation async;
-
-    [Header("Text Animation Stats")]
-
-    [SerializeField]
-    private float minSize;
-
-    [SerializeField]
-    private float maxSize;
-
-    [SerializeField]
-    private float speed;
-
-    private float range;
 
     public float progress;
 
@@ -39,16 +26,12 @@ public class IntroMenu : MonoBehaviour
     private void Start ()
     {
         StartCoroutine(LoadScene());
-        StartCoroutine(IntroFadeIn());
 
-        range = maxSize - minSize;
+        waitOnInput = true;
     }
 
     private void Update()
     {
-        PressAnyKey.rectTransform.localScale = new Vector3(minSize + Mathf.PingPong(Time.time * speed, range), minSize + Mathf.PingPong(Time.time * speed, range), 1);
-
-        
         isDone = async.isDone;
 
         if (waitOnInput)
@@ -56,21 +39,9 @@ public class IntroMenu : MonoBehaviour
             if (Input.anyKeyDown)
             {
                 StartCoroutine(ChangeScenes());
+                waitOnInput = false;
             }
         }
-    }
-
-    private IEnumerator IntroFadeIn()
-    {
-        StartCoroutine(Fade(Color.clear, Color.white, 4, PlunderSail));
-
-        yield return new WaitForSeconds(3.5f);
-
-        waitOnInput = true;
-
-        StartCoroutine(Fade(Color.clear, Color.white, 2, PressAnyKey));
-
-        yield return new WaitForSeconds(2f);
     }
 
     // Fades the fadePlane image from a colour to another over x seconds.
@@ -115,15 +86,15 @@ public class IntroMenu : MonoBehaviour
             progress = async.progress;
             yield return null;
         }
-
-        async.allowSceneActivation = true;
     }
 
     private IEnumerator ChangeScenes()
     {
-        StartCoroutine(Fade(Color.white, Color.clear, 2, PlunderSail));
-        StartCoroutine(Fade(Color.white, Color.clear, 2, PressAnyKey));
+        StartCoroutine(Fade(Color.clear, Color.black, 1, FadePlane));
+        StartCoroutine(Fade(Color.clear, Color.white, 1, loading));
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+
+        async.allowSceneActivation = true;
     }
 }

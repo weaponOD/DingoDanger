@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461116417234096}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: BattleStart
+  - name: BattleTheme
     audioClip:
     - {fileID: 8300000, guid: 68ac438dc023df24e962040f508087c7, type: 3}
     volume: 1
@@ -294,6 +294,16 @@ MonoBehaviour:
   - name: ambientDock
     audioClip:
     - {fileID: 8300000, guid: 23332b316c173e548bb102db3b49f875, type: 3}
+    volume: 0.716
+    pitch: 1
+    looping: 1
+    coolDown: 0
+    nextPlayTime: 0
+    canPlay: 1
+    audioSource: {fileID: 0}
+  - name: ambientIntro
+    audioClip:
+    - {fileID: 8300000, guid: 0e17dd685fe314e408ef4f1120eedc92, type: 3}
     volume: 0.716
     pitch: 1
     looping: 1

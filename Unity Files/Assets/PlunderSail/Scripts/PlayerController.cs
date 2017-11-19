@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     private float totalBonusSpeed;
 
-    private bool canMove;
+    private bool canMove = false;
 
     [SerializeField]
     private float steering;

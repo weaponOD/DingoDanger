@@ -495,6 +495,11 @@ public class UIController : MonoBehaviour
         StartCoroutine(FadeScreenYoyo());
     }
 
+    public void FadeIn()
+    {
+        StartCoroutine(Fade(Color.black, Color.clear, 1));
+    }
+
     private IEnumerator FadeScreenYoyo()
     {
         StartCoroutine(Fade(Color.clear, Color.black, 1));

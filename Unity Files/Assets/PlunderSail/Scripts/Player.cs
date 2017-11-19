@@ -68,7 +68,7 @@ public class Player : LivingEntity
 
     private string aimDir = "";
 
-    private bool hasControl = true;
+    private bool hasControl = false;
 
     private void Awake()
     {

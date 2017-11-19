@@ -36,7 +36,7 @@ public class AttachmentBase : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        filter = GetComponent<MeshFilter>();
+        filter = GetComponentInChildren<MeshFilter>();
 
         entity = transform.root.GetComponent<LivingEntity>();
     }
@@ -60,23 +60,23 @@ public class AttachmentBase : MonoBehaviour
             }
         }
 
-        if (currentHealth < (maxHealth * healthWhenSmoking) && !smoking)
-        {
-            if(smokePool != null)
-            {
-                Transform smokeEffect = smokePool.getPooledObject().transform;
+        //if (currentHealth < (maxHealth * healthWhenSmoking) && !smoking)
+        //{
+        //    if(smokePool != null)
+        //    {
+        //        Transform smokeEffect = smokePool.getPooledObject().transform;
 
-                if (smokeEffect != null)
-                {
-                    smokeEffect.position = transform.position;
-                    smokeEffect.rotation = Quaternion.identity;
+        //        if (smokeEffect != null)
+        //        {
+        //            smokeEffect.position = transform.position;
+        //            smokeEffect.rotation = Quaternion.identity;
 
-                    smoking = true;
-                    smokeEffect.parent = transform;
-                    smokeEffect.gameObject.SetActive(true);
-                }
-            }
-        }
+        //            smoking = true;
+        //            smokeEffect.parent = transform;
+        //            smokeEffect.gameObject.SetActive(true);
+        //        }
+        //    }
+        //}
 
         // destroyed 
         if (currentHealth <= 0)

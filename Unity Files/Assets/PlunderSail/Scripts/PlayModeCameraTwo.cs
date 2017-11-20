@@ -86,30 +86,27 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private void Update()
     {
-        if (!GameState.Paused)
+        if (!GameState.Paused && !aiming)
         {
             // Rotate the camera based on right thumb stick input
             if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
             {
-                if (!aiming)
+                if (invertedX)
                 {
-                    if (invertedX)
-                    {
-                        localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
-                    }
-                    else
-                    {
-                        localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
-                    }
+                    localRotation.x += Input.GetAxis("Mouse_X") * mouseSensitivity;
+                }
+                else
+                {
+                    localRotation.x -= Input.GetAxis("Mouse_X") * mouseSensitivity;
+                }
 
-                    if (invertedY)
-                    {
-                        localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
-                    }
-                    else
-                    {
-                        localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
-                    }
+                if (invertedY)
+                {
+                    localRotation.y += Input.GetAxis("Mouse_Y") * mouseSensitivity;
+                }
+                else
+                {
+                    localRotation.y -= Input.GetAxis("Mouse_Y") * mouseSensitivity;
                 }
 
                 // Clamp the Y rotation to horizon and not flipping it over at the top
@@ -150,7 +147,8 @@ public class PlayModeCameraTwo : MonoBehaviour
         // only done the first time cancelAim is called
         if (aiming)
         {
-            localRotation = savedRotation;
+            localRotation.x = target.localEulerAngles.y;
+            //localRotation = savedRotation;
         }
 
         aiming = false;

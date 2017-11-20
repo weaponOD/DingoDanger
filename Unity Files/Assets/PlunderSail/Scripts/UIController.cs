@@ -14,17 +14,29 @@ public class UIController : MonoBehaviour
 
     [Header("Button State Sprites")]
 
-    [SerializeField]
-    private Sprite defaultSprite = null;
+    [Header("Build UI - Category selection")]
 
     [SerializeField]
-    private Sprite genreHighlightSprite = null;
+    private Sprite defaultSpriteCategory = null;
 
     [SerializeField]
-    private Sprite highlightSprite = null;
+    private Sprite highlightSpriteCategory = null;
+
+    [Header("Build UI - Attachment selection")]
 
     [SerializeField]
-    private Sprite pauseHighlightSprite = null;
+    private Sprite defaultSpriteAttachment = null;
+
+    [SerializeField]
+    private Sprite highlightSpriteAttachment = null;
+
+    [Header("Menu UI")]
+
+    [SerializeField]
+    private Sprite defaultSpriteMenu = null;
+
+    [SerializeField]
+    private Sprite highlightSpriteMenu = null;
 
     // Panel References
 
@@ -219,7 +231,7 @@ public class UIController : MonoBehaviour
         selectedAttachment = 0;
 
         horizontalMenu[selectedGenre].SetActive(true);
-        genreImage[selectedGenre].sprite = genreHighlightSprite;
+        genreImage[selectedGenre].sprite = highlightSpriteCategory;
 
         DpadCanPress = true;
 
@@ -239,7 +251,7 @@ public class UIController : MonoBehaviour
             for (int i = 0; i < buttons.Length; i++)
             {
                 menu[x].buttons[i] = buttons[i].GetComponent<Image>();
-                menu[x].buttons[0].sprite = pauseHighlightSprite;
+                menu[x].buttons[0].sprite = highlightSpriteMenu;
             }
         }
 
@@ -296,11 +308,11 @@ public class UIController : MonoBehaviour
                 {
                     if (menu[currentMenu].selectedIndex > 0)
                     {
-                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSpriteMenu;
 
                         ChangeSelectedButton(-1);
 
-                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = pauseHighlightSprite;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = highlightSpriteMenu;
 
                         DpadCanPress = false;
                     }
@@ -311,11 +323,11 @@ public class UIController : MonoBehaviour
                 {
                     if (menu[currentMenu].selectedIndex < menu[currentMenu].buttons.Length)
                     {
-                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSpriteMenu;
 
                         ChangeSelectedButton(1);
 
-                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = pauseHighlightSprite;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = highlightSpriteMenu;
 
                         DpadCanPress = false;
                     }
@@ -515,9 +527,9 @@ public class UIController : MonoBehaviour
                 // Don't change button settings when return from map
                 if(currentMenu != 1)
                 {
-                    menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+                    menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSpriteMenu;
 
-                    menu[currentMenu].buttons[0].sprite = pauseHighlightSprite;
+                    menu[currentMenu].buttons[0].sprite = highlightSpriteMenu;
 
                     menu[currentMenu].selectedIndex = 0;
 
@@ -623,9 +635,9 @@ public class UIController : MonoBehaviour
             // go back to pause screen
             menu[2].menuScreen.SetActive(false);
 
-            menu[2].buttons[menu[2].selectedIndex].sprite = defaultSprite;
+            menu[2].buttons[menu[2].selectedIndex].sprite = defaultSpriteMenu;
 
-            menu[2].buttons[0].sprite = pauseHighlightSprite;
+            menu[2].buttons[0].sprite = highlightSpriteMenu;
 
             menu[2].selectedIndex = 0;
 
@@ -652,9 +664,9 @@ public class UIController : MonoBehaviour
             // go back to pause screen
             menu[currentMenu].menuScreen.SetActive(false);
 
-            menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+            menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSpriteMenu;
 
-            menu[currentMenu].buttons[0].sprite = pauseHighlightSprite;
+            menu[currentMenu].buttons[0].sprite = highlightSpriteMenu;
 
             menu[currentMenu].selectedIndex = 0;
 
@@ -686,26 +698,26 @@ public class UIController : MonoBehaviour
     private void ChangeGenreSelection(int _change)
     {
         horizontalMenu[selectedGenre].SetActive(false);
-        genreImage[selectedGenre].sprite = defaultSprite;
+        genreImage[selectedGenre].sprite = defaultSpriteCategory;
 
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSprite;
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
         selectedAttachment = 0;
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSprite;
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
         selectedGenre += _change;
 
         builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
 
         horizontalMenu[selectedGenre].SetActive(true);
-        genreImage[selectedGenre].sprite = genreHighlightSprite;
+        genreImage[selectedGenre].sprite = highlightSpriteCategory;
     }
 
     private void ChangeAttachmentSelection(int _change)
     {
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSprite;
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
         selectedAttachment += _change;
 
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSprite;
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
         builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
     }

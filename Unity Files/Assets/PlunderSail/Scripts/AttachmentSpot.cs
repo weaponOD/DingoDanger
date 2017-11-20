@@ -36,7 +36,15 @@ public class AttachmentSpot : MonoBehaviour
     public bool Disabled
     {
         get { return disabled; }
-        set { disabled = value; }
+        set
+        {
+            disabled = value;
+
+            if (!disabled)
+            {
+                attachment = null;
+            }
+        }
     }
 
     public bool IsOpen
@@ -59,7 +67,7 @@ public class AttachmentSpot : MonoBehaviour
         {
             built = value;
 
-            if(!built)
+            if (!built)
             {
                 attachment = null;
             }

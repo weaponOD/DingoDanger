@@ -625,9 +625,26 @@ public class ShipBuilding : MonoBehaviour
 
             wholeName = split[0] + split[1];
 
-            player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
             Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
-            grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = false;
+
+            if (wholeName.Contains("Sail"))
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = false;
+
+                    if (y > 0)
+                    {
+                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = false;
+                    }
+                }
+            }
+            else
+            {
+                grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = false;
+            }
+
+            player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
         }
 
         dirty = true;

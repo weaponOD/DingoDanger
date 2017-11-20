@@ -62,7 +62,6 @@ public class UIController : MonoBehaviour
 
     private Slider soundSlider = null;
 
-    [SerializeField]
     private Slider sensitivitySlider = null;
 
     private Slider selectedSlider = null;
@@ -85,13 +84,10 @@ public class UIController : MonoBehaviour
 
     private bool paused = false;
 
-    [SerializeField]
     private int currentMenu = 0;
 
-    [SerializeField]
     private int currentButton = 0;
 
-    [SerializeField]
     private bool sliderSelected = false;
 
     private void Awake()
@@ -128,9 +124,9 @@ public class UIController : MonoBehaviour
                 genreImage = new Image[4];
 
                 genreImage[0] = veritcalPanel.GetChild(0).GetComponent<Image>();
-                genreImage[1] = veritcalPanel.GetChild(0).GetComponent<Image>();
-                genreImage[2] = veritcalPanel.GetChild(0).GetComponent<Image>();
-                genreImage[3] = veritcalPanel.GetChild(0).GetComponent<Image>();
+                genreImage[1] = veritcalPanel.GetChild(1).GetComponent<Image>();
+                genreImage[2] = veritcalPanel.GetChild(2).GetComponent<Image>();
+                genreImage[3] = veritcalPanel.GetChild(3).GetComponent<Image>();
 
 
                 horizontalMenu[0] = veritcalPanel.GetChild(0).GetChild(1).gameObject;

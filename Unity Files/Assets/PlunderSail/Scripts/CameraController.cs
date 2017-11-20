@@ -74,6 +74,11 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void setSensitivity(float _value)
+    {
+        playCam.SetSensitivity(_value);
+    }
+
     public void InvertX()
     {
         invertedX = !invertedX;

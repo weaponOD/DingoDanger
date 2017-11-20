@@ -8,6 +8,8 @@ public class PlayModeCameraTwo : MonoBehaviour
     [SerializeField]
     [Tooltip("How much the camera will move when the mouse moves")]
     [Range(1, 20)]
+    private float baseMouseSensitivity = 2.5f;
+
     private float mouseSensitivity = 2.5f;
 
     [SerializeField]
@@ -63,6 +65,8 @@ public class PlayModeCameraTwo : MonoBehaviour
         myCamera = GetComponent<Camera>();
 
         defaultFoV = myCamera.fieldOfView;
+
+        mouseSensitivity = baseMouseSensitivity;
     }
 
     // Use this for initialization
@@ -122,6 +126,11 @@ public class PlayModeCameraTwo : MonoBehaviour
     public void CancelAim()
     {
         aiming = false;
+    }
+
+    public void SetSensitivity(float _value)
+    {
+        mouseSensitivity = baseMouseSensitivity * _value;
     }
 
     public void FastMode(bool _isFast)

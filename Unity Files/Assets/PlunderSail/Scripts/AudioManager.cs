@@ -19,7 +19,9 @@ public class AudioManager : MonoBehaviour
     //Static ref to audio manager
     public static AudioManager instance;
 
-    private float currentMusicTime = 0;
+    public float musicLevel = 1f;
+
+    public float soundLevel = 1f;
 
     //Add a audio source to each clip at the beginning of the game.
     void Awake()
@@ -51,6 +53,16 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneChanged;
     }
 
+    public void SetSoundLevel(float _value)
+    {
+        soundLevel = _value;
+    }
+
+    public void SetMusicLevel(float _value)
+    {
+        musicLevel = _value;
+    }
+
     private void Start()
     {
         if(!SceneManager.GetActiveScene().name.Equals("Main"))
@@ -61,10 +73,6 @@ public class AudioManager : MonoBehaviour
 
             PlaySound("ambientIntro");
             PlaySound("ambientDock");
-        }
-        else
-        {
-            Debug.Log("In new scene");
         }
     }
 
@@ -114,11 +122,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        currentMusicTime = sounds[22].audioSource.time;
-    }
-
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
     {
         if(scene.buildIndex == 1)
@@ -148,7 +151,15 @@ public class AudioManager : MonoBehaviour
         {
             if (soundClass.canPlay)
             {
-                soundClass.audioSource.PlayOneShot(soundClass.audioClip[UnityEngine.Random.Range(0, soundClass.audioClip.Length)]);
+                if(soundClass.music)
+                {
+                    soundClass.audioSource.PlayOneShot(soundClass.audioClip[UnityEngine.Random.Range(0, soundClass.audioClip.Length)], soundClass.volume * musicLevel);
+                }
+                else
+                {
+                    soundClass.audioSource.PlayOneShot(soundClass.audioClip[UnityEngine.Random.Range(0, soundClass.audioClip.Length)], soundClass.volume * soundLevel);
+                }
+
 
                 soundClass.canPlay = false;
 
@@ -159,7 +170,14 @@ public class AudioManager : MonoBehaviour
         {
             if (soundClass.canPlay)
             {
-                soundClass.audioSource.PlayOneShot(soundClass.audioClip[0]);
+                if (soundClass.music)
+                {
+                    soundClass.audioSource.PlayOneShot(soundClass.audioClip[0], soundClass.volume * musicLevel);
+                }
+                else
+                {
+                    soundClass.audioSource.PlayOneShot(soundClass.audioClip[0], soundClass.volume * soundLevel);
+                }
 
                 soundClass.canPlay = false;
 
@@ -193,6 +211,8 @@ public class SoundClass
     public float pitch = 1f;
 
     public bool looping;
+
+    public bool music = false;
 
     public float coolDown = 0;
 

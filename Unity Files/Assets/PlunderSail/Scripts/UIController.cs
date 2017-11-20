@@ -9,54 +9,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private float goldDisplayTime = 2;
 
-    [Header("Drag References into these")]
     [SerializeField]
-    private GameObject Canvas = null;
-
-    [SerializeField]
-    private GameObject buildPanel = null;
-
-    [SerializeField]
-    private GameObject DockPopUp = null;
-
-    [SerializeField]
-    private GameObject goldHUD = null;
-
-    [SerializeField]
-    private Text goldText = null;
-
-    [SerializeField]
-    private Image fadePlane = null;
-
-    [SerializeField]
-    private GameObject[] menuItems = null;
-
-    [SerializeField]
-    private GameObject mapMenu = null;
-
-    int selectedMenuItem = 0;
-
-    // System References
-    private Player player = null;
-
-    private PlayerController playerController = null;
-
-    private ShipBuilding builder = null;
-
-    private GameManager GM = null;
-
-    private CameraController CC = null;
-
-    [Header("Build UI")]
-
-    [SerializeField]
-    private GameObject[] horizontalMenu = null;
-
-    [SerializeField]
-    private Image[] genreImage = null;
-
-    [SerializeField]
-    private Slider speedSlider = null;
+    private float timeBetweenPresses;
 
     [Header("Button State Sprites")]
 
@@ -69,15 +23,60 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Sprite highlightSprite = null;
 
+    [SerializeField]
+    private Sprite pauseHighlightSprite = null;
+
+    // Panel References
+
+    private GameObject Canvas = null;
+
+    private GameObject buildPanel = null;
+
+    private GameObject DockPopUp = null;
+
+    private GameObject goldHUD = null;
+
+    private Text goldText = null;
+
+    private Image fadePlane = null;
+
+    // System References
+    private Player player = null;
+
+    private PlayerController playerController = null;
+
+    private ShipBuilding builder = null;
+
+    private GameManager GM = null;
+
+    private CameraController CC = null;
+
+    private GameObject[] horizontalMenu = null;
+
+    private Image[] genreImage = null;
+
+    // Sliders
+    private Slider speedSlider = null;
+
+    private Slider musicSlider = null;
+
+    private Slider soundSlider = null;
+
+    [SerializeField]
+    private Slider sensitivitySlider = null;
+
+    private Slider selectedSlider = null;
+
+    private Menu[] menu;
+
+    private GameObject mapMenu = null;
+
     // Functionality variables
     private int selectedGenre;
 
     private string[] genres;
 
     private float timeTillCanPress;
-
-    [SerializeField]
-    private float timeBetweenPresses;
 
     // Functionality variables
     private int selectedAttachment;
@@ -86,7 +85,14 @@ public class UIController : MonoBehaviour
 
     private bool paused = false;
 
+    [SerializeField]
     private int currentMenu = 0;
+
+    [SerializeField]
+    private int currentButton = 0;
+
+    [SerializeField]
+    private bool sliderSelected = false;
 
     private void Awake()
     {
@@ -114,6 +120,25 @@ public class UIController : MonoBehaviour
             if (Canvas.transform.Find("BuildingUI"))
             {
                 buildPanel = Canvas.transform.Find("BuildingUI").gameObject;
+
+
+                Transform veritcalPanel = buildPanel.transform.Find("VerticalPanel");
+
+                horizontalMenu = new GameObject[4];
+                genreImage = new Image[4];
+
+                genreImage[0] = veritcalPanel.GetChild(0).GetComponent<Image>();
+                genreImage[1] = veritcalPanel.GetChild(0).GetComponent<Image>();
+                genreImage[2] = veritcalPanel.GetChild(0).GetComponent<Image>();
+                genreImage[3] = veritcalPanel.GetChild(0).GetComponent<Image>();
+
+
+                horizontalMenu[0] = veritcalPanel.GetChild(0).GetChild(1).gameObject;
+                horizontalMenu[1] = veritcalPanel.GetChild(1).GetChild(1).gameObject;
+                horizontalMenu[2] = veritcalPanel.GetChild(2).GetChild(1).gameObject;
+                horizontalMenu[3] = veritcalPanel.GetChild(3).GetChild(1).gameObject;
+
+                speedSlider = buildPanel.GetComponentInChildren<Slider>();
                 buildPanel.SetActive(false);
             }
             else
@@ -143,6 +168,33 @@ public class UIController : MonoBehaviour
             {
                 Debug.LogError("Canvas does not have child called GoldHUD.");
             }
+
+            // Look for options
+
+            if (Canvas.transform.Find("Options"))
+            {
+                menu = new Menu[4];
+
+                // Map menu
+                mapMenu = Canvas.transform.Find("Options").GetChild(1).gameObject;
+
+                // pause
+                menu[0] = new Menu("pauseMenu", Canvas.transform.Find("Options").GetChild(0).gameObject);
+
+                // pause
+                menu[1] = new Menu("pauseMenu", Canvas.transform.Find("Options").GetChild(1).gameObject);
+
+                // Audio
+                menu[2] = new Menu("audioMenu", Canvas.transform.Find("Options").GetChild(2).gameObject);
+
+                // controls
+                menu[3] = new Menu("controlsMenu", Canvas.transform.Find("Options").GetChild(3).gameObject);
+            }
+            else
+            {
+                Debug.LogError("Canvas does not have child called Options.");
+            }
+
 
             // Look for Fade Plane
             if (Canvas.transform.Find("Fade"))
@@ -178,6 +230,27 @@ public class UIController : MonoBehaviour
         goldText.text = "" + player.Gold;
 
         UpdateSpeedSlider();
+
+
+        // populate pause screen buttons
+
+        for (int x = 0; x < menu.Length; x++)
+        {
+            Button[] buttons = menu[x].menuScreen.GetComponentsInChildren<Button>();
+
+            menu[x].buttons = new Image[buttons.Length];
+
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                menu[x].buttons[i] = buttons[i].GetComponent<Image>();
+                menu[x].buttons[0].sprite = pauseHighlightSprite;
+            }
+        }
+
+        musicSlider = menu[2].buttons[0].GetComponentInChildren<Slider>();
+        soundSlider = menu[2].buttons[1].GetComponentInChildren<Slider>();
+
+        sensitivitySlider = menu[3].buttons[2].GetComponentInChildren<Slider>();
     }
 
     private void GoldChanged()
@@ -207,16 +280,17 @@ public class UIController : MonoBehaviour
     {
         if (paused)
         {
-            // Interact with the currently selected button
-            if (Input.GetButtonDown("A_Button"))
-            {
-                ProcessInput(selectedMenuItem);
-            }
-
+            currentButton = menu[currentMenu].selectedIndex;
             // move back to the pause menu
             if (Input.GetButtonDown("B_Button"))
             {
-                ProcessInput(-1);
+                ProcessInput(true);
+            }
+
+            // Interact with the currently selected button
+            if (Input.GetButtonDown("A_Button"))
+            {
+                ProcessInput(false);
             }
 
             if (DpadCanPress)
@@ -224,9 +298,13 @@ public class UIController : MonoBehaviour
                 // Move up the vertical menu
                 if (Input.GetAxis("Dpad_Y") == 1)
                 {
-                    if (selectedMenuItem > 0)
+                    if (menu[currentMenu].selectedIndex > 0)
                     {
-                        selectedMenuItem--;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+
+                        ChangeSelectedButton(-1);
+
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = pauseHighlightSprite;
 
                         DpadCanPress = false;
                     }
@@ -235,11 +313,55 @@ public class UIController : MonoBehaviour
                 // Move down the vertical menu
                 if (Input.GetAxis("Dpad_Y") == -1)
                 {
-                    if (selectedMenuItem < 3)
+                    if (menu[currentMenu].selectedIndex < menu[currentMenu].buttons.Length)
                     {
-                        selectedMenuItem++;
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+
+                        ChangeSelectedButton(1);
+
+                        menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = pauseHighlightSprite;
 
                         DpadCanPress = false;
+                    }
+                }
+
+                if (sliderSelected)
+                {
+                    // Increase slider
+                    if (Input.GetAxis("Dpad_X") == 1)
+                    {
+                        selectedSlider.value += 0.01f;
+
+                        if(selectedSlider == sensitivitySlider)
+                        {
+                            CC.setSensitivity(selectedSlider.value);
+                        }
+                        else if(selectedSlider == soundSlider)
+                        {
+                            AudioManager.instance.SetSoundLevel(selectedSlider.value);
+                        }
+                        else if(selectedSlider == musicSlider)
+                        {
+                            AudioManager.instance.SetMusicLevel(selectedSlider.value);
+                        }
+                    }
+
+                    if (Input.GetAxis("Dpad_X") == -1)
+                    {
+                        selectedSlider.value -= 0.01f;
+
+                        if (selectedSlider == sensitivitySlider)
+                        {
+                            CC.setSensitivity(selectedSlider.value);
+                        }
+                        else if (selectedSlider == soundSlider)
+                        {
+                            AudioManager.instance.SetSoundLevel(selectedSlider.value);
+                        }
+                        else if (selectedSlider == musicSlider)
+                        {
+                            AudioManager.instance.SetMusicLevel(selectedSlider.value);
+                        }
                     }
                 }
 
@@ -340,118 +462,224 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void ProcessInput(int _buttonSelected)
+    private void ChangeSelectedButton(int _change)
     {
-        if (_buttonSelected == -1)
+        menu[currentMenu].selectedIndex += _change;
+
+        // Audio Menu
+        if (currentMenu == 2)
         {
-            menuItems[currentMenu].SetActive(false);
-            menuItems[0].SetActive(true);
-            currentMenu = 0;
+            if (menu[2].selectedIndex == 0)
+            {
+                sliderSelected = true;
+                selectedSlider = musicSlider;
+            }
+
+            if (menu[2].selectedIndex == 1)
+            {
+                sliderSelected = true;
+                selectedSlider = soundSlider;
+            }
+
+            if (menu[2].selectedIndex == 2)
+            {
+                sliderSelected = false;
+                selectedSlider = null;
+            }
+        }
+
+        if (currentMenu == 3)
+        {
+            if (menu[3].selectedIndex == 2)
+            {
+                sliderSelected = true;
+                selectedSlider = sensitivitySlider;
+            }
+            else
+            {
+                sliderSelected = false;
+                selectedSlider = null;
+            }
+
+        }
+    }
+
+    private void ProcessInput(bool _back)
+    {
+        // Return to pause screen
+        if (_back)
+        {
+            // if in pause menu return to game
+            if (currentMenu == 0)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                // Don't change button settings when return from map
+                if(currentMenu != 1)
+                {
+                    menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+
+                    menu[currentMenu].buttons[0].sprite = pauseHighlightSprite;
+
+                    menu[currentMenu].selectedIndex = 0;
+
+                    sliderSelected = false;
+                }
+
+                menu[currentMenu].menuScreen.SetActive(false);
+
+                currentMenu = 0;
+
+                menu[currentMenu].menuScreen.SetActive(true);
+            }
+
+            return;
         }
 
         // Pause menu
         if (currentMenu == 0)
         {
-            PauseMenuInput(_buttonSelected);
-            selectedMenuItem = 0;
+            PauseMenuInput();
+        }
+
+        // Map menu
+        if (currentMenu == 1)
+        {
         }
 
         // Sound Menu
-        if (currentMenu == 1)
+        if (currentMenu == 2)
         {
-            SoundMenuInput(_buttonSelected);
-            selectedMenuItem = 0;
+            SoundMenuInput();
         }
 
         // controls Menu
-        if (currentMenu == 2)
+        if (currentMenu == 3)
         {
-            ControlsMenuInput(_buttonSelected);
-            selectedMenuItem = 0;
+            ControlsMenuInput();
         }
     }
 
-    private void PauseMenuInput(int _button)
+    private void ResumeGame()
     {
-        if (_button == 0)
+        GM.Pause();
+        showPauseMenu(false);
+    }
+
+    private void PauseMenuInput()
+    {
+        // Resume Game
+        if (menu[0].selectedIndex == 0)
         {
-            GM.Pause();
-            showPauseMenu(false);
+            ResumeGame();
         }
 
-        if (_button == 1)
+        // Open Map
+        if (menu[0].selectedIndex == 1)
         {
-            menuItems[0].SetActive(false);
-            menuItems[1].SetActive(true);
+            menu[0].menuScreen.SetActive(false);
+            menu[1].menuScreen.SetActive(true);
             currentMenu = 1;
         }
 
-        if (_button == 2)
+        // go to sound Menu
+        if (menu[0].selectedIndex == 2)
         {
-            menuItems[0].SetActive(false);
-            menuItems[2].SetActive(true);
+            menu[0].menuScreen.SetActive(false);
+            menu[2].menuScreen.SetActive(true);
             currentMenu = 2;
+
+            sliderSelected = true;
+
+            selectedSlider = musicSlider;
         }
 
-        if (_button == 3)
+        // go to controls Menu
+        if (menu[0].selectedIndex == 3)
+        {
+            menu[0].menuScreen.SetActive(false);
+            menu[3].menuScreen.SetActive(true);
+            currentMenu = 3;
+        }
+
+        if (menu[0].selectedIndex == 4)
         {
             Application.Quit();
         }
     }
 
-
-    private void SoundMenuInput(int _button)
+    private void SoundMenuInput()
     {
-        if (_button == 0)
+        if (menu[2].selectedIndex == 0)
         {
-
+            selectedSlider = musicSlider;
         }
 
-        if (_button == 1)
+        if (menu[2].selectedIndex == 1)
         {
-
+            selectedSlider = soundSlider;
         }
 
-        if (_button == 2)
+        if (menu[2].selectedIndex == 2)
         {
+            // go back to pause screen
+            menu[2].menuScreen.SetActive(false);
 
-        }
+            menu[2].buttons[menu[2].selectedIndex].sprite = defaultSprite;
 
-        if (_button == 3)
-        {
+            menu[2].buttons[0].sprite = pauseHighlightSprite;
 
+            menu[2].selectedIndex = 0;
+
+            currentMenu = 0;
+
+            menu[currentMenu].menuScreen.SetActive(true);
         }
     }
 
-    private void ControlsMenuInput(int _button)
+    private void ControlsMenuInput()
     {
-        if (_button == 0)
+        if (menu[3].selectedIndex == 0)
         {
             CC.InvertY();
         }
 
-        if (_button == 1)
+        if (menu[3].selectedIndex == 1)
         {
             CC.InvertX();
+        }
+
+        if (menu[3].selectedIndex == 3)
+        {
+            // go back to pause screen
+            menu[currentMenu].menuScreen.SetActive(false);
+
+            menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSprite;
+
+            menu[currentMenu].buttons[0].sprite = pauseHighlightSprite;
+
+            menu[currentMenu].selectedIndex = 0;
+
+            currentMenu = 0;
+
+            menu[currentMenu].menuScreen.SetActive(true);
         }
     }
 
     public void showPauseMenu(bool _isPaused)
     {
-        ShowMap(false);
-
         paused = _isPaused;
 
-        menuItems[0].SetActive(_isPaused);
-        currentMenu = 0;
-
-        if (!_isPaused)
+        // hide map when pausing the game
+        if (paused)
         {
-            foreach (GameObject item in menuItems)
-            {
-                item.SetActive(false);
-            }
+            ShowMap(false);
         }
+
+        menu[currentMenu].menuScreen.SetActive(_isPaused);
+        currentMenu = 0;
     }
 
     public void ShowMap(bool _show)
@@ -546,5 +774,21 @@ public class UIController : MonoBehaviour
 
         // un-Subscribe to player's gold change
         player.GoldChanged -= GoldChanged;
+    }
+}
+
+[System.Serializable]
+public class Menu
+{
+    public string name;
+    public GameObject menuScreen;
+    public Image[] buttons;
+    public int selectedIndex;
+
+    public Menu(string _name, GameObject _menuScreen)
+    {
+        name = _name;
+        menuScreen = _menuScreen;
+        selectedIndex = 0;
     }
 }

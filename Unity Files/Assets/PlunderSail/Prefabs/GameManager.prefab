@@ -57,33 +57,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldDisplayTime: 3
-  Canvas: {fileID: 0}
-  buildPanel: {fileID: 0}
-  DockPopUp: {fileID: 0}
-  goldHUD: {fileID: 0}
-  goldText: {fileID: 0}
-  fadePlane: {fileID: 0}
-  menuItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  mapMenu: {fileID: 0}
-  horizontalMenu:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  genreImage:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speedSlider: {fileID: 0}
+  timeBetweenPresses: 0.5
   defaultSprite: {fileID: 21300000, guid: c7baa06f016845c40a9f004f0b4ef896, type: 3}
   genreHighlightSprite: {fileID: 21300000, guid: 17f5b376a902a604a9e0b59ef65937b1,
     type: 3}
   highlightSprite: {fileID: 21300000, guid: 53beb5c312010884e8cc66ffd761719f, type: 3}
-  timeBetweenPresses: 20
+  pauseHighlightSprite: {fileID: 21300000, guid: a5795f4e94a5d584f9e48c43c0b2f7a8,
+    type: 3}
+  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 0}
+  currentMenu: 0
+  currentButton: 0
+  sliderSelected: 0
 --- !u!114 &114256727963917046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pier: {fileID: 0}
   playerCentre: {fileID: 0}
+  loading: {fileID: 0}
   enterDockSound: enterDock
 --- !u!114 &114658638090109668
 MonoBehaviour:
@@ -203,11 +189,11 @@ MonoBehaviour:
     costText: {fileID: 0}
   - Name: TnTrident
     GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
-    cost: 12000
+    cost: 300
     costText: {fileID: 0}
   - Name: Drop Bear
     GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
-    cost: 20000
+    cost: 250
     costText: {fileID: 0}
   Sails:
   - Name: Sail
@@ -217,7 +203,7 @@ MonoBehaviour:
   Armours:
   - Name: Armour
     GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-    cost: 10
+    cost: 25
     costText: {fileID: 0}
   skipBuilt: 0
 --- !u!114 &114994603169521724

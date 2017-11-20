@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Y_Button"))
+        if (Input.GetButtonDown("Y_Button") && !GameState.Paused)
         {
             if (canPressY)
             {

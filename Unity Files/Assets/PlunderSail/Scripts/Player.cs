@@ -159,28 +159,31 @@ public class Player : LivingEntity
             }
             else
             {
-                aiming = false;
-                //rangeMeshFilter.gameObject.SetActive(false);
-
-                CC.CancelAim();
-
-                if (aimDir.Equals("right"))
+                if(aiming)
                 {
-                    WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
+                    aiming = false;
+                    //rangeMeshFilter.gameObject.SetActive(false);
 
-                    foreach (WeaponAttachment weapon in rightWeapons)
+                    CC.CancelAim();
+
+                    if (aimDir.Equals("right"))
                     {
-                        weapon.CancelAim();
+                        WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
+
+                        foreach (WeaponAttachment weapon in rightWeapons)
+                        {
+                            weapon.CancelAim();
+                        }
                     }
-                }
 
-                if (aimDir.Equals("left"))
-                {
-                    WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
-
-                    foreach (WeaponAttachment weapon in leftWeapons)
+                    if (aimDir.Equals("left"))
                     {
-                        weapon.CancelAim();
+                        WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
+
+                        foreach (WeaponAttachment weapon in leftWeapons)
+                        {
+                            weapon.CancelAim();
+                        }
                     }
                 }
             }

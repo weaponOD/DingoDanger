@@ -52,6 +52,9 @@ public class PlayModeCameraTwo : MonoBehaviour
     private Camera myCamera;
 
     [SerializeField]
+    private Vector3 savedRotation;
+
+    [SerializeField]
     private Vector3 localRotation;
 
     private void Awake()
@@ -75,9 +78,15 @@ public class PlayModeCameraTwo : MonoBehaviour
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
     }
 
+
+    private void OnEnable()
+    {
+        localRotation.x = target.localEulerAngles.y;
+    }
+
     private void Update()
     {
-        if(!GameState.Paused)
+        if (!GameState.Paused)
         {
             // Rotate the camera based on right thumb stick input
             if (Input.GetAxis("Mouse_X") != 0 || Input.GetAxis("Mouse_Y") != 0)
@@ -110,21 +119,40 @@ public class PlayModeCameraTwo : MonoBehaviour
     }
 
     public void AimRight()
-    {
+    {// only done the first time aimRight is called
+        if (!aiming)
+        {
+            savedRotation = localRotation;
+        }
+
         aiming = true;
+
         localRotation.x = target.localEulerAngles.y + 90;
         localRotation.y = 15;
     }
 
     public void AimLeft()
     {
+        // only done the first time aimLeft is called
+        if(!aiming)
+        {
+            savedRotation = localRotation;
+        }
+
         aiming = true;
+
         localRotation.x = target.localEulerAngles.y - 90;
         localRotation.y = 15;
     }
 
     public void CancelAim()
     {
+        // only done the first time cancelAim is called
+        if (aiming)
+        {
+            localRotation = savedRotation;
+        }
+
         aiming = false;
     }
 
@@ -135,7 +163,7 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     public void FastMode(bool _isFast)
     {
-        if(_isFast)
+        if (_isFast)
         {
             StartCoroutine("ZoomOut");
         }

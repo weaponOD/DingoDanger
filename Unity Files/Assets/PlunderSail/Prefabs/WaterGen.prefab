@@ -43,7 +43,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1953239831980770
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953239831980770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 286, y: 0.5295687, z: 303}
+  m_LocalPosition: {x: 1541, y: 0.5295687, z: 827}
   m_LocalScale: {x: 8, y: 1, z: 8}
   m_Children: []
   m_Father: {fileID: 4647191340563662}
@@ -172,7 +172,7 @@ MonoBehaviour:
     refractLayers:
       serializedVersion: 2
       m_Bits: 4294967295
-  receiveShadows: 0
+  receiveShadows: 1
   waveScale: -1337
   gridTypeLite: 0
   displayProgress: 0
@@ -190,6 +190,6 @@ MonoBehaviour:
   waterPrefab: {fileID: 4000010708501322, guid: 7a8a5bb6f2e71b143aff5818ec77dbcd,
     type: 2}
   waterLODPrefab: {fileID: 0}
-  mapSize: {x: 2, y: 2}
+  mapSize: {x: 3, y: 3}
   buffer: 1384
   tempPlane: {fileID: 1915647213937778}

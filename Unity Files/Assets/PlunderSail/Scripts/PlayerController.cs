@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float slowAccelerationPercent = 0;
 
+    [SerializeField]
+    private float idleHoldTime = 2;
+
     [Header("Turn Speed Attributes")]
 
     [SerializeField]
@@ -109,6 +112,8 @@ public class PlayerController : MonoBehaviour
 
     private float totalBonusSpeed;
 
+    private float idleChargeUp;
+
     private bool canMove = false;
 
     [SerializeField]
@@ -151,22 +156,41 @@ public class PlayerController : MonoBehaviour
                 rudder = Mathf.MoveTowards(rudder, 0f, turnSpeed * 2 * Time.deltaTime);
             }
 
-            // Lower or raise Sails
+            // Switch between fast and slow mode
             if (Input.GetButtonDown("A_Button"))
             {
                 if (components.getSpeedBonus() > 0)
                 {
-                    if ((int)sailState < 2)
+                    if (sailState == SailingState.SLOW)
                     {
-                        sailState++;
+                        sailState = SailingState.FAST;
                     }
                     else
                     {
-                        sailState = SailingState.IDLE;
+                        sailState = SailingState.SLOW;
                     }
 
                     SetSailsToState(sailState);
                 }
+            }
+
+            if(Input.GetButton("B_Button"))
+            {
+                idleChargeUp += 1 * Time.deltaTime;
+
+                if(idleChargeUp > idleHoldTime)
+                {
+                    if(sailState != SailingState.IDLE)
+                    {
+                        sailState = SailingState.IDLE;
+
+                        SetSailsToState(sailState);
+                    }
+                }
+            }
+            else
+            {
+                idleChargeUp = 0;
             }
 
             if (Time.deltaTime != 0)
@@ -337,6 +361,10 @@ public class PlayerController : MonoBehaviour
             {
                 components.RaiseSails();
 
+                CC.DisableFastMode();
+            }
+            else if(_state == SailingState.SLOW)
+            {
                 CC.DisableFastMode();
             }
             else if (_state == SailingState.FAST)

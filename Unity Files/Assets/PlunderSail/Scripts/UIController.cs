@@ -688,6 +688,7 @@ public class UIController : MonoBehaviour
         horizontalMenu[selectedGenre].SetActive(false);
         genreImage[selectedGenre].sprite = defaultSprite;
 
+        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSprite;
         selectedAttachment = 0;
         horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSprite;
 

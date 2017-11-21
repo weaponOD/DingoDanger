@@ -53,13 +53,9 @@ public class WeaponAttachment : AttachmentBase
     {
         base.Awake();
 
-        projectilePool = ResourceManager.instance.getPool(ammoType);
-
-        fireEffectPool = ResourceManager.instance.getPool(fireEffect);
-
         firePoints = new Transform[numberOfFirePoints];
 
-        if(canAim)
+        if (canAim)
         {
             arc = GetComponentInChildren<LaunchMesh>();
 
@@ -74,6 +70,13 @@ public class WeaponAttachment : AttachmentBase
                 pointCount++;
             }
         }
+    }
+
+    protected void Start()
+    {
+        projectilePool = ResourceManager.instance.getPool(ammoType);
+
+        fireEffectPool = ResourceManager.instance.getPool(fireEffect);
     }
 
     public void UpdateRange(float _velocity)
@@ -137,14 +140,20 @@ public class WeaponAttachment : AttachmentBase
             Projectile shot = projectile.GetComponent<Projectile>();
             shot.Damage = damage;
 
-            Vector3 shotVelocity = (transform.GetChild(1).forward * projectileForce + Vector3.up * 0.7f) * arc.Velocity;
+            if (canAim)
+            {
+                Vector3 shotVelocity = (transform.GetChild(1).forward * projectileForce + Vector3.up * 0.7f) * arc.Velocity;
 
-            shot.FireProjectile(shotVelocity);
-            //shot.FireProjectile(shipVelocity, projectileForce);
+                shot.FireProjectile(shotVelocity);
+            }
+            else
+            {
+                shot.FireProjectile(shipVelocity, projectileForce);
+            }
 
-            GameObject effect = fireEffectPool.getPooledObject();
+            GameObject effect = null; //fireEffectPool.getPooledObject();
 
-            if(effect != null)
+            if (effect != null)
             {
                 effect.transform.position = _firePoint.position;
                 effect.transform.rotation = _firePoint.rotation;

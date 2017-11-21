@@ -71,8 +71,10 @@ public class AIAgent : LivingEntity
 
     protected enum State { WANDER, CHASE, FIGHT, PATH, FLEE }
 
-    protected State currentState = State.PATH;
+    [SerializeField]
+    protected State currentState = State.WANDER;
 
+    [SerializeField]
     protected bool stateIsActive = false;
 
     protected float stateCoolDown = 2;
@@ -123,13 +125,11 @@ public class AIAgent : LivingEntity
 
     public void setSpeedBonus(float _numOfSails)
     {
-        currentMoveSpeed = (_numOfSails * speedPerSail);
+        currentMoveSpeed = speedPerSail / 2 + (_numOfSails * speedPerSail);
     }
 
     protected virtual void Update()
     {
-        // check if sunk
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             transform.position = startPos;
@@ -139,6 +139,27 @@ public class AIAgent : LivingEntity
         }
 
         AvoidCollisions();
+
+        // If there's a collision disable states for x seconds
+        if (AvoidCollisions())
+        {
+            Debug.Log("Collision Detected, states are on cooldown");
+            ActiveStateTime = Time.time + stateCoolDown;
+            stateIsActive = false;
+        }
+
+        // Apply states only if the ship hasn't collided for x seconds
+        if (stateIsActive)
+        {
+            CalculateState();
+            ApplyState();
+        }
+
+        // If the AI hasn't detected a collision in x seconds apply state behaviour
+        if (Time.time > ActiveStateTime)
+        {
+            stateIsActive = true;
+        }
 
         SteerInDirection();
 
@@ -170,7 +191,70 @@ public class AIAgent : LivingEntity
 
     protected virtual void CalculateState()
     {
+        float distToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
+        if (distToPlayer < awarenessRange && distToPlayer > attackRange)
+        {
+            currentState = State.CHASE;
+        }
+
+        if (distToPlayer <= attackRange)
+        {
+            currentState = State.FIGHT;
+        }
+    }
+
+    protected virtual void ApplyState()
+    {
+        // Hunt down player if chasing them
+        if (currentState == State.CHASE)
+        {
+            float distToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+            float t = distToPlayer / currentMoveSpeed;
+
+            Vector3 targetPos = player.transform.position + player.Velocity * t;
+
+            targetDirection = targetPos;
+
+            return;
+        }
+
+        // In this state we want the AI to steer in a direction that results in the dot product equaling 0, aka we want to our ship to be perpendicular to the player.
+        if (currentState == State.FIGHT)
+        {
+            Vector3 vecBetween = player.transform.position - transform.position;
+            float angle = 0;
+            
+            // if player is closer to right side
+            if (Vector3.Distance(player.transform.position, transform.position + transform.right) < Vector3.Distance(player.transform.position, transform.position - transform.right))
+            {
+                angle = Vector3.Angle(vecBetween, transform.right);
+            }
+            else
+            {
+                angle = Vector3.Angle(vecBetween, -transform.right);
+            }
+
+            Quaternion difference = Quaternion.AngleAxis(angle, Vector3.up);
+
+            targetDirection = difference * transform.forward;
+
+            if(angle < 2f)
+            {
+                weaponController.FireWeaponsRight(false);
+                weaponController.FireWeaponsLeft(true);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.75F);
+        Gizmos.DrawWireSphere(transform.position, awarenessRange);
+
+        Gizmos.color = new Color(1, 0, 0, 0.75F);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     protected void CheckIfSunk()
@@ -234,7 +318,6 @@ public class AIAgent : LivingEntity
 
                 sightAngle = 0;
 
-                return false;
             }
             else if (distanceLeft != 0 && distanceRight != 0)
             {
@@ -263,6 +346,10 @@ public class AIAgent : LivingEntity
                 // Turn left
                 targetDirection = transform.forward - transform.right * sightAngle;
             }
+        }
+        else
+        {
+            return false;
         }
 
         return true;

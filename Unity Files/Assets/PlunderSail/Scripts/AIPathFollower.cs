@@ -41,6 +41,7 @@ public class AIPathFollower : AIAgent
         // Apply states only if the ship hasn't collided for x seconds
         if (stateIsActive)
         {
+            CalculateState();
             ApplyState();
         }
 
@@ -71,7 +72,7 @@ public class AIPathFollower : AIAgent
         }
     }
 
-    private void ApplyState()
+    protected override void ApplyState()
     {
         if (currentState == State.PATH)
         {

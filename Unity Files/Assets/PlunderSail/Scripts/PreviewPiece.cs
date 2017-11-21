@@ -48,11 +48,8 @@ public class PreviewPiece : MonoBehaviour
         cachedMaterials = cachedRenderer.materials;
         previewMaterials = new Material[cachedMaterials.Length];
 
-        Debug.Log(string.Format("Found {0} materials", cachedMaterials.Length));
-
         for (int x = 0; x < previewMaterials.Length; x++)
         {
-           // Debug.Log(string.Format("Material {0} named {1}", x, previewMaterials[x].name));
             previewMaterials[x] = currentMat;
         }
 

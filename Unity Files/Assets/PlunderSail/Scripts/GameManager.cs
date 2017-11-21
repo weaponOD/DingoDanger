@@ -56,7 +56,12 @@ public class GameManager : MonoBehaviour
     {
         player.HasControl = true;
         PC.CanMove = true;
-        loading.gameObject.SetActive(false);
+        
+        if(loading != null)
+        {
+            loading.gameObject.SetActive(false);
+        }
+
         UI.FadeIn();
     }
 
@@ -100,17 +105,9 @@ public class GameManager : MonoBehaviour
             if (Input.GetButtonDown("Back_Button") && !paused)
             {
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                Pause();
+                //Pause();
 
-                mapActive = !mapActive;
-                UI.ShowMap(mapActive);
-            }
-
-            if (Input.GetButtonUp("Back_Button"))
-            {
-                Pause();
-
-                mapActive = !mapActive;
+                mapActive = true;
                 UI.ShowMap(mapActive);
             }
 
@@ -119,6 +116,14 @@ public class GameManager : MonoBehaviour
                 Pause();
 
                 UI.showPauseMenu(paused);
+            }
+
+            if (Input.GetButtonUp("Back_Button") )
+            {
+                //Pause();
+
+                mapActive = false;
+                UI.ShowMap(mapActive);
             }
         }
     }

@@ -45,8 +45,6 @@ public class AIAgent : LivingEntity
     [SerializeField]
     protected float speedPerSail;
 
-    protected List<IBehaviour> behaviours;
-
     // Non editor Variables
     protected Player player;
 
@@ -92,8 +90,6 @@ public class AIAgent : LivingEntity
 
         components = GetComponent<ComponentManager>();
         weaponController = GetComponent<WeaponController>();
-
-        behaviours = new List<IBehaviour>(5);
     }
 
     protected override void Start()
@@ -303,20 +299,6 @@ public class AIAgent : LivingEntity
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // how much the character should be knocked back
-            var magnitude = 5000;
-            // calculate force vector
-            var force = transform.position - collision.transform.position;
-            // normalize force vector to get direction only and trim magnitude
-            force.Normalize();
-            gameObject.GetComponent<Rigidbody>().AddForce(force * magnitude);
-
-            Debug.Log("Knocked Back");
-        }
-
-
         if (collision.contacts[0].thisCollider.gameObject.GetComponent<AttachmentBase>())
         {
             float hitDamage = collision.relativeVelocity.magnitude;

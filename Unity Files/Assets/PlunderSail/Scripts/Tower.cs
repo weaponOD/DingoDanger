@@ -48,6 +48,8 @@ public class Tower : LivingEntity
         {
             wheel.LookAt(player.transform.position);
 
+            wheel.localEulerAngles = new Vector3(0f, wheel.localEulerAngles.y, 0f);
+
             firePoints[0].LookAt(player.transform.position);
 
             if (canFire)

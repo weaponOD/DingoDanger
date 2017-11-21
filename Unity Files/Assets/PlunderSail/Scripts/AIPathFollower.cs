@@ -7,6 +7,9 @@ public class AIPathFollower : AIAgent
     [SerializeField]
     protected Transform path;
 
+    [SerializeField]
+    protected float fleeRange;
+
     protected Transform[] waypoints = null;
 
     protected int pathLength = 0;
@@ -29,38 +32,83 @@ public class AIPathFollower : AIAgent
     // Update is called once per frame
     protected override void Update()
     {
-        if (waypoints.Length > 1)
+        // If there's a collision disable states for x seconds
+        if (AvoidCollisions())
         {
-            targetDirection = waypoints[currentWayPoint].position - transform.position;
+            ActiveStateTime = Time.time + stateCoolDown;
+        }
 
-            if (Vector3.Distance(transform.position, waypoints[currentWayPoint].position) < 2)
+        // Apply states only if the ship hasn't collided for x seconds
+        if (stateIsActive)
+        {
+            ApplyState();
+        }
+
+        // If the AI hasn't detected a collision in x seconds apply state behaviour
+        if (Time.time > ActiveStateTime)
+        {
+            stateIsActive = true;
+        }
+
+        SteerInDirection();
+
+        if (dead)
+        {
+            CheckIfSunk();
+        }
+    }
+
+    protected override void CalculateState()
+    {
+        if (currentState == State.FLEE)
+        {
+            float distToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distToPlayer > fleeRange)
             {
-                if (currentWayPoint < pathLength - 1)
+                currentState = State.PATH;
+            }
+        }
+    }
+
+    private void ApplyState()
+    {
+        if (currentState == State.PATH)
+        {
+            if (waypoints.Length > 1)
+            {
+                targetDirection = waypoints[currentWayPoint].position - transform.position;
+
+                if (Vector3.Distance(transform.position, waypoints[currentWayPoint].position) < 2)
                 {
-                    currentWayPoint++;
-                }
-                else
-                {
-                    currentWayPoint = 0;
+                    if (currentWayPoint < pathLength - 1)
+                    {
+                        currentWayPoint++;
+                    }
+                    else
+                    {
+                        currentWayPoint = 0;
+                    }
                 }
             }
         }
-
-        if (targetDirection != Vector3.zero)
+        else if (currentState == State.FLEE)
         {
-            //create the rotation we need to be in to look at the target
-            targetRotation = Quaternion.LookRotation(targetDirection);
-
-            //rotate us over time according to speed until we are in the required rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            targetDirection = transform.position - player.transform.position;
         }
+    }
 
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+    public override void TakeDamage(float damgage)
+    {
+        currentHealth -= damgage;
 
-        if (Time.deltaTime != 0)
+        if (currentHealth <= 0 && !dead)
         {
-            velocity = (transform.position - previousPos) / Time.deltaTime;
-            previousPos = transform.position;
+            Die();
+        }
+        else
+        {
+            currentState = State.FLEE;
         }
     }
 

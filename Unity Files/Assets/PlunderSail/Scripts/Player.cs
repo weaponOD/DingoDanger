@@ -97,6 +97,7 @@ public class Player : LivingEntity
 
     private void Update()
     {
+
         // Check Input for aiming
         if (!GameState.BuildMode && !GameState.Paused && hasControl)
         {
@@ -159,7 +160,7 @@ public class Player : LivingEntity
             }
             else
             {
-                if(aiming)
+                if (aiming)
                 {
                     aiming = false;
                     //rangeMeshFilter.gameObject.SetActive(false);

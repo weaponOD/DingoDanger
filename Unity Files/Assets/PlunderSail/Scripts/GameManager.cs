@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private Transform playerCentre;
 
     [SerializeField]
-    private Text loading = null;
+    private Image loading = null;
 
     [Header("Sounds")]
 
@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Y_Button") && !GameState.Paused)
+        if (Input.GetButtonDown("Y_Button"))
         {
-            if (canPressY)
+            if (canPressY && !GameState.Paused)
             {
                 if (!GameState.BuildMode)
                 {
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
                 UI.ShowMap(mapActive);
             }
 
-            if(Input.GetButtonUp("Back_Button"))
+            if (Input.GetButtonUp("Back_Button"))
             {
                 Pause();
 

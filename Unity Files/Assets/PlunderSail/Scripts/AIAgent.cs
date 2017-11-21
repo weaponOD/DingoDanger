@@ -71,6 +71,16 @@ public class AIAgent : LivingEntity
 
     protected Quaternion startRot;
 
+    protected enum State { WANDER, CHASE, FIGHT, PATH, FLEE }
+
+    protected State currentState = State.PATH;
+
+    protected bool stateIsActive = false;
+
+    protected float stateCoolDown = 2;
+
+    protected float ActiveStateTime = 0;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -132,6 +142,43 @@ public class AIAgent : LivingEntity
             targetDirection = transform.forward;
         }
 
+        AvoidCollisions();
+
+        SteerInDirection();
+
+        if (dead)
+        {
+            CheckIfSunk();
+        }
+    }
+
+    protected void SteerInDirection()
+    {
+        if (targetDirection != Vector3.zero)
+        {
+            //create the rotation we need to be in to look at the target
+            targetRotation = Quaternion.LookRotation(targetDirection);
+
+            //rotate us over time according to speed until we are in the required rotation
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+
+        if (Time.deltaTime != 0)
+        {
+            velocity = (transform.position - previousPos) / Time.deltaTime;
+            previousPos = transform.position;
+        }
+    }
+
+    protected virtual void CalculateState()
+    {
+
+    }
+
+    protected void CheckIfSunk()
+    {
         if (transform.position.y < -5)
         {
             if (player != null)
@@ -141,9 +188,19 @@ public class AIAgent : LivingEntity
 
             Destroy(gameObject);
         }
+    }
 
-        // Collision Avoidance
+    protected virtual void FixedUpdate()
+    {
+        if (!isStunned)
+        {
+            rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
+        }
+    }
 
+    // Returns true if there is a collison
+    protected bool AvoidCollisions()
+    {
         Ray ray1 = new Ray(transform.position, transform.forward);
 
         Debug.DrawRay(transform.position, transform.forward * sightDistance, Color.red);
@@ -180,8 +237,10 @@ public class AIAgent : LivingEntity
                 targetDirection = transform.forward + transform.right * 0.2f;
 
                 sightAngle = 0;
+
+                return false;
             }
-            else if(distanceLeft != 0 && distanceRight != 0)
+            else if (distanceLeft != 0 && distanceRight != 0)
             {
                 //Debug.Log("collisions on both sides");
 
@@ -210,30 +269,7 @@ public class AIAgent : LivingEntity
             }
         }
 
-        if (targetDirection != Vector3.zero)
-        {
-            //create the rotation we need to be in to look at the target
-            targetRotation = Quaternion.LookRotation(targetDirection);
-
-            //rotate us over time according to speed until we are in the required rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }
-
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
-
-        if (Time.deltaTime != 0)
-        {
-            velocity = (transform.position - previousPos) / Time.deltaTime;
-            previousPos = transform.position;
-        }
-    }
-
-    protected virtual void FixedUpdate()
-    {
-        if (!isStunned)
-        {
-            rb.MovePosition(rb.position + transform.forward * currentMoveSpeed * Time.fixedDeltaTime);
-        }
+        return true;
     }
 
     public override void TakeDamage(float damgage)
@@ -247,7 +283,7 @@ public class AIAgent : LivingEntity
             attachments[i].TakeDamage(damgage * damageSpreadMultiplier);
         }
 
-        if(components.Attachments.Length == 0)
+        if (components.Attachments.Length == 0)
         {
             Die();
         }

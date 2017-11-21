@@ -13,7 +13,7 @@ public class IntroMenu : MonoBehaviour
     private Image FadePlane;
 
     [SerializeField]
-    private Text loading;
+    private Image loading;
 
     private bool waitOnInput = false;
 

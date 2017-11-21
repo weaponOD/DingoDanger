@@ -11,6 +11,9 @@ public class Bounty : MonoBehaviour
     private int goldMax = 100;
 
     [SerializeField]
+    private bool playSound = true;
+
+    [SerializeField]
     private float distanceToHook = 30;
 
     [SerializeField]
@@ -23,7 +26,7 @@ public class Bounty : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.transform.root.CompareTag("Player"))
+        if (collision.collider.transform.root.CompareTag("Player"))
         {
             collision.collider.transform.root.GetComponent<Player>().GiveGold(Random.Range(goldMin, goldMax));
             Destroy(gameObject);
@@ -34,18 +37,27 @@ public class Bounty : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        AudioManager.instance.PlaySound(floatSound);
+        if (playSound)
+        {
+            AudioManager.instance.PlaySound(floatSound);
+        }
 
         StartCoroutine(Hooked());
     }
 
+   
     private IEnumerator Hooked()
     {
         Vector3 vecBetween = player.position - transform.position;
 
-        if(vecBetween.magnitude < distanceToHook)
+        if (vecBetween.magnitude < distanceToHook)
         {
             transform.position += vecBetween.normalized * Time.deltaTime * moveSpeed;
+        }
+
+        if (vecBetween.magnitude > distanceToHook * 4)
+        {
+            yield return new WaitForSeconds(2);
         }
 
         yield return null;

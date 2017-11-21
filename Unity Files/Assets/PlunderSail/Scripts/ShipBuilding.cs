@@ -603,8 +603,11 @@ public class ShipBuilding : MonoBehaviour
 
                     if(y > 0)
                     {
-                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
-                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
+                        if(previewGridPosZ < GridSize.z - 1)
+                        {
+                            grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
+                            grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
+                        }
                     }
                 }
             }

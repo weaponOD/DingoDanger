@@ -54,7 +54,7 @@ MonoBehaviour:
   gridType: 1
   LOD: 0.2
   LODPower: 3
-  customMesh: {fileID: 0}
+  customMesh: {fileID: 4300000, guid: daff06c0e76fa2f4d8c6fad649a74a2b, type: 3}
   material: {fileID: 2100000, guid: deafa17c6e01f8b43ae33c12383ebaec, type: 2}
   sun: {fileID: 0}
   sizeX: 100
@@ -68,10 +68,10 @@ MonoBehaviour:
     clipPlaneOffset: 0.07
     reflectLayers:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4294967243
     refractLayers:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4294967241
   receiveShadows: 1
   waveScale: -1337
   gridTypeLite: 0

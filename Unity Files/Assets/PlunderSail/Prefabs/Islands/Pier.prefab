@@ -53,7 +53,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4974575063534940}
-  m_Layer: 0
+  - component: {fileID: 65003074215298828}
+  m_Layer: 8
   m_Name: Pier_001_Dock_001_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,8 +214,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1951153622399696}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000022947786}
-  m_LocalPosition: {x: 8, y: 0, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071022, z: -0, w: -0.7071114}
+  m_LocalPosition: {x: 7.8, y: 0, z: -72.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4047876258899238}
@@ -223,7 +224,7 @@ Transform:
   - {fileID: 4151557008014398}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 449.999, z: 0}
 --- !u!4 &4862316232948788
 Transform:
   m_ObjectHideFlags: 1
@@ -368,6 +369,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1013430269754108}
   m_Mesh: {fileID: 4300000, guid: e507784e2ce40da4398cd0c2df5d4b70, type: 3}
+--- !u!65 &65003074215298828
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1323501184622066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.92, y: 10, z: 40}
+  m_Center: {x: 5.26, y: 0, z: 7.56}
 --- !u!65 &65703185667651292
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -392,6 +405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dockingPos: {fileID: 4047876258899238}
+  open: 0
+  timeToRemovePier: 0
 --- !u!135 &135230817253200418
 SphereCollider:
   m_ObjectHideFlags: 1

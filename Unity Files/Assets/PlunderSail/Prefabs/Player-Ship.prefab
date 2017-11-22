@@ -484,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867788587878092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.64171, y: 0, z: -46.7}
+  m_LocalPosition: {x: -86.38147, y: 0, z: -374.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4236140080751884}
@@ -904,21 +904,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dcb0a1e7f2213541a9ce128c06c831e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseTurnSpeed: 3.5
-  acceleration: 7.5
-  deacceleration: 4.2
-  moveSpeedCap: 45
-  bonusSpeed: 17
-  bonusDropoff: 4.5
+  baseTurnSpeed: 4.5
+  acceleration: 9
+  deacceleration: 12
+  moveSpeedCap: 50
+  bonusSpeed: 18
+  bonusDropoff: 3.5
   minBonusSpeed: 6
-  cannonWeight: 0.95
-  armourWeight: 0
-  slowMaxSpeedPercent: 0.6
-  slowAccelerationPercent: 0.6
-  turnSpeedDecay: 1.2
-  turnSpeedGrowth: 1.8
-  minTurnSpeed: 3.5
-  maxTurnSpeed: 12
+  cannonWeight: 1
+  armourWeight: 0.5
+  slowMaxSpeedPercent: 0.5
+  slowAccelerationPercent: 0.5
+  idleHoldTime: 0.55
+  turnSpeedDecay: 2
+  turnSpeedGrowth: 1
+  minTurnSpeed: 5
+  maxTurnSpeed: 24
   fullSpeedSound: sailFast
   slowDownSound: sailSlow
   moveSpeed: 0

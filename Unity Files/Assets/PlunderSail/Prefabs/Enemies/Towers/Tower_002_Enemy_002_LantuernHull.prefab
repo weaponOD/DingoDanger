@@ -484,7 +484,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338434875501470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.8}
+  m_LocalPosition: {x: -5.53, y: 3.97, z: 3.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4366636801267800}
@@ -843,7 +843,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 769b5a6d5247522488856c6f7a2fc38d, type: 2}
+  - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -876,7 +876,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 769b5a6d5247522488856c6f7a2fc38d, type: 2}
+  - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -936,20 +936,32 @@ MonoBehaviour:
   bounty: []
   sinkingSound: CHANGE
   currentHealth: 0
-  awarenessRange: 36.68
-  minimumRange: 22.59
+  awarenessRange: 53.7
+  minimumRange: 28.7
   damage: 0
   reloadTime: 0
   projectileForce: 0
   ammoType: 
   shootSound: 
   front: 1
-  right: 1
+  right: 0
   back: 1
-  left: 1
-  frontWeapons: []
+  left: 0
+  frontWeapons:
+  - {fileID: 4940002132421864}
+  - {fileID: 4501679389004826}
+  - {fileID: 4965727274402054}
+  - {fileID: 4588901914032128}
+  - {fileID: 4518009018486268}
+  - {fileID: 4113616945333896}
   rightWeapons: []
-  backWeapons: []
+  backWeapons:
+  - {fileID: 4237057387052750}
+  - {fileID: 4206507570843798}
+  - {fileID: 4947202729776454}
+  - {fileID: 4256640214680890}
+  - {fileID: 4357538187618076}
+  - {fileID: 4551413125140936}
   leftWeapons: []
 --- !u!114 &114653689826345968
 MonoBehaviour:

@@ -243,8 +243,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: 1347ec89d20b6d9489d3119041e6f5f3, type: 2}
   - {fileID: 2100000, guid: eaf97201ac79f90499b666ba84eaf2e3, type: 2}
+  - {fileID: 2100000, guid: 9bee07f593b4fb347b86b2dec78a5272, type: 2}
   - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
+  - {fileID: 2100000, guid: 1347ec89d20b6d9489d3119041e6f5f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -387,6 +390,8 @@ MonoBehaviour:
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
   sightDistance: 40
+  currentState: 0
+  stateIsActive: 0
 --- !u!114 &114561812697660908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 220
+  maxHealth: 450
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25

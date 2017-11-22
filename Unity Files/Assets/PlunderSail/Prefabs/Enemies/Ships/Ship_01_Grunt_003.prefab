@@ -1544,7 +1544,7 @@ Transform:
   m_Children:
   - {fileID: 4425192202243086}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4073115963937288
 Transform:
@@ -1558,7 +1558,7 @@ Transform:
   m_Children:
   - {fileID: 4935479584629646}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4084418938845684
 Transform:
@@ -1657,7 +1657,7 @@ Transform:
   m_Children:
   - {fileID: 4952432332597486}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 17
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4150697387497438
 Transform:
@@ -1754,7 +1754,7 @@ Transform:
   m_Children:
   - {fileID: 4475344313287734}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 1
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4223078849776658
 Transform:
@@ -1782,7 +1782,7 @@ Transform:
   m_Children:
   - {fileID: 4562744610061714}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4232068047333126
 Transform:
@@ -1809,15 +1809,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4617933412856960}
-  - {fileID: 4208579932411970}
   - {fileID: 4231451808627320}
   - {fileID: 4554329029423606}
-  - {fileID: 4982328133418410}
   - {fileID: 4073115963937288}
   - {fileID: 4945228045747032}
   - {fileID: 4332866686073318}
   - {fileID: 4570053411962126}
-  - {fileID: 4255673464613830}
   - {fileID: 4824911044984258}
   - {fileID: 4711537667057528}
   - {fileID: 4623220700828452}
@@ -1826,6 +1823,9 @@ Transform:
   - {fileID: 4012588926349356}
   - {fileID: 4814615202910722}
   - {fileID: 4143045408462954}
+  - {fileID: 4208579932411970}
+  - {fileID: 4982328133418410}
+  - {fileID: 4255673464613830}
   m_Father: {fileID: 4097790947526336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1854,7 +1854,7 @@ Transform:
   m_Children:
   - {fileID: 4718867686918384}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 9
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4258844611372888
 Transform:
@@ -1920,7 +1920,7 @@ Transform:
   m_Children:
   - {fileID: 4700875660962466}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4291488163997602
 Transform:
@@ -1960,7 +1960,7 @@ Transform:
   m_Children:
   - {fileID: 4525581395548872}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4358626138764128
 Transform:
@@ -1987,7 +1987,7 @@ Transform:
   m_Children:
   - {fileID: 4499492837797864}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4376813240574060
 Transform:
@@ -2239,7 +2239,7 @@ Transform:
   m_Children:
   - {fileID: 4884659385152506}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4561400833343502
 Transform:
@@ -2295,7 +2295,7 @@ Transform:
   m_Children:
   - {fileID: 4388782974911626}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4599740095278902
 Transform:
@@ -2350,7 +2350,7 @@ Transform:
   m_Children:
   - {fileID: 4084418938845684}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4627745642779324
 Transform:
@@ -2434,7 +2434,7 @@ Transform:
   m_Children:
   - {fileID: 4440911155468260}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4712590300521284
 Transform:
@@ -2596,7 +2596,7 @@ Transform:
   m_Children:
   - {fileID: 4635903898023182}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 16
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4824911044984258
 Transform:
@@ -2610,7 +2610,7 @@ Transform:
   m_Children:
   - {fileID: 4150697387497438}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4832069313721820
 Transform:
@@ -2802,7 +2802,7 @@ Transform:
   m_Children:
   - {fileID: 4376813240574060}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4952432332597486
 Transform:
@@ -2845,7 +2845,7 @@ Transform:
   m_Children:
   - {fileID: 4459307211573604}
   m_Father: {fileID: 4234340046507406}
-  m_RootOrder: 4
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4988881003515370
 Transform:
@@ -3209,8 +3209,11 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
+  - {fileID: 2100000, guid: 1347ec89d20b6d9489d3119041e6f5f3, type: 2}
   - {fileID: 2100000, guid: eaf97201ac79f90499b666ba84eaf2e3, type: 2}
+  - {fileID: 2100000, guid: 9bee07f593b4fb347b86b2dec78a5272, type: 2}
   - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
+  - {fileID: 2100000, guid: 1347ec89d20b6d9489d3119041e6f5f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3895,10 +3898,10 @@ MonoBehaviour:
   - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   sinkingSound: sink
   currentHealth: 0
-  baseMoveSpeed: 6
-  rotationSpeed: 0.3
-  attackRange: 100
-  awarenessRange: 130
+  baseMoveSpeed: 9.5
+  rotationSpeed: 0.8
+  attackRange: 57
+  awarenessRange: 59
   damageSpreadMultiplier: 0.45
   stunDuration: 1
   goldReward: 45
@@ -3906,6 +3909,8 @@ MonoBehaviour:
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
   sightDistance: 40
+  currentState: 0
+  stateIsActive: 0
 --- !u!114 &114166648523348584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3917,7 +3922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -3945,7 +3950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -3973,7 +3978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4001,7 +4006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4029,7 +4034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4071,7 +4076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4097,7 +4102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4136,7 +4141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4192,7 +4197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edda9bc128599c42bd83f67f2a7770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 220
+  maxHealth: 450
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
@@ -4208,7 +4213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4234,7 +4239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4260,7 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4304,7 +4309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4330,7 +4335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -4356,7 +4361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 180
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25

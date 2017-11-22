@@ -6272,7 +6272,7 @@ MonoBehaviour:
   sinkingSound: sink
   currentHealth: 0
   baseMoveSpeed: 5.6
-  rotationSpeed: 0.6
+  rotationSpeed: 1
   attackRange: 70
   awarenessRange: 100
   damageSpreadMultiplier: 0.45
@@ -6282,6 +6282,8 @@ MonoBehaviour:
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
   sightDistance: 40
+  currentState: 0
+  stateIsActive: 0
 --- !u!114 &114995326060393128
 MonoBehaviour:
   m_ObjectHideFlags: 1

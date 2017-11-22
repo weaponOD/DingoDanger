@@ -25,12 +25,10 @@ public class EnemySpawner : MonoBehaviour
     private GameObject islandCross = null;
 
     [SerializeField]
-    private Tower[] towers = null;
+    private TowerBase[] towers = null;
 
     [SerializeField]
     private Transform[] enemyPrefabs = null;
-
-    private DrawCircle radiusIndicator = null;
 
     [SerializeField]
     private List<AIAgent> activeEnemies = null;
@@ -51,15 +49,13 @@ public class EnemySpawner : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        radiusIndicator = GetComponent<DrawCircle>();
-
         shouldHaveTowers = (towers.Length > 0);
 
         towerCount = towers.Length;
 
         if (shouldHaveTowers)
         {
-            foreach (Tower tower in towers)
+            foreach (TowerBase tower in towers)
             {
                 tower.OnDeath += EnemyDied;
             }
@@ -73,11 +69,6 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(CheckPlayerInRange());
     }
 
-    private void Update()
-    {
-        radiusIndicator.Radius = radius;
-    }
-
     private IEnumerator CheckPlayerInRange()
     {
         if (Vector3.Distance(player.position, transform.position) <= radius)
@@ -87,7 +78,10 @@ public class EnemySpawner : MonoBehaviour
                 dock.isUnlocked = true;
                 isDefeated = true;
 
-                islandCross.SetActive(true);
+                if(islandCross != null)
+                {
+                    islandCross.SetActive(true);
+                }
 
                 CancelArms();
             }
@@ -135,7 +129,7 @@ public class EnemySpawner : MonoBehaviour
     {
         cancelAttack = false;
 
-        foreach (Tower tower in towers)
+        foreach (TowerBase tower in towers)
         {
             tower.enabled = true;
         }
@@ -149,7 +143,7 @@ public class EnemySpawner : MonoBehaviour
         {
             attackingPlayer = false;
 
-            foreach (Tower tower in towers)
+            foreach (TowerBase tower in towers)
             {
                 if (tower != null)
                 {
@@ -167,6 +161,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0.7f, 0.6f, 1f);
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
     private void SpawnEnemy()
     {
         Vector3 spawnPos = OutOfSightPos();
@@ -183,7 +182,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnemyDied(LivingEntity _entity)
     {
-        if (_entity.GetComponent<Tower>())
+        if (_entity.GetComponent<TowerBase>())
         {
             towerCount--;
         }

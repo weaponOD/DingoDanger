@@ -6,8 +6,15 @@ public class TowerBase : LivingEntity
 {
 
     [Header("Tower Stats")]
+
+    [Header("Range Values")]
     [SerializeField]
     protected float awarenessRange = 0;
+
+    [SerializeField]
+    protected float minimumRange = 0;
+
+    [Header("Combat stats")]
 
     [SerializeField]
     protected float damage = 0;
@@ -35,13 +42,6 @@ public class TowerBase : LivingEntity
     protected virtual void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        firePoints = new Transform[numFirePoints];
-
-        for (int point = 0; point < numFirePoints; point++)
-        {
-            firePoints[point] = transform.GetChild(0).transform.GetChild(1).GetChild(point).transform;
-        }
     }
 
     protected void Fire()
@@ -72,6 +72,12 @@ public class TowerBase : LivingEntity
         {
             Die();
         }
+    }
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.75F);
+        Gizmos.DrawWireSphere(transform.position, awarenessRange);
     }
 
     [ContextMenu("Self Destruct")]

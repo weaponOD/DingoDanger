@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerFourDir : TowerBase
+public class TowerDirectional : TowerBase
 {
+    [Header("Sides to fire")]
+    [SerializeField]
+    private int directions = 0;
+
     [SerializeField]
     private float angle;
 
@@ -44,5 +48,14 @@ public class TowerFourDir : TowerBase
         {
 
         }
+    }
+
+    protected override void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(0, 1, 0, 0.75F);
+        Gizmos.DrawWireSphere(transform.position, awarenessRange);
+
+        Gizmos.color = new Color(0, 0, 0, 1);
+        Gizmos.DrawWireSphere(transform.position, minimumRange);
     }
 }

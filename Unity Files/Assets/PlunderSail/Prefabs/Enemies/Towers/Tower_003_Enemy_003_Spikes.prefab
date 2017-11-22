@@ -383,6 +383,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4383717582523198}
+  - component: {fileID: 114956001121590462}
+  - component: {fileID: 114726359863531828}
+  - component: {fileID: 114583235618044930}
   m_Layer: 0
   m_Name: Tower_003_Enemy_003_Spikes
   m_TagString: Untagged
@@ -1142,3 +1145,53 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032770436255982}
   m_Mesh: {fileID: 4300002, guid: 2d9099af6efbe8043a2193e2b29604dc, type: 3}
+--- !u!114 &114583235618044930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736105360685920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be37ff7053b6706449bfb184de9045a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starterHealth: 0
+  bountyDelay: 0
+  bounty: []
+  sinkingSound: CHANGE
+  currentHealth: 0
+  awarenessRange: 50
+  minimumRange: 20
+  damage: 0
+  reloadTime: 0
+  projectileForce: 0
+  numFirePoints: 0
+  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
+    type: 2}
+  directions: 4
+  angle: 0
+--- !u!114 &114726359863531828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736105360685920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40824c1b83e27c048b3a3ea93ba7e277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireShoutSound: 
+  reloadTime: 0
+--- !u!114 &114956001121590462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736105360685920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd93a0c9f6867846968e37e1f0345a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

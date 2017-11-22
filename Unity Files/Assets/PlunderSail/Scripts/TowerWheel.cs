@@ -9,7 +9,12 @@ public class TowerWheel : TowerBase
 
     protected override void Awake()
     {
-        base.Awake();
+        base.Awake(); firePoints = new Transform[numFirePoints];
+
+        for (int point = 0; point < numFirePoints; point++)
+        {
+            firePoints[point] = wheel.GetChild(point).transform;
+        }
     }
 
     private void Update()

@@ -26,10 +26,10 @@ public class TowerBase : LivingEntity
     protected float projectileForce = 0;
 
     [SerializeField]
-    protected int numFirePoints = 0;
+    protected string ammoType = "";
 
     [SerializeField]
-    protected GameObject projectilePrefab = null;
+    protected string shootSound;
 
     protected Player player = null;
 
@@ -39,29 +39,22 @@ public class TowerBase : LivingEntity
 
     protected int currentCannon = 0;
 
+    protected Pool projectilePool = null;
+
     protected virtual void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    protected void Fire()
+    protected override void Start()
     {
-        canFire = false;
+        base.Start();
+        projectilePool = ResourceManager.instance.getPool(ammoType);
+    }
 
-        if (currentCannon < 3)
-        {
-            currentCannon++;
-        }
-        else
-        {
-            currentCannon = 0;
-        }
-
-        Projectile shot = Instantiate(projectilePrefab, firePoints[0].position, firePoints[0].rotation).GetComponent<Projectile>();
-        shot.Damage = damage;
-        shot.FireProjectile(new Vector3(), projectileForce);
-
-        Invoke("Reload", reloadTime);
+    protected virtual void Fire()
+    {
+        
     }
 
     public override void TakeDamage(float damgage)
@@ -74,10 +67,13 @@ public class TowerBase : LivingEntity
         }
     }
 
-    protected virtual void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(0, 1, 0, 0.75F);
         Gizmos.DrawWireSphere(transform.position, awarenessRange);
+
+        Gizmos.color = new Color(0, 0, 0, 1);
+        Gizmos.DrawWireSphere(transform.position, minimumRange);
     }
 
     [ContextMenu("Self Destruct")]

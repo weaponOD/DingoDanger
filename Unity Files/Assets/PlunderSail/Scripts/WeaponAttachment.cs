@@ -72,8 +72,10 @@ public class WeaponAttachment : AttachmentBase
         }
     }
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
+
         projectilePool = ResourceManager.instance.getPool(ammoType);
 
         fireEffectPool = ResourceManager.instance.getPool(fireEffect);

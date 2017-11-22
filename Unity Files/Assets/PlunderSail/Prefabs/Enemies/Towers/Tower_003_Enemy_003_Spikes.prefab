@@ -754,7 +754,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736105360685920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 23.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4730126163452200}
@@ -901,7 +901,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1421530260210710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -925,7 +925,7 @@ Transform:
   - {fileID: 4231352506557130}
   m_Father: {fileID: 4383717582523198}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4766838845075940
 Transform:
   m_ObjectHideFlags: 1
@@ -1166,11 +1166,16 @@ MonoBehaviour:
   damage: 0
   reloadTime: 0
   projectileForce: 0
-  numFirePoints: 0
-  projectilePrefab: {fileID: 1804301577746708, guid: 59062e345fde6904cbe19789c9d44e4b,
-    type: 2}
-  directions: 4
-  angle: 0
+  ammoType: 
+  shootSound: 
+  front: 1
+  right: 1
+  back: 1
+  left: 1
+  frontWeapons: []
+  rightWeapons: []
+  backWeapons: []
+  leftWeapons: []
 --- !u!114 &114726359863531828
 MonoBehaviour:
   m_ObjectHideFlags: 1

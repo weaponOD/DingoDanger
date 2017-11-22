@@ -20,5 +20,29 @@ public class TowerFourDir : TowerBase
     private void CalculateDirToPlayer()
     {
         angle = Vector3.SignedAngle(player.transform.position, transform.position, Vector3.up);
+
+        // Check if player is forward of the tower
+        if(angle > -1.5 && angle < 5)
+        {
+
+        }
+
+        // Check if player is left of the tower
+        if (angle > 7 && angle < 8.5f)
+        {
+
+        }
+
+        // Check if player is behind the tower
+        if (angle > 7 && angle < 8.5f)
+        {
+
+        }
+
+        // Check if player is right of the tower
+        if (angle > 7 && angle < 8.5f)
+        {
+
+        }
     }
 }

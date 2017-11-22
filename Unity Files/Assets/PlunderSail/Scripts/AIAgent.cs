@@ -81,6 +81,8 @@ public class AIAgent : LivingEntity
 
     protected float ActiveStateTime = 0;
 
+    protected bool playerRight = false;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -230,20 +232,28 @@ public class AIAgent : LivingEntity
             if (Vector3.Distance(player.transform.position, transform.position + transform.right) < Vector3.Distance(player.transform.position, transform.position - transform.right))
             {
                 angle = Vector3.Angle(vecBetween, transform.right);
+                playerRight = true;
             }
             else
             {
                 angle = Vector3.Angle(vecBetween, -transform.right);
+                playerRight = false;
             }
 
             Quaternion difference = Quaternion.AngleAxis(angle, Vector3.up);
 
             targetDirection = difference * transform.forward;
 
-            if(angle < 2f)
+            if(angle < 3f)
             {
-                weaponController.FireWeaponsRight(false);
-                weaponController.FireWeaponsLeft(true);
+                if(playerRight)
+                {
+                    weaponController.FireWeaponsRight(true);
+                }
+                else
+                {
+                    weaponController.FireWeaponsLeft(true);
+                }
             }
         }
     }

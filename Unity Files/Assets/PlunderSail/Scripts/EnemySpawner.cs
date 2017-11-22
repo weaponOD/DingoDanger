@@ -170,7 +170,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 spawnPos = OutOfSightPos();
 
-        if ((Physics2D.OverlapCircle(spawnPos, 100f, 0, 0, 0)) == null)
+        if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null)
         {
             activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
         }
@@ -190,7 +190,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 OutOfSightPos()
     {
-        Vector3 spawnPoint = player.position + GetPointOnUnitCircleCircumference();
+        Vector3 spawnPoint = GetPointOnUnitCircleCircumference();
 
         spawnPoint.y = 0f;
 

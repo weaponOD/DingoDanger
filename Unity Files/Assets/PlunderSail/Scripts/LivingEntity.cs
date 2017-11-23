@@ -64,6 +64,11 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     }
 
+    public bool isDead
+    {
+        get { return dead; }
+    }
+
     public void RepairAttachments()
     {
         for (int i = 0; i < attachments.Length; i++)

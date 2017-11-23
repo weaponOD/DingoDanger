@@ -284,6 +284,9 @@ public class Player : LivingEntity
         ship.localPosition = new Vector3(0f, 0f, 3f);
         ship.localEulerAngles = Vector3.zero;
         ship.localScale = new Vector3(1f, 1f, 1f);
+
+        currentHealth = starterHealth;
+        dead = false;
     }
 
     private void SetBuildMode(bool isBuildMode)

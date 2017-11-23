@@ -214,13 +214,13 @@ public class AIAgent : LivingEntity
         // Hunt down player if chasing them
         if (currentState == State.CHASE)
         {
-            float distToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            //float distToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-            float t = distToPlayer / currentMoveSpeed;
+            //float t = distToPlayer / currentMoveSpeed;
 
-            Vector3 targetPos = player.transform.position + player.Velocity * t;
+            //Vector3 targetPos = player.transform.position + player.Velocity * t;
 
-            targetDirection = targetPos;
+            targetDirection = player.transform.position;
 
             return;
         }
@@ -229,7 +229,7 @@ public class AIAgent : LivingEntity
         if (currentState == State.FIGHT)
         {
             Vector3 vecBetween = player.transform.position - transform.position;
-                        
+
             // if player is closer to right side
             if (Vector3.Distance(player.transform.position, transform.position + transform.right) < Vector3.Distance(player.transform.position, transform.position - transform.right))
             {
@@ -246,9 +246,9 @@ public class AIAgent : LivingEntity
 
             targetDirection = difference * transform.forward;
 
-            if(angle < 3f)
+            if (angle < 10f)
             {
-                if(playerRight)
+                if (playerRight)
                 {
                     weaponController.FireWeaponsRight(true);
                 }

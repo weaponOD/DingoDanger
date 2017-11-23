@@ -35,6 +35,9 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform player = null;
 
+    [SerializeField]
+    private Camera playCam;
+
     private bool cancelAttack = false;
 
     private bool attackingPlayer = false;
@@ -78,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
                 dock.isUnlocked = true;
                 isDefeated = true;
 
-                if(islandCross != null)
+                if (islandCross != null)
                 {
                     islandCross.SetActive(true);
                 }
@@ -172,7 +175,12 @@ public class EnemySpawner : MonoBehaviour
 
         if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null)
         {
-            activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+            Vector3 outOfSight = playCam.WorldToViewportPoint(spawnPos);
+
+            if (spawnPos.x < 0 || spawnPos.x > 1)
+            {
+                activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+            }
         }
         else
         {

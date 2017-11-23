@@ -179,7 +179,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        player.Respawn();
+        if(player.isDead)
+        {
+            player.Respawn();
+        }
 
         GameState.BuildMode = true;
 

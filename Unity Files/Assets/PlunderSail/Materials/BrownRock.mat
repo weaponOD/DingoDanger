@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BrownRock
-  m_Shader: {fileID: 4800000, guid: 6eef62f0120c6bb48a5574583589eda0, type: 3}
+  m_Shader: {fileID: 4800000, guid: ae4de5dca2d457343b331157e1d1b24c, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -64,20 +64,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _Contrast: 25
+    - _Contrast: 18.6
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DownContrast: 10.6
+    - _DownLevel: 0
+    - _DownNode: 1
     - _Down_Contrast: 0
     - _DstBlend: 0
     - _Exp: 1
+    - _Gloss: 0.273
     - _GlossMapScale: 1
     - _Glossiness: 0.088
     - _GlossyReflections: 1
-    - _HeightControl: -0.04
+    - _HeightControl: 0.0898
     - _HighestPos: 1
     - _Intensity: 2
-    - _Level: 4.6
-    - _Metallic: 0.704
+    - _Level: 2.48
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -86,21 +90,31 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UpNode: 0.33
+    - _UpNode: 0.418
     - _ZWrite: 1
     - _downLevel: 0.164
     - _downNode: 0.317
+    - _iMax: 0.87
+    - _iMin: 2.35
     - _lowestPos: 0
     - _maxY: 1.06
     - _minY: 0.51
+    - _node_1020: 0
+    - _node_2019: 0
+    - _node_3688: 0.289
+    - _node_3688_copy: 0.504
     - _node_6082: 0
+    - _node_7027: 0.358
+    - _node_7139: 0
     - _node_7587: 0
-    - _value: 0.856
+    - _value: 0.946
     m_Colors:
-    - _BaseColour: {r: 1, g: 0.6237322, b: 0.2205882, a: 1}
+    - _BaseColour: {r: 0, g: 0.0068967342, b: 1, a: 1}
     - _BaseColour_copy: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.9485294, g: 0.42847362, b: 0.23713236, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientColour: {r: 0.09178359, g: 0.53676474, b: 0.007893607, a: 1}
-    - _TopColour: {r: 0.35892493, g: 1, b: 0.051470578, a: 1}
+    - _Gradient: {r: 1, g: 0, b: 0.10344792, a: 1}
+    - _GradientColour: {r: 1, g: 0.97241366, b: 0, a: 1}
+    - _TopColour: {r: 0.029918829, g: 0.86764705, b: 0, a: 1}
     - _downColour: {r: 1, g: 0.24264705, b: 0.24264705, a: 1}
+    - _node_646: {r: 1, g: 0, b: 0.972414, a: 1}

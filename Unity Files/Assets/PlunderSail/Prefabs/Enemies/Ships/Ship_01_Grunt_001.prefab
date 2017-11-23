@@ -5417,7 +5417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5425,13 +5425,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4963826440913768}
+  - {fileID: 4104592240430618}
 --- !u!114 &114049723641551440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5522,7 +5524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5530,13 +5532,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4602802798416578}
+  - {fileID: 4939176528363288}
 --- !u!114 &114169497105762588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5579,7 +5583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5587,13 +5591,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4390836290773398}
+  - {fileID: 4603547932772730}
 --- !u!114 &114218155539545934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5663,7 +5669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5671,13 +5677,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4565069750924094}
+  - {fileID: 4891398069884480}
 --- !u!114 &114373721649897252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5689,7 +5697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5697,13 +5705,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4503334380524964}
+  - {fileID: 4798932401953700}
 --- !u!114 &114426903335216546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5715,7 +5725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5723,13 +5733,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4424519814936942}
+  - {fileID: 4642857618458836}
 --- !u!114 &114427612238187390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5741,7 +5753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5749,13 +5761,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4154319573657372}
+  - {fileID: 4036822101947522}
 --- !u!114 &114456612344165102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5970,7 +5984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e1057be23b2c043bd3029baec4a03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 80
+  maxHealth: 160
   healthWhenBroken: 0.5
   brokenMesh: {fileID: 4300000, guid: 003c60c2cc7672247b7d519a4350a7d1, type: 3}
   healthWhenSmoking: 0.25
@@ -5978,13 +5992,15 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 12
-  projectileForce: 5
+  damage: 60
+  projectileForce: 50
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
   fireEffect: projectileEffect
-  firePoints: []
+  firePoints:
+  - {fileID: 4074633220475776}
+  - {fileID: 4766523245415952}
 --- !u!114 &114958628415664874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6000,13 +6016,12 @@ MonoBehaviour:
   bountyDelay: 0.1
   bounty:
   - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
-  - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   sinkingSound: sink
   currentHealth: 0
-  baseMoveSpeed: 5.6
+  baseMoveSpeed: 6
   rotationSpeed: 1
-  attackRange: 70
-  awarenessRange: 150
+  attackRange: 90
+  awarenessRange: 155
   damageSpreadMultiplier: 0.45
   stunDuration: 1
   goldReward: 237

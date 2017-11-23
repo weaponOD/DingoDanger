@@ -9947,8 +9947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 55
-  goldMax: 253
+  goldMin: 33
+  goldMax: 479
   playSound: 1
   distanceToHook: 35
   moveSpeed: 15
@@ -10090,11 +10090,11 @@ MonoBehaviour:
   bounty: []
   sinkingSound: CHANGE
   currentHealth: 0
-  awarenessRange: 100
-  minimumRange: 60
-  damage: 60
-  reloadTime: 3
-  projectileForce: 50
+  awarenessRange: 200
+  minimumRange: 123.28
+  damage: 65
+  reloadTime: 6
+  projectileForce: 250
   ammoType: cannonBall
   shootSound: cannonFire
   front: 1
@@ -10128,10 +10128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 55
-  goldMax: 227
+  goldMin: 33
+  goldMax: 479
   playSound: 1
-  distanceToHook: 45
+  distanceToHook: 35
   moveSpeed: 15
   floatSound: float
 --- !u!114 &114826244175596606

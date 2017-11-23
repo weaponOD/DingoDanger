@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1568195136468266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.060238, y: 0.5295687, z: -88.56132}
+  m_LocalPosition: {x: -49.060238, y: 0, z: -88.56132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,13 +128,13 @@ MonoBehaviour:
     canExpand: 1
     objects: []
   - objectName: woodImpactEffect
-    pooledPrefab: {fileID: 1978962939801300, guid: df12c07971cdb1c4c8283643b36c6143,
+    pooledPrefab: {fileID: 1388516520966756, guid: 2057429646f8c474d8477b93acf8636d,
       type: 2}
     poolSize: 30
     canExpand: 0
     objects: []
   - objectName: stoneImpactEffect
-    pooledPrefab: {fileID: 1258126965516234, guid: 214af1e2f6e3bcf46be305b846c2a445,
+    pooledPrefab: {fileID: 1388516520966756, guid: aaeb729f36ca06c49ae29b5f19b47ccd,
       type: 2}
     poolSize: 30
     canExpand: 0

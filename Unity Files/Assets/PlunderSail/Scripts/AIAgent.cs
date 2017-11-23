@@ -77,6 +77,9 @@ public class AIAgent : LivingEntity
     [SerializeField]
     protected bool stateIsActive = false;
 
+    [SerializeField]
+    private float angle;
+
     protected float stateCoolDown = 2;
 
     protected float ActiveStateTime = 0;
@@ -226,8 +229,7 @@ public class AIAgent : LivingEntity
         if (currentState == State.FIGHT)
         {
             Vector3 vecBetween = player.transform.position - transform.position;
-            float angle = 0;
-            
+                        
             // if player is closer to right side
             if (Vector3.Distance(player.transform.position, transform.position + transform.right) < Vector3.Distance(player.transform.position, transform.position - transform.right))
             {

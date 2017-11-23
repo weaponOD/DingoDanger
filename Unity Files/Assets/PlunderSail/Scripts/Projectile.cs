@@ -112,10 +112,10 @@ public class Projectile : MonoBehaviour
         }
         else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
-            Debug.Log("Hit Tower"); 
             // we've hit a tower
             if (_collision.collider.gameObject.GetComponent<Tower>() != null)
             {
+                Debug.Log("Hit Tower");
                 _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
 
                 GameObject hitEffect = stoneHitPool.getPooledObject();

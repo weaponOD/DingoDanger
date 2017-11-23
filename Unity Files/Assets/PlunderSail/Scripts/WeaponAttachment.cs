@@ -37,6 +37,7 @@ public class WeaponAttachment : AttachmentBase
 
     protected Transform[] effectPoints;
 
+    [SerializeField]
     protected bool facingLeft;
 
     protected LaunchMesh arc;
@@ -78,7 +79,10 @@ public class WeaponAttachment : AttachmentBase
 
         projectilePool = ResourceManager.instance.getPool(ammoType);
 
-        fireEffectPool = ResourceManager.instance.getPool(fireEffect);
+        if (ResourceManager.instance.getPool(fireEffect) != null)
+        {
+            fireEffectPool = ResourceManager.instance.getPool(fireEffect);
+        }
     }
 
     public void UpdateRange(float _velocity)
@@ -135,7 +139,7 @@ public class WeaponAttachment : AttachmentBase
         if (projectile != null)
         {
             projectile.transform.position = _firePoint.position;
-            //projectile.transform.rotation = _firePoint.rotation;
+
 
             projectile.SetActive(true);
 
@@ -147,13 +151,24 @@ public class WeaponAttachment : AttachmentBase
                 Vector3 shotVelocity = (transform.GetChild(1).forward * projectileForce + Vector3.up * 0.7f) * arc.Velocity;
 
                 shot.FireProjectile(shotVelocity);
+
+                //Debug.Log("Cannon Fired with aim mode!!");
             }
             else
             {
+                projectile.transform.rotation = _firePoint.rotation;
+
                 shot.FireProjectile(shipVelocity, projectileForce);
+
+                //Debug.Log("Cannon Fired with no aim mode");
             }
 
-            GameObject effect = null; //fireEffectPool.getPooledObject();
+            GameObject effect = null;
+
+            if (fireEffectPool != null)
+            {
+                effect = fireEffectPool.getPooledObject();
+            }
 
             if (effect != null)
             {

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114642704906129664}
   - component: {fileID: 114977606310889968}
   - component: {fileID: 136436138696282392}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WoodenBarrel_001_OceanStandard_001_Whole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,8 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 13
-  goldMax: 65
+  goldMin: 29
+  goldMax: 458
+  playSound: 1
   distanceToHook: 30
   moveSpeed: 12
   floatSound: float

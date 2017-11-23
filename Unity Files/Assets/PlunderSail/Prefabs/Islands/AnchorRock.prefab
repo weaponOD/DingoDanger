@@ -5409,7 +5409,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1607547217340164}
   m_LocalRotation: {x: -0, y: -0.38268277, z: -0, w: 0.92387986}
-  m_LocalPosition: {x: -5.53, y: 3.97, z: 3.99}
+  m_LocalPosition: {x: -5.53, y: -0.02, z: 3.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4338505185334902}
@@ -9947,10 +9947,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 17
-  goldMax: 35
+  goldMin: 55
+  goldMax: 253
   playSound: 1
-  distanceToHook: 55
+  distanceToHook: 35
   moveSpeed: 15
   floatSound: float
 --- !u!114 &114182442848011070
@@ -10128,10 +10128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 17
-  goldMax: 35
+  goldMin: 55
+  goldMax: 227
   playSound: 1
-  distanceToHook: 55
+  distanceToHook: 45
   moveSpeed: 15
   floatSound: float
 --- !u!114 &114826244175596606

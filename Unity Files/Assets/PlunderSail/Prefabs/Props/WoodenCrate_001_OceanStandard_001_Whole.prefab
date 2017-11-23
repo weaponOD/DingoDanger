@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114110112501833880}
   - component: {fileID: 114670646091669438}
   - component: {fileID: 65323579249746894}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WoodenCrate_001_OceanStandard_001_Whole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,8 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964940f1538823c4caf1b9a3f103b4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldMin: 13
-  goldMax: 65
+  goldMin: 57
+  goldMax: 511
+  playSound: 1
   distanceToHook: 30
   moveSpeed: 12
   floatSound: float

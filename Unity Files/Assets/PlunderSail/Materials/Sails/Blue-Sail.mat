@@ -34,6 +34,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Diffuse:
+        m_Texture: {fileID: 2800000, guid: b66bceaf0cc0ace4e9bdc92f14bba709, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -46,6 +50,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normals:
+        m_Texture: {fileID: 2800000, guid: bbab0a6f7bae9cf42bf057d8ee2755f6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,9 +62,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 00f93205cbfff30458bf7ea512156b66, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindTexture:
+        m_Texture: {fileID: 2800000, guid: ffa9c02760c2b4e8eb9814ec06c4b05b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_7196:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO: 0
     - _BaseLight: 1
+    - _BulgeScale: 0.2
+    - _BulgeShape: 5
     - _BumpScale: 1
     - _Cutoff: 0.894
     - _DetailNormalMapScale: 1
@@ -65,6 +87,8 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _GlowIntensity: 1.2
+    - _Intensity: 0.6
     - _Metallic: 0
     - _Mode: 0
     - _Occlusion: 0.8
@@ -75,12 +99,21 @@ Material:
     - _SpecularHighlights: 1
     - _SquashAmount: 1
     - _SrcBlend: 1
+    - _UVScale: 0.5
     - _UVSec: 0
+    - _WindAmplitude: 0.09
+    - _WindPower: 1.26
+    - _WindSpeed: 0
+    - _WindStrength: 0.203
+    - _Y: -0.1
     - _ZWrite: 1
     m_Colors:
     - _BaseColour: {r: 0.72404844, g: 0.7941176, b: 0.7854194, a: 1}
     - _Color: {r: 0, g: 0.7794118, b: 0.65040565, a: 1}
+    - _Colour: {r: 0, g: 0.8758622, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GlowColor: {r: 1, g: 0.23914805, b: 0.11029408, a: 1}
     - _LogoColour: {r: 0.07352942, g: 0.07352942, b: 0.07352942, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _WindDirection: {r: 5.31, g: 0.5, b: 0.5, a: 0}

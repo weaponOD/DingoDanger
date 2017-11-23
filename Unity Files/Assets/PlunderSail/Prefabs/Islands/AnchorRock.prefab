@@ -1987,6 +1987,7 @@ GameObject:
   - component: {fileID: 114390945603578076}
   - component: {fileID: 114310231367626016}
   - component: {fileID: 114568475392395504}
+  - component: {fileID: 136860335806211206}
   m_Layer: 0
   m_Name: Tower_002_Enemy_002_LantuernHull
   m_TagString: Untagged
@@ -3972,14 +3973,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469863951062446}
-  m_LocalRotation: {x: -0.01181572, y: 0.3009637, z: -0.03740768, w: 0.9528284}
+  m_LocalRotation: {x: -0.028133042, y: -0.18655428, z: -0.027340043, w: 0.98166114}
   m_LocalPosition: {x: 16.02, y: 19.39, z: 14.33}
   m_LocalScale: {x: 2.72, y: 2.7199998, z: 2.7199998}
   m_Children:
   - {fileID: 4065127501500226}
   m_Father: {fileID: 4960763581455858}
   m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 35.059002, z: -4.497}
+  m_LocalEulerAnglesHint: {x: -3.752, y: -21.439001, z: -2.48}
 --- !u!4 &4219958458762694
 Transform:
   m_ObjectHideFlags: 1
@@ -4840,7 +4841,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075103954979678}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.068, y: 0.005, z: 0.033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4236666912144644}
@@ -7838,7 +7839,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
+  - {fileID: 2100000, guid: 0aa27fba7adc81140af2fbf664e07cfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8416,7 +8417,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
+  - {fileID: 2100000, guid: 0aa27fba7adc81140af2fbf664e07cfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8641,7 +8642,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 02d7ad1576aec6f4986d1c83693863a3, type: 2}
-  - {fileID: 2100000, guid: 1e954dfb24fdbaa4aad5cef7063d4006, type: 2}
+  - {fileID: 2100000, guid: 0aa27fba7adc81140af2fbf664e07cfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9965,7 +9966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 28.1
   enemyLimit: 2
-  delayBeforeDeactivate: 5
+  delayBeforeDeactivate: 250
   dock: {fileID: 114322516888752538}
   islandCross: {fileID: 0}
   towers:
@@ -10027,7 +10028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 28.1
   enemyLimit: 2
-  delayBeforeDeactivate: 5
+  delayBeforeDeactivate: 250
   dock: {fileID: 114322516888752538}
   islandCross: {fileID: 0}
   towers:
@@ -10089,11 +10090,11 @@ MonoBehaviour:
   bounty: []
   sinkingSound: CHANGE
   currentHealth: 0
-  awarenessRange: 53.7
-  minimumRange: 28.7
+  awarenessRange: 100
+  minimumRange: 60
   damage: 60
   reloadTime: 3
-  projectileForce: 25
+  projectileForce: 50
   ammoType: cannonBall
   shootSound: cannonFire
   front: 1
@@ -10353,6 +10354,19 @@ CapsuleCollider:
   m_Height: 3.49
   m_Direction: 2
   m_Center: {x: -0.02137357, y: 0.51812524, z: 0.1977756}
+--- !u!136 &136860335806211206
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1607547217340164}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.47
+  m_Height: 30.07
+  m_Direction: 1
+  m_Center: {x: 0, y: 8.41, z: 0}
 --- !u!136 &136877363084158006
 CapsuleCollider:
   m_ObjectHideFlags: 1

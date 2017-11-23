@@ -44,6 +44,8 @@ public class BuildModeCam : MonoBehaviour
 
     private bool invertedY = false;
 
+    private Transform targetPos;
+
     // Camera Rotation Variables
     private float cameraDistance;
 
@@ -130,6 +132,11 @@ public class BuildModeCam : MonoBehaviour
         {
             transform.localPosition = new Vector3(0f, 0f, Mathf.Lerp(transform.localPosition.z, cameraDistance * -1f, Time.deltaTime * zoomDampening));
         }
+
+        if(pivot.position != targetPos.position)
+        {
+            pivot.position = targetPos.position;
+        }
     }
 
     public bool InvertX
@@ -146,6 +153,7 @@ public class BuildModeCam : MonoBehaviour
 
     public void MoveToPoint(Transform _target)
     {
+        targetPos = _target;
         pivot.position = _target.position;
     }
 }

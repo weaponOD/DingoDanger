@@ -324,6 +324,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Stop()
+    {
+        moveSpeed = 0;
+        maxMoveSpeed = 0;
+    }
+
     private void SetBuildMode(bool isBuildMode)
     {
         rb.isKinematic = isBuildMode;

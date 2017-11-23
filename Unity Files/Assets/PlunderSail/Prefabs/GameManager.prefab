@@ -80,7 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5d18095d82055458243e31a4eeb433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pier: {fileID: 0}
+  currentPier: {fileID: 0}
+  lastPier: {fileID: 0}
   playerCentre: {fileID: 0}
   loading: {fileID: 0}
   enterDockSound: enterDock
@@ -180,30 +181,30 @@ MonoBehaviour:
   cabins:
   - Name: Cabin
     GO: {fileID: 1995593758867580, guid: 4cd33a5bafc6c2c4286f6708b1ee6180, type: 2}
-    cost: 10
+    cost: 25
     costText: {fileID: 0}
   Cannons:
   - Name: Lead Thrower
     GO: {fileID: 1586404089410776, guid: eea64756576e9d94aad301bfba6b3540, type: 2}
-    cost: 10
+    cost: 100
     costText: {fileID: 0}
   - Name: TnTrident
     GO: {fileID: 1586404089410776, guid: 16fd37d37c03664449079bba7d01cd82, type: 2}
-    cost: 300
+    cost: 1200
     costText: {fileID: 0}
   - Name: Drop Bear
     GO: {fileID: 1586404089410776, guid: 8c8d2112cc8038040bac9b726cfb51db, type: 2}
-    cost: 250
+    cost: 2000
     costText: {fileID: 0}
   Sails:
   - Name: Sail
     GO: {fileID: 1545959945178424, guid: a624cd99417337d4087c2ac45dd29844, type: 2}
-    cost: 10
+    cost: 150
     costText: {fileID: 0}
   Armours:
   - Name: Armour
     GO: {fileID: 1029743739131934, guid: 21c80101972a87f4295db665b27fe6e1, type: 2}
-    cost: 25
+    cost: 125
     costText: {fileID: 0}
   skipBuilt: 0
 --- !u!114 &114994603169521724

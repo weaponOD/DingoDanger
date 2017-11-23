@@ -88,6 +88,7 @@ public class AttachmentBase : MonoBehaviour
             if (!GetComponent<Rigidbody>())
             {
                 gameObject.AddComponent<Rigidbody>();
+                gameObject.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 0.1f);
             }
 
             Destroy(gameObject, 3f);

@@ -37,8 +37,6 @@ public class Player : LivingEntity
 
     private CameraController CC;
 
-    private Mesh rangeMesh;
-
     public delegate void GoldReceiced();
 
     public event GoldReceiced GoldChanged;
@@ -53,9 +51,6 @@ public class Player : LivingEntity
     [SerializeField]
     private float minimumRange = 0;
 
-    //[SerializeField]
-    //private MeshFilter rangeMeshFilter;
-
     [Header("Sounds")]
     [SerializeField]
     private string takeDamageSound = "CHANGE";
@@ -65,6 +60,8 @@ public class Player : LivingEntity
     private float previousRange;
 
     private bool aiming = false;
+
+    private Transform ship;
 
     private string aimDir = "";
 
@@ -76,6 +73,8 @@ public class Player : LivingEntity
         weaponController = GetComponent<WeaponController>();
         components = GetComponent<ComponentManager>();
 
+        ship = transform.GetChild(0).GetChild(0);
+
         CC = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>();
 
         // Subscribe to game state
@@ -86,13 +85,7 @@ public class Player : LivingEntity
     {
         base.Start();
 
-        rangeMesh = new Mesh();
-        rangeMesh.name = "Range Mesh";
-        //rangeMeshFilter.mesh = rangeMesh;
-
         range = minimumRange;
-
-        //rangeMeshFilter.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -129,9 +122,6 @@ public class Player : LivingEntity
 
                     if (aimDir.Equals("left"))
                     {
-                        //rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 270f, 0f); // Left
-                        //rangeMeshFilter.gameObject.SetActive(true);
-
                         aiming = true;
 
                         WeaponAttachment[] leftWeapons = components.GetAttachedLeftWeapons();
@@ -144,9 +134,6 @@ public class Player : LivingEntity
 
                     if (aimDir.Equals("right"))
                     {
-                        //rangeMeshFilter.transform.localEulerAngles = new Vector3(0f, 90f, 0f); // Right
-                        //rangeMeshFilter.gameObject.SetActive(true);
-
                         aiming = true;
 
                         WeaponAttachment[] rightWeapons = components.GetAttachedRightWeapons();
@@ -163,7 +150,6 @@ public class Player : LivingEntity
                 if (aiming)
                 {
                     aiming = false;
-                    //rangeMeshFilter.gameObject.SetActive(false);
 
                     CC.CancelAim();
 
@@ -237,17 +223,6 @@ public class Player : LivingEntity
         set { hasControl = value; }
     }
 
-    private void LateUpdate()
-    {
-        if (aiming)
-        {
-            //Vector3 eular = rangeMeshFilter.gameObject.transform.eulerAngles;
-            //rangeMeshFilter.gameObject.transform.eulerAngles = new Vector3(0f, eular.y, 0f);
-
-            DrawRangeMesh();
-        }
-    }
-
     public override void TakeDamage(float damgage)
     {
         base.TakeDamage(damgage);
@@ -288,20 +263,27 @@ public class Player : LivingEntity
         }
     }
 
-    private void DrawRangeMesh()
+    public void FallOfWorld()
     {
-        Vector3[] vertices = new Vector3[4];
-        int[] triangles = { 0, 1, 2, 0, 2, 3 };
+        ship.gameObject.AddComponent<Rigidbody>();
+        ship.gameObject.GetComponent<Rigidbody>().velocity = velocity;
 
-        vertices[0] = new Vector3(-7, 0, 0);       // left back
-        vertices[1] = new Vector3(-2, 0, range);    // left forward
-        vertices[2] = new Vector3(2, 0, range);     // right forward
-        vertices[3] = new Vector3(7, 0, 0);        // right back
+        controller.Stop();
+        ship.parent = null;
 
-        rangeMesh.Clear();
-        rangeMesh.vertices = vertices;
-        rangeMesh.triangles = triangles;
-        rangeMesh.RecalculateNormals();
+        TakeDamage(currentHealth + 100);
+    }
+
+    public void Respawn()
+    {
+        components.DestroyAll();
+        Destroy(ship.GetComponent<Rigidbody>());
+
+        ship.parent = transform.GetChild(0);
+
+        ship.localPosition = new Vector3(0f, 0f, 3f);
+        ship.localEulerAngles = Vector3.zero;
+        ship.localScale = new Vector3(1f, 1f, 1f);
     }
 
     private void SetBuildMode(bool isBuildMode)

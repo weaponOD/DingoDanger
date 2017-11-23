@@ -86,6 +86,10 @@ public class LivingEntity : MonoBehaviour, IDamageable
         {
             Crumble();
         }
+        else
+        {
+            Debug.Log("Player dead");
+        }
     }
 
     protected void Crumble()

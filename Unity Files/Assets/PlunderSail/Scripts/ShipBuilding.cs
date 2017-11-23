@@ -926,6 +926,8 @@ public class ShipBuilding : MonoBehaviour
 
     public void moveGridToPlayer(Transform _target)
     {
+        Debug.Log(_target.name);
+
         Buildgrid.position = new Vector3(playerCentre.position.x, playerCentre.position.y, playerCentre.position.z);
 
         for (int x = 0; x < xLength; x++)

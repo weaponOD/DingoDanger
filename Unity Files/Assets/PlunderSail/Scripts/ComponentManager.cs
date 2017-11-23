@@ -23,6 +23,14 @@ public class ComponentManager : MonoBehaviour
         UpdateParts(false);
     }
 
+    public void DestroyAll()
+    {
+        foreach(AttachmentBase attachment in attachments)
+        {
+            attachment.TakeDamage(99999);
+        }
+    }
+
     public AttachmentBase[] Attachments
     {
         get

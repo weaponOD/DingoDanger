@@ -7,7 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private Transform pier = null;
+    private Transform currentPier = null;
+
+    [SerializeField]
+    private Transform lastPier = null;
 
     [SerializeField]
     private Transform playerCentre;
@@ -38,6 +41,9 @@ public class GameManager : MonoBehaviour
         PC = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         player = PC.GetComponent<Player>();
+
+        player.OnDeath += PlayerDead;
+
         CC = GetComponent<CameraController>();
         builder = GetComponent<ShipBuilding>();
     }
@@ -65,6 +71,20 @@ public class GameManager : MonoBehaviour
         UI.FadeIn();
     }
 
+    private void PlayerDead(LivingEntity _player)
+    {
+        Invoke("RespawnPlayer", 1.7f);
+    }
+
+    private void RespawnPlayer()
+    {
+        UI.FadeScreen();
+        PC.CanMove = false;
+        player.HasControl = false;
+        
+        StartCoroutine(TransitionToBuildMode());
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Y_Button"))
@@ -73,7 +93,7 @@ public class GameManager : MonoBehaviour
             {
                 if (!GameState.BuildMode)
                 {
-                    if (pier != null)
+                    if (currentPier != null)
                     {
                         UI.FadeScreen();
                         PC.CanMove = false;
@@ -159,12 +179,14 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
+        player.Respawn();
+
         GameState.BuildMode = true;
 
-        if (pier != null)
+        if (currentPier != null)
         {
-            PC.transform.position = pier.position;
-            PC.transform.rotation = pier.rotation;
+            PC.transform.position = currentPier.position;
+            PC.transform.rotation = currentPier.rotation;
 
             PC.transform.GetChild(0).localPosition = Vector3.zero;
             PC.transform.GetChild(0).localRotation = Quaternion.identity;
@@ -172,7 +194,20 @@ public class GameManager : MonoBehaviour
             PC.ResetHeading();
 
             CC.SwitchToBuildMode();
-            builder.moveGridToPlayer(pier);
+            builder.moveGridToPlayer(currentPier);
+        }
+        else if(lastPier != null)
+        {
+            PC.transform.position = lastPier.position;
+            PC.transform.rotation = lastPier.rotation;
+
+            PC.transform.GetChild(0).localPosition = Vector3.zero;
+            PC.transform.GetChild(0).localRotation = Quaternion.identity;
+
+            PC.ResetHeading();
+
+            CC.SwitchToBuildMode();
+            builder.moveGridToPlayer(lastPier);
         }
     }
 
@@ -184,12 +219,17 @@ public class GameManager : MonoBehaviour
 
     public void setPier(Transform _dockPos)
     {
-        pier = _dockPos;
+        currentPier = _dockPos;
 
-        canPressY = (pier != null);
+        if(_dockPos != null)
+        {
+            lastPier = _dockPos;
+        }
 
-        CC.MoveBuildCameraToPier(pier);
-        UI.ShowPierPopUp((pier != null));
+        canPressY = (currentPier != null);
+
+        CC.MoveBuildCameraToPier(currentPier);
+        UI.ShowPierPopUp((currentPier != null));
     }
 }
 

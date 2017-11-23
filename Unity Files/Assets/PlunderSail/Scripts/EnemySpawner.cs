@@ -190,7 +190,7 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 OutOfSightPos()
     {
-        Vector3 spawnPoint = GetPointOnUnitCircleCircumference();
+        Vector3 spawnPoint = transform.position + GetPointOnUnitCircleCircumference();
 
         spawnPoint.y = 0f;
 

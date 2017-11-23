@@ -156,6 +156,7 @@ public class TowerDirectional : TowerBase
             }
         }
 
+        canFire = false;
         Invoke("Reload", reloadTime);
     }
 
@@ -189,6 +190,7 @@ public class TowerDirectional : TowerBase
             }
         }
 
+        canFire = false;
         Invoke("Reload", reloadTime);
     }
 
@@ -222,6 +224,7 @@ public class TowerDirectional : TowerBase
             }
         }
 
+        canFire = false;
         Invoke("Reload", reloadTime);
     }
 
@@ -255,6 +258,7 @@ public class TowerDirectional : TowerBase
             }
         }
 
+        canFire = false;
         Invoke("Reload", reloadTime);
     }
 }

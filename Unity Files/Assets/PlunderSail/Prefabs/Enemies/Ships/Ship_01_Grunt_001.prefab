@@ -5434,6 +5434,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4963826440913768}
   - {fileID: 4104592240430618}
+  facingLeft: 0
 --- !u!114 &114049723641551440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5541,6 +5542,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4602802798416578}
   - {fileID: 4939176528363288}
+  facingLeft: 0
 --- !u!114 &114169497105762588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5600,6 +5602,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4390836290773398}
   - {fileID: 4603547932772730}
+  facingLeft: 0
 --- !u!114 &114218155539545934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5686,6 +5689,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4565069750924094}
   - {fileID: 4891398069884480}
+  facingLeft: 0
 --- !u!114 &114373721649897252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5714,6 +5718,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4503334380524964}
   - {fileID: 4798932401953700}
+  facingLeft: 0
 --- !u!114 &114426903335216546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5742,6 +5747,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4424519814936942}
   - {fileID: 4642857618458836}
+  facingLeft: 0
 --- !u!114 &114427612238187390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5770,6 +5776,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4154319573657372}
   - {fileID: 4036822101947522}
+  facingLeft: 0
 --- !u!114 &114456612344165102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5829,7 +5836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireShoutSound: 
-  reloadTime: 1
+  reloadTime: 1.45
 --- !u!114 &114654363439905158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6001,6 +6008,7 @@ MonoBehaviour:
   firePoints:
   - {fileID: 4074633220475776}
   - {fileID: 4766523245415952}
+  facingLeft: 0
 --- !u!114 &114958628415664874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6031,6 +6039,7 @@ MonoBehaviour:
   sightDistance: 40
   currentState: 0
   stateIsActive: 0
+  angle: 0
 --- !u!114 &114995326060393128
 MonoBehaviour:
   m_ObjectHideFlags: 1

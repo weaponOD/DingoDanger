@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: BlackRock
-  m_Shader: {fileID: 4800000, guid: 6eef62f0120c6bb48a5574583589eda0, type: 3}
+  m_Shader: {fileID: 4800000, guid: 646050aceed48ff46a2b49505bcb4002, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -69,24 +69,30 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Exp: 1
+    - _G: 0.334
     - _Gloss: 0.642
     - _GlossMapScale: 1
     - _Glossiness: 0.088
     - _GlossyReflections: 1
+    - _GradientColourIntensity: 0.625
     - _HeightControl: -0.04
+    - _High: 0
     - _HighestPos: 1
     - _Intensity: 1
-    - _Level: 3.3
+    - _Level: 4.69
+    - _Low: 0.707
+    - _M: 0.276
     - _Metallic: 0.304
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _Opacity: 1
     - _Parallax: 0.02
     - _Slider: 0.6
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _UpNode: 0.344
+    - _UpNode: 0.365
     - _ZWrite: 1
     - _iMax: 0.05
     - _iMin: 2.04
@@ -95,10 +101,13 @@ Material:
     - _minY: 0
     - _node_1020: 0
     - _node_2019: 0
+    - _node_6274: 0
+    - _node_6989: 0
+    - _node_7126: 0
     - _value: 0.69
     m_Colors:
-    - _BaseColour: {r: 0.27969745, g: 0.07336721, b: 0.43382353, a: 1}
+    - _BaseColour: {r: 0.11320994, g: 0.097426474, b: 0.125, a: 1}
     - _Color: {r: 0.125, g: 0, b: 0.06982756, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _GradientColour: {r: 0.24264705, g: 0.24264705, b: 0.24264705, a: 1}
-    - _TopColour: {r: 0.12543252, g: 0.27317742, b: 0.29411763, a: 1}
+    - _GradientColour: {r: 0.15862082, g: 0, b: 1, a: 1}
+    - _TopColour: {r: 0.9495942, g: 0.47794116, b: 1, a: 1}

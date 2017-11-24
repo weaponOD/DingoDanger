@@ -52,9 +52,6 @@ public class PlayModeCameraTwo : MonoBehaviour
     private Camera myCamera;
 
     [SerializeField]
-    private Vector3 savedRotation;
-
-    [SerializeField]
     private Vector3 localRotation;
 
     private void Awake()
@@ -82,6 +79,9 @@ public class PlayModeCameraTwo : MonoBehaviour
     private void OnEnable()
     {
         localRotation.x = target.localEulerAngles.y;
+
+        Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
+        pivot.rotation = targetRotation;
     }
 
     private void Update()
@@ -116,12 +116,7 @@ public class PlayModeCameraTwo : MonoBehaviour
     }
 
     public void AimRight()
-    {// only done the first time aimRight is called
-        if (!aiming)
-        {
-            savedRotation = localRotation;
-        }
-
+    {
         aiming = true;
 
         localRotation.x = target.localEulerAngles.y + 90;
@@ -130,12 +125,6 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     public void AimLeft()
     {
-        // only done the first time aimLeft is called
-        if(!aiming)
-        {
-            savedRotation = localRotation;
-        }
-
         aiming = true;
 
         localRotation.x = target.localEulerAngles.y - 90;
@@ -147,11 +136,15 @@ public class PlayModeCameraTwo : MonoBehaviour
         // only done the first time cancelAim is called
         if (aiming)
         {
-            localRotation.x = target.localEulerAngles.y;
-            //localRotation = savedRotation;
+            Invoke("ReturnToBehindShip", 1f);
         }
 
         aiming = false;
+    }
+
+    private void ReturnToBehindShip()
+    {
+        localRotation.x = target.localEulerAngles.y;
     }
 
     public void SetSensitivity(float _value)

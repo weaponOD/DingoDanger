@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string enterDockSound = "CHANGE";
 
+    [SerializeField]
+    private string defeatedEncounter = "CHANGE - defeatedEncounter";
+
+    private bool cinematicPlaying = false;
+
     UIController UI;
     PlayerController PC;
     Player player;
@@ -32,8 +37,6 @@ public class GameManager : MonoBehaviour
     private bool canPressY = true;
 
     private bool paused = false;
-
-    private bool mapActive = false;
 
     private void Awake()
     {
@@ -62,8 +65,8 @@ public class GameManager : MonoBehaviour
     {
         player.HasControl = true;
         PC.CanMove = true;
-        
-        if(loading != null)
+
+        if (loading != null)
         {
             loading.gameObject.SetActive(false);
         }
@@ -81,12 +84,18 @@ public class GameManager : MonoBehaviour
         UI.FadeScreen();
         PC.CanMove = false;
         player.HasControl = false;
-        
+
         StartCoroutine(TransitionToBuildMode());
     }
 
     private void Update()
     {
+        if (cinematicPlaying)
+        {
+            return;
+        }
+
+
         if (Input.GetButtonDown("Y_Button"))
         {
             if (canPressY && !GameState.Paused)
@@ -124,11 +133,7 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Back_Button") && !paused)
             {
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                //Pause();
-
-                mapActive = true;
-                UI.ShowMap(mapActive);
+                UI.ShowMap(true);
             }
 
             if (Input.GetButtonDown("Start_Button"))
@@ -138,19 +143,53 @@ public class GameManager : MonoBehaviour
                 UI.showPauseMenu(paused);
             }
 
-            if (Input.GetButtonUp("Back_Button") )
+            if (Input.GetButtonUp("Back_Button"))
             {
-                //Pause();
-
-                mapActive = false;
-                UI.ShowMap(mapActive);
+                UI.ShowMap(false);
             }
         }
+    }
+
+    public void EncounterDefeated(GameObject _cross)
+    {
+        AudioManager.instance.PlaySound(defeatedEncounter);
+
+        StartCoroutine(PlayVictoryCinematic(4, _cross));
+    }
+
+    private IEnumerator PlayVictoryCinematic(float _delay, GameObject _cross)
+    {
+        yield return new WaitForSecondsRealtime(_delay);
+
+        cinematicPlaying = true;
+        Pause();
+        UI.ShowMap(true);
+
+        yield return new WaitForSecondsRealtime(1f);
+
+        _cross.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        AudioManager.instance.FadeOut(defeatedEncounter, 10f);
+        UI.ShowMap(false);
+
+        cinematicPlaying = false;
+        Pause();
     }
 
     public void Pause()
     {
         paused = !paused;
+
+        if(paused)
+        {
+            Debug.Log("Game is paused");
+        }
+        else
+        {
+            Debug.Log("Game is live");
+        }
 
         GameState.Paused = paused;
 
@@ -179,7 +218,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
-        if(player.isDead)
+        if (player.isDead)
         {
             player.Respawn();
         }
@@ -199,7 +238,7 @@ public class GameManager : MonoBehaviour
             CC.SwitchToBuildMode();
             builder.moveGridToPlayer(currentPier);
         }
-        else if(lastPier != null)
+        else if (lastPier != null)
         {
             PC.transform.position = lastPier.position;
             PC.transform.rotation = lastPier.rotation;
@@ -224,7 +263,7 @@ public class GameManager : MonoBehaviour
     {
         currentPier = _dockPos;
 
-        if(_dockPos != null)
+        if (_dockPos != null)
         {
             lastPier = _dockPos;
         }

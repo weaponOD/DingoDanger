@@ -35,8 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Transform player = null;
 
-    [SerializeField]
-    private Camera playCam;
+    private GameManager gm;
 
     private bool cancelAttack = false;
 
@@ -53,6 +52,8 @@ public class EnemySpawner : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         shouldHaveTowers = (towers.Length > 0);
+
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         towerCount = towers.Length;
 
@@ -76,19 +77,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Vector3.Distance(player.position, transform.position) <= radius)
         {
-            if (towerCount == 0 && shouldHaveTowers)
-            {
-                dock.isUnlocked = true;
-                isDefeated = true;
-
-                if (islandCross != null)
-                {
-                    islandCross.SetActive(true);
-                }
-
-                CancelArms();
-            }
-            else if (!attackingPlayer)
+            if (!attackingPlayer)
             {
                 attackingPlayer = true;
                 CallToArms();
@@ -173,14 +162,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector3 spawnPos = OutOfSightPos();
 
-        if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null)
+        if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null && Vector3.Distance(player.transform.position, spawnPos) > 5)
         {
-            Vector3 outOfSight = playCam.WorldToViewportPoint(spawnPos);
-
-            if (spawnPos.x < 0 || spawnPos.x > 1)
-            {
-                activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
-            }
+            activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
         }
         else
         {
@@ -190,9 +174,25 @@ public class EnemySpawner : MonoBehaviour
 
     private void EnemyDied(LivingEntity _entity)
     {
+        Debug.Log("Tower Died");
+
         if (_entity.GetComponent<TowerBase>())
         {
             towerCount--;
+        }
+
+        if (towerCount == 0 && shouldHaveTowers && !isDefeated)
+        {
+            dock.isUnlocked = true;
+            isDefeated = true;
+
+            if (islandCross != null)
+            {
+                gm.EncounterDefeated(islandCross);
+                //islandCross.SetActive(true);
+            }
+
+            CancelArms();
         }
     }
 

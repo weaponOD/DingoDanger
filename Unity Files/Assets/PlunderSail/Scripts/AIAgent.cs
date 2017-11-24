@@ -297,7 +297,7 @@ public class AIAgent : LivingEntity
 
         Debug.DrawRay(transform.position, transform.forward * sightDistance, Color.red);
 
-        int layerMask = LayerMask.GetMask("Island");
+        //int layerMask = LayerMask.GetMask("Island");
 
         if (Physics.Raycast(ray1, sightDistance))
         {

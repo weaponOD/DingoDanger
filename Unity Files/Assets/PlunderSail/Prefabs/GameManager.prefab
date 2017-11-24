@@ -85,6 +85,7 @@ MonoBehaviour:
   playerCentre: {fileID: 0}
   loading: {fileID: 0}
   enterDockSound: enterDock
+  defeatedEncounter: ambientIntro
 --- !u!114 &114658638090109668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,13 +107,13 @@ MonoBehaviour:
   - objectName: harpoon
     pooledPrefab: {fileID: 1804301577746708, guid: e5617f14bfa55f144b27b00e8fbc8f6a,
       type: 2}
-    poolSize: 30
+    poolSize: 10
     canExpand: 0
     objects: []
   - objectName: dropBear
     pooledPrefab: {fileID: 1804301577746708, guid: a1f24252b9f9cf3429c76ed6d34e7a03,
       type: 2}
-    poolSize: 30
+    poolSize: 10
     canExpand: 0
     objects: []
   - objectName: projectileEffect

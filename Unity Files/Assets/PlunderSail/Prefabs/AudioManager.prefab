@@ -33,7 +33,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461116417234096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -58,6 +58,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 1
     coolDown: 5
     nextPlayTime: 0
     canPlay: 1
@@ -68,6 +69,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 1
+    music: 1
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -79,6 +81,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
@@ -89,6 +92,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
@@ -99,6 +103,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 1
     nextPlayTime: 0
     canPlay: 1
@@ -111,6 +116,7 @@ MonoBehaviour:
     volume: 0.863
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 1
     nextPlayTime: 0
     canPlay: 1
@@ -121,6 +127,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
@@ -131,6 +138,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -149,6 +157,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 6
     nextPlayTime: 0
     canPlay: 1
@@ -166,7 +175,8 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
-    coolDown: 0
+    music: 0
+    coolDown: 0.1
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -181,6 +191,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 5.5
     nextPlayTime: 0
     canPlay: 1
@@ -191,6 +202,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 10
     nextPlayTime: 0
     canPlay: 1
@@ -200,6 +212,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -210,6 +223,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -223,6 +237,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 5.75
     nextPlayTime: 0
     canPlay: 1
@@ -233,6 +248,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -245,6 +261,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 0.5
     nextPlayTime: 0
     canPlay: 1
@@ -255,6 +272,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 1
+    music: 0
     coolDown: 5
     nextPlayTime: 0
     canPlay: 1
@@ -267,6 +285,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 0
+    music: 0
     coolDown: 14
     nextPlayTime: 0
     canPlay: 1
@@ -277,6 +296,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 1
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -287,6 +307,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     looping: 1
+    music: 0
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -297,6 +318,7 @@ MonoBehaviour:
     volume: 0.716
     pitch: 1
     looping: 1
+    music: 1
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
@@ -307,7 +329,10 @@ MonoBehaviour:
     volume: 0.716
     pitch: 1
     looping: 1
+    music: 1
     coolDown: 0
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
+  musicLevel: 1
+  soundLevel: 1

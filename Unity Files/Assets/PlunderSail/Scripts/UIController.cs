@@ -340,15 +340,15 @@ public class UIController : MonoBehaviour
                     {
                         selectedSlider.value += 0.01f;
 
-                        if(selectedSlider == sensitivitySlider)
+                        if (selectedSlider == sensitivitySlider)
                         {
                             CC.setSensitivity(selectedSlider.value);
                         }
-                        else if(selectedSlider == soundSlider)
+                        else if (selectedSlider == soundSlider)
                         {
                             AudioManager.instance.SetSoundLevel(selectedSlider.value);
                         }
-                        else if(selectedSlider == musicSlider)
+                        else if (selectedSlider == musicSlider)
                         {
                             AudioManager.instance.SetMusicLevel(selectedSlider.value);
                         }
@@ -525,7 +525,7 @@ public class UIController : MonoBehaviour
             else
             {
                 // Don't change button settings when return from map
-                if(currentMenu != 1)
+                if (currentMenu != 1)
                 {
                     menu[currentMenu].buttons[menu[currentMenu].selectedIndex].sprite = defaultSpriteMenu;
 
@@ -758,6 +758,24 @@ public class UIController : MonoBehaviour
             percent += Time.deltaTime * speed;
             fadePlane.color = Color.Lerp(from, to, percent);
 
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeImage(Image[] _images, Color from, Color to, float time)
+    {
+        float speed = 1 / time;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            percent += Time.deltaTime * speed;
+
+            for(int i = 0; i < _images.Length; i++)
+            {
+                _images[i].color = Color.Lerp(from, to, percent);
+            }
+           
             yield return null;
         }
     }

@@ -65,7 +65,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if(!SceneManager.GetActiveScene().name.Equals("Main"))
+        if (!SceneManager.GetActiveScene().name.Equals("Main"))
         {
             AudioListener.volume = 0;
 
@@ -90,6 +90,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void FadeOut(string _name, float time)
+    {
+        SoundClass soundClass = Array.Find(sounds, sound => sound.name == _name);
+
+        if (soundClass != null)
+        {
+            StartCoroutine(FadeOutSound(soundClass, time));
+        }
+    }
+
     private IEnumerator FadeOutSound(SoundClass _sound, float time)
     {
         float speed = 1 / time;
@@ -99,7 +109,7 @@ public class AudioManager : MonoBehaviour
         {
             percent += Time.deltaTime * speed;
             _sound.audioSource.volume = Mathf.Lerp(1, 0, percent);
-            
+
 
             yield return null;
         }
@@ -124,7 +134,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
     {
-        if(scene.buildIndex == 1)
+        if (scene.buildIndex == 1)
         {
             StartCoroutine(FadeOutSound(sounds[22], 20f));
         }
@@ -151,7 +161,7 @@ public class AudioManager : MonoBehaviour
         {
             if (soundClass.canPlay)
             {
-                if(soundClass.music)
+                if (soundClass.music)
                 {
                     soundClass.audioSource.PlayOneShot(soundClass.audioClip[UnityEngine.Random.Range(0, soundClass.audioClip.Length)], soundClass.volume * musicLevel);
                 }
@@ -192,7 +202,7 @@ public class AudioManager : MonoBehaviour
 
     void OnDisable()
     {
-        
+
         SceneManager.sceneLoaded -= OnSceneChanged;
     }
 }

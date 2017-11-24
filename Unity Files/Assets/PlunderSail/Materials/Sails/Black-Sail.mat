@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Black-Sail
-  m_Shader: {fileID: 4800000, guid: 1ea6b69d28b54da46b225544eeef7e07, type: 3}
+  m_Shader: {fileID: 4800000, guid: 45ed334ff3de4074187f89a09c9920de, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -54,6 +54,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: 00f93205cbfff30458bf7ea512156b66, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindTexture:
+        m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO: 0
     - _BaseLight: 1
@@ -75,12 +83,19 @@ Material:
     - _SpecularHighlights: 1
     - _SquashAmount: 1
     - _SrcBlend: 1
+    - _UVScale: 1
     - _UVSec: 0
+    - _WindAmplitude: 0.09
+    - _WindPower: 1.5
+    - _WindSpeed: 0.282
+    - _WindStrength: 0.237
     - _ZWrite: 1
     m_Colors:
     - _BaseColour: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.18382353, g: 0.1270545, b: 0.1270545, a: 1}
+    - _Colour: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LogoColour: {r: 0, g: 0, b: 0, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _WindDirection: {r: 1, g: 0.5, b: 0.5, a: 0}

@@ -373,10 +373,8 @@ MonoBehaviour:
   starterHealth: 80
   bountyDelay: 0.1
   bounty:
-  - {fileID: 100004, guid: 723a5e4e002853e488501468ad09aedb, type: 3}
-  - {fileID: 100002, guid: 43ae892e2637e9b4caecf198f1329048, type: 3}
-  - {fileID: 100000, guid: 251937c2cbc440d4ead512f21278b5b7, type: 3}
-  - {fileID: 100000, guid: f66614b2d21f94b4fadd6337891cb426, type: 3}
+  - {fileID: 1651737292880838, guid: a509eec5f59c8ca43b97bfc992128ccc, type: 2}
+  - {fileID: 1070186356501488, guid: 46091821da97a6a4aa901a82e38a5385, type: 2}
   sinkingSound: sink
   currentHealth: 0
   baseMoveSpeed: 12
@@ -385,13 +383,14 @@ MonoBehaviour:
   awarenessRange: 0
   damageSpreadMultiplier: 0.45
   stunDuration: 1
-  goldReward: 187
+  goldReward: 25
   currentMoveSpeed: 0
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
   sightDistance: 40
   currentState: 0
   stateIsActive: 0
+  angle: 0
 --- !u!114 &114561812697660908
 MonoBehaviour:
   m_ObjectHideFlags: 1

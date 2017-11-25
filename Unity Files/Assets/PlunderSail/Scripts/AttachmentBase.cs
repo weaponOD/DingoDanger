@@ -22,6 +22,8 @@ public class AttachmentBase : MonoBehaviour
 
     protected MeshFilter filter = null;
 
+    protected Mesh fullHPMesh = null;
+
     protected float currentHealth;
 
     protected bool broken = false;
@@ -37,6 +39,8 @@ public class AttachmentBase : MonoBehaviour
         currentHealth = maxHealth;
 
         filter = GetComponentInChildren<MeshFilter>();
+
+        fullHPMesh = filter.mesh;
 
         entity = transform.root.GetComponent<LivingEntity>();
     }
@@ -95,10 +99,11 @@ public class AttachmentBase : MonoBehaviour
         }
     }
 
-    public void RestoreHealth()
+    public virtual void RestoreHealth()
     {
         broken = false;
         smoking = false;
+        filter.mesh = fullHPMesh;
         currentHealth = maxHealth;
     }
 }

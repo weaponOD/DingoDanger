@@ -17,49 +17,49 @@ public class AttachmentSail : AttachmentBase
     {
         base.Awake();
 
-        skin = GetComponent<SkinnedMeshRenderer>();
+        //skin = GetComponentInChildren<SkinnedMeshRenderer>();
 
-        fullHPMat = skin.materials[0];
+        //fullHPMat = skin.materials[1];
 
         anim = GetComponent<Animator>();
     }
 
-    public override void TakeDamage(float _damage)
-    {
-        currentHealth -= _damage;
+    //public override void TakeDamage(float _damage)
+    //{
+    //    currentHealth -= _damage;
 
-        // switch to broken mesh
-        if (currentHealth < (maxHealth * healthWhenBroken))
-        {
-            if (brokenSail != null && !broken)
-            {
-                skin.materials[0] = brokenSail;
-                broken = true;
-            }
-        }
+    //    // switch to broken mesh
+    //    if (currentHealth < (maxHealth * healthWhenBroken))
+    //    {
+    //        if (brokenSail != null && !broken)
+    //        {
+    //            skin.materials[1] = brokenSail;
+    //            broken = true;
+    //        }
+    //    }
 
-        // destroyed 
-        if (currentHealth <= 0)
-        {
-            transform.parent = null;
+    //    // destroyed 
+    //    if (currentHealth <= 0)
+    //    {
+    //        transform.parent = null;
 
-            entity.UpdateParts();
+    //        entity.UpdateParts();
 
-            if (!GetComponent<Rigidbody>())
-            {
-                gameObject.AddComponent<Rigidbody>();
-                gameObject.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 0.1f);
-            }
+    //        if (!GetComponent<Rigidbody>())
+    //        {
+    //            gameObject.AddComponent<Rigidbody>();
+    //            gameObject.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 0.1f);
+    //        }
 
-            Destroy(gameObject, 3f);
-        }
-    }
+    //        Destroy(gameObject, 3f);
+    //    }
+    //}
 
     public override void RestoreHealth()
     {
         broken = false;
         smoking = false;
-        skin.materials[0] = fullHPMat;
+        //skin.materials[1] = fullHPMat;
         currentHealth = maxHealth;
     }
 

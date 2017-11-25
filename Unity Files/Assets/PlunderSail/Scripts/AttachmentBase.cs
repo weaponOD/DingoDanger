@@ -38,9 +38,12 @@ public class AttachmentBase : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        filter = GetComponentInChildren<MeshFilter>();
+        if(!name.Contains("Sail"))
+        {
+            filter = GetComponentInChildren<MeshFilter>();
 
-        fullHPMesh = filter.mesh;
+            fullHPMesh = filter.mesh;
+        }
 
         entity = transform.root.GetComponent<LivingEntity>();
     }

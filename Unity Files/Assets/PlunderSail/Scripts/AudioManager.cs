@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
 
     public float soundLevel = 1f;
 
+    public bool isBattleMusicPlaying = false;
+
     //Add a audio source to each clip at the beginning of the game.
     void Awake()
     {

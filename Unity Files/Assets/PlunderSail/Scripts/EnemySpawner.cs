@@ -121,6 +121,14 @@ public class EnemySpawner : MonoBehaviour
     {
         cancelAttack = false;
 
+        AudioManager.instance.PlaySound("BattleTheme");
+
+        if(!AudioManager.instance.isBattleMusicPlaying)
+        {
+            AudioManager.instance.PlaySound("BattleLoop");
+            AudioManager.instance.isBattleMusicPlaying = true;
+        }
+
         foreach (TowerBase tower in towers)
         {
             tower.enabled = true;
@@ -150,6 +158,9 @@ public class EnemySpawner : MonoBehaviour
                     ship.gameObject.SetActive(false);
                 }
             }
+
+            AudioManager.instance.FadeOut("BattleLoop", 1f);
+            AudioManager.instance.isBattleMusicPlaying = false;
         }
     }
 

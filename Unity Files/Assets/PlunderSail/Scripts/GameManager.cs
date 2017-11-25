@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
     {
         paused = !paused;
 
-        if(paused)
+        if (paused)
         {
             Debug.Log("Game is paused");
         }
@@ -212,6 +212,26 @@ public class GameManager : MonoBehaviour
         CC.SwitchToPlayMode();
         PC.CanMove = true;
         player.HasControl = true;
+
+        if (PC.HasSails)
+        {
+            Tutorial.instance.HasBuiltSail = true;
+        }
+
+        if (PC.HasCannons)
+        {
+            Tutorial.instance.HasBuiltCannon = true;
+        }
+
+        if (Tutorial.instance.HasBuiltSail == false)
+        {
+            Tutorial.instance.ShowSailsTip();
+        }
+
+        if (Tutorial.instance.HasBuiltCannon == false)
+        {
+            Tutorial.instance.ShowCannonsTip();
+        }
     }
 
     private IEnumerator TransitionToBuildMode()

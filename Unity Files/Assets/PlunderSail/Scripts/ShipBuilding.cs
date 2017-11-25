@@ -601,15 +601,19 @@ public class ShipBuilding : MonoBehaviour
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].Attachment = newAttachment;
                     grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
 
-                    if(y > 0)
+                    if (y > 0)
                     {
-                        if(previewGridPosZ < GridSize.z - 1)
+                        if (previewGridPosZ < GridSize.z - 1)
                         {
                             grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
                             grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
                         }
                     }
                 }
+            }
+            else if (currentPiece.Contains("Armour"))
+            {
+
             }
             else
             {
@@ -976,6 +980,10 @@ public class ShipBuilding : MonoBehaviour
         {
             Buildgrid.position = Vector3.zero;
             Buildgrid.rotation = Quaternion.identity;
+        }
+        else
+        {
+            dirty = true;
         }
     }
 

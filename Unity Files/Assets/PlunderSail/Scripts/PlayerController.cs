@@ -435,6 +435,22 @@ public class PlayerController : MonoBehaviour
         get { return maxMoveSpeed; }
     }
 
+    public bool HasSails
+    {
+        get
+        {
+            return (components.GetAttachedSails().Length > 0);
+        }
+    }
+
+    public bool HasCannons
+    {
+        get
+        {
+            return (components.HasWeapons);
+        }
+    }
+
     private void OnDestroy()
     {
         // Unsubscribe to game state

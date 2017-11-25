@@ -48,6 +48,15 @@ public class ComponentManager : MonoBehaviour
         return leftWeapons;
     }
 
+    public bool HasWeapons
+    {
+        get
+        {
+            UpdateWeapons();
+            return (leftWeapons.Length > 0 && rightWeapons.Length > 0);
+        }
+    }
+
     public WeaponAttachment[] GetAttachedRightWeapons()
     {
         UpdateWeapons();

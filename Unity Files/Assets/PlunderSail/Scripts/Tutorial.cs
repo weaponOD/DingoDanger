@@ -56,6 +56,8 @@ public class Tutorial : MonoBehaviour
 
     private bool hasCannons = false;
 
+    private bool hasSails = false;
+
     public bool HasAimed
     {
         set { hasAimed = value; }
@@ -64,6 +66,18 @@ public class Tutorial : MonoBehaviour
     public bool HasUsedMap
     {
         set { hasUsedMap = value; }
+    }
+
+    public bool HasBuiltCannon
+    {
+        get { return hasCannons; }
+        set { hasCannons = value; }
+    }
+
+    public bool HasBuiltSail
+    {
+        get { return hasSails; }
+        set { hasSails = value; }
     }
 
     public bool UsedIdle
@@ -76,6 +90,8 @@ public class Tutorial : MonoBehaviour
         set { changedState = value; }
     }
 
+
+
     private void Awake()
     {
         instance = this;
@@ -86,7 +102,7 @@ public class Tutorial : MonoBehaviour
         
     }
 
-    private void ShowAimingTip()
+    public void ShowAimingTip()
     {
         if (!hasAimed)
         {
@@ -103,7 +119,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void ShowMapTip()
+    public void ShowMapTip()
     {
         if (!hasUsedMap)
         {
@@ -120,7 +136,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void ShowIdleTip()
+    public void ShowIdleTip()
     {
         if (!usedIdle)
         {
@@ -137,7 +153,7 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void ShowStateTip()
+    public void ShowStateTip()
     {
         if (!changedState)
         {
@@ -154,7 +170,16 @@ public class Tutorial : MonoBehaviour
         }
     }
 
-    private void ShowCannonsTip()
+    public void ShowCannonsTip()
+    {
+        if(noSailsHint.IsActive())
+        {
+            Invoke("BringUpCannonsHint", 5);
+        }
+        
+    }
+
+    private void BringUpCannonsHint()
     {
         if (!hasCannons)
         {
@@ -167,6 +192,23 @@ public class Tutorial : MonoBehaviour
                 StartCoroutine(Fade(noCannonsHint, Color.clear, Color.white, 1f, 0f));
 
                 StartCoroutine(Fade(noCannonsHint, Color.white, Color.clear, 1f, 2f));
+            }
+        }
+    }
+
+    public void ShowSailsTip()
+    {
+        if (!hasSails)
+        {
+            // Show map tip
+
+            if (noSailsHint != null)
+            {
+                noSailsHint.gameObject.SetActive(true);
+
+                StartCoroutine(Fade(noSailsHint, Color.clear, Color.white, 1f, 0f));
+
+                StartCoroutine(Fade(noSailsHint, Color.white, Color.clear, 1f, 2f));
             }
         }
     }

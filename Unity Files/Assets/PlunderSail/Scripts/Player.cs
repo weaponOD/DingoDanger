@@ -7,6 +7,9 @@ public class Player : LivingEntity
     [Header("Player Attributes")]
 
     [SerializeField]
+    private int startGold = 0;
+
+    [SerializeField]
     private int currentGold = 0;
 
     private int maxGold = 99999;
@@ -84,6 +87,8 @@ public class Player : LivingEntity
     protected override void Start()
     {
         base.Start();
+
+        currentGold = startGold;
 
         range = minimumRange;
     }
@@ -287,6 +292,11 @@ public class Player : LivingEntity
 
         currentHealth = starterHealth;
         dead = false;
+
+        if(currentGold < startGold)
+        {
+            currentGold = startGold;
+        }
     }
 
     private void SetBuildMode(bool isBuildMode)

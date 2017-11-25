@@ -35,7 +35,14 @@ public class AttachmentSpot : MonoBehaviour
 
     public bool Disabled
     {
-        get { return disabled; }
+        get
+        {
+            if (attachment == null)
+            {
+                disabled = false;
+            }
+            return disabled;
+        }
         set
         {
             disabled = value;

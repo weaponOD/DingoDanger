@@ -790,7 +790,7 @@ public class UIController : MonoBehaviour
 
         if (_isEnabled)
         {
-            //buttons[selectedIndex].image.color = Color.green;
+            UpdateSpeedSlider();
         }
     }
 

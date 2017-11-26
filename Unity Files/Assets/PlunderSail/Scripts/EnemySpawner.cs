@@ -33,6 +33,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private List<AIAgent> activeEnemies = null;
 
+    [SerializeField]
+    private bool unlocksTrident = false;
+
+    [SerializeField]
+    private bool unlocksDropBear = false;
+
     private Transform player = null;
 
     private GameManager gm;
@@ -197,10 +203,19 @@ public class EnemySpawner : MonoBehaviour
             dock.isUnlocked = true;
             isDefeated = true;
 
+            if(unlocksDropBear)
+            {
+                gm.UnlockDropBear();
+            }
+
+            if(unlocksTrident)
+            {
+                gm.UnlockTrident();
+            }
+
             if (islandCross != null)
             {
                 gm.EncounterDefeated(islandCross);
-                //islandCross.SetActive(true);
             }
 
             CancelArms();

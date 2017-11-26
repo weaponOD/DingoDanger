@@ -150,6 +150,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UnlockTrident()
+    {
+        builder.UnlockTrident();
+    }
+
+    public void UnlockDropBear()
+    {
+        builder.UnlockDropBear();
+    }
+
     public void EncounterDefeated(GameObject _cross)
     {
         AudioManager.instance.PlaySound(defeatedEncounter);

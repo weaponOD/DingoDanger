@@ -33,6 +33,9 @@ public class PlayModeCameraTwo : MonoBehaviour
     [SerializeField]
     private float zoomInRate = 0;
 
+    [SerializeField]
+    private float delayBeforeSnapBack = 1;
+
     private float defaultFoV = 0;
 
     private Transform target;
@@ -136,7 +139,7 @@ public class PlayModeCameraTwo : MonoBehaviour
         // only done the first time cancelAim is called
         if (aiming)
         {
-            Invoke("ReturnToBehindShip", 1f);
+            Invoke("ReturnToBehindShip", delayBeforeSnapBack);
         }
 
         aiming = false;

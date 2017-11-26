@@ -102,6 +102,12 @@ public class UIController : MonoBehaviour
 
     private bool sliderSelected = false;
 
+    [SerializeField]
+    private bool tridentUnlocked = false;
+
+    [SerializeField]
+    private bool dropBearUnlocked = false;
+
     private void Awake()
     {
         // Subscribe to game state
@@ -714,12 +720,42 @@ public class UIController : MonoBehaviour
 
     private void ChangeAttachmentSelection(int _change)
     {
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
-        selectedAttachment += _change;
+        // if unlocked behave normally 
+        if (tridentUnlocked && dropBearUnlocked)
+        {
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
+            selectedAttachment += _change;
 
-        horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
-        builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+            builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+        }
+        else if(!tridentUnlocked && (selectedAttachment + _change == 1))
+        {
+            // if drop bear is unlocked move to that
+            if(dropBearUnlocked)
+            {
+                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
+                selectedAttachment += _change * 2;
+
+                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
+
+                builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+            }
+        }
+        else if (!dropBearUnlocked && (selectedAttachment + _change == 2))
+        {
+            // if drop bear is unlocked move to that
+            if (tridentUnlocked)
+            {
+                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
+                selectedAttachment += _change;
+
+                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
+
+                builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+            }
+        }
     }
 
     public void ShowPierPopUp(bool _show)
@@ -771,11 +807,11 @@ public class UIController : MonoBehaviour
         {
             percent += Time.deltaTime * speed;
 
-            for(int i = 0; i < _images.Length; i++)
+            for (int i = 0; i < _images.Length; i++)
             {
                 _images[i].color = Color.Lerp(from, to, percent);
             }
-           
+
             yield return null;
         }
     }
@@ -791,7 +827,35 @@ public class UIController : MonoBehaviour
         if (_isEnabled)
         {
             UpdateSpeedSlider();
+
+            if (tridentUnlocked)
+            {
+                horizontalMenu[1].transform.GetChild(1).GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                horizontalMenu[1].transform.GetChild(1).GetComponent<Button>().interactable = false;
+            }
+
+            if (dropBearUnlocked)
+            {
+                horizontalMenu[1].transform.GetChild(2).GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                horizontalMenu[1].transform.GetChild(2).GetComponent<Button>().interactable = false;
+            }
         }
+    }
+
+    public void UnlockTrident()
+    {
+        tridentUnlocked = true;
+    }
+
+    public void UnlockDropBear()
+    {
+        dropBearUnlocked = true;
     }
 
     private void OnDestroy()

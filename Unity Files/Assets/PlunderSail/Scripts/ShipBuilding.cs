@@ -622,6 +622,16 @@ public class ShipBuilding : MonoBehaviour
         }
     }
 
+    public void UnlockTrident()
+    {
+        UI.UnlockTrident();
+    }
+
+    public void UnlockDropBear()
+    {
+        UI.UnlockDropBear();
+    }
+
     private void RemoveAttachment()
     {
         if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment != null)
@@ -984,6 +994,10 @@ public class ShipBuilding : MonoBehaviour
         else
         {
             dirty = true;
+
+            // check if weapons are unlocked
+            
+
         }
     }
 

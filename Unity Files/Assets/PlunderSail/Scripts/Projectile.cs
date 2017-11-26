@@ -17,6 +17,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private string woodImpact = "CHANGE";
 
+    [SerializeField]
+    private string stoneImpact = "CHANGE";
+
     [Header("Effects")]
 
     [SerializeField]
@@ -66,12 +69,13 @@ public class Projectile : MonoBehaviour
         // did we collide with an attachment
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-            AudioManager.instance.PlaySound(woodImpact);
-
+            
             // deflect off armour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
                 Debug.Log("Hit armoured attachment");
+
+                AudioManager.instance.PlaySound(stoneImpact);
 
                 GameObject hitEffect = stoneHitPool.getPooledObject();
 
@@ -93,6 +97,8 @@ public class Projectile : MonoBehaviour
             {
                 Debug.Log("Hit non-armour attachment");
                 // we've hit a non-armour attachment
+
+                AudioManager.instance.PlaySound(woodImpact);
                 _collision.collider.gameObject.GetComponent<AttachmentBase>().TakeDamage(damage);
 
                 GameObject hitEffect = woodHitPool.getPooledObject();
@@ -116,6 +122,9 @@ public class Projectile : MonoBehaviour
             if (_collision.collider.gameObject.GetComponent<Tower>() != null)
             {
                 Debug.Log("Hit Tower");
+
+                AudioManager.instance.PlaySound(stoneImpact);
+
                 _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
 
                 GameObject hitEffect = stoneHitPool.getPooledObject();
@@ -129,9 +138,31 @@ public class Projectile : MonoBehaviour
 
                 Destroy();
             }
+            else if(_collision.collider.gameObject.GetComponent<Player>() != null)
+            {
+                Debug.Log("Hit Player");
+
+                AudioManager.instance.PlaySound(woodImpact);
+
+                _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
+
+                GameObject hitEffect = woodHitPool.getPooledObject();
+
+                hitEffect.transform.position = transform.position;
+                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+
+                hitEffect.SetActive(true);
+
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+
+                Destroy();
+            }
             else
             {
                 Debug.Log("Hit hull of ship");
+
+                AudioManager.instance.PlaySound(woodImpact);
+
                 // we've hit the hull of a ship 
                 _collision.collider.gameObject.GetComponent<LivingEntity>().TakeDamage(damage);
 
@@ -152,6 +183,8 @@ public class Projectile : MonoBehaviour
             // hit the environment
 
             Debug.Log("Hit environment");
+
+            AudioManager.instance.PlaySound(stoneImpact);
 
             GameObject hitEffect = stoneHitPool.getPooledObject();
 

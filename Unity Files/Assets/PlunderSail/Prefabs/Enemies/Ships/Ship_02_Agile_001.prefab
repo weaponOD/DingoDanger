@@ -4094,6 +4094,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114005735334143256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4117,7 +4118,7 @@ MonoBehaviour:
   awarenessRange: 180
   damageSpreadMultiplier: 0.23
   stunDuration: 0.5
-  goldReward: 220
+  goldReward: 450
   currentMoveSpeed: 0
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
@@ -4200,6 +4201,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114121397344831874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4574,6 +4576,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114948109574552426
 MonoBehaviour:
   m_ObjectHideFlags: 1

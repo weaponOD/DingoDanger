@@ -4789,7 +4789,7 @@ MonoBehaviour:
   awarenessRange: 194
   damageSpreadMultiplier: 0.12
   stunDuration: 1
-  goldReward: 500
+  goldReward: 750
   currentMoveSpeed: 0
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
@@ -4849,7 +4849,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -4878,7 +4878,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -4907,7 +4907,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -4993,6 +4993,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114354842054865262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5013,7 +5014,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5042,7 +5043,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5065,6 +5066,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114455940115338304
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5085,7 +5087,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5146,7 +5148,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5175,7 +5177,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5204,7 +5206,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5247,7 +5249,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5283,6 +5285,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114869869553219772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5316,7 +5319,7 @@ MonoBehaviour:
   maxFireTime: 0.6
   ammoType: cannonBall
   damage: 44
-  projectileForce: 120
+  projectileForce: 350
   numberOfFirePoints: 2
   canAim: 0
   shootSound: cannonFire
@@ -5357,6 +5360,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114990912918010102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5373,3 +5377,4 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}

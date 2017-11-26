@@ -3998,11 +3998,11 @@ MonoBehaviour:
   currentHealth: 0
   baseMoveSpeed: 11
   rotationSpeed: 0.952
-  attackRange: 49
-  awarenessRange: 77
+  attackRange: 106
+  awarenessRange: 133
   damageSpreadMultiplier: 0.35
   stunDuration: 1
-  goldReward: 190
+  goldReward: 300
   currentMoveSpeed: 0
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
@@ -4029,7 +4029,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4058,7 +4058,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4087,7 +4087,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4116,7 +4116,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4145,7 +4145,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4188,7 +4188,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4215,7 +4215,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4255,7 +4255,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4292,6 +4292,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114935708839708774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4311,7 +4312,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4338,7 +4339,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4365,7 +4366,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4410,7 +4411,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4437,7 +4438,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0
@@ -4464,7 +4465,7 @@ MonoBehaviour:
   minFireTime: 0.2
   maxFireTime: 0.8
   ammoType: cannonBall
-  damage: 28
+  damage: 22
   projectileForce: 60
   numberOfFirePoints: 2
   canAim: 0

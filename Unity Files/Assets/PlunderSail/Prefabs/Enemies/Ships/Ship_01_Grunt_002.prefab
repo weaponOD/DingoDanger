@@ -3790,7 +3790,7 @@ MonoBehaviour:
   awarenessRange: 155
   damageSpreadMultiplier: 0.7
   stunDuration: 1
-  goldReward: 145
+  goldReward: 250
   currentMoveSpeed: 0
   speedPerSail: 0
   targetDirection: {x: 0, y: 0, z: 0}
@@ -3849,8 +3849,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -3925,8 +3925,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -3970,8 +3970,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -4046,8 +4046,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -4075,8 +4075,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -4104,8 +4104,8 @@ MonoBehaviour:
   minFireTime: 0.05
   maxFireTime: 0.15
   ammoType: cannonBall
-  damage: 20
-  projectileForce: 55
+  damage: 18
+  projectileForce: 60
   numberOfFirePoints: 2
   canAim: 1
   shootSound: cannonFire
@@ -4176,6 +4176,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114738039515527280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4262,6 +4263,7 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}
 --- !u!114 &114934255228950664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4294,3 +4296,4 @@ MonoBehaviour:
   brokenMesh: {fileID: 0}
   healthWhenSmoking: 0.25
   smokeEffect: damagedSmoke
+  brokenSail: {fileID: 0}

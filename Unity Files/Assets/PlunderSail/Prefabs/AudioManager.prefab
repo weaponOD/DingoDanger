@@ -124,6 +124,9 @@ MonoBehaviour:
   - name: impactWood
     audioClip:
     - {fileID: 8300000, guid: 70a344a4de0c3664686597fd091502bc, type: 3}
+    - {fileID: 8300000, guid: 084a0dacfb82ec24eb8163af19398354, type: 3}
+    - {fileID: 8300000, guid: 5071b3da3f1743f4f96080b0059b7e31, type: 3}
+    - {fileID: 8300000, guid: 666ddbc6f4436e04ba01e0942b355f0f, type: 3}
     volume: 1
     pitch: 1
     looping: 0
@@ -334,5 +337,42 @@ MonoBehaviour:
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
+  - name: hammer
+    audioClip:
+    - {fileID: 8300000, guid: fe3c7f8d7ac7d0a44bff861c0bf3e33c, type: 3}
+    volume: 0.716
+    pitch: 1
+    looping: 0
+    music: 0
+    coolDown: 0.1
+    nextPlayTime: 0
+    canPlay: 1
+    audioSource: {fileID: 0}
+  - name: completeIsland
+    audioClip:
+    - {fileID: 8300000, guid: 5b475cfd5c6a9bc4e8e67cd4ea603398, type: 3}
+    volume: 0.716
+    pitch: 1
+    looping: 0
+    music: 0
+    coolDown: 2
+    nextPlayTime: 0
+    canPlay: 1
+    audioSource: {fileID: 0}
+  - name: impactConcrete
+    audioClip:
+    - {fileID: 8300000, guid: 9914d5294ff3532418729a2c06650648, type: 3}
+    - {fileID: 8300000, guid: 986a79b080472cd40b0c8181b6d39412, type: 3}
+    - {fileID: 8300000, guid: b65504fc344102147a79143f326be005, type: 3}
+    - {fileID: 8300000, guid: 1865c7f2e8d7c8449845920f46544ca1, type: 3}
+    volume: 1
+    pitch: 1
+    looping: 0
+    music: 0
+    coolDown: 2
+    nextPlayTime: 0
+    canPlay: 1
+    audioSource: {fileID: 0}
   musicLevel: 1
   soundLevel: 1
+  isBattleMusicPlaying: 0

@@ -336,6 +336,7 @@ MonoBehaviour:
   shootSound: cannonFire
   fireEffect: projectileEffect
   firePoints: []
+  facingLeft: 0
 --- !u!114 &114886594788506430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374df90709a4b3340b3dc3db6b31ee85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshWidth: 0.5
+  meshWidth: 1.55
   velocity: 15
   angle: 20
   resolution: 10

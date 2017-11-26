@@ -55,9 +55,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: af09986296577d9439586c68dba52b40, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
-        m_Offset: {x: 0.03, y: 0}
+        m_Texture: {fileID: 2800000, guid: e85c4630bada26f409d99f5432deb546, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WindTexture:
         m_Texture: {fileID: 2800000, guid: 28c7aad1372ff114b90d330f8a2dd938, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -78,6 +78,7 @@ Material:
     - _Occlusion: 20
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SailBGSlide: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SquashAmount: 1
@@ -90,9 +91,11 @@ Material:
     - _WindStrength: 0.046
     - _ZWrite: 1
     m_Colors:
+    - _BaseColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - _Color: {r: 0.066176474, g: 0.066176474, b: 0.066176474, a: 1}
-    - _Colour: {r: 0.45588237, g: 1, b: 0.86490875, a: 1}
+    - _Colour: {r: 0.014705896, g: 0.014705896, b: 0.014705896, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LogoColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
     - _WindDirection: {r: 1, g: 0.5, b: 0.5, a: 0}

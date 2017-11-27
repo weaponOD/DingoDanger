@@ -140,10 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30263a5f792945347b64c585d70c8fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterImpact: CHANGE
-  woodImpact: CHANGE
-  waterHitEffect: 
-  woodHitEffect: 
+  waterImpact: impactWater
+  woodImpact: impactWood
+  stoneImpact: impactStone
+  waterHitEffect: waterImpactEffect
+  woodHitEffect: woodImpactEffect
   stoneHitEffect: stoneImpactEffect
 --- !u!135 &135307556624297948
 SphereCollider:

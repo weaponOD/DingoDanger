@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour
     private Sprite highlightSpriteMenu = null;
 
     [SerializeField]
-    private RectTransform playerIcon = null;
+    private Image playerIcon = null;
 
     // Panel References
 
@@ -704,21 +704,25 @@ public class UIController : MonoBehaviour
 
     public void ShowMap(bool _show)
     {
-        //playerIcon.position = CalculateMapCoords();
+        playerIcon.rectTransform.anchoredPosition = CalculateMapCoords();
 
         mapMenu.SetActive(_show);
     }
 
-    //private Vector3 CalculateMapCoords()
-    //{
-    //    // length: 5613
-    //    // height: 4169
+    private Vector3 CalculateMapCoords()
+    {
+        // length: 5613
+        // height: 4169
+        float widthPercent = player.transform.position.x / 5613;
+        float heightPercent = player.transform.position.z / 4169;
 
+        float mapWidth = mapMenu.GetComponent<Image>().rectTransform.rect.width;
+        float mapHeight = mapMenu.GetComponent<Image>().rectTransform.rect.height;
 
-    //    Vector3 convertedCoord = new Vector3();
+        Vector3 convertedCoord = new Vector3(mapWidth * widthPercent, mapHeight * heightPercent, 0f);
 
-    //    return convertedCoord;
-    //}
+        return convertedCoord;
+    }
 
     private void ChangeGenreSelection(int _change)
     {

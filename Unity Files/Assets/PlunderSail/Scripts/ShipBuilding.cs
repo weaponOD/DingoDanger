@@ -924,7 +924,7 @@ public class ShipBuilding : MonoBehaviour
         }
         else if (currentPiece.Contains("Armour"))
         {
-            if(!armourUnlocked)
+            if (!armourUnlocked)
             {
                 return false;
             }

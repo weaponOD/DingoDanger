@@ -58,17 +58,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldDisplayTime: 3
   timeBetweenPresses: 0.5
-  defaultSpriteCategory: {fileID: 21300000, guid: 3c532f0db2251f1408f2b01149a17161,
+  defaultSpriteCategory: {fileID: 21300000, guid: f740e9c15d616fe44bb99ddff8164a1b,
     type: 3}
-  highlightSpriteCategory: {fileID: 21300000, guid: 17f5b376a902a604a9e0b59ef65937b1,
+  highlightSpriteCategory: {fileID: 21300000, guid: 9b44e948de0b93c489f2a6c1ff294447,
     type: 3}
   defaultSpriteAttachment: {fileID: 21300000, guid: 8c46f8429582027479fdac3c87be7919,
     type: 3}
-  highlightSpriteAttachment: {fileID: 21300000, guid: ae922817a17d1404f943d2e429dd8838,
+  highlightSpriteAttachment: {fileID: 21300000, guid: 0879bf23e881d6d47af624fd046ccef4,
     type: 3}
   defaultSpriteMenu: {fileID: 21300000, guid: c7baa06f016845c40a9f004f0b4ef896, type: 3}
   highlightSpriteMenu: {fileID: 21300000, guid: a5795f4e94a5d584f9e48c43c0b2f7a8,
     type: 3}
+  playerIcon: {fileID: 0}
+  tridentUnlocked: 0
+  dropBearUnlocked: 0
+  armourUnlocked: 0
 --- !u!114 &114256727963917046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,10 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f505357b096fbe4469df52d2175726c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingDelay: 10
-  firingTip: {fileID: 0}
-  aimingDelay: 10
-  aimingTip: {fileID: 0}
+  noSailsHint: {fileID: 0}
+  hasntAimedHint: {fileID: 0}
+  hasntAimedTime: 0
+  hasntUsedMapHint: {fileID: 0}
+  hasntUsedMapTime: 0
+  usedIdleHint: {fileID: 0}
+  usedIdleTime: 0
+  changedStateHint: {fileID: 0}
+  changedStateTime: 0
+  noCannonsHint: {fileID: 0}
+  noCannonsTime: 0
 --- !u!114 &114883611100677676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +187,8 @@ MonoBehaviour:
   AttachmentSpotPrefab: {fileID: 1736294380650708, guid: 600c73df434d5ca409163e588c3df74f,
     type: 2}
   previewPiecePrefab: {fileID: 1736294380650708, guid: 7a3b36f8485ea2b4aa2a5ce0dbfcfc22,
+    type: 2}
+  hammerPrefab: {fileID: 1515106072228896, guid: 3288c361141f94c4eb3c76bbeace468e,
     type: 2}
   baseShip: {fileID: 0}
   refundPercent: 0.8

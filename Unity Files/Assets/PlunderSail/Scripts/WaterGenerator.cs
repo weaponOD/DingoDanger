@@ -8,9 +8,6 @@ public class WaterGenerator : MonoBehaviour
     private Transform waterPrefab;
 
     [SerializeField]
-    private Transform waterLODPrefab;
-
-    [SerializeField]
     private Vector2 mapSize;
 
     [SerializeField]
@@ -49,7 +46,7 @@ public class WaterGenerator : MonoBehaviour
             {
 
                 //Prepare where to place tile
-                Vector3 waterPos = new Vector3(-mapSize.x / 2 + buffer * x, 0, -mapSize.y / 2 + buffer * y);
+                Vector3 waterPos = new Vector3(-mapSize.y / 2 + buffer * y, 0f, -mapSize.x / 2 + buffer * x);
 
                 //Create the new tile using caluclated position
                 Transform newWater = Instantiate(waterPrefab, waterPos, Quaternion.identity) as Transform;

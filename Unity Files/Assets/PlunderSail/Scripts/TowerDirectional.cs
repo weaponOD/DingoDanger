@@ -132,7 +132,7 @@ public class TowerDirectional : TowerBase
 
         for (int i = 0; i < 3; i++)
         {
-            frontWeapons[i].LookAt(player.transform.position);
+            frontWeapons[i].LookAt(new Vector3(player.transform.position.x, player.transform.position.y + yAxisOffset, player.transform.position.z));
 
             GameObject projectile = projectilePool.getPooledObject();
 
@@ -166,7 +166,7 @@ public class TowerDirectional : TowerBase
 
         for (int i = 0; i < 3; i++)
         {
-            rightWeapons[i].LookAt(player.transform.position);
+            rightWeapons[i].LookAt(new Vector3(player.transform.position.x, player.transform.position.y + yAxisOffset, player.transform.position.z));
 
             GameObject projectile = projectilePool.getPooledObject();
 
@@ -200,7 +200,7 @@ public class TowerDirectional : TowerBase
 
         for (int i = 0; i < 3; i++)
         {
-            backWeapons[i].LookAt(player.transform.position);
+            backWeapons[i].LookAt(new Vector3(player.transform.position.x, player.transform.position.y + yAxisOffset, player.transform.position.z));
 
             GameObject projectile = projectilePool.getPooledObject();
 
@@ -234,7 +234,7 @@ public class TowerDirectional : TowerBase
 
         for (int i = 0; i < 3; i++)
         {
-            leftWeapons[i].LookAt(player.transform.position);
+            leftWeapons[i].LookAt(new Vector3(player.transform.position.x, player.transform.position.y + yAxisOffset, player.transform.position.z));
 
             GameObject projectile = projectilePool.getPooledObject();
 

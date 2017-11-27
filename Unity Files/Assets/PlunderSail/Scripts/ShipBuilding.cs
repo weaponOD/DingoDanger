@@ -16,6 +16,9 @@ public class ShipBuilding : MonoBehaviour
     [SerializeField]
     private GameObject previewPiecePrefab;
 
+    [SerializeField]
+    private Transform hammerAnim = null;
+
     // The Transform child of player used to parent attachments
     [SerializeField]
     private Transform baseShip = null;
@@ -577,7 +580,7 @@ public class ShipBuilding : MonoBehaviour
     {
         if (canPlace)
         {
-            if(sailOverRide)
+            if (sailOverRide)
             {
                 Destroy(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.gameObject);
                 sailOverRide = false;
@@ -586,6 +589,11 @@ public class ShipBuilding : MonoBehaviour
             Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
             grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
 
+            hammerAnim.position = new Vector3(newAttachment.position.x + 1, newAttachment.position.y + 1, newAttachment.position.z - 1);
+            hammerAnim.gameObject.SetActive(true);
+
+            Invoke("HideHammerAnim", 0.8f);
+
             player.DeductGold(goldCosts[preview.AttachmentName]);
 
             player.UpdateParts();
@@ -593,6 +601,8 @@ public class ShipBuilding : MonoBehaviour
             UI.UpdateSpeedSlider();
 
             dirty = true;
+
+            AudioManager.instance.PlaySound("hammer");
 
             if (currentPiece.Contains("Sail"))
             {
@@ -611,15 +621,16 @@ public class ShipBuilding : MonoBehaviour
                     }
                 }
             }
-            else if (currentPiece.Contains("Armour"))
-            {
-
-            }
             else
             {
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = true;
             }
         }
+    }
+
+    private void HideHammerAnim()
+    {
+        hammerAnim.gameObject.SetActive(false);
     }
 
     public void UnlockTrident()
@@ -630,6 +641,11 @@ public class ShipBuilding : MonoBehaviour
     public void UnlockDropBear()
     {
         UI.UnlockDropBear();
+    }
+
+    public void UnlockArmour()
+    {
+        UI.UnlockArmour();
     }
 
     private void RemoveAttachment()
@@ -813,7 +829,7 @@ public class ShipBuilding : MonoBehaviour
                 {
                     if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Cannon"))
                     {
-                        if(grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.GetComponent<WeaponAttachment>().FacingLeft)
+                        if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.GetComponent<WeaponAttachment>().FacingLeft)
                         {
                             preview.SetCanBuild(false);
 
@@ -821,7 +837,7 @@ public class ShipBuilding : MonoBehaviour
                         }
                     }
 
-                    if(grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Armour"))
+                    if (grid[previewGridPosX + 1, previewGridPosY, previewGridPosZ].Attachment.gameObject.name.Contains("Armour"))
                     {
                         preview.SetCanBuild(false);
 
@@ -872,9 +888,9 @@ public class ShipBuilding : MonoBehaviour
                     return false;
                 }
 
-                if(previewGridPosZ < GridSize.z - 1)
+                if (previewGridPosZ < GridSize.z - 1)
                 {
-                    if(!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].IsOpen)
+                    if (!grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].IsOpen)
                     {
                         preview.SetCanBuild(false);
                         return false;
@@ -882,9 +898,9 @@ public class ShipBuilding : MonoBehaviour
                 }
             }
 
-            if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
+            if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn)
             {
-                if(grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.name.Contains("Cabin"))
+                if (grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment.name.Contains("Cabin"))
                 {
                     sailOverRide = true;
                 }
@@ -996,7 +1012,7 @@ public class ShipBuilding : MonoBehaviour
             dirty = true;
 
             // check if weapons are unlocked
-            
+
 
         }
     }

@@ -50,6 +50,9 @@ public class PlayModeCameraTwo : MonoBehaviour
     [SerializeField]
     private Vector3 offset;
 
+    [SerializeField]
+    private float aimAngle = 15;
+
     private Transform pivot;
 
     private Camera myCamera;
@@ -123,7 +126,7 @@ public class PlayModeCameraTwo : MonoBehaviour
         aiming = true;
 
         localRotation.x = target.localEulerAngles.y + 90;
-        localRotation.y = 15;
+        localRotation.y = aimAngle;
     }
 
     public void AimLeft()
@@ -131,7 +134,7 @@ public class PlayModeCameraTwo : MonoBehaviour
         aiming = true;
 
         localRotation.x = target.localEulerAngles.y - 90;
-        localRotation.y = 15;
+        localRotation.y = aimAngle;
     }
 
     public void CancelAim()

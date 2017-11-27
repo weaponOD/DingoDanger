@@ -67,7 +67,7 @@ public class TowerWheel : TowerBase
 
             wheel.localEulerAngles = new Vector3(0f, wheel.localEulerAngles.y, 0f);
 
-            firePoints[0].LookAt(player.transform.position);
+            firePoints[0].LookAt(new Vector3(player.transform.position.x, player.transform.position.y + yAxisOffset, player.transform.position.z));
 
             if (canFire)
             {

@@ -172,11 +172,13 @@ public class Tutorial : MonoBehaviour
 
     public void ShowCannonsTip()
     {
-        if(noSailsHint.IsActive())
+        if(noSailsHint)
         {
-            Invoke("BringUpCannonsHint", 5);
-        }
-        
+            if (noSailsHint.IsActive())
+            {
+                Invoke("BringUpCannonsHint", 5);
+            }
+        } 
     }
 
     private void BringUpCannonsHint()

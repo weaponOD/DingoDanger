@@ -49,7 +49,7 @@ public class IntroMenu : MonoBehaviour
                 if (Input.GetButtonDown("X_Button") && Credits != null)
                 {
                     showingCredits = true;
-                    Credits.GetComponent<Animator>().Play("Entry");
+                    //Credits.GetComponent<Animator>().Play("Entry");
                     Credits.SetActive(true);
                 }
             }

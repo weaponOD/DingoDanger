@@ -155,6 +155,11 @@ public class GameManager : MonoBehaviour
         builder.UnlockTrident();
     }
 
+    public void UnlockArmour()
+    {
+        builder.UnlockArmour();
+    }
+
     public void UnlockDropBear()
     {
         builder.UnlockDropBear();

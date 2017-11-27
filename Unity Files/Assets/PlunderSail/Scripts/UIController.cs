@@ -108,6 +108,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private bool dropBearUnlocked = false;
 
+    [SerializeField]
+    private bool armourUnlocked = false;
+
     private void Awake()
     {
         // Subscribe to game state
@@ -845,6 +848,15 @@ public class UIController : MonoBehaviour
             {
                 horizontalMenu[1].transform.GetChild(2).GetComponent<Button>().interactable = false;
             }
+
+            if (armourUnlocked)
+            {
+                horizontalMenu[3].transform.GetChild(0).GetComponent<Button>().interactable = true;
+            }
+            else
+            {
+                horizontalMenu[3].transform.GetChild(0).GetComponent<Button>().interactable = false;
+            }
         }
     }
 
@@ -856,6 +868,11 @@ public class UIController : MonoBehaviour
     public void UnlockDropBear()
     {
         dropBearUnlocked = true;
+    }
+
+    public void UnlockArmour()
+    {
+        armourUnlocked = true;
     }
 
     private void OnDestroy()

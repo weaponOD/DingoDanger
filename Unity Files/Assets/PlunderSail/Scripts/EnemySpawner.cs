@@ -39,6 +39,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private bool unlocksDropBear = false;
 
+    [SerializeField]
+    private bool unlocksArmour = false;
+
     private Transform player = null;
 
     private GameManager gm;
@@ -211,6 +214,11 @@ public class EnemySpawner : MonoBehaviour
             if(unlocksTrident)
             {
                 gm.UnlockTrident();
+            }
+
+            if (unlocksArmour)
+            {
+                gm.UnlockArmour();
             }
 
             if (islandCross != null)

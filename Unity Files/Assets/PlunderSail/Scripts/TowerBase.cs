@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TowerBase : LivingEntity
 {
-
     [Header("Tower Stats")]
 
     [Header("Range Values")]
@@ -13,6 +12,9 @@ public class TowerBase : LivingEntity
 
     [SerializeField]
     protected float minimumRange = 0;
+
+    [SerializeField]
+    protected float yAxisOffset = 4;
 
     [Header("Combat stats")]
 

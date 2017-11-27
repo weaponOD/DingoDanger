@@ -138,12 +138,13 @@ public class AudioManager : MonoBehaviour
     {
         if (scene.buildIndex == 1)
         {
-            StartCoroutine(FadeOutSound(sounds[22], 20f));
+            StartCoroutine(FadeOutSound(sounds[21], 5f));
+            StartCoroutine(FadeOutSound(sounds[22], 5f));
         }
     }
 
     //Call this function through other script
-    //e.g AudioManager.instance.Play("CannonImpact");
+    //e.g AudioManager.instance.PlaySound("CannonImpact");
     public void PlaySound(string _name)
     {
         SoundClass soundClass = Array.Find(sounds, sound => sound.name == _name);

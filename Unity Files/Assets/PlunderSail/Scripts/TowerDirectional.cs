@@ -31,6 +31,7 @@ public class TowerDirectional : TowerBase
     [SerializeField]
     private Transform[] leftWeapons;
 
+    [SerializeField]
     private float angle;
 
     protected override void Awake()
@@ -91,14 +92,14 @@ public class TowerDirectional : TowerBase
             }
 
             // fire right
-            if (left && angle == 270)
+            if (left && angle == 90)
             {
                 FireLeft();
                 return;
             }
 
             // fire right
-            if (right && angle == 90)
+            if (right && angle == 270)
             {
                 FireRight();
                 return;

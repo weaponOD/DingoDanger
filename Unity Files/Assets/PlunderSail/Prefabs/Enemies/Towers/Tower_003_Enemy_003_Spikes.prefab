@@ -754,7 +754,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1736105360685920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 23.4}
+  m_LocalPosition: {x: -23.82, y: -0.93, z: -374.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4730126163452200}
@@ -866,7 +866,7 @@ Transform:
   m_Children:
   - {fileID: 4102088650386018}
   m_Father: {fileID: 4730126163452200}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4644979717334036
 Transform:
@@ -917,10 +917,10 @@ Transform:
   - {fileID: 4873532550219302}
   - {fileID: 4475135616826182}
   - {fileID: 4213269516079660}
-  - {fileID: 4814755684563698}
   - {fileID: 4959939468205132}
-  - {fileID: 4428076528261202}
   - {fileID: 4631873629885658}
+  - {fileID: 4428076528261202}
+  - {fileID: 4814755684563698}
   - {fileID: 4620036408140832}
   - {fileID: 4231352506557130}
   m_Father: {fileID: 4383717582523198}
@@ -951,7 +951,7 @@ Transform:
   m_Children:
   - {fileID: 4930796990148256}
   m_Father: {fileID: 4730126163452200}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4827705090809190
 Transform:
@@ -1059,7 +1059,7 @@ Transform:
   m_Children:
   - {fileID: 4178054673939506}
   m_Father: {fileID: 4730126163452200}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!23 &23500471276843074
 MeshRenderer:
@@ -1163,19 +1163,37 @@ MonoBehaviour:
   currentHealth: 0
   awarenessRange: 50
   minimumRange: 20
+  yAxisOffset: 4
   damage: 0
   reloadTime: 0
   projectileForce: 0
-  ammoType: 
+  ammoType: cannonBall
   shootSound: 
   front: 1
   right: 1
   back: 1
   left: 1
-  frontWeapons: []
-  rightWeapons: []
-  backWeapons: []
-  leftWeapons: []
+  frontWeapons:
+  - {fileID: 4184856046239496}
+  - {fileID: 4064743389457276}
+  - {fileID: 4934057478517416}
+  - {fileID: 4702839881776642}
+  rightWeapons:
+  - {fileID: 4065405813555692}
+  - {fileID: 4257246496926574}
+  - {fileID: 4094206553094128}
+  - {fileID: 4827705090809190}
+  backWeapons:
+  - {fileID: 4287209366747856}
+  - {fileID: 4873532550219302}
+  - {fileID: 4475135616826182}
+  - {fileID: 4213269516079660}
+  leftWeapons:
+  - {fileID: 4959939468205132}
+  - {fileID: 4631873629885658}
+  - {fileID: 4428076528261202}
+  - {fileID: 4814755684563698}
+  angle: 0
 --- !u!114 &114726359863531828
 MonoBehaviour:
   m_ObjectHideFlags: 1

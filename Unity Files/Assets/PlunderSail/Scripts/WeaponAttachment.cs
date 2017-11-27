@@ -151,16 +151,12 @@ public class WeaponAttachment : AttachmentBase
                 Vector3 shotVelocity = (transform.GetChild(1).forward * projectileForce + Vector3.up * 0.7f) * arc.Velocity;
 
                 shot.FireProjectile(shotVelocity);
-
-                //Debug.Log("Cannon Fired with aim mode!!");
             }
             else
             {
                 projectile.transform.rotation = _firePoint.rotation;
 
                 shot.FireProjectile(shipVelocity, projectileForce);
-
-                //Debug.Log("Cannon Fired with no aim mode");
             }
 
             GameObject effect = null;
@@ -181,7 +177,7 @@ public class WeaponAttachment : AttachmentBase
             }
             else
             {
-                Debug.LogError("fire effect from resource manager was null");
+                Debug.LogWarning("fire effect from resource manager was null");
             }
 
             AudioManager.instance.PlaySound(shootSound);

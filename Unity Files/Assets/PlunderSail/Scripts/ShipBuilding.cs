@@ -589,10 +589,13 @@ public class ShipBuilding : MonoBehaviour
             Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
             grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
 
-            hammerAnim.position = new Vector3(newAttachment.position.x + 1, newAttachment.position.y + 1, newAttachment.position.z - 1);
-            hammerAnim.gameObject.SetActive(true);
+            if(!hammerAnim.gameObject.activeInHierarchy)
+            {
+                hammerAnim.position = new Vector3(newAttachment.position.x + 1, newAttachment.position.y + 1, newAttachment.position.z - 1);
+                hammerAnim.gameObject.SetActive(true);
 
-            Invoke("HideHammerAnim", 0.8f);
+                Invoke("HideHammerAnim", 0.7f);
+            }
 
             player.DeductGold(goldCosts[preview.AttachmentName]);
 

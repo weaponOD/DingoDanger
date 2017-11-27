@@ -31,6 +31,9 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private string stoneHitEffect;
 
+    [SerializeField]
+    private bool floats = false;
+
     private bool hasSplashed = false;
 
     private Pool waterHitPool = null;
@@ -69,7 +72,7 @@ public class Projectile : MonoBehaviour
         // did we collide with an attachment
         if (_collision.collider.gameObject.GetComponent<AttachmentBase>() != null)
         {
-            
+
             // deflect off armour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
@@ -138,7 +141,7 @@ public class Projectile : MonoBehaviour
 
                 Destroy();
             }
-            else if(_collision.collider.gameObject.GetComponent<Player>() != null)
+            else if (_collision.collider.gameObject.GetComponent<Player>() != null)
             {
                 Debug.Log("Hit Player");
 
@@ -225,7 +228,19 @@ public class Projectile : MonoBehaviour
 
                 ResourceManager.instance.DelayedDestroy(splash, splash.GetComponent<ParticleSystem>().main.startLifetime.constant);
 
-                Invoke("Destroy", 3f);
+                if (floats)
+                {
+                    GetComponent<buoyancy>().enabled = true;
+                    rb.mass = 0.1f;
+                    rb.drag = 10;
+                    rb.useGravity = false;
+                    rb.useGravity = false;
+                    GetComponent<SphereCollider>().radius = 1;
+                }
+                else
+                {
+                    Invoke("Destroy", 3f);
+                }
 
                 hasSplashed = true;
             }

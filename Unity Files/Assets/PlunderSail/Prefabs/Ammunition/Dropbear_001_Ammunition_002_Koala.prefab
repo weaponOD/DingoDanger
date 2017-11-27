@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 135307556624297948}
   - component: {fileID: 198521697548717898}
   - component: {fileID: 199403318884261244}
+  - component: {fileID: 114233840747688144}
   m_Layer: 10
   m_Name: Dropbear_001_Ammunition_002_Koala
   m_TagString: Untagged
@@ -129,6 +130,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114233840747688144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804301577746708}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83d9bbd40fb9284e81da174e0bcb9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginalwaveHeight: 0.35
+  speed: 0.35
 --- !u!114 &114299674515597946
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,10 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterImpact: impactWater
   woodImpact: impactWood
-  stoneImpact: impactStone
+  stoneImpact: CHANGE
   waterHitEffect: waterImpactEffect
   woodHitEffect: woodImpactEffect
   stoneHitEffect: stoneImpactEffect
+  floats: 1
 --- !u!135 &135307556624297948
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -46,7 +46,9 @@ public class WaterGenerator : MonoBehaviour
             {
 
                 //Prepare where to place tile
-                Vector3 waterPos = new Vector3(-mapSize.y / 2 + buffer * y, 0f, -mapSize.x / 2 + buffer * x);
+                //Vector3 waterPos = new Vector3(-mapSize.y / 2 + buffer * y, 0f, -mapSize.x / 2 + buffer * x);
+
+                Vector3 waterPos = new Vector3(692 + y * buffer, 0f, 692 + x * buffer);
 
                 //Create the new tile using caluclated position
                 Transform newWater = Instantiate(waterPrefab, waterPos, Quaternion.identity) as Transform;

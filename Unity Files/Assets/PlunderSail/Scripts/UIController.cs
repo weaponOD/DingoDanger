@@ -704,21 +704,21 @@ public class UIController : MonoBehaviour
 
     public void ShowMap(bool _show)
     {
-        playerIcon.position = CalculateMapCoords();
+        //playerIcon.position = CalculateMapCoords();
 
         mapMenu.SetActive(_show);
     }
 
-    private Vector3 CalculateMapCoords()
-    {
-        // length: 5613
-        // height: 4169
+    //private Vector3 CalculateMapCoords()
+    //{
+    //    // length: 5613
+    //    // height: 4169
 
 
-        Vector3 convertedCoord = new Vector3();
+    //    Vector3 convertedCoord = new Vector3();
 
-        return convertedCoord;
-    }
+    //    return convertedCoord;
+    //}
 
     private void ChangeGenreSelection(int _change)
     {

@@ -7,19 +7,21 @@ using UnityEngine.SceneManagement;
 public class IntroMenu : MonoBehaviour
 {
     [SerializeField]
-    private Image PlunderSail;
-
-    [SerializeField]
     private Image FadePlane;
 
     [SerializeField]
     private Image loading;
 
+    [SerializeField]
+    private GameObject Credits;
+
     private bool waitOnInput = false;
 
     private AsyncOperation async;
 
-    public float progress;
+    public float progress = 0f;
+
+    private bool showingCredits = false;
 
     public bool isDone = false;
 
@@ -36,10 +38,28 @@ public class IntroMenu : MonoBehaviour
 
         if (waitOnInput)
         {
-            if (Input.anyKeyDown)
+            if (!showingCredits)
             {
-                StartCoroutine(ChangeScenes());
-                waitOnInput = false;
+                if (Input.GetButtonDown("A_Button"))
+                {
+                    StartCoroutine(ChangeScenes());
+                    waitOnInput = false;
+                }
+
+                if (Input.GetButtonDown("X_Button") && Credits != null)
+                {
+                    showingCredits = true;
+                    Credits.GetComponent<Animator>().Play("Entry");
+                    Credits.SetActive(true);
+                }
+            }
+            else
+            {
+                if (Input.anyKeyDown && Credits != null)
+                {
+                    showingCredits = false;
+                    Credits.SetActive(false);
+                }
             }
         }
     }

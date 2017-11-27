@@ -1693,10 +1693,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 187343371}
-  - {fileID: 1916650730}
-  - {fileID: 1461493068}
   - {fileID: 1614927099}
   - {fileID: 1065015562}
+  - {fileID: 1916650730}
+  - {fileID: 1461493068}
   - {fileID: 167418074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1733,9 +1733,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bbc5c23e07adf41a6ac40de0812b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlunderSail: {fileID: 0}
   FadePlane: {fileID: 1916650728}
   loading: {fileID: 167418072}
+  Credits: {fileID: 2124066325}
   progress: 0
   isDone: 0
 --- !u!4 &1204850235
@@ -1779,7 +1779,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1204250646}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1869,7 +1869,7 @@ RectTransform:
   - {fileID: 2115138641}
   - {fileID: 729811498}
   m_Father: {fileID: 1204250646}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1982,7 +1982,7 @@ Prefab:
     - target: {fileID: 224820584191475640, guid: b0e46a884e2b7ae48b7010f9f272b429,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 224820584191475640, guid: b0e46a884e2b7ae48b7010f9f272b429,
         type: 2}
@@ -2174,7 +2174,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1204250646}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2454,3 +2454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OriginalwaveHeight: 0.02
   speed: 0.01
+--- !u!1 &2124066325 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1789950600771726, guid: b0e46a884e2b7ae48b7010f9f272b429,
+    type: 2}
+  m_PrefabInternal: {fileID: 1671603536}

@@ -6,8 +6,12 @@ public class AnimationEventTrigger : MonoBehaviour {
 
    public GameObject hammerParticle;
 
+    void Start()
+    {
+        //hammerParticle.SetActive(true);
+    }
 
-	void ToggleParticle () {
+    public void ToggleParticle () {
         hammerParticle.SetActive(true);	
 	}
 }

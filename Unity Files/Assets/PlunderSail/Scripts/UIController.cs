@@ -38,6 +38,9 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Sprite highlightSpriteMenu = null;
 
+    [SerializeField]
+    private RectTransform playerIcon = null;
+
     // Panel References
 
     private GameObject Canvas = null;
@@ -701,7 +704,20 @@ public class UIController : MonoBehaviour
 
     public void ShowMap(bool _show)
     {
+        playerIcon.position = CalculateMapCoords();
+
         mapMenu.SetActive(_show);
+    }
+
+    private Vector3 CalculateMapCoords()
+    {
+        // length: 5613
+        // height: 4169
+
+
+        Vector3 convertedCoord = new Vector3();
+
+        return convertedCoord;
     }
 
     private void ChangeGenreSelection(int _change)
@@ -733,10 +749,10 @@ public class UIController : MonoBehaviour
 
             builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
         }
-        else if(!tridentUnlocked && (selectedAttachment + _change == 1))
+        else if (!tridentUnlocked && (selectedAttachment + _change == 1))
         {
             // if drop bear is unlocked move to that
-            if(dropBearUnlocked)
+            if (dropBearUnlocked)
             {
                 horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
                 selectedAttachment += _change * 2;

@@ -16,8 +16,10 @@ public class ShipBuilding : MonoBehaviour
     [SerializeField]
     private GameObject previewPiecePrefab;
 
-    [SerializeField]
     private Transform hammerAnim = null;
+
+    [SerializeField]
+    private GameObject hammerPrefab = null;
 
     // The Transform child of player used to parent attachments
     [SerializeField]
@@ -86,6 +88,8 @@ public class ShipBuilding : MonoBehaviour
     private int xLength;
     private int yLength;
     private int zLength;
+
+    private bool armourUnlocked = false;
 
     private Vector3 centreSpot;
 
@@ -589,7 +593,12 @@ public class ShipBuilding : MonoBehaviour
             Transform newAttachment = Instantiate(attachments[preview.AttachmentName].GO, preview.transform.position, preview.transform.rotation, baseShip).transform;
             grid[previewGridPosX, previewGridPosY, previewGridPosZ].Attachment = newAttachment;
 
-            if(!hammerAnim.gameObject.activeInHierarchy)
+            if (hammerAnim == null)
+            {
+                hammerAnim = Instantiate(hammerPrefab).transform;
+            }
+
+            if (!hammerAnim.gameObject.activeInHierarchy)
             {
                 hammerAnim.position = new Vector3(newAttachment.position.x + 1, newAttachment.position.y + 1, newAttachment.position.z - 1);
                 hammerAnim.gameObject.SetActive(true);
@@ -915,6 +924,11 @@ public class ShipBuilding : MonoBehaviour
         }
         else if (currentPiece.Contains("Armour"))
         {
+            if(!armourUnlocked)
+            {
+                return false;
+            }
+
             // if on left hand side of boat
             if (previewGridPosX < centreSpot.x)
             {

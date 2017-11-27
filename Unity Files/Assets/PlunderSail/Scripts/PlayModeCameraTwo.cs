@@ -150,7 +150,10 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private void ReturnToBehindShip()
     {
-        localRotation.x = target.localEulerAngles.y;
+        if(!aiming)
+        {
+            localRotation.x = target.localEulerAngles.y;
+        }
     }
 
     public void SetSensitivity(float _value)

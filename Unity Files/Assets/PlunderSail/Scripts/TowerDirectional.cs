@@ -40,7 +40,7 @@ public class TowerDirectional : TowerBase
 
         // Warn designer if direction is set to true but no weapins are assigned.
 
-        if(front && frontWeapons.Length == 0)
+        if (front && frontWeapons.Length == 0)
         {
             Debug.LogError("No front weapons assigned on this tower");
         }
@@ -81,6 +81,7 @@ public class TowerDirectional : TowerBase
             if (front && angle == 0)
             {
                 FireFront();
+
                 return;
             }
 
@@ -88,6 +89,7 @@ public class TowerDirectional : TowerBase
             if (back && angle == 180)
             {
                 FireBack();
+
                 return;
             }
 
@@ -95,6 +97,7 @@ public class TowerDirectional : TowerBase
             if (left && angle == 90)
             {
                 FireLeft();
+
                 return;
             }
 
@@ -102,6 +105,7 @@ public class TowerDirectional : TowerBase
             if (right && angle == 270)
             {
                 FireRight();
+
                 return;
             }
         }

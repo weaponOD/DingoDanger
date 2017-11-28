@@ -138,9 +138,6 @@ public class GameManager : MonoBehaviour
 
                         AudioManager.instance.PlaySound(enterDockSound);
 
-                        AudioManager.instance.FadeOut(sailingMusic, SailingFadeOut);
-                        AudioManager.instance.FadeInMusic(dockMusic, dockFadeIn);
-
                         Invoke("CanExitBuildMode", 2);
                     }
                 }
@@ -148,9 +145,6 @@ public class GameManager : MonoBehaviour
                 {
                     UI.FadeScreen();
                     StartCoroutine(TransitionToPlayMode());
-
-                    AudioManager.instance.FadeOut(dockMusic, dockFadeOut);
-                    AudioManager.instance.FadeInMusic(sailingMusic, SailingFadeIn);
 
                     canPressY = false;
 
@@ -252,6 +246,9 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
 
+        AudioManager.instance.FadeOut(dockMusic, dockFadeOut);
+        AudioManager.instance.FadeInMusic(sailingMusic, SailingFadeIn);
+
         GameState.BuildMode = false;
 
         CC.SwitchToPlayMode();
@@ -287,6 +284,9 @@ public class GameManager : MonoBehaviour
         {
             player.Respawn();
         }
+
+        AudioManager.instance.FadeOut(sailingMusic, SailingFadeOut);
+        AudioManager.instance.FadeInMusic(dockMusic, dockFadeIn);
 
         GameState.BuildMode = true;
 
@@ -343,6 +343,7 @@ public class GameManager : MonoBehaviour
     public void EndBattleMusic()
     {
         AudioManager.instance.FadeOut("BattleLoop", battleFadeOut);
+
         AudioManager.instance.FadeInMusic(sailingMusic, SailingFadeIn);
         AudioManager.instance.isBattleMusicPlaying = false;
     }

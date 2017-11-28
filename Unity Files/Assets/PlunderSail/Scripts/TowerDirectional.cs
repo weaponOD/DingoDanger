@@ -133,7 +133,7 @@ public class TowerDirectional : TowerBase
 
     protected void FireFront()
     {
-        Debug.Log("Firing Front");
+        // Debug.Log("Firing Front");
 
         for (int i = 0; i < 3; i++)
         {

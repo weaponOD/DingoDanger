@@ -31,6 +31,14 @@ public class ComponentManager : MonoBehaviour
         }
     }
 
+    public void FullSpeed(bool _isFullSpeed)
+    {
+        foreach(AttachmentSail sail in sails)
+        {
+            sail.ActivateTrails(_isFullSpeed);
+        }
+    }
+
     public AttachmentBase[] Attachments
     {
         get

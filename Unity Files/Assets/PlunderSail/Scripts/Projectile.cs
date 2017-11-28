@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
             // deflect off armour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
-                Debug.Log("Hit armoured attachment");
+                // Debug.Log("Hit armoured attachment");
 
                 AudioManager.instance.PlaySound(stoneImpact);
 
@@ -98,7 +98,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit non-armour attachment");
+                // Debug.Log("Hit non-armour attachment");
                 // we've hit a non-armour attachment
 
                 AudioManager.instance.PlaySound(woodImpact);
@@ -124,7 +124,7 @@ public class Projectile : MonoBehaviour
             // we've hit a tower
             if (_collision.collider.gameObject.GetComponent<Tower>() != null)
             {
-                Debug.Log("Hit Tower");
+                // Debug.Log("Hit Tower");
 
                 AudioManager.instance.PlaySound(stoneImpact);
 
@@ -143,7 +143,7 @@ public class Projectile : MonoBehaviour
             }
             else if (_collision.collider.gameObject.GetComponent<Player>() != null)
             {
-                Debug.Log("Hit Player");
+                // Debug.Log("Hit Player");
 
                 AudioManager.instance.PlaySound(woodImpact);
 
@@ -162,7 +162,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                Debug.Log("Hit hull of ship");
+                // Debug.Log("Hit hull of ship");
 
                 AudioManager.instance.PlaySound(woodImpact);
 
@@ -185,7 +185,7 @@ public class Projectile : MonoBehaviour
         {
             // hit the environment
 
-            Debug.Log("Hit environment");
+            // Debug.Log("Hit environment");
 
             AudioManager.instance.PlaySound(stoneImpact);
 
@@ -213,7 +213,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < 0)
+        if (transform.position.y < 0 && inMap())
         {
             if (!hasSplashed)
             {
@@ -245,6 +245,19 @@ public class Projectile : MonoBehaviour
                 hasSplashed = true;
             }
         }
+    }
+
+    private bool inMap()
+    {
+        if (transform.position.x > 0 && transform.position.x < 5534)
+        {
+            if (transform.position.z > 0 && transform.position.z < 4150)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // De-activates the gameObject

@@ -13,47 +13,16 @@ public class AttachmentSail : AttachmentBase
 
     protected Material fullHPMat;
 
+    protected TrailRenderer[] trails = null;
+
     protected override void Awake()
     {
         base.Awake();
 
-        //skin = GetComponentInChildren<SkinnedMeshRenderer>();
-
-        //fullHPMat = skin.materials[1];
+        trails = GetComponentsInChildren<TrailRenderer>();
 
         anim = GetComponent<Animator>();
     }
-
-    //public override void TakeDamage(float _damage)
-    //{
-    //    currentHealth -= _damage;
-
-    //    // switch to broken mesh
-    //    if (currentHealth < (maxHealth * healthWhenBroken))
-    //    {
-    //        if (brokenSail != null && !broken)
-    //        {
-    //            skin.materials[1] = brokenSail;
-    //            broken = true;
-    //        }
-    //    }
-
-    //    // destroyed 
-    //    if (currentHealth <= 0)
-    //    {
-    //        transform.parent = null;
-
-    //        entity.UpdateParts();
-
-    //        if (!GetComponent<Rigidbody>())
-    //        {
-    //            gameObject.AddComponent<Rigidbody>();
-    //            gameObject.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 0.1f);
-    //        }
-
-    //        Destroy(gameObject, 3f);
-    //    }
-    //}
 
     public override void RestoreHealth()
     {
@@ -61,6 +30,12 @@ public class AttachmentSail : AttachmentBase
         smoking = false;
         //skin.materials[1] = fullHPMat;
         currentHealth = maxHealth;
+    }
+
+    public void ActivateTrails(bool _isFullSpeed)
+    {
+        trails[0].enabled = _isFullSpeed;
+        trails[1].enabled = _isFullSpeed;
     }
 
     public void Raise()

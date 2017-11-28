@@ -148,7 +148,8 @@ public class AIAgent : LivingEntity
         // If there's a collision disable states for x seconds
         if (AvoidCollisions())
         {
-            Debug.Log("Collision Detected, states are on cooldown");
+            //Debug.Log("Collision Detected, states are on cooldown");
+
             ActiveStateTime = Time.time + stateCoolDown;
             stateIsActive = false;
         }

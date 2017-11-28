@@ -367,17 +367,22 @@ public class PlayerController : MonoBehaviour
             {
                 components.RaiseSails();
 
+                components.FullSpeed(false);
                 CC.DisableFastMode();
             }
             else if(_state == SailingState.SLOW)
             {
                 CC.DisableFastMode();
+
+                components.FullSpeed(false);
             }
             else if (_state == SailingState.FAST)
             {
                 AudioManager.instance.PlaySound(fullSpeedSound);
 
                 components.LowerSails();
+
+                components.FullSpeed(true);
 
                 CC.EnableFastMode();
             }

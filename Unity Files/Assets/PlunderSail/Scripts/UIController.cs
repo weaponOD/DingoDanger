@@ -312,7 +312,7 @@ public class UIController : MonoBehaviour
 
     public void showRetreat(int _cost)
     {
-        if(!DockPopUp.gameObject.activeInHierarchy && !buildPanel.gameObject.activeInHierarchy)
+        if (!DockPopUp.gameObject.activeInHierarchy && !buildPanel.gameObject.activeInHierarchy)
         {
             // set text first
 
@@ -325,11 +325,11 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if(!paused)
+        if (!paused)
         {
-            if(Input.GetKeyDown("X_Button"))
+            if (Input.GetButtonDown("X_Button"))
             {
-                if(retreatSign.activeInHierarchy)
+                if (retreatSign.activeInHierarchy)
                 {
                     // reset player to build mode
                     GM.RetreatPlayer();
@@ -847,7 +847,7 @@ public class UIController : MonoBehaviour
 
     public void GoingFast(bool _isFast)
     {
-        if(_isFast)
+        if (_isFast)
         {
             playerSpeedMode.text = "SLOW";
         }
@@ -939,7 +939,7 @@ public class UIController : MonoBehaviour
                 DockPopUp.SetActive(false);
             }
 
-            if(retreatSign.activeInHierarchy)
+            if (retreatSign.activeInHierarchy)
             {
                 retreatSign.SetActive(false);
             }

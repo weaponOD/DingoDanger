@@ -7,7 +7,11 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The distance from the spawner in metres that the spawner is aware of the player")]
-    private float radius = 0;
+    private float spawnRadius = 0;
+
+    [SerializeField]
+    [Tooltip("The distance from the spawner in metres that the spawner is aware of the player")]
+    private float TowerRadius = 0;
 
     [SerializeField]
     [Tooltip("The number of enemy ships that can be active at the same time.")]
@@ -16,6 +20,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The number of seconds after the player leaves the radius that the spawner stops.")]
     private float delayBeforeDeactivate = 0;
+
+    [SerializeField]
+    private List<SpawnPoint> spawnPoints = null;
+
+    private bool towersActivated = false;
 
     [Header("Drag references into these")]
     [SerializeField]
@@ -84,22 +93,26 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator CheckPlayerInRange()
     {
-        if (Vector3.Distance(player.position, transform.position) <= radius)
+        if (Vector3.Distance(player.position, transform.position) <= TowerRadius)
+        {
+            if (!towersActivated)
+            {
+                ActivateTowers(true);
+            }
+        }
+
+        if (Vector3.Distance(player.position, transform.position) <= spawnRadius)
         {
             if (!attackingPlayer)
             {
                 attackingPlayer = true;
-                CallToArms();
+
+                StartCoroutine(CheckEnemies());
             }
         }
         else
         {
-            if (!cancelAttack)
-            {
-                cancelAttack = true;
-
-                Invoke("CancelArms", delayBeforeDeactivate);
-            }
+            attackingPlayer = false;
         }
 
         yield return new WaitForSeconds(1f);
@@ -126,23 +139,20 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void CallToArms()
+    private void ActivateTowers(bool _isActive)
     {
-        cancelAttack = false;
-
-        gm.PlayBattleMusic();
-
-        foreach (TowerBase tower in towers)
+        for (int i = 0; i < towers.Length; i++)
         {
-            tower.enabled = true;
+            if (towers[i] != null)
+            {
+                towers[i].gameObject.SetActive(_isActive);
+            }
         }
-
-        StartCoroutine(CheckEnemies());
     }
 
     private void CancelArms()
     {
-        if (Vector3.Distance(player.position, transform.position) > radius || isDefeated)
+        if (Vector3.Distance(player.position, transform.position) > spawnRadius || isDefeated)
         {
             attackingPlayer = false;
 
@@ -161,28 +171,56 @@ public class EnemySpawner : MonoBehaviour
                     ship.gameObject.SetActive(false);
                 }
             }
-
-            gm.EndBattleMusic();
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0.7f, 0.6f, 1f);
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+
+        Gizmos.color = new Color(1f, 0f, 0.5f, 1f);
+        Gizmos.DrawWireSphere(transform.position, TowerRadius);
     }
+
     private void SpawnEnemy()
     {
-        Vector3 spawnPos = OutOfSightPos();
+        // pick random spawn point until an open one is found.
 
-        if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null && Vector3.Distance(player.transform.position, spawnPos) > 5)
+        SpawnPoint point = null;
+
+        if (spawnPoints.Count > 1)
         {
-            activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+            point = spawnPoints[Random.Range(0, spawnPoints.Count)];
+
+            if (!point.isOpen)
+            {
+                for (int i = 0; i < spawnPoints.Count; i++)
+                {
+                    if (spawnPoints[i].isOpen)
+                    {
+                        point = spawnPoints[i];
+                    }
+                }
+            }
         }
         else
         {
-            SpawnEnemy();
+            point = spawnPoints[0];
         }
+
+        activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], point.transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+
+        //Vector3 spawnPos = OutOfSightPos();
+
+        //if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null && Vector3.Distance(player.transform.position, spawnPos) > 5)
+        //{
+        //    activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+        //}
+        //else
+        //{
+        //    SpawnEnemy();
+        //}
     }
 
     private void EnemyDied(LivingEntity _entity)
@@ -199,12 +237,12 @@ public class EnemySpawner : MonoBehaviour
             dock.isUnlocked = true;
             isDefeated = true;
 
-            if(unlocksDropBear)
+            if (unlocksDropBear)
             {
                 gm.UnlockDropBear();
             }
 
-            if(unlocksTrident)
+            if (unlocksTrident)
             {
                 gm.UnlockTrident();
             }
@@ -244,6 +282,6 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 GetPointOnUnitCircleCircumference()
     {
         float randomAngle = Random.Range(0f, Mathf.PI * 2f);
-        return new Vector3(Mathf.Sin(randomAngle), 0f, Mathf.Cos(randomAngle)) * radius;
+        return new Vector3(Mathf.Sin(randomAngle), 0f, Mathf.Cos(randomAngle)) * spawnRadius;
     }
 }

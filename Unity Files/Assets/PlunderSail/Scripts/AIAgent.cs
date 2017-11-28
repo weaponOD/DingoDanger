@@ -88,6 +88,8 @@ public class AIAgent : LivingEntity
 
     protected bool hasSunk = false;
 
+    private GameManager GM;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -96,6 +98,8 @@ public class AIAgent : LivingEntity
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         }
+
+        GM = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         components = GetComponent<ComponentManager>();
         weaponController = GetComponent<WeaponController>();
@@ -197,6 +201,11 @@ public class AIAgent : LivingEntity
         }
     }
 
+    protected void LateUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+    }
+
     protected virtual void CalculateState()
     {
         float distToPlayer = Vector3.Distance(player.transform.position, transform.position);
@@ -231,6 +240,8 @@ public class AIAgent : LivingEntity
         // In this state we want the AI to steer in a direction that results in the dot product equaling 0, aka we want to our ship to be perpendicular to the player.
         if (currentState == State.FIGHT)
         {
+            GM.PlayBattleMusic();
+
             Vector3 vecBetween = player.transform.position - transform.position;
 
             // if player is closer to right side

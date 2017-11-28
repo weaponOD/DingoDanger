@@ -48,7 +48,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float battleFadeOut = 2;
 
+    [SerializeField]
+    private float endBattleMusicDelay = 10;
+
     private bool cinematicPlaying = false;
+
+    private bool playingBattleMusic = false;
 
     UIController UI;
     PlayerController PC;
@@ -59,6 +64,8 @@ public class GameManager : MonoBehaviour
     private bool canPressY = true;
 
     private bool paused = false;
+
+    private float nextTimeCancleBattle = 0;
 
     private void Awake()
     {
@@ -170,6 +177,11 @@ public class GameManager : MonoBehaviour
             if (Input.GetButtonUp("Back_Button"))
             {
                 UI.ShowMap(false);
+            }
+
+            if(Time.time > nextTimeCancleBattle)
+            {
+                EndBattleMusic();
             }
         }
     }
@@ -331,7 +343,7 @@ public class GameManager : MonoBehaviour
     {
         canPressY = true;
 
-        if(!GameState.BuildMode)
+        if (!GameState.BuildMode)
         {
             UI.ShowPierPopUp(true);
         }
@@ -339,24 +351,36 @@ public class GameManager : MonoBehaviour
 
     public void PlayBattleMusic()
     {
-        AudioManager.instance.FadeOut(sailingMusic, SailingFadeOut);
-        AudioManager.instance.FadeInMusic("BattleTheme", battleFadeIn);
-
-        if (!AudioManager.instance.isBattleMusicPlaying)
+        if (!playingBattleMusic)
         {
-            AudioManager.instance.FadeInMusic("BattleLoop", battleFadeIn);
-            AudioManager.instance.isBattleMusicPlaying = true;
+            AudioManager.instance.FadeOut(sailingMusic, SailingFadeOut);
+
+            AudioManager.instance.FadeInMusic("BattleTheme", battleFadeIn / 2);
+
+            if (!AudioManager.instance.isBattleMusicPlaying)
+            {
+                AudioManager.instance.FadeInMusic("BattleLoop", battleFadeIn);
+                AudioManager.instance.isBattleMusicPlaying = true;
+            }
+
+            playingBattleMusic = true;
         }
+
+        nextTimeCancleBattle = Time.time + endBattleMusicDelay;
     }
 
     public void EndBattleMusic()
     {
-        AudioManager.instance.FadeOut("BattleLoop", battleFadeOut);
+        if(playingBattleMusic)
+        {
+            AudioManager.instance.FadeOut("BattleLoop", battleFadeOut);
 
-        AudioManager.instance.FadeInMusic(sailingMusic, SailingFadeIn);
-        AudioManager.instance.isBattleMusicPlaying = false;
+            AudioManager.instance.FadeInMusic(sailingMusic, SailingFadeIn);
+            AudioManager.instance.isBattleMusicPlaying = false;
+
+            playingBattleMusic = false;
+        }
     }
-
 
     public void setPier(Transform _dockPos)
     {

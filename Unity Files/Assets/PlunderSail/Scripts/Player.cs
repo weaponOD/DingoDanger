@@ -263,6 +263,7 @@ public class Player : LivingEntity
 
         if(HPValue)
         {
+            Debug.Log("Player health has been updated in HUD");
             HPValue.value = currentHealth;
         }
 
@@ -339,6 +340,8 @@ public class Player : LivingEntity
         if (!isBuildMode)
         {
             UpdateParts();
+
+            Invoke("UpdateParts", 15f);
 
             PlaceFlag();
 

@@ -125,6 +125,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 previousPos;
 
+    private UIController UI = null;
+
     private bool stunned = false;
 
     private void Awake()
@@ -132,6 +134,8 @@ public class PlayerController : MonoBehaviour
         components = GetComponent<ComponentManager>();
 
         CC = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>();
+
+        UI = CC.gameObject.GetComponent<UIController>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -361,6 +365,8 @@ public class PlayerController : MonoBehaviour
                 AudioManager.instance.PlaySound(slowDownSound);
             }
 
+            UI.GoingFast(false);
+
             components.LowerSails();
         }
 
@@ -372,11 +378,13 @@ public class PlayerController : MonoBehaviour
                 components.RaiseSails();
 
                 components.FullSpeed(false);
+                UI.GoingFast(false);
                 CC.DisableFastMode();
             }
             else if(_state == SailingState.SLOW)
             {
                 CC.DisableFastMode();
+                UI.GoingFast(false);
 
                 components.FullSpeed(false);
             }
@@ -387,6 +395,8 @@ public class PlayerController : MonoBehaviour
                 components.LowerSails();
 
                 components.FullSpeed(true);
+
+                UI.GoingFast(true);
 
                 CC.EnableFastMode();
             }

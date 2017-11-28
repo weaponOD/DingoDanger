@@ -13,6 +13,9 @@ public class Player : LivingEntity
     [SerializeField]
     private int currentGold = 0;
 
+    [SerializeField]
+    private float retreatThreshold = 0.5f;
+
     private int maxGold = 99999;
 
     [SerializeField]
@@ -70,6 +73,8 @@ public class Player : LivingEntity
 
     private Transform flag = null;
 
+    private UIController UI = null;
+
     private float range = 25;
 
     private float previousRange;
@@ -91,6 +96,8 @@ public class Player : LivingEntity
         ship = transform.GetChild(0).GetChild(0);
 
         CC = GameObject.FindGameObjectWithTag("GameManager").GetComponent<CameraController>();
+
+        UI = CC.gameObject.GetComponent<UIController>();
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
@@ -320,6 +327,7 @@ public class Player : LivingEntity
         if (currentGold < startGold)
         {
             currentGold = startGold;
+            UI.UpdateGold();
         }
     }
 
@@ -365,6 +373,11 @@ public class Player : LivingEntity
         controller.setSpeedBonus(components.getSpeedBonus());
 
         attachments = components.Attachments;
+
+        if(controller.MaxSpeed < controller.CappedSpeed * retreatThreshold)
+        {
+            UI.showRetreat();
+        }
     }
 
     // finds only sail or highest sail and places a flag above it.

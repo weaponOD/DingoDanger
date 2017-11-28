@@ -41,6 +41,12 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private Image playerIcon = null;
 
+    [SerializeField]
+    private GameObject retreatSign = null;
+
+    [SerializeField]
+    private Text playerSpeedMode = null;
+
     // Panel References
 
     private GameObject Canvas = null;
@@ -297,6 +303,14 @@ public class UIController : MonoBehaviour
     {
         float percent = playerController.MaxSpeed / playerController.CappedSpeed;
         speedSlider.value = percent;
+    }
+
+    public void showRetreat()
+    {
+        if(!DockPopUp.gameObject.activeInHierarchy && !buildPanel.gameObject.activeInHierarchy)
+        {
+            retreatSign.SetActive(true);
+        }
     }
 
     private void Update()
@@ -802,9 +816,31 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void UpdateGold()
+    {
+        goldText.text = "" + player.Gold;
+    }
+
+    public void GoingFast(bool _isFast)
+    {
+        if(_isFast)
+        {
+            playerSpeedMode.text = "SLOW";
+        }
+        else
+        {
+            playerSpeedMode.text = "FAST";
+        }
+    }
+
     public void ShowPierPopUp(bool _show)
     {
         DockPopUp.SetActive(_show);
+
+        if (retreatSign.activeInHierarchy)
+        {
+            retreatSign.SetActive(false);
+        }
     }
 
     public void FadeScreen()
@@ -873,6 +909,16 @@ public class UIController : MonoBehaviour
         if (_isEnabled)
         {
             UpdateSpeedSlider();
+
+            if (DockPopUp.activeInHierarchy)
+            {
+                DockPopUp.SetActive(false);
+            }
+
+            if(retreatSign.activeInHierarchy)
+            {
+                retreatSign.SetActive(false);
+            }
 
             if (tridentUnlocked)
             {

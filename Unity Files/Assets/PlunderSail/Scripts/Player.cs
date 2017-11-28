@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : LivingEntity
 {
@@ -62,6 +63,11 @@ public class Player : LivingEntity
     [SerializeField]
     private GameObject flagPrefab = null;
 
+    [SerializeField]
+    private GameObject healthBar = null;
+
+    private Slider HPValue = null;
+
     private Transform flag = null;
 
     private float range = 25;
@@ -88,6 +94,9 @@ public class Player : LivingEntity
 
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
+
+
+        HPValue = healthBar.GetComponentInChildren<Slider>();
     }
 
     protected override void Start()
@@ -237,7 +246,22 @@ public class Player : LivingEntity
     public override void TakeDamage(float damgage)
     {
         base.TakeDamage(damgage);
+
+        if (healthBar != null)
+        {
+            HPValue.value = currentHealth / starterHealth;
+
+            healthBar.SetActive(true);
+
+            Invoke("HideHealthBar", 1f);
+        }
+
         AudioManager.instance.PlaySound(takeDamageSound);
+    }
+
+    private void HideHealthBar()
+    {
+        healthBar.SetActive(false);
     }
 
     // Returns how much gold the player currently has
@@ -296,12 +320,12 @@ public class Player : LivingEntity
         ship.localEulerAngles = Vector3.zero;
         ship.localScale = new Vector3(1f, 1f, 1f);
 
-        currentHealth = starterHealth;
         dead = false;
 
         if (currentGold < startGold)
         {
-            currentGold = startGold;
+            currentGold = 0;
+            GiveGold(startGold);
         }
     }
 
@@ -313,11 +337,17 @@ public class Player : LivingEntity
 
             PlaceFlag();
 
-            flag.gameObject.SetActive(true);
+            if (flag)
+            {
+                flag.gameObject.SetActive(true);
+            }
         }
         else
         {
-            flag.gameObject.SetActive(false);
+            if (flag)
+            {
+                flag.gameObject.SetActive(false);
+            }
         }
     }
 

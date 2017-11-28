@@ -76,6 +76,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private string slowDownSound = "default Value";
 
+    [Header("Wheel and Rudder")]
+    [SerializeField]
+    private Transform wheelVisual = null;
+
+    [SerializeField]
+    private Transform rudderVisual = null;
+
     [Header("Debug Info")]
     [SerializeField]
     private float moveSpeed;
@@ -91,9 +98,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Vector3 velocity;
-
-    // The stearing wheel on the ship
-    private Transform wheel;
 
     private ComponentManager components;
 

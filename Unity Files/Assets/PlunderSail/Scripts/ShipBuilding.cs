@@ -661,6 +661,7 @@ public class ShipBuilding : MonoBehaviour
     public void UnlockArmour()
     {
         UI.UnlockArmour();
+        armourUnlocked = true;
     }
 
     private void RemoveAttachment()
@@ -691,6 +692,8 @@ public class ShipBuilding : MonoBehaviour
             {
                 grid[previewGridPosX, previewGridPosY, previewGridPosZ].BuiltOn = false;
             }
+
+            UI.UpdateSpeedSlider();
 
             player.GiveGold(Mathf.RoundToInt(goldCosts[wholeName] * refundPercent));
         }

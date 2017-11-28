@@ -250,6 +250,11 @@ public class UIController : MonoBehaviour
         UpdateSpeedSlider();
 
 
+        if(!fadePlane.gameObject.activeInHierarchy)
+        {
+            fadePlane.gameObject.SetActive(true);
+        }
+
         // populate pause screen buttons
 
         for (int x = 0; x < menu.Length; x++)
@@ -701,9 +706,21 @@ public class UIController : MonoBehaviour
 
     public void ShowMap(bool _show)
     {
-        playerIcon.rectTransform.anchoredPosition = CalculateMapCoords();
-
         mapMenu.SetActive(_show);
+
+        if(_show)
+        {
+            StartCoroutine(UpdateMapCoords());
+        }
+    }
+
+    private IEnumerator UpdateMapCoords()
+    {
+        while (mapMenu.activeInHierarchy)
+        {
+            playerIcon.rectTransform.anchoredPosition = CalculateMapCoords();
+            yield return null;
+        }
     }
 
     private Vector3 CalculateMapCoords()

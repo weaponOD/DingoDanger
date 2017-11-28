@@ -86,6 +86,8 @@ public class AIAgent : LivingEntity
 
     protected bool playerRight = false;
 
+    protected bool hasSunk = false;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -169,7 +171,7 @@ public class AIAgent : LivingEntity
 
         SteerInDirection();
 
-        if (dead)
+        if (dead && !hasSunk)
         {
             CheckIfSunk();
         }
@@ -277,6 +279,7 @@ public class AIAgent : LivingEntity
             if (player != null)
             {
                 player.GiveGold(goldReward);
+                hasSunk = true;
             }
 
             Destroy(gameObject);

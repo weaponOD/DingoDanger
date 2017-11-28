@@ -49,7 +49,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damgage)
     {
-        Debug.Log(gameObject.name + " took " + damgage + " damage");
+        // Debug.Log(gameObject.name + " took " + damgage + " damage");
 
         currentHealth -= damgage;
 
@@ -87,7 +87,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
             OnDeath(this);
         }
 
-        if(gameObject.CompareTag("Enemy"))
+        if (gameObject.CompareTag("Enemy"))
         {
             Crumble();
         }
@@ -99,20 +99,17 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
     protected void Crumble()
     {
-        if (!gameObject.CompareTag("Player"))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
+        Rigidbody rb = GetComponent<Rigidbody>();
 
-            rb.constraints = RigidbodyConstraints.None;
-            rb.mass = 2f;
-            rb.useGravity = true;
+        rb.constraints = RigidbodyConstraints.None;
+        rb.mass = 2f;
+        rb.useGravity = true;
 
-            deathPos = transform.position;
-            deathPos.y = -2f;
-            StartCoroutine(SpawnBounty());
+        deathPos = transform.position;
+        deathPos.y = -2f;
+        StartCoroutine(SpawnBounty());
 
-            AudioManager.instance.PlaySound(sinkingSound);
-        }
+        AudioManager.instance.PlaySound(sinkingSound);
     }
 
     public Vector3 Velocity

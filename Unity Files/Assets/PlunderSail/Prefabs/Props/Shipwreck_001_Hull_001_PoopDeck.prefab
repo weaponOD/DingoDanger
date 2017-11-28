@@ -36,7 +36,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4410050598965288}
-  m_Layer: 0
+  - component: {fileID: 136336271632402626}
+  m_Layer: 8
   m_Name: Shipwreck_001_Hull_001_PoopDeck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,14 +50,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886058399682048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.10230957, y: 0.947454, z: -0.14091933, w: 0.2683385}
+  m_LocalPosition: {x: 0.1, y: 0, z: 10.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4522075216559826}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.78, y: 509.561, z: -352.826}
 --- !u!4 &4522075216559826
 Transform:
   m_ObjectHideFlags: 1
@@ -109,3 +110,16 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336199505940516}
   m_Mesh: {fileID: 4300000, guid: 246942267e4f0c94cafd545c931a7659, type: 3}
+--- !u!136 &136336271632402626
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886058399682048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.7320964
+  m_Height: 4.340556
+  m_Direction: 1
+  m_Center: {x: 0.053458247, y: 0.043036934, z: -0.023232229}

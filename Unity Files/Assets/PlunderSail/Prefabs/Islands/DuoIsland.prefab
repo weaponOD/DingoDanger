@@ -1200,6 +1200,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1794878672925290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4538283332570776}
+  - component: {fileID: 114361916371548270}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1808360597770724
 GameObject:
   m_ObjectHideFlags: 1
@@ -1748,6 +1764,7 @@ Transform:
   - {fileID: 4629298538672650}
   - {fileID: 4701589518224576}
   - {fileID: 4447425175001186}
+  - {fileID: 4538283332570776}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 36.664, z: 0}
@@ -2249,6 +2266,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4080736133333984}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4538283332570776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794878672925290}
+  m_LocalRotation: {x: -0, y: 0.9874388, z: -0, w: 0.15800221}
+  m_LocalPosition: {x: 35.4, y: 3, z: 47.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4257181630440632}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4559656891665746
 Transform:
@@ -4466,6 +4496,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114361916371548270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794878672925290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e47900e1997b034d928b0c23976635c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 337.93
+  enemyLimit: 4
+  delayBeforeDeactivate: 500
+  dock: {fileID: 0}
+  islandCross: {fileID: 0}
+  towers: []
+  enemyPrefabs:
+  - {fileID: 4508677944220884, guid: e54dc52ee4b047443967bea3261f4049, type: 2}
+  - {fileID: 4508677944220884, guid: 7e585cd6a2dab7341803042775017e2a, type: 2}
+  activeEnemies: []
+  unlocksTrident: 0
+  unlocksDropBear: 0
+  unlocksArmour: 0
 --- !u!136 &136156900734539796
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -16,6 +16,9 @@ public class Player : LivingEntity
     [SerializeField]
     private float retreatThreshold = 0.5f;
 
+    [SerializeField]
+    private float costPercent = 0.2f;
+
     private int maxGold = 99999;
 
     [SerializeField]
@@ -376,7 +379,7 @@ public class Player : LivingEntity
 
         if(controller.MaxSpeed < controller.CappedSpeed * retreatThreshold)
         {
-            UI.showRetreat();
+            UI.showRetreat((costPercent * currentGold));
         }
     }
 

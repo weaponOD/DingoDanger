@@ -45,6 +45,9 @@ public class UIController : MonoBehaviour
     private GameObject retreatSign = null;
 
     [SerializeField]
+    private Text retreatCost = null;
+
+    [SerializeField]
     private Text playerSpeedMode = null;
 
     // Panel References
@@ -305,10 +308,14 @@ public class UIController : MonoBehaviour
         speedSlider.value = percent;
     }
 
-    public void showRetreat()
+    public void showRetreat(float _cost)
     {
         if(!DockPopUp.gameObject.activeInHierarchy && !buildPanel.gameObject.activeInHierarchy)
         {
+            // set text first
+
+            retreatCost.text = "" + _cost;
+
             retreatSign.SetActive(true);
         }
     }

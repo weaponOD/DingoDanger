@@ -320,7 +320,11 @@ public class GameManager : MonoBehaviour
 
     public void RetreatPlayer()
     {
+        UI.FadeScreen();
+        PC.CanMove = false;
+        player.HasControl = false;
 
+        StartCoroutine(TransitionToBuildMode());
     }
 
     private void CanExitBuildMode()

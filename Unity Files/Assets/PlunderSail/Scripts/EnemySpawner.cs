@@ -7,11 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("The distance from the spawner in metres that the spawner is aware of the player")]
-    private float spawnRadius = 0;
-
-    [SerializeField]
-    [Tooltip("The distance from the spawner in metres that the spawner is aware of the player")]
-    private float TowerRadius = 0;
+    private float radius = 0;
 
     [SerializeField]
     [Tooltip("The number of enemy ships that can be active at the same time.")]
@@ -20,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("The number of seconds after the player leaves the radius that the spawner stops.")]
     private float delayBeforeDeactivate = 0;
+
+    private int activeShips = 0;
 
     [SerializeField]
     private List<SpawnPoint> spawnPoints = null;
@@ -93,7 +91,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator CheckPlayerInRange()
     {
-        if (Vector3.Distance(player.position, transform.position) <= TowerRadius)
+        if (Vector3.Distance(player.position, transform.position) <= radius)
         {
             if (!towersActivated)
             {
@@ -101,7 +99,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if (Vector3.Distance(player.position, transform.position) <= spawnRadius)
+        if (Vector3.Distance(player.position, transform.position) <= radius)
         {
             if (!attackingPlayer)
             {
@@ -126,7 +124,7 @@ public class EnemySpawner : MonoBehaviour
     // Checks if the number of active enemies is less than the limit, if so spawn an enemy.
     private IEnumerator CheckEnemies()
     {
-        if (activeEnemies.Count < enemyLimit && !GameState.BuildMode)
+        if (activeShips < enemyLimit && !GameState.BuildMode)
         {
             SpawnEnemy();
         }
@@ -150,37 +148,13 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    private void CancelArms()
-    {
-        if (Vector3.Distance(player.position, transform.position) > spawnRadius || isDefeated)
-        {
-            attackingPlayer = false;
-
-            foreach (TowerBase tower in towers)
-            {
-                if (tower != null)
-                {
-                    tower.enabled = false;
-                }
-            }
-
-            foreach (AIAgent ship in activeEnemies)
-            {
-                if (ship != null)
-                {
-                    ship.gameObject.SetActive(false);
-                }
-            }
-        }
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0.7f, 0.6f, 1f);
-        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+        Gizmos.DrawWireSphere(transform.position, radius);
 
         Gizmos.color = new Color(1f, 0f, 0.5f, 1f);
-        Gizmos.DrawWireSphere(transform.position, TowerRadius);
+        Gizmos.DrawWireSphere(transform.position, radius);
     }
 
     private void SpawnEnemy()
@@ -209,18 +183,18 @@ public class EnemySpawner : MonoBehaviour
             point = spawnPoints[0];
         }
 
-        activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], point.transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
+        if (point != null)
+        {
+            GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], point.transform.position, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).gameObject;
+            enemy.GetComponent<AIAgent>().OnDeath += shipDied;
 
-        //Vector3 spawnPos = OutOfSightPos();
+            activeShips++;
+         }
+    }
 
-        //if ((Physics2D.OverlapCircle(spawnPos, 100f)) == null && Vector3.Distance(player.transform.position, spawnPos) > 5)
-        //{
-        //    activeEnemies.Add(Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPos, Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f)).GetComponent<AIAgent>());
-        //}
-        //else
-        //{
-        //    SpawnEnemy();
-        //}
+    private void shipDied(LivingEntity _entity)
+    {
+        activeShips--;
     }
 
     private void EnemyDied(LivingEntity _entity)
@@ -256,8 +230,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 gm.EncounterDefeated(islandCross);
             }
-
-            CancelArms();
         }
     }
 
@@ -282,6 +254,6 @@ public class EnemySpawner : MonoBehaviour
     private Vector3 GetPointOnUnitCircleCircumference()
     {
         float randomAngle = Random.Range(0f, Mathf.PI * 2f);
-        return new Vector3(Mathf.Sin(randomAngle), 0f, Mathf.Cos(randomAngle)) * spawnRadius;
+        return new Vector3(Mathf.Sin(randomAngle), 0f, Mathf.Cos(randomAngle)) * radius;
     }
 }

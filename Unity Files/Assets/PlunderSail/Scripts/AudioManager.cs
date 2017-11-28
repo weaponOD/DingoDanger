@@ -76,6 +76,9 @@ public class AudioManager : MonoBehaviour
             PlaySound("ambientIntro");
             PlaySound("ambientDock");
         }
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private IEnumerator FadeInVolume(float time)

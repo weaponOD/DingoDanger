@@ -141,14 +141,6 @@ public class AIAgent : LivingEntity
 
     protected virtual void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            transform.position = startPos;
-            transform.rotation = startRot;
-            targetRotation = startRot;
-            targetDirection = transform.forward;
-        }
-
         AvoidCollisions();
 
         // If there's a collision disable states for x seconds
@@ -174,6 +166,11 @@ public class AIAgent : LivingEntity
         }
 
         SteerInDirection();
+
+        if(Vector3.Distance(transform.position, player.transform.position) > 100)
+        {
+            TakeDamage(50000);
+        }
 
         if (dead && !hasSunk)
         {

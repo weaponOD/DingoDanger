@@ -144,8 +144,6 @@ public class GameManager : MonoBehaviour
                         player.RepairAttachments();
 
                         AudioManager.instance.PlaySound(enterDockSound);
-
-                        Invoke("CanExitBuildMode", 2);
                     }
                 }
                 else
@@ -154,8 +152,6 @@ public class GameManager : MonoBehaviour
                     StartCoroutine(TransitionToPlayMode());
 
                     canPressY = false;
-
-                    Invoke("CanExitBuildMode", 2);
                 }
             }
         }
@@ -286,6 +282,10 @@ public class GameManager : MonoBehaviour
         {
             Tutorial.instance.ShowCannonsTip();
         }
+
+        canPressY = true;
+
+        UI.ShowPierPopUp(true);
     }
 
     private IEnumerator TransitionToBuildMode()
@@ -296,6 +296,8 @@ public class GameManager : MonoBehaviour
         {
             player.Respawn();
         }
+
+        cinematicPlaying = false;
 
         AudioManager.instance.FadeOut(sailingMusic, SailingFadeOut);
         AudioManager.instance.FadeInMusic(dockMusic, dockFadeIn);
@@ -328,6 +330,8 @@ public class GameManager : MonoBehaviour
             CC.SwitchToBuildMode();
             builder.moveGridToPlayer(lastPier);
         }
+
+        canPressY = true;
     }
 
     public void RetreatPlayer()
@@ -337,16 +341,6 @@ public class GameManager : MonoBehaviour
         player.HasControl = false;
 
         StartCoroutine(TransitionToBuildMode());
-    }
-
-    private void CanExitBuildMode()
-    {
-        canPressY = true;
-
-        if (!GameState.BuildMode)
-        {
-            UI.ShowPierPopUp(true);
-        }
     }
 
     public void PlayBattleMusic()

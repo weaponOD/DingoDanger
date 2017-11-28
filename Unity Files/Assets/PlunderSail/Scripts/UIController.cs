@@ -934,6 +934,8 @@ public class UIController : MonoBehaviour
         {
             UpdateSpeedSlider();
 
+            retreatSign.SetActive(false);
+
             if (DockPopUp.activeInHierarchy)
             {
                 DockPopUp.SetActive(false);

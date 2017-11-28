@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: DangerSail
-  m_Shader: {fileID: 4800000, guid: 1ea6b69d28b54da46b225544eeef7e07, type: 3}
+  m_Shader: {fileID: 4800000, guid: 45ed334ff3de4074187f89a09c9920de, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -54,6 +54,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 2800000, guid: f8211f5c874f59c47ac1333d7842cb65, type: 3}
+        m_Scale: {x: 1.1, y: 1.1}
+        m_Offset: {x: 0.2, y: -0.05}
     m_Floats:
     - _AO: 10
     - _BaseLight: 0.638
@@ -77,13 +81,17 @@ Material:
     - _SquashAmount: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WindAmplitude: 0.15
+    - _WindPower: 1.5
     - _ZWrite: 1
     - _node_5097: 0
     m_Colors:
     - _BaseColour: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 1, b: 0.2965517, a: 1}
     - _Color_copy: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    - _Colour: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _LogoColour: {r: 0, g: 0.13103437, b: 1, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}
+    - _WindDirection: {r: 1, g: 0.5, b: 0.5, a: 0}

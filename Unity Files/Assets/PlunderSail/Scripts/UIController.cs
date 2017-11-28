@@ -121,6 +121,8 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private bool armourUnlocked = false;
 
+    private int retreatCostAmount = 0;
+
     private void Awake()
     {
         // Subscribe to game state
@@ -308,7 +310,7 @@ public class UIController : MonoBehaviour
         speedSlider.value = percent;
     }
 
-    public void showRetreat(float _cost)
+    public void showRetreat(int _cost)
     {
         if(!DockPopUp.gameObject.activeInHierarchy && !buildPanel.gameObject.activeInHierarchy)
         {
@@ -316,6 +318,7 @@ public class UIController : MonoBehaviour
 
             retreatCost.text = "" + _cost;
 
+            retreatCostAmount = _cost;
             retreatSign.SetActive(true);
         }
     }
@@ -330,6 +333,8 @@ public class UIController : MonoBehaviour
                 {
                     // reset player to build mode
                     GM.RetreatPlayer();
+
+                    player.DeductGold(retreatCostAmount);
                 }
             }
         }

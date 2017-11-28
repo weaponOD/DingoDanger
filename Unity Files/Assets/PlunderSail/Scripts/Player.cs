@@ -379,7 +379,7 @@ public class Player : LivingEntity
 
         if(controller.MaxSpeed < controller.CappedSpeed * retreatThreshold)
         {
-            UI.showRetreat((costPercent * currentGold));
+            UI.showRetreat((int)(costPercent * currentGold));
         }
     }
 

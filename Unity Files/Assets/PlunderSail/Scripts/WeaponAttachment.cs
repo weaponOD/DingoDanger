@@ -128,6 +128,40 @@ public class WeaponAttachment : AttachmentBase
         }
     }
 
+    public override void TakeDamage(float _damage)
+    {
+        currentHealth -= _damage;
+
+        // switch to broken mesh
+        if (currentHealth < (maxHealth * healthWhenBroken))
+        {
+            if (brokenMesh != null && !broken)
+            {
+                filter.mesh = brokenMesh;
+                broken = true;
+            }
+        }
+
+        // destroyed 
+        if (currentHealth <= 0)
+        {
+            transform.parent = null;
+
+            entity.UpdateParts();
+
+            if (!GetComponent<Rigidbody>())
+            {
+                gameObject.AddComponent<Rigidbody>();
+                gameObject.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 0.1f);
+            }
+
+
+            arc.gameObject.SetActive(false);
+
+            Destroy(gameObject, 3f);
+        }
+    }
+
     protected virtual IEnumerator Fire(Transform _firePoint)
     {
         yield return new WaitForSeconds(Random.Range(minFireTime, maxFireTime));

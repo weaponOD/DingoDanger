@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
             // deflect off armour pieces
             if (_collision.collider.gameObject.GetComponent<ArmourAttachment>() != null)
             {
-                // Debug.Log("Hit armoured attachment");
+                Debug.Log("Hit armoured attachment");
 
                 AudioManager.instance.PlaySound(stoneImpact);
 
@@ -98,7 +98,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
-                // Debug.Log("Hit non-armour attachment");
+                Debug.Log("Hit non-armour attachment");
                 // we've hit a non-armour attachment
 
                 AudioManager.instance.PlaySound(woodImpact);
@@ -106,7 +106,7 @@ public class Projectile : MonoBehaviour
 
                 GameObject hitEffect = woodHitPool.getPooledObject();
 
-                if (hitEffect)
+                if (hitEffect != null)
                 {
                     hitEffect.transform.position = transform.position;
                     hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
@@ -124,7 +124,7 @@ public class Projectile : MonoBehaviour
             // we've hit a tower
             if (_collision.collider.gameObject.GetComponent<Tower>() != null)
             {
-                // Debug.Log("Hit Tower");
+                Debug.Log("Hit Tower");
 
                 AudioManager.instance.PlaySound(stoneImpact);
 
@@ -132,18 +132,21 @@ public class Projectile : MonoBehaviour
 
                 GameObject hitEffect = stoneHitPool.getPooledObject();
 
-                hitEffect.transform.position = transform.position;
-                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+                if (hitEffect != null)
+                {
+                    hitEffect.transform.position = transform.position;
+                    hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
 
-                hitEffect.SetActive(true);
+                    hitEffect.SetActive(true);
 
-                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                    ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                }
 
                 Destroy();
             }
             else if (_collision.collider.gameObject.GetComponent<Player>() != null)
             {
-                // Debug.Log("Hit Player");
+                Debug.Log("Hit Player");
 
                 AudioManager.instance.PlaySound(woodImpact);
 
@@ -151,18 +154,21 @@ public class Projectile : MonoBehaviour
 
                 GameObject hitEffect = woodHitPool.getPooledObject();
 
-                hitEffect.transform.position = transform.position;
-                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+                if (hitEffect != null)
+                {
+                    hitEffect.transform.position = transform.position;
+                    hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
 
-                hitEffect.SetActive(true);
+                    hitEffect.SetActive(true);
 
-                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                    ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                }
 
                 Destroy();
             }
             else
             {
-                // Debug.Log("Hit hull of ship");
+                Debug.Log("Hit hull of ship");
 
                 AudioManager.instance.PlaySound(woodImpact);
 
@@ -171,12 +177,15 @@ public class Projectile : MonoBehaviour
 
                 GameObject hitEffect = woodHitPool.getPooledObject();
 
-                hitEffect.transform.position = transform.position;
-                hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
+                if (hitEffect != null)
+                {
+                    hitEffect.transform.position = transform.position;
+                    hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
 
-                hitEffect.SetActive(true);
+                    hitEffect.SetActive(true);
 
-                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                    ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                }
 
                 Destroy();
             }
@@ -185,21 +194,21 @@ public class Projectile : MonoBehaviour
         {
             // hit the environment
 
-            // Debug.Log("Hit environment");
+            Debug.Log("Hit environment");
 
             AudioManager.instance.PlaySound(stoneImpact);
 
             GameObject hitEffect = stoneHitPool.getPooledObject();
 
-            if (hitEffect)
+            if (hitEffect != null)
             {
                 hitEffect.transform.position = transform.position;
                 hitEffect.transform.rotation = Quaternion.LookRotation(-transform.rotation.eulerAngles);
 
                 hitEffect.SetActive(true);
-            }
 
-            ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                ResourceManager.instance.DelayedDestroy(hitEffect, hitEffect.GetComponent<ParticleSystem>().main.startLifetime.constant);
+            }
 
             Destroy();
         }
@@ -221,12 +230,15 @@ public class Projectile : MonoBehaviour
 
                 GameObject splash = waterHitPool.getPooledObject();
 
-                splash.transform.position = transform.position;
-                splash.transform.rotation = Quaternion.identity;
+                if (splash != null)
+                {
+                    splash.transform.position = transform.position;
+                    splash.transform.rotation = Quaternion.identity;
 
-                splash.SetActive(true);
+                    splash.SetActive(true);
 
-                ResourceManager.instance.DelayedDestroy(splash, splash.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                    ResourceManager.instance.DelayedDestroy(splash, splash.GetComponent<ParticleSystem>().main.startLifetime.constant);
+                }
 
                 if (floats)
                 {

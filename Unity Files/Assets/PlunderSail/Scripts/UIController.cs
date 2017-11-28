@@ -250,7 +250,7 @@ public class UIController : MonoBehaviour
         UpdateSpeedSlider();
 
 
-        if(!fadePlane.gameObject.activeInHierarchy)
+        if (!fadePlane.gameObject.activeInHierarchy)
         {
             fadePlane.gameObject.SetActive(true);
         }
@@ -698,6 +698,11 @@ public class UIController : MonoBehaviour
         if (paused)
         {
             ShowMap(false);
+            goldHUD.SetActive(true);
+        }
+        else
+        {
+            goldHUD.SetActive(false);
         }
 
         menu[currentMenu].menuScreen.SetActive(_isPaused);
@@ -708,7 +713,7 @@ public class UIController : MonoBehaviour
     {
         mapMenu.SetActive(_show);
 
-        if(_show)
+        if (_show)
         {
             StartCoroutine(UpdateMapCoords());
         }
@@ -766,32 +771,34 @@ public class UIController : MonoBehaviour
             horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
             builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+
+            return;
         }
-        else if (!tridentUnlocked && (selectedAttachment + _change == 1))
+
+        // if trident is unlocked and we try move to it, move to it.
+        if (tridentUnlocked && (selectedAttachment + _change < 2))
         {
-            // if drop bear is unlocked move to that
-            if (dropBearUnlocked)
-            {
-                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
-                selectedAttachment += _change * 2;
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
+            selectedAttachment += _change * 1;
 
-                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
-                builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
-            }
+            builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+
+            return;
         }
-        else if (!dropBearUnlocked && (selectedAttachment + _change == 2))
+
+        // trident locked and we move to it, try to move to drop bear if that's unlocked
+        if (!tridentUnlocked && (selectedAttachment + _change == 1) && dropBearUnlocked)
         {
-            // if drop bear is unlocked move to that
-            if (tridentUnlocked)
-            {
-                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
-                selectedAttachment += _change;
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = defaultSpriteAttachment;
+            selectedAttachment += _change * 2;
 
-                horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
+            horizontalMenu[selectedGenre].transform.GetChild(selectedAttachment).GetComponent<Image>().sprite = highlightSpriteAttachment;
 
-                builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
-            }
+            builder.UpdatePreview(genres[selectedGenre] + "00" + (selectedAttachment + 1));
+
+            return;
         }
     }
 
@@ -856,6 +863,8 @@ public class UIController : MonoBehaviour
     public void SetBuildPanelStatus(bool _isEnabled)
     {
         ShowMap(false);
+
+        goldText.text = "" + player.Gold;
 
         buildPanel.SetActive(_isEnabled);
 

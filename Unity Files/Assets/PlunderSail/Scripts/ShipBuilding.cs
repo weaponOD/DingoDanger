@@ -1002,11 +1002,13 @@ public class ShipBuilding : MonoBehaviour
         preview.gameObject.SetActive(true);
         MovePreviewToCentre();
         preview.ShipCentre = new Vector3((int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z);
+        preview.transform.rotation = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.rotation;
     }
 
     private void MovePreviewToCentre()
     {
         preview.MoveToSpot(grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.position, new Vector3(previewGridPosX, previewGridPosY, previewGridPosZ));
+        preview.transform.rotation = grid[(int)centreSpot.x, (int)centreSpot.y, (int)centreSpot.z].transform.rotation;
 
         previewGridPosX = (int)centreSpot.x;
         previewGridPosY = (int)centreSpot.y;
@@ -1033,9 +1035,6 @@ public class ShipBuilding : MonoBehaviour
         else
         {
             dirty = true;
-
-            // check if weapons are unlocked
-
 
         }
     }

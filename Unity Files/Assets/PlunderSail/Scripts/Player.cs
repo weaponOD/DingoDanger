@@ -95,8 +95,12 @@ public class Player : LivingEntity
         // Subscribe to game state
         GameState.buildModeChanged += SetBuildMode;
 
+        if (healthBar)
+        {
+            HPValue = healthBar.GetComponentInChildren<Slider>();
 
-        HPValue = healthBar.GetComponentInChildren<Slider>();
+            HPValue.value = 1;
+        }
     }
 
     protected override void Start()
@@ -247,21 +251,12 @@ public class Player : LivingEntity
     {
         base.TakeDamage(damgage);
 
-        if (healthBar != null)
+        if(HPValue)
         {
-            HPValue.value = currentHealth / starterHealth;
-
-            healthBar.SetActive(true);
-
-            Invoke("HideHealthBar", 1f);
+            HPValue.value = currentHealth;
         }
 
         AudioManager.instance.PlaySound(takeDamageSound);
-    }
-
-    private void HideHealthBar()
-    {
-        healthBar.SetActive(false);
     }
 
     // Returns how much gold the player currently has
@@ -324,8 +319,7 @@ public class Player : LivingEntity
 
         if (currentGold < startGold)
         {
-            currentGold = 0;
-            GiveGold(startGold);
+            currentGold = startGold;
         }
     }
 
@@ -341,6 +335,11 @@ public class Player : LivingEntity
             {
                 flag.gameObject.SetActive(true);
             }
+
+            if (healthBar != null)
+            {
+                healthBar.SetActive(true);
+            }
         }
         else
         {
@@ -348,6 +347,13 @@ public class Player : LivingEntity
             {
                 flag.gameObject.SetActive(false);
             }
+
+            if (healthBar != null)
+            {
+                healthBar.SetActive(false);
+            }
+
+            currentHealth = starterHealth;
         }
     }
 

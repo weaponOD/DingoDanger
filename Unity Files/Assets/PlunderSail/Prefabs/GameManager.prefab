@@ -70,7 +70,7 @@ MonoBehaviour:
   highlightSpriteMenu: {fileID: 21300000, guid: a5795f4e94a5d584f9e48c43c0b2f7a8,
     type: 3}
   playerIcon: {fileID: 0}
-  tridentUnlocked: 0
+  tridentUnlocked: 1
   dropBearUnlocked: 0
   armourUnlocked: 0
 --- !u!114 &114256727963917046
@@ -90,6 +90,12 @@ MonoBehaviour:
   defeatedEncounter: ambientIntro
   dockMusic: ambientDock
   sailingMusic: sailMusic
+  dockFadeIn: 2
+  dockFadeOut: 2
+  SailingFadeIn: 2
+  SailingFadeOut: 2
+  battleFadeIn: 2
+  battleFadeOut: 2
 --- !u!114 &114658638090109668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,7 +177,7 @@ MonoBehaviour:
   changedStateHint: {fileID: 0}
   changedStateTime: 0
   noCannonsHint: {fileID: 0}
-  noCannonsTime: 0
+  noCannonsTime: 0.1
 --- !u!114 &114883611100677676
 MonoBehaviour:
   m_ObjectHideFlags: 1

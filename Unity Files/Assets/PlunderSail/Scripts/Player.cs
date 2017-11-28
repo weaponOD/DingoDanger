@@ -58,6 +58,12 @@ public class Player : LivingEntity
     [SerializeField]
     private string takeDamageSound = "CHANGE";
 
+    [Header("Flag")]
+    [SerializeField]
+    private GameObject flagPrefab = null;
+
+    private Transform flag = null;
+
     private float range = 25;
 
     private float previousRange;
@@ -293,7 +299,7 @@ public class Player : LivingEntity
         currentHealth = starterHealth;
         dead = false;
 
-        if(currentGold < startGold)
+        if (currentGold < startGold)
         {
             currentGold = startGold;
         }
@@ -304,6 +310,14 @@ public class Player : LivingEntity
         if (!isBuildMode)
         {
             UpdateParts();
+
+            PlaceFlag();
+
+            flag.gameObject.SetActive(true);
+        }
+        else
+        {
+            flag.gameObject.SetActive(false);
         }
     }
 
@@ -315,6 +329,50 @@ public class Player : LivingEntity
         controller.setSpeedBonus(components.getSpeedBonus());
 
         attachments = components.Attachments;
+    }
+
+    // finds only sail or highest sail and places a flag above it.
+    private void PlaceFlag()
+    {
+        // if we don't have a flag yet, spawn a new one
+        if (flag == null)
+        {
+            flag = Instantiate(flagPrefab).transform;
+        }
+
+        if (components.GetAttachedSails().Length == 0)
+        {
+            return;
+        }
+
+        // place the flag on the only sail
+        if (components.GetAttachedSails().Length == 1)
+        {
+            flag.parent = components.GetAttachedSails()[0].transform;
+            flag.localEulerAngles = new Vector3(0f, 270f, 0f);
+            flag.localPosition = new Vector3(0f, 8f, 0f);
+
+            return;
+        }
+
+        float highestSail = 0;
+        AttachmentSail highest = null;
+
+        // otherwise find the highest sail
+        foreach (AttachmentSail sail in components.GetAttachedSails())
+        {
+            if (sail.transform.position.y > highestSail)
+            {
+                highest = sail;
+            }
+        }
+
+        if (highest != null)
+        {
+            flag.parent = highest.transform;
+            flag.localEulerAngles = new Vector3(0f, 270f, 0f);
+            flag.localPosition = new Vector3(0f, 8f, 0f);
+        }
     }
 
     private void OnDestroy()

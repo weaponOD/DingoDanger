@@ -620,15 +620,18 @@ public class ShipBuilding : MonoBehaviour
             {
                 for (int y = 0; y < 8; y++)
                 {
-                    grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].Attachment = newAttachment;
-                    grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
-
-                    if (y > 0)
+                    if(previewGridPosY + y < GridSize.y)
                     {
-                        if (previewGridPosZ < GridSize.z - 1)
+                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].Attachment = newAttachment;
+                        grid[previewGridPosX, previewGridPosY + y, previewGridPosZ].BuiltOn = true;
+
+                        if (y > 0)
                         {
-                            grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
-                            grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
+                            if (previewGridPosZ < GridSize.z - 1)
+                            {
+                                grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Attachment = newAttachment;
+                                grid[previewGridPosX, previewGridPosY + y, previewGridPosZ + 1].Disabled = true;
+                            }
                         }
                     }
                 }

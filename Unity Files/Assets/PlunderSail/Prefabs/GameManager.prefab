@@ -84,12 +84,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b5d18095d82055458243e31a4eeb433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPier: {fileID: 0}
-  lastPier: {fileID: 0}
   playerCentre: {fileID: 0}
   loading: {fileID: 0}
   enterDockSound: enterDock
   defeatedEncounter: ambientIntro
+  dockMusic: ambientDock
+  sailingMusic: sailMusic
 --- !u!114 &114658638090109668
 MonoBehaviour:
   m_ObjectHideFlags: 1

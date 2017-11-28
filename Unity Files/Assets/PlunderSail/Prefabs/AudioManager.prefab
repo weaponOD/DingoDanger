@@ -33,13 +33,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1461116417234096}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 998.28015, y: 0, z: 3542.0996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!114 &114980615814824566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
-  - name: impactConcrete
+  - name: impactStone
     audioClip:
     - {fileID: 8300000, guid: 9914d5294ff3532418729a2c06650648, type: 3}
     - {fileID: 8300000, guid: 986a79b080472cd40b0c8181b6d39412, type: 3}

@@ -120,6 +120,18 @@ public class AudioManager : MonoBehaviour
         _sound.audioSource.volume = 1f;
     }
 
+    public void FadeInMusic(string _name, float time)
+    {
+        SoundClass soundClass = Array.Find(sounds, sound => sound.name == _name);
+
+        if (soundClass != null)
+        {
+            PlaySound(_name);
+            StartCoroutine(FadeInSound(soundClass, time));
+        }
+    }
+
+
     private IEnumerator FadeInSound(SoundClass _sound, float time)
     {
         float speed = 1 / time;
@@ -136,10 +148,14 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneChanged(Scene scene, LoadSceneMode mode)
     {
+        // fade out intro music and fade in sailing music
         if (scene.buildIndex == 1)
         {
-            StartCoroutine(FadeOutSound(sounds[21], 5f));
-            StartCoroutine(FadeOutSound(sounds[22], 5f));
+            StartCoroutine(FadeOutSound(sounds[21], 2f));
+            StartCoroutine(FadeOutSound(sounds[22], 2f));
+
+            PlaySound(sounds[20].name);
+            StartCoroutine(FadeInSound(sounds[20], 1f));
         }
     }
 
@@ -205,7 +221,6 @@ public class AudioManager : MonoBehaviour
 
     void OnDisable()
     {
-
         SceneManager.sceneLoaded -= OnSceneChanged;
     }
 }

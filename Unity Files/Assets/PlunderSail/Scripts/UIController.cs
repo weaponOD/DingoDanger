@@ -101,8 +101,6 @@ public class UIController : MonoBehaviour
 
     private int currentMenu = 0;
 
-    private int currentButton = 0;
-
     private bool sliderSelected = false;
 
     [SerializeField]
@@ -300,7 +298,6 @@ public class UIController : MonoBehaviour
     {
         if (paused)
         {
-            currentButton = menu[currentMenu].selectedIndex;
             // move back to the pause menu
             if (Input.GetButtonDown("B_Button"))
             {

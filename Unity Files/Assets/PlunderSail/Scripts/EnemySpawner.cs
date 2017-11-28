@@ -130,13 +130,7 @@ public class EnemySpawner : MonoBehaviour
     {
         cancelAttack = false;
 
-        AudioManager.instance.PlaySound("BattleTheme");
-
-        if(!AudioManager.instance.isBattleMusicPlaying)
-        {
-            AudioManager.instance.PlaySound("BattleLoop");
-            AudioManager.instance.isBattleMusicPlaying = true;
-        }
+        gm.PlayBattleMusic();
 
         foreach (TowerBase tower in towers)
         {
@@ -168,8 +162,7 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
 
-            AudioManager.instance.FadeOut("BattleLoop", 1f);
-            AudioManager.instance.isBattleMusicPlaying = false;
+            gm.EndBattleMusic();
         }
     }
 

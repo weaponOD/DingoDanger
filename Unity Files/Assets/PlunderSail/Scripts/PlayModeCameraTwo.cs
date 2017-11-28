@@ -81,7 +81,6 @@ public class PlayModeCameraTwo : MonoBehaviour
         localRotation = new Vector3(pivot.rotation.eulerAngles.y, pivot.rotation.eulerAngles.x, 0f);
     }
 
-
     private void OnEnable()
     {
         localRotation.x = target.localEulerAngles.y;
@@ -150,7 +149,7 @@ public class PlayModeCameraTwo : MonoBehaviour
 
     private void ReturnToBehindShip()
     {
-        if(!aiming)
+        if (!aiming)
         {
             localRotation.x = target.localEulerAngles.y;
         }
@@ -212,13 +211,20 @@ public class PlayModeCameraTwo : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         pivot.position = target.position + target.forward * offset.z + target.right * offset.x + target.up * offset.y;
-
 
         // Camera Rotation using the right thumb stick
         Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
         pivot.rotation = Quaternion.Lerp(pivot.rotation, targetRotation, Time.deltaTime * orbitDampening);
+
+        // doesn't work
+        // Vector3 targetEuler = Quaternion.Euler(localRotation.y, localRotation.x, 0f).eulerAngles;
+        //pivot.eulerAngles = Vector3.MoveTowards(pivot.eulerAngles, targetEuler, orbitDampening);
+
+        // Doesn't work V2
+        //Quaternion targetRotation = Quaternion.Euler(localRotation.y, localRotation.x, 0f);
+        //pivot.rotation = Quaternion.RotateTowards(pivot.rotation, targetRotation, Time.deltaTime * orbitDampening);
     }
 }

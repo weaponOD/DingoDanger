@@ -318,6 +318,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RetreatPlayer()
+    {
+
+    }
+
     private void CanExitBuildMode()
     {
         canPressY = true;

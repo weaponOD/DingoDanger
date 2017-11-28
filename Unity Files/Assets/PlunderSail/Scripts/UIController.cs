@@ -315,6 +315,18 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
+        if(!paused)
+        {
+            if(Input.GetKeyDown("X_Button"))
+            {
+                if(retreatSign.activeInHierarchy)
+                {
+                    // reset player to build mode
+                    GM.RetreatPlayer();
+                }
+            }
+        }
+
         if (paused)
         {
             // move back to the pause menu

@@ -89,7 +89,7 @@ MonoBehaviour:
   - name: float
     audioClip:
     - {fileID: 8300000, guid: de91d06a2333dac458939a10b7e81766, type: 3}
-    volume: 1
+    volume: 0.65
     pitch: 1
     looping: 0
     music: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   - name: sink
     audioClip:
     - {fileID: 8300000, guid: f18076bbd419e284a9e04c759789457d, type: 3}
-    volume: 1
+    volume: 0.65
     pitch: 1
     looping: 0
     music: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d4349af7f52d9434d9f660af0dff0201, type: 3}
     - {fileID: 8300000, guid: 13ec76bbfa5604449abee5f44c34ed52, type: 3}
     - {fileID: 8300000, guid: 66cfe11f7bacc464bb27affceb0e9966, type: 3}
-    volume: 0.863
+    volume: 0.75
     pitch: 1
     looping: 0
     music: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 084a0dacfb82ec24eb8163af19398354, type: 3}
     - {fileID: 8300000, guid: 5071b3da3f1743f4f96080b0059b7e31, type: 3}
     - {fileID: 8300000, guid: 666ddbc6f4436e04ba01e0942b355f0f, type: 3}
-    volume: 1
+    volume: 0.65
     pitch: 1
     looping: 0
     music: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 77357ab8c246b85409ae32d68e9a4a39, type: 3}
     - {fileID: 8300000, guid: e634461c3aacd6d4c8b2305f64daf4af, type: 3}
     - {fileID: 8300000, guid: cdaa385dc5c6b854483677bd4aee4380, type: 3}
-    volume: 0.75
+    volume: 0.65
     pitch: 1
     looping: 0
     music: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     music: 0
-    coolDown: 5.5
+    coolDown: 12.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -223,11 +223,11 @@ MonoBehaviour:
   - name: enterDock
     audioClip:
     - {fileID: 8300000, guid: 01b0ef65b8589aa4eb9217f008eaf1ff, type: 3}
-    volume: 1
+    volume: 0.9
     pitch: 1
     looping: 0
     music: 0
-    coolDown: 5
+    coolDown: 25
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -241,7 +241,7 @@ MonoBehaviour:
     pitch: 1
     looping: 0
     music: 0
-    coolDown: 5.75
+    coolDown: 12.5
     nextPlayTime: 0
     canPlay: 1
     audioSource: {fileID: 0}
@@ -365,7 +365,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 986a79b080472cd40b0c8181b6d39412, type: 3}
     - {fileID: 8300000, guid: b65504fc344102147a79143f326be005, type: 3}
     - {fileID: 8300000, guid: 1865c7f2e8d7c8449845920f46544ca1, type: 3}
-    volume: 1
+    volume: 0.65
     pitch: 1
     looping: 0
     music: 0

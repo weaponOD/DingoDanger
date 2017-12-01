@@ -93,19 +93,16 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Vector3.Distance(player.position, transform.position) <= radius)
         {
-            if (!towersActivated)
-            {
-                ActivateTowers(true);
-            }
-        }
-
-        if (Vector3.Distance(player.position, transform.position) <= radius)
-        {
             if (!attackingPlayer)
             {
                 attackingPlayer = true;
 
                 StartCoroutine(CheckEnemies());
+            }
+
+            if (!towersActivated)
+            {
+                ActivateTowers(true);
             }
         }
         else

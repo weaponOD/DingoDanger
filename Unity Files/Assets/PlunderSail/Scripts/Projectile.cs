@@ -122,7 +122,7 @@ public class Projectile : MonoBehaviour
         else if (_collision.collider.gameObject.GetComponent<LivingEntity>() != null)
         {
             // we've hit a tower
-            if (_collision.collider.gameObject.GetComponent<Tower>() != null)
+            if (_collision.collider.gameObject.GetComponent<TowerBase>() != null)
             {
                 Debug.Log("Hit Tower");
 

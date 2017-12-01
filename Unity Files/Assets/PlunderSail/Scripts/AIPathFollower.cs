@@ -52,11 +52,6 @@ public class AIPathFollower : AIAgent
         }
 
         SteerInDirection();
-
-        if (dead)
-        {
-            CheckIfSunk();
-        }
     }
 
     protected override void CalculateState()

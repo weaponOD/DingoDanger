@@ -34,12 +34,6 @@ public class AIAgent : LivingEntity
     [SerializeField]
     private float stunDuration = 1;
 
-    [Header("Reward")]
-    [SerializeField]
-    private int goldReward = 50;
-
-    [Header("Debug Info")]
-    [SerializeField]
     protected float currentMoveSpeed;
 
     [SerializeField]
@@ -52,7 +46,6 @@ public class AIAgent : LivingEntity
 
     protected Quaternion targetRotation;
 
-    [SerializeField]
     protected Vector3 targetDirection;
 
     protected bool isStunned = false;
@@ -76,8 +69,7 @@ public class AIAgent : LivingEntity
 
     [SerializeField]
     protected bool stateIsActive = false;
-
-    [SerializeField]
+ 
     private float angle;
 
     protected float stateCoolDown = 2;
@@ -170,11 +162,6 @@ public class AIAgent : LivingEntity
         if(Vector3.Distance(transform.position, player.transform.position) > 100)
         {
             TakeDamage(50000);
-        }
-
-        if (dead && !hasSunk)
-        {
-            CheckIfSunk();
         }
     }
 
@@ -278,20 +265,6 @@ public class AIAgent : LivingEntity
 
         Gizmos.color = new Color(1, 0, 0, 0.75F);
         Gizmos.DrawWireSphere(transform.position, attackRange);
-    }
-
-    protected void CheckIfSunk()
-    {
-        if (transform.position.y < -5)
-        {
-            if (player != null)
-            {
-                player.GiveGold(goldReward);
-                hasSunk = true;
-            }
-
-            Destroy(gameObject);
-        }
     }
 
     protected virtual void FixedUpdate()

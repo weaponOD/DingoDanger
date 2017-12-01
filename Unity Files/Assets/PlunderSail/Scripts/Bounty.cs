@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Bounty : MonoBehaviour
 {
     [SerializeField]
@@ -33,10 +34,14 @@ public class Bounty : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        GetComponent<Rigidbody>().useGravity = false;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-
         if (playSound)
         {
             AudioManager.instance.PlaySound(floatSound);

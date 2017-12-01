@@ -107,6 +107,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
 
         deathPos = transform.position;
         deathPos.y = -2f;
+
         StartCoroutine(SpawnBounty());
 
         AudioManager.instance.PlaySound(sinkingSound);
@@ -124,9 +125,12 @@ public class LivingEntity : MonoBehaviour, IDamageable
     {
         yield return new WaitForSeconds(bountyDelay);
 
-        foreach (GameObject reward in bounty)
+        for(int i = 0; i < bounty.Length; i++)
         {
-            Instantiate(reward, deathPos, Quaternion.identity);
+            if(bounty[i] != null)
+            {
+                Instantiate(bounty[i], deathPos + Random.insideUnitSphere * 2, Quaternion.identity);
+            }
         }
     }
 }
